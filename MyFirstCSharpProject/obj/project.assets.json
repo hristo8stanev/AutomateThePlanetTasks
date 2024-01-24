@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\UsernameT\\source\\repos\\MyFirstCSharpProject\\MyFirstCSharpProject\\OnlineStore.csproj",
+      "projectUniqueName": "C:\\Users\\UsernameT\\Documents\\GitHub\\AutomateThePlanetTasks\\MyFirstCSharpProject\\OnlineStore.csproj",
       "projectName": "OnlineStore",
-      "projectPath": "C:\\Users\\UsernameT\\source\\repos\\MyFirstCSharpProject\\MyFirstCSharpProject\\OnlineStore.csproj",
+      "projectPath": "C:\\Users\\UsernameT\\Documents\\GitHub\\AutomateThePlanetTasks\\MyFirstCSharpProject\\OnlineStore.csproj",
       "packagesPath": "C:\\Users\\UsernameT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\UsernameT\\source\\repos\\MyFirstCSharpProject\\MyFirstCSharpProject\\obj\\",
+      "outputPath": "C:\\Users\\UsernameT\\Documents\\GitHub\\AutomateThePlanetTasks\\MyFirstCSharpProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
