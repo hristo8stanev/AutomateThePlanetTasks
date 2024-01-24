@@ -27,7 +27,7 @@ class Program
                 book.Author = "Leo Tolstoy";
                 book.Title = "War and Peace";
                 book.Price = 9.19;
-                Console.WriteLine($"You purchase a {book.Title} by {book.Author} for {book.Price}$ .");
+                Console.WriteLine($"You purchase a {book.Title} by {book.Author} for {book.Price}$.");
                 break;
             case "Clothes":
                 var clothes = new Clothes();
@@ -35,7 +35,7 @@ class Program
                 clothes.Title = "Nike Jordan";
                 clothes.Size = "Medium-Size";
                 clothes.Price = 39.99;
-                Console.WriteLine($"You purchase a {clothes.Title} {clothes.Size} {clothes.Colour} colour for {clothes.Price}$ .");
+                Console.WriteLine($"You purchase a {clothes.Title} {clothes.Size} {clothes.Colour} colour for {clothes.Price}$.");
                 break;
             case "Shoes":
                 var shoes = new Shoes();
@@ -43,7 +43,7 @@ class Program
                 shoes.Numbers = 43;
                 shoes.Title = "Sneakers";
                 shoes.Price = 99.99;
-                Console.WriteLine($"You purchase a {shoes.Colour} {shoes.Title} {shoes.Numbers} for {shoes.Price}$ .");
+                Console.WriteLine($"You purchase a {shoes.Colour} {shoes.Title} {shoes.Numbers} for {shoes.Price}$.");
                 break;
             case "Computers":
                 var computer = new Computers();
@@ -51,7 +51,7 @@ class Program
                 computer.Type = "Laptop";
                 computer.Title = "MacBook Air";
                 computer.Price = 2999.99;
-                Console.WriteLine($"You purchase a {computer.Colour} {computer.Title} {computer.Type} for {computer.Price}$ .");
+                Console.WriteLine($"You purchase a {computer.Colour} {computer.Title} {computer.Type} for {computer.Price}$.");
                 break;
             default:
                 break;
