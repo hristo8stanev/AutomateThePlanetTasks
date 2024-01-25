@@ -1,14 +1,13 @@
 ﻿using System.Text;
 
-namespace Books
-{
+namespace Books;
  public class Book
     {
-        private const string errorMessageTitle = "Title is not valid!";
-        private const string errorMessagePrice = "Price not valid!";
-        private const int boundaryLength = 3;
-        private const int price = 0;
-        private const string errorMessageAuthor = "Author not valid!";
+        private  string errorMessageTitle => "Title is not valid!";
+        private  string errorMessagePrice => "Price not valid!";
+        private  int boundaryLength => 3;
+        private  int price => 0;
+        private  string errorMessageAuthor = "Author not valid!";
         private string _author;
         private string _title;
         private double _price;
@@ -18,6 +17,7 @@ namespace Books
             Title = title;
             Price = price;
         }
+
         public string Author
         {
             get
@@ -34,9 +34,11 @@ namespace Books
                         throw new ArgumentException(errorMessageAuthor);
                     }
                 }
+
                 this._author = value;
             }
         }
+
         public string Title
         {
             get
@@ -49,9 +51,11 @@ namespace Books
                 {
                     throw new ArgumentException(errorMessageTitle);
                 }
+
                 this._title = value;
             }
         }     
+
         public virtual double Price
         {
             get
@@ -64,20 +68,17 @@ namespace Books
                 {
                     throw new ArgumentException(errorMessagePrice);
                 }
+
                 this._price = value;
             }
         }
+
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Type: ").Append(this.GetType().Name)
-                .Append(Environment.NewLine)
-                .Append("Title: ").Append(this.Title)
-                .Append(Environment.NewLine)
-                .Append("Author: ").Append(this.Author)
-                .Append(Environment.NewLine)
-                .Append(String.Format("Price: {0:F1}$", this.Price));
-            return sb.ToString().Trim();
+  
+        return $"Type: {GetType().Name}{Environment.NewLine}" +
+            $"Title: {Title}{Environment.NewLine}" +
+            $"Author: {Author}{Environment.NewLine}" +
+            $"Price: {Price:F1}$";
         }
-    }
-}   
+    }   

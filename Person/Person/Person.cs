@@ -1,9 +1,8 @@
-﻿namespace StoringData
-{
+﻿namespace StoringData;
     public class Person : IEquatable<Person>, IComparable<Person>
     {
-        private const string errorMessageAge = "Age must be a positive number!";
-        private const int age = 0;
+        private string errorMessageAge => "Age must be a positive number!";
+        private int age => 0;
         private static int nextId = 1;
         public int Id { get; }
         private string _name;
@@ -31,6 +30,7 @@
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), errorMessageAge);
                 }
+
                 _age = value;
             }
         }
@@ -48,7 +48,7 @@
 
        public int CompareTo(Person other)
        {
+
            return Age.CompareTo(other.Age);
        }
     }
-}
