@@ -9,10 +9,8 @@ namespace Program
         {
             Dog dog = new Dog("Bucky", 10, "Male");
             Console.WriteLine(dog);
-
             Kitten kitten = new Kitten("Jerry" ,12, "Female");
             Console.WriteLine(kitten);
-
             Tomcat tomcat = new Tomcat("Tom", 9, "Male");
             Console.WriteLine(tomcat);
         }

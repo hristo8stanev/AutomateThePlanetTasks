@@ -13,11 +13,8 @@ namespace Animal
         private const string maleGender = "Male";
         private const string femaleGender = "Female";
         private string _name;
-
         private int _age;
-
         private string _gender;
-
         public Animals(string name, int age, string gender)
         {
             Name = name;
