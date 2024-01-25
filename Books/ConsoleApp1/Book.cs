@@ -6,9 +6,9 @@ namespace Books
     {
         private const string errorMessageTitle = "Title is not valid!";
         private const string errorMessagePrice = "Price not valid!";
-        private const string invalidInputMessage = "Invalid input!";
         private const int boundaryLength = 3;
         private const int price = 0;
+        private const string errorMessageAuthor = "Author not valid!";
         private string _author;
         private string _title;
         private double _price;
@@ -26,10 +26,14 @@ namespace Books
             }
             set
             {
-                if (char.IsDigit(value[0]) == true)
+                string[] names = value.Split(new char[0],StringSplitOptions.RemoveEmptyEntries);
+                if (names.Length > 1)
                 {
-                    throw new ArgumentException(invalidInputMessage);
-            }
+                    if (char.IsDigit(names[1][0]))
+                    {
+                        throw new ArgumentException(errorMessageAuthor);
+                    }
+                }
                 this._author = value;
             }
         }
