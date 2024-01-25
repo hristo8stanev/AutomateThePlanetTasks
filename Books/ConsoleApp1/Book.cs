@@ -10,11 +10,11 @@ namespace Books
         private string _title;
         private double _price;
 
-        public Book(String _author, String _title,double _price)
+        public Book(String author, String title,double price)
         {
-            this.SetAuthor(_author);
-            this.SetPrice(_price);
-            this.SetTitle(_title);
+            Author = author;
+            Title = title;
+            Price = price;
         }
         public string Author
         {
@@ -24,33 +24,29 @@ namespace Books
             }
             set
             {
-                this.Author = value;
-
+                if (char.IsDigit(value[0]) == true)
+                {
+                    throw new ArgumentException("Invalid input!");
+            }
+                this._author = value;
             }
         }
-        public void SetAuthor(string author)
+        public string Title
         {
-            this._author = author;
-        }
-        public string Title 
-        {
-            get 
+            get
             {
                 return this._title;
             }
             set
             {
-                if (this.Title.Length < 3)
+                if (value.Length < 3)
                 {
                     throw new ArgumentException(errorMessageTitle);
-                    }
-                this.Title = value;
+                }
+                this._title = value;
             }
         }
-        private void SetTitle(string title)
-        {
-            this._title = title;
-        }
+        
         public virtual double Price
         {
             get
@@ -59,16 +55,12 @@ namespace Books
             }
             set
             {
-                if (_price <= 9)
+                if (value <= 0)
                 {
                     throw new ArgumentException(errorMessagePrice);
                 }
                 this._price = value;
             }
-        }
-        private void SetPrice(double price)
-        {
-            this._price = price;
         }
         public override string ToString()
         {

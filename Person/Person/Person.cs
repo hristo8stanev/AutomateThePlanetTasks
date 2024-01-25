@@ -12,14 +12,14 @@
         public Person(string name, int age)
         {
             Id = nextId++;
-            _name = name;
+            Name = name;
             Age = age;
         }
 
         public string Name
         {
-            get { return _name; }
-            protected set { _name = value; }
+            get { return this._name; }
+            protected set { this._name = value; }
         }
 
         public virtual int Age

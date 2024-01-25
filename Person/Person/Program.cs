@@ -9,7 +9,7 @@ namespace StoringData
         static void Main(string[] args)
         {
             Person person1 = new Person("John",55);
-            Person person2 = new Person("Michael", 18);
+            Person person2 = new Person("Nicki",25);
             Console.WriteLine(person1);
             Console.WriteLine(person2);
             Console.WriteLine($"Are person1 and person2 the same? {person1.Equals(person2)}");
