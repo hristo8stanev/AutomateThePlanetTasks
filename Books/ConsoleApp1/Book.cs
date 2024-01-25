@@ -6,10 +6,12 @@ namespace Books
     {
         private const string errorMessageTitle = "Title is not valid!";
         private const string errorMessagePrice = "Price not valid!";
+        private const string invalidInputMessage = "Invalid input!";
+        private const int boundaryLength = 3;
+        private const int price = 0;
         private string _author;
         private string _title;
         private double _price;
-
         public Book(String author, String title,double price)
         {
             Author = author;
@@ -26,7 +28,7 @@ namespace Books
             {
                 if (char.IsDigit(value[0]) == true)
                 {
-                    throw new ArgumentException("Invalid input!");
+                    throw new ArgumentException(invalidInputMessage);
             }
                 this._author = value;
             }
@@ -39,14 +41,13 @@ namespace Books
             }
             set
             {
-                if (value.Length < 3)
+                if (value.Length < boundaryLength)
                 {
                     throw new ArgumentException(errorMessageTitle);
                 }
                 this._title = value;
             }
-        }
-        
+        }     
         public virtual double Price
         {
             get
@@ -55,7 +56,7 @@ namespace Books
             }
             set
             {
-                if (value <= 0)
+                if (value <= price)
                 {
                     throw new ArgumentException(errorMessagePrice);
                 }
