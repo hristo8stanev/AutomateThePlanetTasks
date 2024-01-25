@@ -8,6 +8,10 @@ namespace Animal
 {
     public class Animals
     {
+        private const string invalidInputMessage = "Invalid input";
+        private const int age = 0;
+        private const string maleGender = "Male";
+        private const string femaleGender = "Female";
         private string _name;
 
         private int _age;
@@ -32,7 +36,7 @@ namespace Animal
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Invalid input");
+                    throw new ArgumentException(invalidInputMessage);
                 }
                 this._name = value;
             }
@@ -42,9 +46,9 @@ namespace Animal
             get { return _age; }
             set
             {
-                if (value <= 0)
+                if (value <= age)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Invalid Input");
+                    throw new ArgumentOutOfRangeException(nameof(value), invalidInputMessage);
                 }
                 _age = value;
             }
@@ -57,13 +61,13 @@ namespace Animal
             }
             set
             {
-                if (value == "Male" || value == "Female")
+                if (value == maleGender || value == femaleGender)
                 {
                     this._gender = value;
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Invalid Input");
+                    throw new ArgumentOutOfRangeException(nameof(value), invalidInputMessage);
                 }
             }
         }
