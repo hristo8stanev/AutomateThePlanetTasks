@@ -2,7 +2,8 @@
 {
     public class Person : IEquatable<Person>, IComparable<Person>
     {
-
+        private const string errorMessageAge = "Age must be a positive number!";
+        private const int age = 0;
         private static int nextId = 1;
         public int Id { get; }
         private string _name;
@@ -26,9 +27,9 @@
             get { return _age; }
             set
             {
-                if (value < 0)
+                if (value < age)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Age must be a positive number!");
+                    throw new ArgumentOutOfRangeException(nameof(value), errorMessageAge);
                 }
                 _age = value;
             }

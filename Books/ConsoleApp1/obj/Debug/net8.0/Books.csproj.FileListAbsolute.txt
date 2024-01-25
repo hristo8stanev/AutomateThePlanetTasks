@@ -1,0 +1,15 @@
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\bin\Debug\net8.0\Books.exe
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\bin\Debug\net8.0\Books.deps.json
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\bin\Debug\net8.0\Books.runtimeconfig.json
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\bin\Debug\net8.0\Books.dll
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\bin\Debug\net8.0\Books.pdb
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.AssemblyInfoInputs.cache
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.AssemblyInfo.cs
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.csproj.CoreCompileInputs.cache
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.sourcelink.json
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.dll
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\refint\Books.dll
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.pdb
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\Books.genruntimeconfig.cache
+C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\Books\ConsoleApp1\obj\Debug\net8.0\ref\Books.dll

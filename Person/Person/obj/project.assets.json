@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\UsernameT\\source\\repos\\Person\\Person\\Person.csproj",
+      "projectUniqueName": "C:\\Users\\UsernameT\\Documents\\GitHub\\AutomateThePlanetTasks\\Person\\Person\\Person.csproj",
       "projectName": "Person",
-      "projectPath": "C:\\Users\\UsernameT\\source\\repos\\Person\\Person\\Person.csproj",
+      "projectPath": "C:\\Users\\UsernameT\\Documents\\GitHub\\AutomateThePlanetTasks\\Person\\Person\\Person.csproj",
       "packagesPath": "C:\\Users\\UsernameT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\UsernameT\\source\\repos\\Person\\Person\\obj\\",
+      "outputPath": "C:\\Users\\UsernameT\\Documents\\GitHub\\AutomateThePlanetTasks\\Person\\Person\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
