@@ -13,7 +13,7 @@ public class Hashtable<K, V>
     private int InitialCapacity => 16;
     private List<KeyValuePair<K, V>>[] buckets;
     private int size;
-    private int count => size;
+    private int count;
 
     public Hashtable()
     {
@@ -109,14 +109,16 @@ public class Hashtable<K, V>
     }
     public void Clear(K key)
     {
+
         int index = GetIndex(key);
+
         if (buckets[index] != null)
         {
-            for (int i = 0; i < buckets.Length; i++)
+            for (int i = 0; i < buckets[index].Count; i++)
             {
                 if (buckets[index][i].Key.Equals(key))
                 {
-                    buckets[index].Clear();
+                    buckets[index].RemoveAt(i);
                     size--;
                     return;
                 }
@@ -125,21 +127,22 @@ public class Hashtable<K, V>
         throw new ArgumentException("The key was not found in the table");
     }
 
-    public void Count(K key)
+    public int Count(K key)
     {
         int index = GetIndex(key);
+        count = 0;
+
         if (buckets[index] != null)
         {
-            for (int i = 0; i < buckets.Length; i++)
+            for (int i = 0; i < buckets[index].Count; i++)
             {
                 if (buckets[index][i].Key.Equals(key))
                 {
-                    buckets[index].Count();
-                    size++;
-                    return;
+                    count++;
                 }
             }
+            return count;
         }
-        throw new ArgumentException("The key was not found in the table");
+        return 0;
     }
 }

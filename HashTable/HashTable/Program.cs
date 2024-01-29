@@ -5,7 +5,7 @@ using HashTable;
 
 namespace hashTableExercises;
 
- class Program
+class Program
 {
     static void Main(string[] args)
     {
@@ -15,11 +15,15 @@ namespace hashTableExercises;
         hashTable.Add(3, "Dragan");
         hashTable.Add(4, "Gosho");
         hashTable.Add(5, "Pesho");
-        hashTable.Remove(3);
+        hashTable.Clear(3);
+        int count4 = hashTable.Count(4);
+        int count5 = hashTable.Count(5);
+        hashTable.Remove(2);
 
         Console.WriteLine($"Value for key 1: {hashTable.Find(1)}");
-        Console.WriteLine($"Value for key 2: {hashTable.Find(2)}");
-        Console.WriteLine($"Value for key 3: {hashTable.Find(3)}");
+        Console.WriteLine($"Value for key 2: {hashTable.Find(5)}");
+        Console.WriteLine($"Count for key 3: {count4}");
+        Console.WriteLine($"Count for key 5: {count5}");
 
     }
 }
