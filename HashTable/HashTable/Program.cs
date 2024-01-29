@@ -21,9 +21,13 @@ class Program
         hashTable.Remove(2);
 
         Console.WriteLine($"Value for key 1: {hashTable.Find(1)}");
-        Console.WriteLine($"Value for key 2: {hashTable.Find(5)}");
+        Console.WriteLine($"Value for key 5: {hashTable.Find(5)}");
         Console.WriteLine($"Count for key 3: {count4}");
         Console.WriteLine($"Count for key 5: {count5}");
+        Console.WriteLine($"Value for key 2: {hashTable.Find(2)}");
+
+
+        //how to iterate over its elements with foreach
 
     }
 }
