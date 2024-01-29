@@ -8,12 +8,13 @@ class Program
     static void Main(string[] args)
     {
          List<double> numbers = new List<double>()
-         { 10.4, 3, 4, 30.2, -10, 34, 2, 3, 3, 10.4, -10, 5, 5, -10, 6, 7, 7, 34 ,4};
+         { 10.4, 3, 4, 30.2, -10, 34, 2, 3, 3, 10.4, -10, 5, 5, -10, 6, 7, 7, 34, 4};
 
         Dictionary<double, int> occurancies = CountOccurencies(numbers);
 
         foreach (var num in occurancies)
         {
+
             Console.WriteLine($"{num.Key} -> {num.Value} times ");
         }
 

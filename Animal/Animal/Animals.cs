@@ -20,9 +20,15 @@ namespace Animal;
             Name = name;
             Age = age;
             Gender = gender;
-        }
+    }
 
-        public virtual string Name
+    public enum Genders
+        {
+        Male,
+        Female
+    };
+
+    public virtual string Name
         {
             get
             {
