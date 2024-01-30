@@ -10,25 +10,33 @@ public class OddLines
     static void Main(string[] args)
     {
         var fi = new FileInfo(@"C:\Users\UsernameT\oddLines.txt");
+
         using var fs = fi.Open(FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
-        using var sw = new StreamWriter(fs);
-        sw.WriteLine("Welcome");
-        sw.WriteLine("To");
-        sw.WriteLine("My");
-        sw.WriteLine("First");
-        sw.WriteLine("Text File");
-
-        string readText = File.ReadAllText(@"C:\Users\UsernameT\oddLines.txt");
-        Console.WriteLine(readText);
-
-        foreach (var line in readText)
+        using (var sw = new StreamWriter(fs))
         {
-            if (line % 2 == 1)
+            sw.WriteLine("Welcome");
+            sw.WriteLine("To");
+            sw.WriteLine("My");
+            sw.WriteLine("First");
+            sw.WriteLine("Text File");
+        }
+        using (var sr = new StreamReader(fi.OpenRead()))
+        {
+            int lineNumber = 1;
+            while (!sr.EndOfStream)
             {
-                Console.WriteLine(line);
+                string line = sr.ReadLine();
+
+                if (lineNumber % 2 == 1)
+                {
+                    Console.WriteLine(line);
+                }
+
+                lineNumber++;
             }
         }
     }
 }
+    
 
 
