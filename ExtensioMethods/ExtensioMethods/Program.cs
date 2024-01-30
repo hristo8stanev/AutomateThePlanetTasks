@@ -1,19 +1,21 @@
 ﻿using System;
-
+using System.Collections;
+using System.Reflection.Metadata;
+using System.Configuration;
 
 public class Anonymous
 {
-    static int Sum(int x, int y)
+    public static void Main()
     {
-        return x + y;
+
+        Timer timer = new Timer(0, 5, TimerCallBack);
+        timer.Start();
+        
+        Console.ReadLine();
+
     }
-
-    static public void Main(string[] args)
+    private static void TimerCallBack()
     {
-        Func<int> getRandomNumber = () => new Random().Next(1,50);
-
-      
-        Console.WriteLine(getRandomNumber);
-
+        Console.WriteLine("Timer callback executed!");
     }
 }

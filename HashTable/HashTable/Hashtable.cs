@@ -141,6 +141,7 @@ public class Hashtable<K, V>
                     count++;
                 }
             }
+
             return count;
         }
         return 0;

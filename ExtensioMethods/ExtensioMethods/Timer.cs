@@ -1,12 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
-namespace ExtensioMethods
+public delegate void TimerHandler();
+
+public class Timer
 {
-    internal class Timer
+    private int minutes;
+    private int seconds;
+    private TimerHandler myTimerHandler;
+
+    public Timer(int minutes, int seconds, TimerHandler myTimerHandler)
     {
+        this.minutes = minutes;
+        this.seconds = seconds;
+        this.myTimerHandler = myTimerHandler;
+    }
+
+    public void Start()
+    {
+      
+
+
     }
 }
