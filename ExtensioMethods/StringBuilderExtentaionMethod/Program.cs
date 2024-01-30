@@ -1,13 +1,10 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Text;
-
-namespace stringBuilderTask;
+﻿namespace stringBuilderTask;
 
 public static class Extensions
 {
-    private const string errorMessageInput = "Invalid Input";
-    private const string errorMessageIndexLength = "Invalid index or length";
+    private static string ErrorMessageInput => "Invalid Input";
+    private static string errorMessageIndexLength => "Invalid index or length";
+
 
     static void Main()
     {
@@ -20,13 +17,13 @@ public static class Extensions
 
         if (value == null)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), errorMessageInput);
+            throw new ArgumentOutOfRangeException(nameof(value), ErrorMessageInput);
         }
         if (index < 0 || index >= value.Length || length < 0 || index + length > value.Length)
         {
-            throw new ArgumentOutOfRangeException(nameof(value),errorMessageIndexLength);
+            throw new ArgumentOutOfRangeException(nameof(value), errorMessageIndexLength);
         }
-      
+
         return value.Substring(index, length);
     }
 }
