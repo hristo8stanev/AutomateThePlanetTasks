@@ -5,8 +5,9 @@ public class InsertLineNumbers
 {
     static void Main()
     {
-        string inputFile = @"C:\Users\UsernameT\testFile.txt";
-        string outputFile = @"C:\Users\UsernameT\testFile1.txt";
+        string inputFile = @"C:\Users\UsernameT\testFile1.txt";
+        string outputFile = @"C:\Users\UsernameT\testFile.txt";
+
 
         InsertLineNumbersToFile(inputFile, outputFile);
     }
@@ -17,6 +18,7 @@ public class InsertLineNumbers
         using (StreamWriter writer = new StreamWriter(outputFile))
         {
             int lineNumber = 1;
+
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
