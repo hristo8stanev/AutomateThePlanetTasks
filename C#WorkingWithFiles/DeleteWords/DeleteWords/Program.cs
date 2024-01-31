@@ -13,20 +13,29 @@ public class Program
 
         if (File.Exists(file))
         {
-
-            string strRegex = @"//b[a-zA-Z]";
-
-
             try
             {
-
-
+                string content;
+                using (StreamReader reader = new StreamReader(file))
+                {
+                    content = reader.ReadToEnd();
+                }
+                var regexPattern = @"\best[A-Za-z0-9]*\b";
+                var result = Regex.Replace(content, regexPattern, "");
+                using (StreamWriter writer = new StreamWriter(file))
+                {
+                    writer.Write(result);
+                }
+                Console.WriteLine("Words starting with 'test' removed successfully.");
             }
-            catch
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
         }
     }
 }
