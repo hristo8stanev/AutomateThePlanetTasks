@@ -11,10 +11,16 @@ class Program
     static void Main(string[] args)
     {
 
-        var workers = Worker.GetAllWorkers()
-          .OrderByDescending(x => x.FirstName)
-                .ThenByDescending(y => y.LastName)
-                .ToList();
+        //METHOD SYNTAX  - TASK 2
+          var workers = Worker.GetAllWorkers()
+         .OrderByDescending(x => x.FirstName)
+               .ThenByDescending(y => y.LastName)
+               .ToList();
+
+        //LINQ query syntax = TASK 3
+       //var workers = from worker in Worker.GetAllWorkers()
+       //              orderby worker.FirstName descending, worker.LastName descending
+       //              select worker;
 
         foreach (var worker in workers)
         {
