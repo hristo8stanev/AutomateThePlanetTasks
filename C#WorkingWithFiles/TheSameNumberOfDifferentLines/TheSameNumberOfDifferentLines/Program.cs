@@ -10,6 +10,8 @@ public class Program
         string outputFile = @"C:\Users\UsernameT\testFile1.txt";
 
         CompareTwoTextFiles(inputFile, outputFile);
+
+        //how to made file path relative?
     }
 
     public static void CompareTwoTextFiles(string inputFile, string outputFile)
@@ -41,7 +43,6 @@ public class Program
                 Console.WriteLine(resultLines);
             }
         }
-
         Console.WriteLine($"Number of same lines: {sameLineCount}");
         Console.WriteLine($"Number of different lines: {differentLineCount}");
     }

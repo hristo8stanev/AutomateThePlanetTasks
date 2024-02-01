@@ -17,6 +17,7 @@ public class InsertLineNumbers
         using (StreamReader reader = new StreamReader(inputFile))
         using (StreamWriter writer = new StreamWriter(outputFile))
         {
+
             int lineNumber = 1;
 
             while (!reader.EndOfStream)

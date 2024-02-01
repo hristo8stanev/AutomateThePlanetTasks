@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 public class Program
 {
-    private const string Value = "Words starting with 'test' removed successfully!";
+    private const string successfullyRemoved = "Words starting with 'test' removed successfully!";
 
     static void Main(string[] args)
     {
@@ -31,7 +31,7 @@ public class Program
                     writer.Write(result);
                 }
 
-                Console.WriteLine(Value);
+                Console.WriteLine(successfullyRemoved);
             }
             catch (Exception ex)
             {
