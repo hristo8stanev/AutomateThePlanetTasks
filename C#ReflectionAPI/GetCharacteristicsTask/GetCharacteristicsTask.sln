@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetCharacteristicsTask", "GetCharacteristicsTask\GetCharacteristicsTask.csproj", "{6E9DE479-AEEA-442E-9C4C-12998B92AEBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E9DE479-AEEA-442E-9C4C-12998B92AEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9DE479-AEEA-442E-9C4C-12998B92AEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9DE479-AEEA-442E-9C4C-12998B92AEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9DE479-AEEA-442E-9C4C-12998B92AEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39A58AF0-0A23-48A2-B65B-E9BD602C0283}
+	EndGlobalSection
+EndGlobal
