@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 
 public class Program
 {
+    private const string Value = "Words starting with 'test' removed successfully!";
+
     static void Main(string[] args)
     {
 
@@ -29,7 +31,7 @@ public class Program
                     writer.Write(result);
                 }
 
-                Console.WriteLine("Words starting with 'test' removed successfully.");
+                Console.WriteLine(Value);
             }
             catch (Exception ex)
             {
@@ -40,7 +42,7 @@ public class Program
         else
         {
 
-            Console.WriteLine("File not found.");
+            Console.WriteLine("File not found!");
         }
     }
 }

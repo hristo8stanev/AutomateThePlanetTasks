@@ -41,6 +41,7 @@ public class Program
                 Console.WriteLine(resultLines);
             }
         }
+
         Console.WriteLine($"Number of same lines: {sameLineCount}");
         Console.WriteLine($"Number of different lines: {differentLineCount}");
     }
