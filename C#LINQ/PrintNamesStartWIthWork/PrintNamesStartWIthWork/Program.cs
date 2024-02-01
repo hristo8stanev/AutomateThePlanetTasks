@@ -6,40 +6,19 @@ class Program
 
     static void Main(string[] args)
     {
-
-        //   var type = typeof(Worker);
-        //   var propertyInfos = type.GetProperties();
-        //  
-        //   foreach(PropertyInfo propertyInfo in propertyInfos)
-        //   {
-        //       Console.WriteLine(propertyInfo.Name);
-        //       var accessors = propertyInfo.GetAccessors();
-        //  
-        //       foreach(var accessor in accessors)
-        //       {
-        //          Console.WriteLine(accessor.Name);
-        //          Console.WriteLine("========================");
-        //      }
-        //   }
-        //
-        //  MethodInfo[] methods = typeof(Worker).GetMethods(BindingFlags.Instance | BindingFlags.Public);
-        //
-        //  foreach (MethodInfo info in methods)
-        //  {
-        //      Console.WriteLine(info.Name);
-        //  }
-
         var assembly = Assembly.GetExecutingAssembly();
+        Console.WriteLine("Assembly Name: " + assembly.GetName().Name);
 
-        if (assembly.GetName().Name.StartsWith("Work"))
+        foreach (var type in assembly.GetTypes())
         {
-            Console.WriteLine("Assembly Name: " + assembly.GetName().Name);
-        }
-        else
-        {
-            Console.WriteLine("Namespace start with work doesn't exist");
+            if (type.Namespace != null && type.Namespace.StartsWith("Work"))
+            {
+                Console.WriteLine($"Type name: {type.FullName}");
+            }
+            else
+            {
+                Console.WriteLine("Namespace start with 'Work' doesn't exist!");
+            }
         }
     }
 }
-
- 
