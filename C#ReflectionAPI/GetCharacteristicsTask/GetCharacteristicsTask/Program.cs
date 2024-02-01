@@ -19,9 +19,8 @@ class Program
             fullNameProperty.SetValue(worker, "Ivan Draganov");
         }
 
-        var getCharacteristicsMethod = workerType.GetMethod("GetCharacteristics");
+        var getCharacteristicsMethod = workerType.GetMethod("GetCharacteristics"); 
 
-       
         if (getCharacteristicsMethod != null)
         {
 
