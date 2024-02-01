@@ -13,7 +13,6 @@ class Program
 
         var fullNameProperty = workerType.GetProperty("FullName", typeof(string));
 
-
         if (fullNameProperty != null)
         {
             fullNameProperty.SetValue(worker, "Ivan Draganov");
@@ -25,7 +24,7 @@ class Program
         {
 
             var result = getCharacteristicsMethod.Invoke(worker, new object[] { false });
-            Console.WriteLine("Method result: " + result);
+            Console.WriteLine($"Method result: {result}");
         }
     }
 }
