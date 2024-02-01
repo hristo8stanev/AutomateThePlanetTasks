@@ -6,12 +6,12 @@ public class Program
     static void Main(string[] args)
     {
 
+        //how to create a relative file path?
         string inputFile = @"C:\Users\UsernameT\testFile.txt";
         string outputFile = @"C:\Users\UsernameT\testFile1.txt";
 
         CompareTwoTextFiles(inputFile, outputFile);
 
-        //how to made file path relative?
     }
 
     public static void CompareTwoTextFiles(string inputFile, string outputFile)
