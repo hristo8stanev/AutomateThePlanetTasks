@@ -5,9 +5,9 @@ public delegate void TimerHandler();
 
 public class Timer
 {
-    private int minutes;
-    private int seconds;
-    private TimerHandler myTimerHandler;
+    private int minutes { get; set; }
+    private int seconds { get; set; }
+    private TimerHandler myTimerHandler { get; set; }
 
     public Timer(int minutes, int seconds, TimerHandler myTimerHandler)
     {
@@ -19,7 +19,6 @@ public class Timer
     public void Start()
     {
       
-
 
     }
 }

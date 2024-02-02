@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HashTable;
-
 public class Hashtable<K, V>
 {
     private double LoadFactor => 0.75;
     private int InitialCapacity => 16;
+
+    private const string existingElementMessage = "Element with this key already exists in the HashTable";
+    private const string notFoundKeyMessage = "The key was not found in the table";
     private List<KeyValuePair<K, V>>[] buckets;
     private int size;
     private int count;
@@ -31,17 +33,20 @@ public class Hashtable<K, V>
     public void Add(K key, V value)
     {
         int index = GetIndex(key);
+
         if (buckets[index] == null)
         {
             buckets[index] = new List<KeyValuePair<K, V>>();
         }
+
         foreach (var pair in buckets[index])
         {
             if (pair.Key.Equals(key))
             {
-                throw new ArgumentException("Element with this key already exists in the HashTable");
+                throw new ArgumentException(message: Hashtable<K, V>.existingElementMessage);
             }
         }
+
         buckets[index].Add(new KeyValuePair<K, V>(key, value));
         size++;
 
@@ -72,8 +77,10 @@ public class Hashtable<K, V>
                 }
             }
         }
+
         buckets = newBuckets;
     }
+
     public V Find(K key)
     {
         int index = GetIndex(key);
@@ -87,7 +94,7 @@ public class Hashtable<K, V>
                 }
             }
         }
-        throw new ArgumentException("The key was not found in the table");
+        throw new ArgumentException(Hashtable<K, V>.notFoundKeyMessage);
     }
 
     public void Remove(K key)
@@ -105,8 +112,9 @@ public class Hashtable<K, V>
                 }
             }
         }
-        throw new ArgumentException("The key was not found in the table");
+        throw new ArgumentException(Hashtable<K, V>.notFoundKeyMessage);
     }
+
     public void Clear(K key)
     {
 
@@ -124,7 +132,7 @@ public class Hashtable<K, V>
                 }
             }
         }
-        throw new ArgumentException("The key was not found in the table");
+        throw new ArgumentException(Hashtable<K, V>.notFoundKeyMessage);
     }
 
     public int Count(K key)
@@ -144,6 +152,7 @@ public class Hashtable<K, V>
 
             return count;
         }
+
         return 0;
     }
 }

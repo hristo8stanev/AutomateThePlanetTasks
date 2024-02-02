@@ -3,6 +3,7 @@ using System.Collections;
 using System.Diagnostics.Metrics;
 
 namespace GenericClassAndMethods;
+
 class Program
 {
     static void Main(string[] args)
@@ -17,7 +18,6 @@ class Program
 
             Console.WriteLine($"{num.Key} -> {num.Value} times ");
         }
-
     }
 
    static Dictionary<double, int> CountOccurencies(List<double> numbers)
@@ -35,8 +35,8 @@ class Program
             {
                 occurrances.Add(number, 1);
             }
-            
         }
+
         return occurrances;
    }
 }   

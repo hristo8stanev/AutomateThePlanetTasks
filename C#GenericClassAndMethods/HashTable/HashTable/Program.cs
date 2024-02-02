@@ -27,7 +27,7 @@ class Program
         Console.WriteLine($"Value for key 2: {hashTable.Find(2)}");
 
 
-        //how to iterate over its elements with foreach
+        //how to loop through an array with a forEach loop?
 
     }
 }
