@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 public class Program
 {
     private const string successfullyRemoved = "Words starting with 'test' removed successfully!";
+    private const string notFoundMessage = "File not found!";
 
     static void Main(string[] args)
     {
@@ -17,7 +18,6 @@ public class Program
             try
             {
                 string content;
-
                 using (StreamReader reader = new StreamReader(file))
                 {
                     content = reader.ReadToEnd();
@@ -42,7 +42,7 @@ public class Program
         else
         {
 
-            Console.WriteLine("File not found!");
+            Console.WriteLine(notFoundMessage);
         }
     }
 }

@@ -5,18 +5,14 @@ public class Program
 {
     static void Main(string[] args)
     {
-
-        //how to create a relative file path?
+        //how do i made my path relative?
         string inputFile = @"C:\Users\UsernameT\testFile.txt";
         string outputFile = @"C:\Users\UsernameT\testFile1.txt";
-
         CompareTwoTextFiles(inputFile, outputFile);
-
     }
 
     public static void CompareTwoTextFiles(string inputFile, string outputFile)
     {
-
         int sameLineCount = 0;
         int differentLineCount = 0;
 
@@ -39,8 +35,7 @@ public class Program
                     differentLineCount++;
                 }
 
-                string resultLines = $"{lineNumber++},Line A: {lineA}, Line B: {lineB}";
-                Console.WriteLine(resultLines);
+                Console.WriteLine($"{lineNumber++},Line A: {lineA}, Line B: {lineB}");
             }
         }
         Console.WriteLine($"Number of same lines: {sameLineCount}");

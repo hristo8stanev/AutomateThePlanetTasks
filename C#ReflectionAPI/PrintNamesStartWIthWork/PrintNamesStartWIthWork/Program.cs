@@ -5,6 +5,7 @@ using System.Reflection;
 namespace Work;
 class Program
 {
+    private const string notExistWorkMessage = "Namespace start with 'Work' doesn't exist!";
 
     static void Main(string[] args)
     {
@@ -13,13 +14,14 @@ class Program
 
         foreach (var type in assembly.GetTypes())
         {
+
             if (type.Namespace != null && type.Namespace.StartsWith("Work"))
             {
                 Console.WriteLine($"Type name: {type.FullName}");
             }
             else
             {
-                Console.WriteLine("Namespace start with 'Work' doesn't exist!");
+                Console.WriteLine(notExistWorkMessage);
             }
         }
     }

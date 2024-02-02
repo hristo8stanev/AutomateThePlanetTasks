@@ -9,6 +9,8 @@ public class OddLines
 {
     static void Main(string[] args)
     {
+
+        //How i do make my path relative?
         var fi = new FileInfo(@"C:\Users\UsernameT\oddLines.txt");
 
         using var fs = fi.Open(FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
@@ -20,6 +22,7 @@ public class OddLines
             sw.WriteLine("First");
             sw.WriteLine("Text File");
         }
+
         using (var sr = new StreamReader(fi.OpenRead()))
         {
             int lineNumber = 1;

@@ -4,7 +4,6 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
 
-
 namespace Linq;
 class Program
 {
@@ -23,13 +22,11 @@ class Program
            new Worker() { FirstName = "Peter", LastName = "Paul", Age = 23 }
         };
 
-
         var ageBetween = workers.Where(worker => worker.Age >= 18 && worker.Age <= 24)
             .Select(worker => new { worker.FirstName, worker.LastName });
 
         foreach (var worker in ageBetween)
         {
-
             Console.WriteLine($"First name: {worker.FirstName} Last name: {worker.LastName}");
         }
     }

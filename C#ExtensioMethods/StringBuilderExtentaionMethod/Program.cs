@@ -1,10 +1,10 @@
-﻿namespace stringBuilderTask;
+﻿using System;
 
+namespace stringBuilderTask;
 public static class Extensions
 {
-    private static string ErrorMessageInput => "Invalid Input";
+    private static string errorMessageInput => "Invalid Input";
     private static string errorMessageIndexLength => "Invalid index or length";
-
 
     static void Main()
     {
@@ -12,12 +12,13 @@ public static class Extensions
         string result = text.MySubstring(1, 5);
         Console.WriteLine(result);
     }
+
     public static string MySubstring(this string value, int index, int length)
     {
 
         if (value == null)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), ErrorMessageInput);
+            throw new ArgumentOutOfRangeException(nameof(value), errorMessageInput);
         }
         if (index < 0 || index >= value.Length || length < 0 || index + length > value.Length)
         {

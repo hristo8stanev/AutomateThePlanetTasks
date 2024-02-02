@@ -24,7 +24,6 @@ class Program
 
         foreach (var worker in workers)
         {
-
             Console.WriteLine($"First name: {worker.firstName} Last name: {worker.lastName}");
         }
     }
@@ -34,7 +33,6 @@ class Program
         public string firstName { get; set; }
         public int age { get; set; }
         public string lastName { get; set; }
-
         public static List<Worker> GetAllWorkers()
         {
             List<Worker> listWorkers = new List<Worker>
@@ -49,6 +47,7 @@ class Program
                     new Worker() { firstName = "Joao", lastName = "Shawn", age = 34 },
                     new Worker() { firstName = "Peter", lastName = "Paul", age = 58 }
                 };
+
             return listWorkers;
         }
     }
