@@ -5,8 +5,8 @@ public class InsertLineNumbers
 {
     static void Main()
     {
-        string inputFile = @"C:\Users\UsernameT\testFile1.txt";
-        string outputFile = @"C:\Users\UsernameT\testFile.txt";
+        string inputFile = @"../../testFile1.txt";
+        string outputFile = @"../../testFile.txt";
 
         InsertLineNumbersToFile(inputFile, outputFile);
     }

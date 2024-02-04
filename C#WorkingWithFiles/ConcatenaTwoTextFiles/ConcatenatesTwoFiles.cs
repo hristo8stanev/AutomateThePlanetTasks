@@ -4,8 +4,8 @@ public class ConcatenatesTwoFiles
 {
     public static void Main()
     {
-        var fi = new FileInfo(@"C:\Users\UsernameT\testFile.txt");
-        var f1 = new FileInfo(@"C:\Users\UsernameT\testFile1.txt");
+        var fi = new FileInfo(@"C:\Users\UsernameT\words.txt");
+        var f1 = new FileInfo(@"C:\Users\UsernameT\test.txt");
 
         using (var fs = fi.Open(FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
         using (var sw = new StreamWriter(fs))
