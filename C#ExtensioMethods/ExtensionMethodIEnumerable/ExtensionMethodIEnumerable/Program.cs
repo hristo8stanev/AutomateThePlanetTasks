@@ -13,6 +13,6 @@ public class Program
         Console.WriteLine($"Sum: {num.Min()}");
         Console.WriteLine($"Min: {num.Max()}");
         Console.WriteLine($"Max: {num.Sum()}");
-        Console.WriteLine($"Average:{num.Average()}");
+        Console.WriteLine($"Average: {num.Average()}");
     }
 }
