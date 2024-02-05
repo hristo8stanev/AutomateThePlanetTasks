@@ -1,32 +1,24 @@
 ﻿using System;
 using System.Threading;
 
-public delegate void TimeHandlerDelegate();
+public delegate void TimerHandler();
 
 public class Timer
 {
-    private readonly TimeHandlerDelegate timeHandler { get; set; }
-    private readonly int interval { get; set; }
-    private Timer timer { get; set; }
+    private int minutes { get; set; }
+    private int seconds { get; set; }
+    private TimerHandler myTimerHandler { get; set; }
 
-    public Timer(TimerHandler myTimerHandler, int intervalInSecond)
+    public Timer(int minutes, int seconds, TimerHandler myTimerHandler)
     {
-        if (myTimerHandler == nullcss=
-        {
-            throw new ArgumentNullException(nameof(myTimeHandler), "Time handler cannot be null.");
-        }
-
-        this.timeHandler = myTimehandler;
-        this.interval = intervalInSecond * 1000;
+        this.minutes = minutes;
+        this.seconds = seconds;
+        this.myTimerHandler = myTimerHandler;
     }
 
     public void Start()
     {
-
-
-    }
-    public void Stop()
-    {
-
+      
 
     }
+}
