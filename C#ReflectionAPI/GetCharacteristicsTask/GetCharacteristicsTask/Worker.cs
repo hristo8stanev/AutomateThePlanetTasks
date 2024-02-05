@@ -30,14 +30,5 @@ class Worker
     {
         Console.WriteLine($"Worker Characteristics for {FullName}:");
         Console.WriteLine($"Age: {Age}");
-
-        if (value)
-        {
-            Console.WriteLine("Sensitive Infomation");
-        }
-        else
-        {
-            Console.WriteLine("Sensitive Information: Access Denied");
-        }
     }
 }
