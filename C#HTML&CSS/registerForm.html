@@ -7,7 +7,7 @@
 </head>
     
        
-    <div name = "create">
+    <div class = "create">
         <form action="">
         <h1>CREATE YOUR ACCOUNT</h1>
 
@@ -20,14 +20,15 @@
         </div>
 
         <div class="reg">
-        <input type="password" id ="password" name="password"cols="5" rows="5" placeholder="Password" required>
+        <input type="password" id ="password" name="password" cols="5" rows="5" placeholder="password" required>
         </div>
         
         <div class="reg">
-        <input type="confirm-password" id ="confirm-password" name="confirm-password" cols="5" rows="5" placeholder="Confirm Password" required>
+        <input type="password" id ="confirm-password" name="confirm-password" cols="5" rows="5" placeholder="Confirm Password" required>
         </div>
 
         <div class="reg">
+        <label for="country">Select Country</label>
         <select name="text" id ="country" cols="5" rows="5" placeholder="Your Country" required>
             <option value="AFG">Afghanistan</option>
             <option value="ALA">Åland Islands</option>
@@ -110,9 +111,9 @@
         </div>
 
         <div class ="accept-terms">
-            <input type ="checkbox">I agree to the</lavel>
-           <a href="#">Terms</a>
-        </div>
+            <input type ="checkbox">I agree to the</label>
+           <a href="#">Terms!</a>
+         </div>
 
         <button type="submit" class="reg-btn">Create Account</button>
 
