@@ -1,0 +1,10 @@
+body{
+    background-image: url("img/login-bg.png");
+    background-repeat: no-repeat;
+}
+div{
+    color: rgb(0, 0, 0);
+    border: 10px rgb(0, 0, 0) rgb(2, 2, 2);
+    margin: 10;
+    font-weight: bold;
+}

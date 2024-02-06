@@ -1,33 +1,106 @@
 <!DOCTYPE html>
 <html>
-   <head>
-    
-    <style>
-        th, td {
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
-      }
-
-      img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: -1;
-    }
-    </style>
+<head>
+    <link rel="stylesheet" href="styles.css">
     <title>Register Form</title>
-    <div>
-    <table>
-    <tr>
-    <td><a href="loginForm.html"><strong>Login form</strong></a></td>
-    </tr>
-    </table>
-    </div>
+</head>
+<body>
+    <div name = "register">
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"cols="5" rows="5" placeholder="Username" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"cols="5" rows="5" placeholder="Email" required>
+        <br><br>
+        <label for ="password">Password:</label>
+        <input type="password" id ="password" name="password"cols="5" rows="5" placeholder="Password" required>
+        <br><br>
+        <label for ="confirm-password">Confirm password:</label>
+        <input type="confirm-password" id ="confirm-password" name="confirm-password" cols="5" rows="5" placeholder="Confirm Password" required>
+        <br><br>
+        <label for ="country">Country:</label>
+        <select name="text" id ="country" cols="5" rows="5" placeholder="Your Country" required>
+            <option value="AFG">Afghanistan</option>
+            <option value="ALA">Åland Islands</option>
+            <option value="ALB">Albania</option>
+            <option value="DZA">Algeria</option>
+            <option value="ASM">American Samoa</option>
+            <option value="AND">Andorra</option>
+            <option value="AGO">Angola</option>
+            <option value="AIA">Anguilla</option>
+            <option value="ATA">Antarctica</option>
+            <option value="ATG">Antigua and Barbuda</option>
+            <option value="ARG">Argentina</option>
+            <option value="ARM">Armenia</option>
+            <option value="ABW">Aruba</option>
+            <option value="AUS">Australia</option>
+            <option value="AUT">Austria</option>
+            <option value="AZE">Azerbaijan</option>
+            <option value="BHS">Bahamas</option>
+            <option value="BHR">Bahrain</option>
+            <option value="BGD">Bangladesh</option>
+            <option value="BRB">Barbados</option>
+            <option value="BLR">Belarus</option>
+            <option value="BEL">Belgium</option>
+            <option value="BLZ">Belize</option>
+            <option value="BEN">Benin</option>
+            <option value="BMU">Bermuda</option>
+            <option value="BTN">Bhutan</option>
+            <option value="BOL">Bolivia</option>
+            <option value="BES">Bonaire</option>
+            <option value="BIH">Bosnia and Herzegovina</option>
+            <option value="BWA">Botswana</option>
+            <option value="BVT">Bouvet Island</option>
+            <option value="BRA">Brazil</option>
+            <option value="BRN">Brunei Darussalam</option>
+            <option value="BGR">Bulgaria</option>
+            <option value="BFA">Burkina Faso</option>
+            <option value="BDI">Burundi</option>
+            <option value="KHM">Cambodia</option>
+            <option value="CMR">Cameroon</option>
+            <option value="CAN">Canada</option>
+            <option value="SAU">Saudi Arabia</option>
+            <option value="SEN">Senegal</option>
+            <option value="SRB">Serbia</option>
+            <option value="SYC">Seychelles</option>
+            <option value="SLE">Sierra Leone</option>
+            <option value="SGP">Singapore</option>
+            <option value="SXM">Sint Maarten (Dutch part)</option>
+            <option value="SVK">Slovakia</option>
+            <option value="SVN">Slovenia</option>
+            <option value="SLB">Solomon Islands</option>
+            <option value="SOM">Somalia</option>
+            <option value="ZAF">South Africa</option>
+            <option value="SSD">South Sudan</option>
+            <option value="ESP">Spain</option>
+            <option value="LKA">Sri Lanka</option>
+            <option value="SDN">Sudan</option>
+            <option value="SUR">Suriname</option>
+            <option value="SJM">Svalbard and Jan Mayen</option>
+            <option value="SWZ">Swaziland</option>
+            <option value="SWE">Sweden</option>
+            <option value="CHE">Switzerland</option>
+            <option value="SYR">Syrian Arab Republic</option>
+            <option value="TWN">Taiwan</option></select>
+            <br><br>
 
-    <div>
-        <img src="img/loginRegisterForm.jpg" alt="image">
-    </div>
+        <label for ="address">Address:</label>
+        <input type="Address" id ="address" name="address" cols="5" rows="5" placeholder="Your Address">
+        <br><br>
+        <label for ="zipcode">Zipcode:</label>
+        <input type="number" id ="zip-code" name="zip-code"cols="5" rows="5" placeholder="Zipcode">
+        <br><br>
+        <label for ="Phone">Phone number:</label>
+        <input type="tel" id ="phone number" name="phone number"cols="5" rows="5" placeholder="Your Number">
+        <br><br>
+        <input type="submit" value="Register Now">
 
-   </head> 
+        </form>
+    </div>
+    
+        <tr>
+        <p><strong>Already have an account?</strong> <a href="loginForm.html"><strong>Login now</strong></a></p>
+        </tr>
+    </body>
 </html>

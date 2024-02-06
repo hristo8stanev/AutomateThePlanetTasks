@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <style>
-        th, td {
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
-      }
-      
+      <link rel="stylesheet" href="styles.css">
+      <body>
+      <title>Login Form</title>
+    </head>
+    
+      <div id ="content">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" cols="5" rows="5" placeholder="Username" required>
+        <br><br>
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: -1;
-    }
-    </style>
-     <div>
-      <table>
-      <tr>
-      <td><a href="registerForm.html"><strong>Register form</strong></a></td>
-      </tr>
-      </table>
+        <label for ="password">Password:</label>
+        <input type="password" id ="password" name="password" placeholder="Password" required>
+        <br><br>
+
+        <input type ="checkbox">Remember me </lavel>
+        <input type="submit" value="Login">
       </div>
 
-     <title>Login Form</title>
-     <div>
-      <img src="img/loginRegisterForm.jpg" alt="image">
-     </div>
+        <div>
+          <table>
+          <tr>
+          <p><strong>Don't have an accont?<a href="registerForm.html"> Register</strong></a></p>
+          </tr>
+          </table>
+          </div>
+    </body>
 
-    </head>
 </html>
