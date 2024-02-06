@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Register Form</title>
 </head>
-<body>
     
        
-    
+    <div name = "create">
+        <form action="">
+        <h1>CREATE YOUR ACCOUNT</h1>
 
-    <div name = "register">
-        <h2>CREATE YOUR ACCOUNT</h2>
-        <label for="username">Username:</label>
+        <div class="reg">
         <input type="text" id="username" name="username"cols="5" rows="5" placeholder="Username" required>
-        <br><br>
-        <label for="email">Email:</label>
+         </div>
+
+         <div class="reg">
         <input type="email" id="email" name="email"cols="5" rows="5" placeholder="Email" required>
-        <br><br>
-        <label for ="password">Password:</label>
+        </div>
+
+        <div class="reg">
         <input type="password" id ="password" name="password"cols="5" rows="5" placeholder="Password" required>
-        <br><br>
-        <label for ="confirm-password">Confirm password:</label>
+        </div>
+        
+        <div class="reg">
         <input type="confirm-password" id ="confirm-password" name="confirm-password" cols="5" rows="5" placeholder="Confirm Password" required>
-        <br><br>
-        <label for ="country">Country:</label>
+        </div>
+
+        <div class="reg">
         <select name="text" id ="country" cols="5" rows="5" placeholder="Your Country" required>
             <option value="AFG">Afghanistan</option>
             <option value="ALA">Åland Islands</option>
@@ -87,27 +91,36 @@
             <option value="CHE">Switzerland</option>
             <option value="SYR">Syrian Arab Republic</option>
             <option value="TWN">Taiwan</option></select>
-            <br><br>
+        </div>
 
-        <label for ="address">Address:</label>
+        <div class="reg">
         <input type="Address" id ="address" name="address" cols="5" rows="5" placeholder="Your Address">
-        <br><br>
-        <label for ="zipcode">Zipcode:</label>
-        <input type="number" id ="zip-code" name="zip-code"cols="5" rows="5" placeholder="Zipcode">
-        <br><br>
-        <label for ="City">City:</label>
+        </div>
+
+        <div class="reg">
+        <input type="number" id ="zip-code" name="zip-code"cols="5" rows="5" placeholder="Postal / Zipcode">
+         </div>
+
+         <div class="reg">
         <input type="text" id ="zip-code" name="city"cols="5" rows="5" placeholder="City">
-        <br><br>
-        <label for ="Phone">Phone number:</label>
+        </div>
+
+        <div class="reg">
         <input type="tel" id ="phone number" name="phone number"cols="5" rows="5" placeholder="Your Number">
-        <br><br>
-        <input type="submit" value="Create Account">
-        <tr>
-            <p><strong>Already have an account?</strong> <a href="loginForm.html"><strong>Sign in here!</strong></a></p>
-            </tr>
-    
-    </div>
-    
+        </div>
+
+        <div class ="accept-terms">
+            <input type ="checkbox">I agree to the</lavel>
+           <a href="#">Terms</a>
+        </div>
+
+        <button type="submit" class="reg-btn">Create Account</button>
+
         
-    </body>
+        <div class="login-link">
+        <p><strong>Already have an account?</strong> <a href="loginForm.html"><strong>Sign in here!</strong></p>
+        </div>
+    </form>
+    </div>
+  </body>
 </html>
