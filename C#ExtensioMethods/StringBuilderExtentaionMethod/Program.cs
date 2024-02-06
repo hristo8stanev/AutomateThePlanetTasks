@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace stringBuilderTask;
 public static class Extensions
@@ -8,23 +9,29 @@ public static class Extensions
 
     static void Main()
     {
-        string text = "My first extension method.";
-        string result = text.MySubstring(1, 5);
+        StringBuilder text = new StringBuilder("My first extension method.");
+        string result = text.Substring(3, 5);
         Console.WriteLine(result);
     }
 
-    public static string MySubstring(this string value, int index, int length)
+    public static string Substring(this StringBuilder value, int index, int length)
     {
-
         if (value == null)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), errorMessageInput);
+            throw new ArgumentNullException(nameof(value), errorMessageInput);
         }
         if (index < 0 || index >= value.Length || length < 0 || index + length > value.Length)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), errorMessageIndexLength);
+            throw new ArgumentOutOfRangeException(nameof(index), errorMessageIndexLength);
         }
 
-        return value.Substring(index, length);
+        StringBuilder result = new StringBuilder(length);
+        for (int i = index; i < index + length; i++)
+        {
+            result.Append(value[i]);
+        }
+
+        return result.ToString();
     }
 }
+
