@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace stringBuilderTask;
@@ -9,29 +11,29 @@ public static class Extensions
 
     static void Main()
     {
-        StringBuilder text = new StringBuilder("My first extension method.");
-        string result = text.Substring(3, 5);
+        StringBuilder sb = new StringBuilder("My first extension method.");
+        var result = sb.stringBuider(0,2);
         Console.WriteLine(result);
     }
 
-    public static string Substring(this StringBuilder value, int index, int length)
+    public static StringBuilder stringBuider(this StringBuilder stringBuider, int index, int length)
     {
-        if (value == null)
+        if (stringBuider == null)
         {
-            throw new ArgumentNullException(nameof(value), errorMessageInput);
+            throw new ArgumentNullException(nameof(stringBuider), errorMessageInput);
         }
-        if (index < 0 || index >= value.Length || length < 0 || index + length > value.Length)
+        if (index < 0 || index >= stringBuider.Length || length < 0 || index + length > stringBuider.Length)
         {
             throw new ArgumentOutOfRangeException(nameof(index), errorMessageIndexLength);
         }
 
-        StringBuilder result = new StringBuilder(length);
-        for (int i = index; i < index + length; i++)
+        var StringBuider = new StringBuilder(length);
+
+        for(var i = 0; i<index + length; i++)
         {
-            result.Append(value[i]);
+            StringBuider.Append(stringBuider[i]);
         }
 
-        return result.ToString();
+        return StringBuider;
     }
 }
-
