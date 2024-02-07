@@ -8,11 +8,10 @@ public static class Extensions
 {
     private static string errorMessageInput => "Invalid Input";
     private static string errorMessageIndexLength => "Invalid index or length";
-
     static void Main()
     {
         StringBuilder sb = new StringBuilder("My first extension method.");
-        var result = sb.stringBuider(0,2);
+        var result = sb.stringBuider(1,4);
         Console.WriteLine(result);
     }
 

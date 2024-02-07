@@ -1,0 +1,32 @@
+table {
+    border-collapse: separate;
+    border-spacing: 4px;
+    justify-content: center;
+  }
+  table,
+  th,
+  td {
+    border: 1px solid #433a03;
+    padding: 
+
+  }
+  th,
+  td {
+    justify-content: center;
+    padding: 10px 15px;
+  }
+
+  body{ 
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+    background-color: rgb(189, 189, 189);
+  }
+
+  h1{
+    text-align: center;
+    padding-bottom: -25%;
+    margin-bottom: 0%;
+  }
+  
