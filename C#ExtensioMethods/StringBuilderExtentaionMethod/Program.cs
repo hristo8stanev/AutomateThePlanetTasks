@@ -11,7 +11,7 @@ public static class Extensions
     static void Main()
     {
         StringBuilder sb = new StringBuilder("My first extension method.");
-        var result = sb.stringBuider(1,4);
+        var result = sb.stringBuider(3,5);
         Console.WriteLine(result);
     }
 
@@ -28,7 +28,7 @@ public static class Extensions
 
         var StringBuider = new StringBuilder(length);
 
-        for(var i = 0; i<index + length; i++)
+        for(var i = index; i<index + length; i++)
         {
             StringBuider.Append(stringBuider[i]);
         }
