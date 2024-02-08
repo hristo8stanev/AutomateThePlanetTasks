@@ -45,7 +45,9 @@ class Book {
             this._price = value
         }
         toString() {
-            return `Title: ${this.title}\nAuthor: ${this.author}\nPrice: ${this.price.toFixed(1)}`;
+            return `Title: ${this.title}\n
+            Author: ${this.author}\n
+            Price: ${this.price.toFixed(1)}`;
         }
     }
 
