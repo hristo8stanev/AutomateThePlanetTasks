@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections;
-using System.Reflection.Metadata;
-using System.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Anonymous
+namespace Anonymous_Method;
+class Program
 {
-    public static void Main()
+    static void Main(string[] args)
     {
+        Timer timer = new Timer();
+        timer.Start(2, () => SayHello());
 
-        //IN PROGRESS
-
-        Timer timer = new Timer(0, 5, TimerCallBack);
-        timer.Start();
-        
-        Console.ReadLine();
-
+        Console.WriteLine("Press any key to exit.");
+        Console.ReadKey();
     }
-    private static void TimerCallBack()
-    {
 
-        Console.WriteLine("Timer callback executed!");
+    static void SayHello()
+    {
+        Console.WriteLine("Tic-Tac");
     }
 }

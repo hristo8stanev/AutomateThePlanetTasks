@@ -1,32 +1,15 @@
 ﻿using System;
 using System.Threading;
 
-public delegate void TimeHandlerDelegate();
+namespace Anonymous_Method;
 
 public class Timer
 {
-    private readonly TimeHandlerDelegate timeHandler { get; set; }
-    private readonly int interval { get; set; }
-    private Timer timer { get; set; }
+    public delegate void TimerAction();
 
-    public Timer(TimerHandler myTimerHandler, int intervalInSecond)
+    public void Start(int intervalInSeconds, TimerAction action)
     {
-        if (myTimerHandler == nullcss=
-        {
-            throw new ArgumentNullException(nameof(myTimeHandler), "Time handler cannot be null.");
-        }
-
-        this.timeHandler = myTimehandler;
-        this.interval = intervalInSecond * 1000;
+        TimerCallback callback = new TimerCallback(state => action()); 
+        var timer = new System.Threading.Timer(callback, null, TimeSpan.Zero, TimeSpan.FromSeconds(intervalInSeconds));
     }
-
-    public void Start()
-    {
-
-
-    }
-    public void Stop()
-    {
-
-
-    }
+}
