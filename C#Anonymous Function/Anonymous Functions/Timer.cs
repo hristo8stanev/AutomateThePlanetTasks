@@ -10,6 +10,7 @@ public class Timer
     public void Start(int intervalInSeconds, TimerAction action)
     {
         TimerCallback callback = new TimerCallback(state => action()); 
+
         var timer = new System.Threading.Timer(callback, null, TimeSpan.Zero, TimeSpan.FromSeconds(intervalInSeconds));
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Animal;
     public class Frog : Animals
     {
-        public Frog(string name, int age, string gender)
+        public Frog(string name, int age, Genders gender)
         : base(name, age, gender)
         {
         }

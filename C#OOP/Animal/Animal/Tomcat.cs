@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Animal;
     public class Tomcat : Cat
     {
-        public Tomcat(string name, int age, string gender)
+        public Tomcat(string name, int age, Genders gender)
             :base(name,age,gender)
         {
         }

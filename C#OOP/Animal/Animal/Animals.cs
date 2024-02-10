@@ -9,24 +9,26 @@ namespace Animal;
     public class Animals
     {
         private string invalidInputMessage => "Invalid input";
-        private  int age => 0;
-        private  string maleGender => "Male";
-        private  string femaleGender => "Female";
-        private string _name;
-        private int _age;
-        private string _gender;
-        public Animals(string name, int age, string gender)
+        private int age => 0;
+       
+       public enum Genders
+       {
+        Male,
+        Female
+       };
+
+    private string _name;
+    private int _age;
+    private Genders _gender;
+
+    public Animals(string name, int age, Genders gender)
         {
             Name = name;
             Age = age;
             Gender = gender;
     }
 
-    public enum Genders
-        {
-        Male,
-        Female
-    };
+    
 
     public virtual string Name
         {
@@ -58,30 +60,16 @@ namespace Animal;
 
                 _age = value;
             }
-        }
+    }
 
-        public virtual string Gender
-        {
-            get
-            {
-                return this._gender;
-            }
-            set
-            {
-                if (value == maleGender || value == femaleGender)
-                {
-                    this._gender = value;
+    public virtual Genders Gender
+    {
+        get { return _gender; }
+        set { _gender = value; }
+    }
 
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), invalidInputMessage);
-                }
 
-            }
-        }
-
-        public virtual string ProduceSount()
+    public virtual string ProduceSount()
         {
             return string.Empty;
     }
@@ -94,3 +82,4 @@ namespace Animal;
             $"{ProduceSount()}";
     }
 }
+
