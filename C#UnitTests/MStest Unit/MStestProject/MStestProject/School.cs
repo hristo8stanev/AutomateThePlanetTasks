@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MStestProject;
     public class School
     {
-    public List<Course> Courses = new List<Course>();
+    public List<Course> Courses;
 
     public School()
     {
