@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace MStestProject;
 public class Course
 {
+    public string Name { get; }
     private string errorMessageCourse => "Course members cannot be more 30 persons";
     public HashSet<Student> Students { get; }
-    public Course()
+    public Course(string name)
     {
+        Name = name;
         Students = new HashSet<Student>();
     }
 
@@ -18,7 +20,8 @@ public class Course
     {
         if (Students.Count >= 30)
         {
-            throw new ArgumentOutOfRangeException(nameof(Students), errorMessageCourse);
+           Console.WriteLine(errorMessageCourse);
+            return;
         }
         Students.Add(student);
     }
