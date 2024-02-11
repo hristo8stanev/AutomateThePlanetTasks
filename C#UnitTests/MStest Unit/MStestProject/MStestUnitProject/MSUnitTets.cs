@@ -1,3 +1,4 @@
+using System.Reflection;
 using MStestProject;
 
 
@@ -85,5 +86,24 @@ namespace MStestUnitProject;
 
         //ASSERT
         Assert.IsFalse(course.Students.Contains(student));
+    }
+
+    [TestMethod]
+    public void Try_GenerateNumber_When_CreatedNewStudent_TriesToGenerateUniqueNumber_ShouldReturnUniqueNumber()
+    {
+        //ARRANGE
+        var student = new Student("Alisson");
+
+        //ACT
+        int uniqueNum = GetUniqueNumberGenerator(student);
+
+        //ASSERT
+        Assert.IsTrue(uniqueNum != 0 );
+    }
+
+    private int GetUniqueNumberGenerator(Student student)
+    {
+        MethodInfo methodInfo = typeof(Student).GetMethod("GenerateUniqueNumberStudent", BindingFlags.NonPublic | BindingFlags.Instance);
+        return (int)methodInfo.Invoke(student, null);
     }
 }
