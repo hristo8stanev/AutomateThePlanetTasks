@@ -6,7 +6,7 @@ namespace MStestUnitProject;
     public class MSUnitTets
     {
         [TestMethod]
-        public void AddStudentToCourse_ShouldAddStudentToCourse()
+        public void Try_AddStudentToCourse_When_CourseIsNotFull_ShouldAddStudentToCourse()
         {
 
         //ARRANGE
@@ -23,7 +23,7 @@ namespace MStestUnitProject;
 
     }
     [TestMethod]
-    public void RemoveStudentFromCourse_ShouldRemoveStudentFromCourse()
+    public void Try_RemoveStudentFromCourse_When_StudentIsEnrolled_ShouldRemoveStudentFromCourse()
     {
         //ARRANGE
         var course = new Course("Mathematics");
@@ -39,7 +39,7 @@ namespace MStestUnitProject;
     }
 
     [TestMethod]
-    public void AddCourseToSchool_ShouldAddCourseToSchool()
+    public void Try_AddCourseToSchool_When_CourseIsNotAdded_ShouldAddCourseToSchool()
     {
         //ARRANGE
         var school = new School();
@@ -54,7 +54,7 @@ namespace MStestUnitProject;
     }
 
     [TestMethod]
-    public void RemoveCourseFromSchool_ShouldRemoveCourseFromSchool()
+    public void Try_RemoveCourseFromSchool_When_CoursetIsAdded_ShouldRemoveCourseFromSchool()
     {
         //ARRANGE
         var school = new School();
@@ -69,7 +69,7 @@ namespace MStestUnitProject;
     }
 
     [TestMethod]
-    public void TryToAddStudentToFullCourse_ShouldNotAddStudentToCourse()
+    public void Try_AddStudent_When_CourseIsFull_And_TriesToAddStudent_ShouldNotAddStudentToCourse()
     {
 
         //ARRANGE
