@@ -8,8 +8,8 @@ public class Program
     public static void Main(string[] args)
     {
 
-        Student firstStudent = new Student("Charlie");
-        Student secondStudent = new Student("Michael");
+        Student firstStudent = new Student();
+        Student secondStudent = new Student();
 
         Course course = new Course("Biochemistry");
         course.AddStudent(firstStudent);

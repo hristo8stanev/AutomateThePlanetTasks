@@ -15,9 +15,9 @@ public class Student
     public string _name;
     public int UniqueNumber { get; }
 
-    public Student(string name)
+    public Student()
     {
-        Name = name;
+        Name = GenerateRandomName();
         UniqueNumber = GenerateRandomNumbers();
     }
 
@@ -40,9 +40,8 @@ public class Student
         int uniqueNum = random.Next(10000, 99999);
         return uniqueNum;
     }
-    public string GeneraRandomName()
+    public string GenerateRandomName()
     {
-        var random = new Random();
         string firstName = firstNames[random.Next(0, firstNames.Length)];
         return $"{firstName}";
     }

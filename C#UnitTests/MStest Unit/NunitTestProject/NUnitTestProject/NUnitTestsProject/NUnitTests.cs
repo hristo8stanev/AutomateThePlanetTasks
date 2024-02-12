@@ -6,9 +6,6 @@ namespace NUnitTestsProject;
 public class Tests
 {
     private string courseName => "Information Technology";
-    private string studentName => "Charlie";
-    private string extraStudent => "Mickael";
-
 
     [SetUp]
     public void Init()
@@ -23,7 +20,7 @@ public class Tests
     {
         //ARRANGE
         var course = new Course(courseName);
-        var student = new Student(studentName);
+        var student = new Student();
 
         //ACT 
         course.AddStudent(student);
@@ -38,7 +35,7 @@ public class Tests
     {
         //ARRAGNE
         var course = new Course(courseName);
-        var student = new Student(studentName);
+        var student = new Student();
         course.AddStudent(student);
 
         //ACT
@@ -86,9 +83,9 @@ public class Tests
 
         for (int i = 0; i< 30; i++)
         {
-            course.AddStudent(new Student($"Student{i}"));
+            course.AddStudent(new Student());
         }
-        var student = new Student(extraStudent);
+        var student = new Student();
 
         //ACT
         course.AddStudent(student);
@@ -102,7 +99,7 @@ public class Tests
     public void Try_GenerateNumber_When_CreatedNewStudent_TriesToGenerateUniqueNumber_ShouldReturnUniqueNumber()
     {
         //ARRANGE
-        var student = new Student(studentName);
+        var student = new Student();
 
         //ACT
         int uniqueNum = GenerateRandomNumbers(student);
@@ -111,10 +108,31 @@ public class Tests
         Assert.That(uniqueNum, Is.GreaterThan(0));
 
     }
+    [Test]
+    public void Try_GenerateName_When_CreatedNewStudent_TriesToGenerateRandomStudentName_ShouldReturnRandomStudentName()
+    {
+        //ARRANGE
+        var student = new Student();
+
+        //ACT
+        var studentName = student.GenerateRandomName();
+
+
+        //ASSERT
+        Assert.That(studentName, Is.Not.Null.And.Not.Empty);
+        Assert.That(student.Name, Is.EqualTo(studentName));
+
+    }
 
     private int GenerateRandomNumbers(Student student)
     {
         MethodInfo methodInfo = typeof(Student).GetMethod("GenerateRandomNumbers", BindingFlags.NonPublic | BindingFlags.Instance);
         return (int)methodInfo.Invoke(student, null);
+    }
+
+    private string GetGenerateRandomName(Student student)
+    {
+        MethodInfo methodInfo = typeof(Student).GetMethod("GenerateRandomName", BindingFlags.NonPublic | BindingFlags.Instance);
+        return (string)methodInfo.Invoke(student, null);
     }
 }
