@@ -97,7 +97,7 @@ namespace MStestUnitProject;
         int uniqueNum = GetUniqueNumberGenerator(student);
 
         //ASSERT
-        Assert.IsTrue(uniqueNum != 0 );
+        Assert.IsTrue(uniqueNum != 0 || uniqueNum > 0 );
     }
 
     private int GetUniqueNumberGenerator(Student student)
