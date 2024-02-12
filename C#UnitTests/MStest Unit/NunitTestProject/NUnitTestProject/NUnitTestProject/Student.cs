@@ -26,16 +26,18 @@ public class Student
         get { return this._name; }
         set
         {
-            if (string.IsNullOrEmpty(value) || value.Length <= 0) {
-                Console.WriteLine(errorMessageNameValueInput);
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException(errorMessageNameValueInput);
             }
+
             this._name = value;
         }
     }
 
     private int GenerateRandomNumbers()
     {
-        int uniqueNum = random.Next(10000, 9999999);
+        int uniqueNum = random.Next(10000, 99999);
         return uniqueNum;
     }
     public string GeneraRandomName()

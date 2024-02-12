@@ -22,9 +22,7 @@ public class Student
 
     public virtual string Name
     {
-        get
-        {
-            return this._name;
+        get{return this._name;
 
         }
         set

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NUnitTestProject;
 public class School
 {
-    public List<Course> Courses { get; set; }
+    public List<Course> Courses;
 
     public School()
     {

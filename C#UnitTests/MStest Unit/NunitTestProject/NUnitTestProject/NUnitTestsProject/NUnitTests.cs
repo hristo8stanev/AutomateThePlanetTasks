@@ -13,6 +13,8 @@ public class Tests
     [SetUp]
     public void Init()
     {
+        //try to initialez all classes
+        //Generate random Name
 
     }
 
@@ -67,7 +69,7 @@ public class Tests
     }
 
     [Test]
-    public void Try_RemoveCourseFromSchool_When_CourseIsAdded_ShouldAddCourseFromSchool()
+    public void Try_RemoveCourseFromSchool_When_CourseIsAdded_ShouldRemoveCourseFromSchool()
     {
         //ARRANGE
         var school = new School();
@@ -83,12 +85,12 @@ public class Tests
     }
 
     [Test]
-    public void TryAddStudent_When_CourseIsFull_And_TriesToAddStudent_ShouldNotAddStudentToCourse()
+    public void Try_AddStudent_When_CourseIsFull_And_TriesToAddStudent_ShouldNotAddStudentToCourse()
     {
         //ARRANGE
         var course = new Course(courseName);
 
-        for(var i = 0; i< 30; i++)
+        for (int i = 0; i< 30; i++)
         {
             course.AddStudent(new Student($"Student{i}"));
         }
