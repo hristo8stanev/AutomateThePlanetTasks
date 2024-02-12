@@ -35,8 +35,13 @@ public class Course
         }
     }
 
-    public void  AddStudent(Student student)
+    public void AddStudent(Student student)
     {
+        if (Students.Count >= 30)
+        {
+            Console.WriteLine(errorMessageNumberOfStudentsInCourse);
+            return;
+        }
         Students.Add(student);
     }
 

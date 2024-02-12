@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NUnitTestProject;
-public class School
-{
+   public class School
+   {
     public List<Course> Courses;
 
     public School()
@@ -20,6 +20,6 @@ public class School
     }
     public void RemoveCourse(Course value)
     {
-        Courses.Add(value);
+        Courses.Remove(value);
     }
 }

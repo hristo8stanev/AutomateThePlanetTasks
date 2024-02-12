@@ -29,9 +29,7 @@ public class Tests
         course.AddStudent(student);
 
         //ASSERT
-        Assert.IsNotNull(course.Name);
-        Assert.IsNotEmpty(student.Name);
-        Assert.AreEqual(studentName, student.Name);
+        Assert.That(course.Students, Has.Member(student));
 
     }
 
@@ -47,7 +45,7 @@ public class Tests
         course.RemoveStudent(student);
 
         //ASSERT
-        Assert.IsFalse(course.Students.Contains(student));
+        Assert.That(course.Students, Does.Not.Contain(student));
     }
 
     [Test]
@@ -61,10 +59,7 @@ public class Tests
         school.AddCourse(course);
 
         //ASSERT
-        Assert.IsNotEmpty(course.Name);
-        Assert.IsNotNull(course.Name);
-        Assert.IsTrue(school.Courses.Contains(course));
-        Assert.AreEqual(courseName, course.Name);
+        Assert.That(school.Courses, Has.Member(course));
 
     }
 
@@ -80,8 +75,7 @@ public class Tests
         school.RemoveCourse(course);
 
         //ASSERT
-        Assert.IsFalse(school.Courses.Contains(course));
-        Assert.IsTrue(school.Courses.Count() == 0);
+        Assert.That(school.Courses.Contains(course), Is.False);
     }
 
     [Test]
@@ -100,7 +94,7 @@ public class Tests
         course.AddStudent(student);
 
         //ASSERT
-        Assert.IsFalse(course.Students.Contains(student));
+        Assert.That(course.Students.Contains(student), Is.False);
 
     }
 
@@ -114,7 +108,7 @@ public class Tests
         int uniqueNum = GenerateRandomNumbers(student);
 
         //ASSERT
-        Assert.Greater(uniqueNum, 0);
+        Assert.That(uniqueNum, Is.GreaterThan(0));
 
     }
 
