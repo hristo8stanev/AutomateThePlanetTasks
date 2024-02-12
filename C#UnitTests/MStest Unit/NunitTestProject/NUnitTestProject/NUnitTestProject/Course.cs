@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MStestProject;
+namespace NUnitTestProject;
 public class Course
 {
-    private string errorMessageName => "Your name is not correct!";
+    private const string errorMessageCourseNameInput = "Invalid name, Please enter correct course name!";
     public string _name;
-    private string errorMessageCourse => "Course members cannot be more 30 persons";
+    private string errorMessageNumberOfStudentsInCourse = "Course members cannot be more than 30 persons";
+
     public HashSet<Student> Students { get; }
 
     public Course(string name)
@@ -28,24 +29,19 @@ public class Course
         {
             if (string.IsNullOrEmpty(value) || value.Length <= 0)
             {
-                Console.WriteLine(errorMessageName);
+                Console.WriteLine(errorMessageCourseNameInput);
             }
             this._name = value;
         }
     }
 
-    public void AddStudent(Student student)
+    public void  AddStudent(Student student)
     {
-        if (Students.Count >= 30)
-        {
-           Console.WriteLine(errorMessageCourse);
-            return;
-        }
         Students.Add(student);
     }
+
     public void RemoveStudent(Student student)
     {
         Students.Remove(student);
     }
-
 }

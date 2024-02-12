@@ -66,9 +66,11 @@ namespace MStestUnitProject;
 
         //ASSERT
         Assert.IsFalse(school.Courses.Contains(course));
+        Assert.IsTrue(school.Courses.Count() == 0);
+
     }
 
-    [TestMethod]
+    [TestMethod]    
     public void Try_AddStudent_When_CourseIsFull_And_TriesToAddStudent_ShouldNotAddStudentToCourse()
     {
 
@@ -85,6 +87,7 @@ namespace MStestUnitProject;
 
         //ASSERT
         Assert.IsFalse(course.Students.Contains(student));
+
     }
 
     [TestMethod]
