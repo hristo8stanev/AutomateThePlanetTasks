@@ -5,13 +5,15 @@ namespace MStestUnitProject;
     [TestClass]
     public class MSUnitTets
     {
-        [TestMethod]
+    private  string courseName => "Biochemistry";
+
+    [TestMethod]
         public void Try_AddStudentToCourse_When_CourseIsNotFull_ShouldAddStudentToCourse()
         {
 
         //ARRANGE
-        var course = new Course("Information Technology");
-        var student = new Student("Hristo");
+        var course = new Course(courseName);
+        var student = new Student();
 
         //ACT 
         course.AddStudent(student);
@@ -19,15 +21,15 @@ namespace MStestUnitProject;
         //ASSERT
         Assert.IsTrue(course.Students.Contains(student));
         Assert.IsNotNull(student.Name);
-        Assert.AreEqual("Hristo",student.Name);
+        
 
     }
     [TestMethod]
     public void Try_RemoveStudentFromCourse_When_StudentIsEnrolled_ShouldRemoveStudentFromCourse()
     {
         //ARRANGE
-        var course = new Course("Mathematics");
-        var student = new Student("George");
+        var course = new Course(courseName);
+        var student = new Student();
         course.AddStudent(student);
 
         //ACT
@@ -43,14 +45,14 @@ namespace MStestUnitProject;
     {
         //ARRANGE
         var school = new School();
-        var course = new Course("Sport");
+        var course = new Course(courseName);
 
         //ACT
         school.AddCourse(course);
 
         //ASSERT
         Assert.IsTrue(school.Courses.Contains(course));
-        Assert.AreEqual("Sport", course.Name);
+        Assert.AreEqual(courseName, course.Name);
     }
 
     [TestMethod]
@@ -58,7 +60,7 @@ namespace MStestUnitProject;
     {
         //ARRANGE
         var school = new School();
-        var course = new Course("Biochemistry");
+        var course = new Course(courseName);
         school.AddCourse(course);
 
         //ACT
@@ -75,12 +77,12 @@ namespace MStestUnitProject;
     {
 
         //ARRANGE
-        var course = new Course("Quality Assurance");
+        var course = new Course(courseName);
         for(int i = 0; i < 30; i++)
         {
-            course.AddStudent(new Student($"Student{i}"));
+            course.AddStudent(new Student());
         }
-        var student = new Student("Ivan");
+        var student = new Student();
 
         //ACT
         course.AddStudent(student);
@@ -94,7 +96,7 @@ namespace MStestUnitProject;
     public void Try_GenerateNumber_When_CreatedNewStudent_TriesToGenerateUniqueNumber_ShouldReturnUniqueNumber()
     {
         //ARRANGE
-        var student = new Student("Alisson");
+        var student = new Student();
 
         //ACT
         int uniqueNum = GetUniqueNumberGenerator(student);
@@ -103,9 +105,25 @@ namespace MStestUnitProject;
         Assert.IsTrue(uniqueNum != 0 || uniqueNum > 0 );
     }
 
+    [TestMethod]
+    public void Try_GenerateName_When_CreatedNewStudent_TriesToGenerateRandomStudentName_ShouldReturnRandomStudentName()
+    {
+        //ARRANGE
+        var student = new Student();
+
+        //ACT
+        var studentName = student.GenerateRandomName();
+
+
+        //ASSERT
+        Assert.IsNotNull(studentName);
+        Assert.AreEqual(student.Name,(studentName));
+
+    }
+
     private int GetUniqueNumberGenerator(Student student)
     {
-        MethodInfo methodInfo = typeof(Student).GetMethod("GenerateUniqueNumberStudent", BindingFlags.NonPublic | BindingFlags.Instance);
+        MethodInfo methodInfo = typeof(Student).GetMethod("GenerateRandomNumbers", BindingFlags.NonPublic | BindingFlags.Instance);
         return (int)methodInfo.Invoke(student, null);
     }
 }

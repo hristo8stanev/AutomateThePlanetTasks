@@ -11,9 +11,9 @@ public class Program
 public static void Main(string[] args)
     {
 
-        Student firstStudent = new Student("Hristo");
-        Student secondtudent = new Student("Bob");
-        Student thirdtudent = new Student("Charlie");
+        Student firstStudent = new Student();
+        Student secondtudent = new Student();
+        Student thirdtudent = new Student();
 
         Course itCourse = new Course("Information Technology");
         itCourse.AddStudent(firstStudent);
