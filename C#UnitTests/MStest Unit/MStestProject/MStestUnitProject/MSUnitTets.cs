@@ -37,7 +37,7 @@ namespace MStestUnitProject;
         course.RemoveStudent(student);
 
         //ASSERT
-   
+        Assert.IsTrue(course.Students.Count() == 0);
         Assert.IsFalse(course.Students.Contains(student));
     }
 
