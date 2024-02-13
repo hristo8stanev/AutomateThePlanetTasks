@@ -22,8 +22,9 @@ namespace MStestUnitProject;
         Assert.IsTrue(course.Students.Contains(student));
         Assert.IsNotNull(student.Name);
         
-
     }
+
+
     [TestMethod]
     public void Try_RemoveStudentFromCourse_When_StudentIsEnrolled_ShouldRemoveStudentFromCourse()
     {

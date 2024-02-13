@@ -110,7 +110,6 @@ public class Tests
         //ACT
         var studentName = student.GenerateRandomName();
 
-
         //ASSERT
         Assert.That(studentName, Is.Not.Null.And.Not.Empty);
         Assert.That(student.Name, Is.EqualTo(studentName));
@@ -120,12 +119,14 @@ public class Tests
     private int GenerateRandomNumbers(Student student)
     {
         MethodInfo methodInfo = typeof(Student).GetMethod("GenerateRandomNumbers", BindingFlags.NonPublic | BindingFlags.Instance);
+
         return (int)methodInfo.Invoke(student, null);
     }
 
     private string GetGenerateRandomName(Student student)
     {
         MethodInfo methodInfo = typeof(Student).GetMethod("GenerateRandomName", BindingFlags.NonPublic | BindingFlags.Instance);
+
         return (string)methodInfo.Invoke(student, null);
     }
 }
