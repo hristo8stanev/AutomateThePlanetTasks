@@ -8,6 +8,7 @@ using OpenQA.Selenium.Support.UI;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
+using SeleniumExtras.WaitHelpers;
 using static System.Net.WebRequestMethods;
 
 
@@ -45,7 +46,7 @@ public class SeleniumTests
     {
 
         //"//a[@href='/documentation/overview/']"
-
+        var element = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title='Selenium Overview']")));
         var overviewElement = driver.FindElement(By.XPath("//a[@title='Selenium Overview']"));
         overviewElement.Click();
         var componentElement = driver.FindElement(By.XPath("//a[@title='Selenium components']"));
