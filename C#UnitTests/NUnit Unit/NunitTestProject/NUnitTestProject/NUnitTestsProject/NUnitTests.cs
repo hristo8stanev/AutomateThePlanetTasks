@@ -7,14 +7,6 @@ public class Tests
 {
     private string courseName => "Information Technology";
 
-    [SetUp]
-    public void Init()
-    {
-        //try to initialez all classes
-        //Generate random Name
-
-    }
-
     [Test]
     public void Try_AddStudentToCourse_When_CourseIsNotFull_ShouldAddStudentToCourse()
     {
@@ -108,6 +100,7 @@ public class Tests
         Assert.That(uniqueNum, Is.GreaterThan(0));
 
     }
+
     [Test]
     public void Try_GenerateName_When_CreatedNewStudent_TriesToGenerateRandomStudentName_ShouldReturnRandomStudentName()
     {

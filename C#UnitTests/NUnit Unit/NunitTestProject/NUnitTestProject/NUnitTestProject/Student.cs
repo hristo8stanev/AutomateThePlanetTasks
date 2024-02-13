@@ -8,7 +8,7 @@ namespace NUnitTestProject;
 public class Student
 {
     private static readonly string[] firstNames = { "John", "Paul", "Ringo", "George" };
-    private const string errorMessageNameValueInput = "Name cannot be null or empty. Please insert correct name";
+    private string errorMessageNameValueInput => "Name cannot be null or empty. Please insert correct name";
     private static readonly Random random = new Random();
     private static readonly HashSet<int> uniqueNumbers = new HashSet<int>();
 

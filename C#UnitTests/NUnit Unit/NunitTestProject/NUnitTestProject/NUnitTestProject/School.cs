@@ -18,6 +18,7 @@ namespace NUnitTestProject;
     {
         Courses.Add(value);
     }
+
     public void RemoveCourse(Course value)
     {
         Courses.Remove(value);

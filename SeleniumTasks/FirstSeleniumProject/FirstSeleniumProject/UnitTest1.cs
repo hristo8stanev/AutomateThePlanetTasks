@@ -1,15 +1,39 @@
-namespace FirstSeleniumProject;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using WebDriverManager.DriverConfigs.Impl;
 
-public class Tests
+namespace YourNamespace
 {
-    [SetUp]
-    public void Setup()
+    public class SeleniumTests
     {
-    }
+        private IWebDriver driver;
+        private WebDriverWait wait;
+        [SetUp]
+        public void Setup()
+        {
+            driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
 
-    [Test]
-    public void Test1()
-    {
-        Assert.Pass();
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+        }
+
+        [Test]
+        public void VerifySeleniumDocumentationPageTitle()
+        {
+            
+            driver.Navigate().GoToUrl("https://www.selenium.dev/documentation/en/getting_started");
+
+            
+     
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+          
+            driver.Dispose();
+        }
     }
 }

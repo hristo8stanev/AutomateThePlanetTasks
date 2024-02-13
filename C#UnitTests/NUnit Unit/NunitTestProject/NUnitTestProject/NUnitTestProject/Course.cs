@@ -31,6 +31,7 @@ public class Course
             {
                 Console.WriteLine(errorMessageCourseNameInput);
             }
+
             this._name = value;
         }
     }
@@ -40,13 +41,16 @@ public class Course
         if (Students.Count >= 30)
         {
             Console.WriteLine(errorMessageNumberOfStudentsInCourse);
+
             return;
         }
+
         Students.Add(student);
     }
 
     public void RemoveStudent(Student student)
     {
+
         Students.Remove(student);
     }
 }

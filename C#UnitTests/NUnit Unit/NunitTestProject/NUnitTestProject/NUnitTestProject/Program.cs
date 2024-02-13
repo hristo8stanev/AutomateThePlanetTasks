@@ -10,11 +10,9 @@ public class Program
 
         Student firstStudent = new Student();
         Student secondStudent = new Student();
-
         Course course = new Course("Biochemistry");
         course.AddStudent(firstStudent);
         course.AddStudent(secondStudent);
-
         School school = new School();
         school.AddCourse(course);
 
@@ -24,6 +22,7 @@ public class Program
 
             foreach (Student student in courses.Students)
             {
+
                 Console.WriteLine($"- {student.Name} (Unique Numbers: {student.UniqueNumber})");
             }
         }
