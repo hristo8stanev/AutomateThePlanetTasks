@@ -10,6 +10,7 @@ using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
 using SeleniumExtras.WaitHelpers;
 using static System.Net.WebRequestMethods;
+using BlueHostingLogin;
 
 
 namespace SeleniumSiteProject;
@@ -25,7 +26,7 @@ public class SeleniumTests
         public void Setup()
         {
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        driver = new ChromeDriver();
+        driver = BrowserManager.StartBrowser(BrowserType.CHROME);
         driver.Manage().Window.Maximize();
         driver.Navigate().GoToUrl("https://www.selenium.dev/documentation/en/getting_started");
         wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -45,7 +46,6 @@ public class SeleniumTests
     public void SeleniumDocumentationComponentGridFieldClicknOnGitHubRepoLink()
     {
 
-        //"//a[@href='/documentation/overview/']"
         var element = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@title='Selenium Overview']")));
         var overviewElement = driver.FindElement(By.XPath("//a[@title='Selenium Overview']"));
         overviewElement.Click();

@@ -5,6 +5,9 @@ using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
 using WebDriverManager;
 using SeleniumExtras.WaitHelpers;
+using static BlueHostingLogin.BrowserType;
+using OpenQA.Selenium.Edge;
+
 namespace BlueHostingLogin;
 
 public class Tests
@@ -17,15 +20,18 @@ public class Tests
     public void Setup()
     {
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        driver = new ChromeDriver();
+        driver = BrowserManager.StartBrowser(BrowserType.CHROME);
         driver.Manage().Window.Maximize();
         wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
     }
+
 
     [Test]
     public void Try_ToLog_When_IncorrectEmailInputEntered()
+
     {
-        driver.Navigate().GoToUrl("https://login.bluehost.com/hosting/webmail");
+        driver.Navigate().GoToUrl("https://www.bluehost.com/my-account/login");
         var webMailLogin = driver.FindElement(By.XPath("//div[@id='mat-tab-label-0-1']"));
         webMailLogin.Click();
 
@@ -44,12 +50,13 @@ public class Tests
 
         Assert.That(isDisplayed);
     }
+
     [Test]
     public void Try_ToRegister_When_ValidDataProvided_LambdaTestAccount()
     {
         driver.Navigate().GoToUrl("https://accounts.lambdatest.com/register");
         var lambdaTestUsername = driver.FindElement(By.Id("email"));
-        lambdaTestUsername.SendKeys("TesterLambda1432@gmail.com");
+        lambdaTestUsername.SendKeys("goshoSasho@gmail.com");
 
         var lambdaTestPassword = driver.FindElement(By.Id("userpassword"));
         lambdaTestPassword.SendKeys("aasdaad123!@");
