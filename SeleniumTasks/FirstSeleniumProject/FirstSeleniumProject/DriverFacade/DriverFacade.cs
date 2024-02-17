@@ -7,29 +7,15 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Safari;
+using FirstSeleniumProject.@enum;
 
-namespace BlueHostingLogin;
-public enum BrowserType
-{
-    CHROME,
-    CHROME_INCOGNITO,
-    CHROME_PRIVATE,
-    CHROME_HEADLESS,
-    FIREFOX,
-    FIREFOX_PRIVATE,
-    FIREFOX_HEADLESS,
-    EDGE,
-    EDGE_PRIVATE,
-    EDGE_HEADLESS,
-    SAFARI
-}
 
-public class BrowserManager
+namespace FirstSeleniumProject;
+public class DriverFacade
 {
     public static WebDriver StartBrowser(BrowserType browserType)
     {
-        
+
         switch (browserType)
         {
             case BrowserType.CHROME:
@@ -63,16 +49,13 @@ public class BrowserManager
                 return new EdgeDriver(edgeOptions);
             case BrowserType.EDGE_PRIVATE:
                 EdgeOptions edgePrivateOptions = new EdgeOptions();
-                edgePrivateOptions.AddArguments("--private");
+                edgePrivateOptions.AddAdditionalOption("InPrivate", true);
                 return new EdgeDriver(edgePrivateOptions);
             case BrowserType.EDGE_HEADLESS:
                 EdgeOptions edgeHeadlessOptions = new EdgeOptions();
                 edgeHeadlessOptions.AddArguments("--headless");
                 return new EdgeDriver(edgeHeadlessOptions);
-                // case BrowserType.SAFARI:
-                //     SafariOptions safariOptions = new SafariOptions();
-                //     return new SafariDriver(safariOptions);
         }
         return null;
     }
-}   
+}
