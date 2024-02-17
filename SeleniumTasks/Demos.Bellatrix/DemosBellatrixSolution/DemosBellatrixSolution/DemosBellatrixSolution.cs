@@ -49,7 +49,26 @@ public class DemosBellatrixSolution
 
         //INCREASE THE QUANTITY TO 3 
         _bellatrixMainPage.GoTo();
-        
+        _bellatrixMainPage.AddRocketToCart("Falcon 9");
+        _cartPage.AppluCouponVaucher("happybirthday");
+        _cartPage.AssertCouponApplied();
+        _cartPage.IncreaseProductQuantity(2);
+        _cartPage.ProceedToCheckoOut();
+        _cartPage.AssertCheckoutPage(_driver.Url);
+
+        var purchaseInfo = new PurchaseInfo()
+        {
+            FirstName = "Mitko",
+            LastName = "Dimitrov",
+            Email = "mitko@gmail.com",
+            Company = "Automate",
+            Country = "Germany",
+            Address1 = "Chernomorska",
+            City = "Varna",
+            PostCode = "10115",
+            Phone = "088223182",
+        };
+        _checkoutPage.FillBillingInfo(purchaseInfo);
     }
 
     [Test]

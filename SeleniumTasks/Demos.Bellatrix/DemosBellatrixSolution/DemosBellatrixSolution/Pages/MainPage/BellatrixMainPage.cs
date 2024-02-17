@@ -17,9 +17,10 @@ public partial class BellatrixMainPage : WebPage
     protected override string Url => "https://demos.bellatrix.solutions/";
 
 
-    public void FillBillingInfo(PurchaseInfo purchaseInfo)
+    public void AddRocketToCart(string rocket)
     {
-
-
+        SearchField.SendKeys(rocket + Keys.Enter);
+        AddToCartButton.Click();
+        ViewCartButton.Click();
     }
 }

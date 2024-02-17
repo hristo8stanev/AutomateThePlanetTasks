@@ -36,6 +36,4 @@ public partial class BlueHostMainPage : WebPage
         NextButton.Click();
 
     }
-
-   
 }

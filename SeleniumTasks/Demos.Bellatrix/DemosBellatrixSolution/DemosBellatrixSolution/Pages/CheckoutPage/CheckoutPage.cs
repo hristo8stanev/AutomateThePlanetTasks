@@ -24,6 +24,13 @@ public partial class CheckoutPage : WebPage
         BillingFirstName.SendKeys(purchaseInfo.FirstName);
         BillingLastName.SendKeys(purchaseInfo.LastName);
         BillingCompany.SendKeys(purchaseInfo.Company);
+        BillingEmail.SendKeys(purchaseInfo.Email);
+        BillingCountry.SendKeys(purchaseInfo.Country);
+        BillingAddress.SendKeys(purchaseInfo.Address1);
+        BillingAddress.SendKeys(purchaseInfo.City);
+        BillingPostCode.SendKeys(purchaseInfo.PostCode);
+        BillingPostCode.SendKeys(purchaseInfo.Phone);
+
     }
 } 
 
