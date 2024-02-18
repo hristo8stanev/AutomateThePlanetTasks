@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemosBellatrixSolution;
-    public enum VaucherCode
+namespace ZipCodes.Pages.ZipCodeMainPage;
+public partial class ZipCodeMainPage
 {
-    happybirthday
+
 }
 
