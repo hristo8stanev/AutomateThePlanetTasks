@@ -11,7 +11,7 @@ namespace DemosBellatrixSolution;
 
 public class DemosBellatrixSolution
 {
-
+    private string CouponVaucher => "happybirthday";
     private IWebDriver _driver;
     BellatrixMainPage _bellatrixMainPage;
     CheckoutPage _checkoutPage;
@@ -47,7 +47,7 @@ public class DemosBellatrixSolution
     [TestCase("Proton-M")]
     [TestCase("Saturn V")]
     [TestCase("Falcon Heavy")]
-    public void PurchaseRocket_When_NewClientAppear(string rocketName)
+    public void PurchaseRocket_When_NewClientAppearsWithDifferentRockets(string rocketName)
     {
         var purchaseInfo = new PurchaseInfo()
         {
@@ -66,7 +66,7 @@ public class DemosBellatrixSolution
 
         _bellatrixMainPage.GoTo();
         _bellatrixMainPage.AddRocketToCart(rocketName);
-        _cartPage.AppluCouponVaucher("happybirthday");
+        _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
         _cartPage.IncreaseProductQuantity(3);
         _cartPage.ProceedToCheckoOut();
