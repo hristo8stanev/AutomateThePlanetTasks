@@ -12,7 +12,7 @@ namespace DemosBellatrixSolution.Pages;
 
 public abstract class WebPage
 {
-    private int WAIT_FOR_ELEMENT => 20;
+    private int WAIT_FOR_ELEMENT => 30;
 
     public WebPage(IWebDriver driver)
     {

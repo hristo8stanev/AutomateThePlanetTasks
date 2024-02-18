@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
 using SeleniumWebdriverHelpers;
 
 namespace DemosBellatrixSolution.Pages.CartPage;
@@ -32,7 +33,9 @@ public partial class CartPage : WebPage
 
     public void ProceedToCheckoOut()
     {
-        MoveToElement(By.XPath("//a[@class='checkout-button button alt wc-forward']"));
-        ProceedToCheckout.Click();
+
+        var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("[class*='checkout-button button alt wc-forward']")));
+        MoveToElement(By.CssSelector("[class*='checkout-button button alt wc-forward']"));
+        ProceedToCheckoutButton.Click();
     }
 }

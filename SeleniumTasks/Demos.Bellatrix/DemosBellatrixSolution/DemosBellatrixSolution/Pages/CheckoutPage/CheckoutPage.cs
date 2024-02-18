@@ -24,13 +24,34 @@ public partial class CheckoutPage : WebPage
         BillingFirstName.SendKeys(purchaseInfo.FirstName);
         BillingLastName.SendKeys(purchaseInfo.LastName);
         BillingCompany.SendKeys(purchaseInfo.Company);
+        BillingCountryWrapper.Click();
+        BillingCountryFilter.SendKeys(purchaseInfo.Country);
+        GetCountryByName(purchaseInfo.Country).Click();
+        BillingAddress1.SendKeys(purchaseInfo.Address1);
+        BillingAddress2.SendKeys(purchaseInfo.Address2);
+        BillingZip.SendKeys(purchaseInfo.Zip);
+        BillingCity.SendKeys(purchaseInfo.City);
+        BillingPhone.SendKeys(purchaseInfo.Phone);
         BillingEmail.SendKeys(purchaseInfo.Email);
-        BillingCountry.SendKeys(purchaseInfo.Country);
-        BillingAddress.SendKeys(purchaseInfo.Address1);
-        BillingAddress.SendKeys(purchaseInfo.City);
-        BillingPostCode.SendKeys(purchaseInfo.PostCode);
-        BillingPostCode.SendKeys(purchaseInfo.Phone);
+        if (purchaseInfo.ShouldCreateAccout == false)
+        {
+            CreateAccountButtonBox.Click();
+        }
 
+        if (purchaseInfo.ShouldCheckPayment == false)
+        {
+            MoveToElement(By.CssSelector("[for*='payment_method_cheque']"));
+            CheckPaymentsButton.Click();
+        }
+
+        WaitForAjax();
+        PlaceOrderButton.Click();
+        WaitForAjax();
+    }
+
+    public void ProceedToPlaceOrder()
+    {
+        PlaceOrderButton.Click();
     }
 } 
 
