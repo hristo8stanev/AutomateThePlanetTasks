@@ -39,6 +39,10 @@ public class DemosBellatrixSolution : BaseTest
 
     [Test]
     [TestCase("Falcon 9")]
+    [TestCase("Proton Rocket")]
+    [TestCase("Proton-M")]
+    [TestCase("Saturn V")]
+    [TestCase("Falcon Heavy")]
     public void PurchaseRocket_When_NewClientAppears(string rocketName)
     {
         var purchaseInfo = new PurchaseInfo()
