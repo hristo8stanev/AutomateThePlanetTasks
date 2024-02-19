@@ -17,14 +17,20 @@ public class DemosBellatrixSolution : BaseTest
     string RandomFirstName;
     string RandomLastName;
     string randomEmail;
+    string randomAddress1;
+    string randomAddress2;
+    string randomCompany;
 
 
     [OneTimeSetUp]
     public void generateInputData()
     {
-        RandomFirstName = Internet.UserName();
-        RandomLastName = Internet.UserName();
-        randomEmail = Internet.UserName() + "@gmail.com";
+        RandomFirstName = Faker.Name.First();
+        RandomLastName = Faker.Name.Last();
+        randomEmail = Faker.Name.First() + "@gmail.com";
+        randomAddress1 = Faker.Address.StreetAddress();
+        randomAddress2 = Faker.Address.StreetAddress();
+        randomCompany = Faker.Company.Name();
     }
 
 
@@ -40,13 +46,13 @@ public class DemosBellatrixSolution : BaseTest
         {
             FirstName = RandomFirstName,
             LastName = RandomLastName,
-            Company = "Automate The Planet",
+            Company = randomCompany,
             Country = "Germany",
-            Address1 = "Random Street 123",
-            Address2 = "Random Random Street 321",
+            Address1 = randomAddress1,
+            Address2 = randomAddress2,
             Zip = "10115",
-            City = "Varna",
-            Phone = "+088223182",
+            City = "Munich",
+            Phone = "3594231232",
             Email = randomEmail,
             RocketName = "Falcon 9"
         };
