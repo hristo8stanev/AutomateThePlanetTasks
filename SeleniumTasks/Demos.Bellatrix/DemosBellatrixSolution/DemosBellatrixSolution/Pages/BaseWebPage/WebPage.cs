@@ -8,7 +8,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
-namespace DemosBellatrixSolution.Pages;
+namespace DemosBellatrixSolution.Pages.BaseWebPage;
 
 public abstract class WebPage
 {
@@ -41,11 +41,6 @@ public abstract class WebPage
         IWebElement element = Driver.FindElement(locator);
         actions.MoveToElement(element).Perform();
         return element;
-    }
-
-    public void verifyButtonIsDisplayed()
-    {
-        bool isVerifyDisplayed = Driver.FindElement(By.XPath("//button[text()='Verify']")).Displayed;
     }
 
     protected IWebElement WaitAndFindElement(By locator)

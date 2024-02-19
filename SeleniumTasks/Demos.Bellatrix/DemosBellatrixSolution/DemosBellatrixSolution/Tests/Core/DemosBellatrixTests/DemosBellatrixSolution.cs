@@ -6,40 +6,27 @@ using DemosBellatrixSolution.Pages.MainPage;
 using DemosBellatrixSolution.Pages.CartPage;
 using DemosBellatrixSolution.Pages.CheckoutPage;
 using Faker;
+using DemosBellatrixSolution.Pages.MainPage.MainPage;
+using DemosBellatrixSolution.Tests.Core.BaseTests;
 
-namespace DemosBellatrixSolution;
+namespace DemosBellatrixSolution.Tests.Core.DemosBellatrixTests;
 
-public class DemosBellatrixSolution
+public class DemosBellatrixSolution : BaseTest
 {
     private string CouponVaucher => "happybirthday";
-    private IWebDriver _driver;
-    BellatrixMainPage _bellatrixMainPage;
-    CheckoutPage _checkoutPage;
-    CartPage _cartPage;
     string RandomFirstName;
     string RandomLastName;
     string randomEmail;
 
-    [SetUp]
-    public void Setup()
+
+    [OneTimeSetUp]
+    public void generateInputData()
     {
-        new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.CHROME);
-        _driver.Manage().Window.Maximize();
-        _bellatrixMainPage = new BellatrixMainPage(_driver);
-        _checkoutPage = new CheckoutPage(_driver);
-        _cartPage = new CartPage(_driver);
         RandomFirstName = Internet.UserName();
         RandomLastName = Internet.UserName();
         randomEmail = Internet.UserName() + "@gmail.com";
     }
 
-        [TearDown]
-    public void Cleanup()
-    {
-        _driver.Dispose();
-        
-    }
 
     [Test]
     [TestCase("Falcon 9")]
@@ -61,7 +48,7 @@ public class DemosBellatrixSolution
             City = "Varna",
             Phone = "+088223182",
             Email = randomEmail,
-            RocketName = rocketName
+            RocketName = "Falcon 9"
         };
 
         _bellatrixMainPage.GoTo();

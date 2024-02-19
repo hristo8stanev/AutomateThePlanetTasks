@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DemosBellatrixSolution.Pages.BaseWebPage;
 using OpenQA.Selenium;
 using static System.Net.WebRequestMethods;
 
