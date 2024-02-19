@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DemosBellatrixSolution.Pages;
 using OpenQA.Selenium;
+using ZipCodes.Pages.BasePage;
 
 namespace ZipCodes.Pages.ZipCodeMainPage;
 public partial class ZipCodeMainPage : WebPage
@@ -15,8 +15,8 @@ public partial class ZipCodeMainPage : WebPage
     }
     protected override string Url => "https://www.zip-codes.com/";
 
-    public void ProceedToAdvanceSearch()
+    public void AdvanceSearch()
     {
-
+        ProceedToSearchButton.Click();
     }
 }

@@ -18,11 +18,13 @@ public partial class CartPage
         Assert.That(isDisplayed);
     }
 
-    public void AssertCheckoutPage(string currentUrl)
-    {
-
-        Assert.That(currentUrl, Is.EqualTo("https://demos.bellatrix.solutions/checkout/"), ErrorMessageIncorrectUrl);
-    }
+   //public void AssertQuantityOfTheProductCartPage(string product, int expectedQuantity)
+   //{
+   //    var quantity = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@type='number' and @title='Qty']"))).Text;
+   //   // Assert.That(quantity.Equals($"{product}  × {expectedQuantity}"));
+   //   // Console.WriteLine(" ");
+   //    Console.WriteLine(quantity);
+   //}
 
 }
 

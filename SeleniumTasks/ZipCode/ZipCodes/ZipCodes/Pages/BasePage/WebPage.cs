@@ -8,7 +8,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
-namespace DemosBellatrixSolution.Pages;
+namespace ZipCodes.Pages.BasePage;
 
 public abstract class WebPage
 {

@@ -41,6 +41,7 @@ public partial class CheckoutPage : WebPage
 
         if (purchaseInfo.ShouldCheckPayment == false)
         {
+
             MoveToElement(By.CssSelector("[for*='payment_method_cheque']"));
             CheckPaymentsButton.Click();
         }

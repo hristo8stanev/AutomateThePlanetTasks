@@ -24,7 +24,7 @@ public partial class CheckoutPage
     public IWebElement PlaceOrderButton => WaitAndFindElement(By.Id("place_order"));
     public IWebElement ShowCoupon => WaitAndFindElement(By.XPath("//a[@class='showcoupon']"));
     public IWebElement CreateAccountButtonBox => WaitAndFindElement(By.Id("createaccount"));
-    public IWebElement CheckPaymentsButton => WaitAndFindElement(By.CssSelector("[for*='payment_method_cheque']"));
+    public IWebElement CheckPaymentsButton => WaitElementToBeClickable(By.CssSelector("[for*='payment_method_cheque']"));
     public IWebElement OrderReceive => WaitAndFindElement(By.XPath("//h1"));
 
 }

@@ -8,12 +8,16 @@ using DemosBellatrixSolution.Pages.CheckoutPage;
 using Faker;
 using DemosBellatrixSolution.Pages.MainPage.MainPage;
 using DemosBellatrixSolution.Tests.Core.BaseTests;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace DemosBellatrixSolution.Tests.Core.DemosBellatrixTests;
 
 public class DemosBellatrixSolution : BaseTest
 {
     private string CouponVaucher => "happybirthday";
+
+    private int Quantity => 4;
     string RandomFirstName;
     string RandomLastName;
     string randomEmail;
@@ -61,10 +65,10 @@ public class DemosBellatrixSolution : BaseTest
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
-        _cartPage.IncreaseProductQuantity(3);
+        _cartPage.IncreaseProductQuantity(Quantity);
         _cartPage.ProceedToCheckoOut();
-        _cartPage.AssertCheckoutPage(_driver.Url);
-
+        _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, Quantity);
+        _checkoutPage.AssertCheckoutPage(_driver.Url);
         _checkoutPage.FillBillingInfo(purchaseInfo);
         _checkoutPage.AssertOrderReceived();
         _checkoutPage.AssertOrderReceivedUr(_driver.Url);
@@ -74,7 +78,7 @@ public class DemosBellatrixSolution : BaseTest
     [Test]
     public void Try_ToPurchaseOfRocket_When_AlreadyExistingClient_TryToUse_LoginFormPrefillingBillingInfo()
     {
-
+        //LOG BUG FO THIS TEST
         _bellatrixMainPage.GoTo();
     }
 

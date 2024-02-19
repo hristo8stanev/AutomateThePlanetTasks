@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using AngleSharp.Dom;
 using DemosBellatrixSolution.Pages.BaseWebPage;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using SeleniumWebdriverHelpers;
 
@@ -30,12 +33,14 @@ public partial class CartPage : WebPage
         IncreaseQuantity.Clear();
         IncreaseQuantity.SendKeys("" + quantity);
         UpdateCart.Click();
+
     }
 
     public void ProceedToCheckoOut()
     {
-
-        var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("[class*='checkout-button button alt wc-forward']")));
+        // Thread.Sleep(3000);
+        WebDriverWait.Until(driver => string.IsNullOrEmpty(UpdateCart.GetAttribute("disabled")));
+        var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(ProceedToCheckoutButton));
         MoveToElement(By.CssSelector("[class*='checkout-button button alt wc-forward']"));
         ProceedToCheckoutButton.Click();
     }

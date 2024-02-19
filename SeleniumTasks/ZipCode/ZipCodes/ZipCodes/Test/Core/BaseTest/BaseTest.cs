@@ -1,15 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using OpenQA.Selenium;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
 using WebDriverManager;
 using ZipCodes.Pages.ZipCodeMainPage;
+using ZipCodes.Pages.SearchPage;
 
-namespace ZipCodes;
-
-public class Tests
+namespace ZipCodes.Test.Core.BaseTest;
+public class BaseTest
 {
-    private IWebDriver _driver;
-    ZipCodeMainPage _zipCodeMainPage;
+    protected IWebDriver _driver;
+    protected static ZipCodeMainPage _zipCodeMainPage;
+    protected static SearchPage _searchPage;
+
     [SetUp]
     public void Setup()
     {
@@ -17,19 +24,14 @@ public class Tests
         _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.CHROME);
         _driver.Manage().Window.Maximize();
         _zipCodeMainPage = new ZipCodeMainPage(_driver);
+        _searchPage = new SearchPage(_driver);
     }
+
     [TearDown]
     public void Cleanup()
     {
-       
+
         _driver.Dispose();
 
-    }
-
-    [Test]
-    public void Test1()
-    {
-        _zipCodeMainPage.GoTo();
-        Assert.Pass();
     }
 }

@@ -42,6 +42,11 @@ public abstract class WebPage
         actions.MoveToElement(element).Perform();
         return element;
     }
+    protected IWebElement WaitElementToBeClickable(By locator)
+    {
+
+        return WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));
+    }
 
     protected IWebElement WaitAndFindElement(By locator)
     {
