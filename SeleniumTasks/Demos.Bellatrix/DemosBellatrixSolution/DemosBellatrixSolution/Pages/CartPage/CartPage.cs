@@ -38,9 +38,8 @@ public partial class CartPage : WebPage
 
     public void ProceedToCheckoOut()
     {
-        // Thread.Sleep(3000);
-        WebDriverWait.Until(driver => string.IsNullOrEmpty(UpdateCart.GetAttribute("disabled")));
-        var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(ProceedToCheckoutButton));
+        Thread.Sleep(3000);
+        //var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(ProceedToCheckoutButton));
         MoveToElement(By.CssSelector("[class*='checkout-button button alt wc-forward']"));
         ProceedToCheckoutButton.Click();
     }

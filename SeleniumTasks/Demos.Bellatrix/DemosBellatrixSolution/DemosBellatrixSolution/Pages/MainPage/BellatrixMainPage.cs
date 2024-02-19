@@ -23,4 +23,11 @@ public partial class BellatrixMainPage : WebPage
         AddToCartButton.Click();
         ViewCartButton.Click();
     }
+
+    public void EnterMyOrderSection()
+    {
+        Thread.Sleep(3000);
+        MyAccountButton.Click();
+        MyOrders.Click();
+    }
 }

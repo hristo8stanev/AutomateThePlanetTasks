@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
 
-namespace DemosBellatrixSolution.Pages.MainPage.MainPage;
+namespace DemosBellatrixSolution.Pages.MainPage;
 public partial class BellatrixMainPage
 {
 
-    public void AssertErrorMessageIsShown()
+    public void AssertMyOrdersIsShown()
     {
 
-        Assert.Pass();
+        var myOrders = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//td[@data-title='Order'][1])//a")));
+        bool isDisplayed = myOrders.Displayed;
+        Assert.That(isDisplayed);
     }
 }
