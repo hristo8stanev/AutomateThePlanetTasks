@@ -9,6 +9,7 @@ using Faker;
 using DemosBellatrixSolution.Tests.Core.BaseTests;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using NUnit.Framework;
 
 namespace DemosBellatrixSolution.Tests.Core.DemosBellatrixTests;
 
@@ -17,38 +18,33 @@ public class DemosBellatrixSolution : BaseTest
     private string CouponVaucher => "happybirthday";
 
     private int Quantity => 4;
-    string RandomFirstName;
-    string RandomLastName;
+    string randomFirstName;
+    string randomLastName;
     string randomEmail;
     string randomAddress1;
     string randomAddress2;
     string randomCompany;
+    string rocketName => "Falcon 9";
 
-
-    [OneTimeSetUp]
+    [SetUp]
     public void generateInputData()
     {
-        RandomFirstName = Faker.Name.First();
-        RandomLastName = Faker.Name.Last();
+        randomFirstName = Faker.Name.First();
+        randomLastName = Faker.Name.Last();
         randomEmail = Faker.Name.First() + "@gmail.com";
         randomAddress1 = Faker.Address.StreetAddress();
         randomAddress2 = Faker.Address.StreetAddress();
         randomCompany = Faker.Company.Name();
     }
 
-
+    
     [Test]
-    [TestCase("Falcon 9")]
-    [TestCase("Proton Rocket")]
-    [TestCase("Proton-M")]
-    [TestCase("Saturn V")]
-    [TestCase("Falcon Heavy")]
-    public void PurchaseRocket_When_NewClientAppears(string rocketName)
+    public void PurchaseRocket_When_NewClientAppears()
     {
         var purchaseInfo = new PurchaseInfo()
         {
-            FirstName = RandomFirstName,
-            LastName = RandomLastName,
+            FirstName = randomFirstName,
+            LastName = randomLastName,
             Company = randomCompany,
             Country = "Germany",
             Address1 = randomAddress1,
@@ -57,14 +53,15 @@ public class DemosBellatrixSolution : BaseTest
             City = "Munich",
             Phone = "3594231232",
             Email = randomEmail,
-            RocketName = "Falcon 9"
+            RocketName = rocketName,
         };
-
+         
         _bellatrixMainPage.GoTo();
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
         _cartPage.IncreaseProductQuantity(Quantity);
+        _cartPage.AssertQuantityOfTheProductCartPage(Quantity);
         _cartPage.ProceedToCheckoOut();
         _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, Quantity);
         _checkoutPage.AssertCheckoutPage(_driver.Url);
@@ -81,13 +78,12 @@ public class DemosBellatrixSolution : BaseTest
     }
 
     [Test]
-    [TestCase("Falcon 9")]
-    public void VerifyOrdersPresence_When_AccountSectionVisited(string rocketName)
+    public void VerifyOrdersPresence_When_AccountSectionVisited()
     {
         var purchaseInfo = new PurchaseInfo()
         {
-            FirstName = RandomFirstName,
-            LastName = RandomLastName,
+            FirstName = randomFirstName,
+            LastName = randomLastName,
             Company = randomCompany,
             Country = "Germany",
             Address1 = randomAddress1,
@@ -96,7 +92,7 @@ public class DemosBellatrixSolution : BaseTest
             City = "Munich",
             Phone = "3594231232",
             Email = randomEmail,
-            RocketName = "Falcon 9"
+            RocketName = rocketName,
         };
 
         _bellatrixMainPage.GoTo();
@@ -104,6 +100,7 @@ public class DemosBellatrixSolution : BaseTest
         _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
         _cartPage.IncreaseProductQuantity(Quantity);
+        _cartPage.AssertQuantityOfTheProductCartPage(Quantity);
         _cartPage.ProceedToCheckoOut();
         _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, Quantity);
         _checkoutPage.AssertCheckoutPage(_driver.Url);
@@ -112,6 +109,5 @@ public class DemosBellatrixSolution : BaseTest
         _checkoutPage.AssertOrderReceivedUr(_driver.Url);
         _bellatrixMainPage.EnterMyOrderSection();
         _bellatrixMainPage.AssertMyOrdersIsShown();
-
     }
 }

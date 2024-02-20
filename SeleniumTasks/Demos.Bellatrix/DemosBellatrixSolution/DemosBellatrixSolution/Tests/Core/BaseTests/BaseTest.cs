@@ -33,7 +33,7 @@ public class BaseTest
     [TearDown]
     public void Cleanup()
     {
-        _driver.Dispose();
+        _driver.Close();
 
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
+using SeleniumWebdriverHelpers;
 
 namespace DemosBellatrixSolution.Pages.CartPage;
 public partial class CartPage
@@ -13,18 +14,18 @@ public partial class CartPage
     private string ErrorMessageIncorrectUrl => "Your URL is not correct";
     public void AssertCouponApplied()
     {
-        var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='cart-discount coupon-happybirthday']")));
-        bool isDisplayed = errorMessageElement.Displayed;
+        var couponElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='cart-discount coupon-happybirthday']")));
+        bool isDisplayed = couponElement.Displayed;
         Assert.That(isDisplayed);
     }
 
-   //public void AssertQuantityOfTheProductCartPage(string product, int expectedQuantity)
-   //{
-   //    var quantity = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//input[@type='number' and @title='Qty']"))).Text;
-   //   // Assert.That(quantity.Equals($"{product}  × {expectedQuantity}"));
-   //   // Console.WriteLine(" ");
-   //    Console.WriteLine(quantity);
-   //}
-
+   public void AssertQuantityOfTheProductCartPage(int expectedQuantity)
+   {
+        Thread.Sleep(2000);
+        MoveToElement(By.XPath("//*[@id='site-header-cart']"));
+        var quantity = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//*[@class='count'])[1]"))).Text;
+        Assert.That(quantity.Equals($"{expectedQuantity} items"));
+        Console.WriteLine(quantity);
+    }
 }
 

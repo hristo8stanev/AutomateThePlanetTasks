@@ -34,14 +34,16 @@ public partial class CheckoutPage : WebPage
         BillingCity.SendKeys(purchaseInfo.City);
         BillingPhone.SendKeys(purchaseInfo.Phone);
         BillingEmail.SendKeys(purchaseInfo.Email);
+
         if (purchaseInfo.ShouldCreateAccout == false)
         {
             CreateAccountButtonBox.Click();
+
         }
 
         if (purchaseInfo.ShouldCheckPayment == false)
         {
-            Thread.Sleep(3000);
+            MoveToElement(By.Id("place_order"));
             MoveToElement(By.CssSelector("[for*='payment_method_cheque']"));
             CheckPaymentsButton.Click();
         }
