@@ -4,11 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using ZipCodes.Pages.BasePage;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ZipCodes.Pages.SearchPage;
 public partial class SearchPage : WebPage
 {
+
+    string name;
+    string state;
+    string zipCode;
+    string longtitudeAndlatitude;
+
     public SearchPage(IWebDriver driver)
         : base(driver)
     {
@@ -32,11 +41,23 @@ public partial class SearchPage : WebPage
         searchField.Click();
     }
 
-    public void ChooseFirstCity()
+    public void ChooseCity()
     {
+        var name = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//table[@id='tblZIP']//tr[2]//td[2]//a"))).Text;
+        var state = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//table[@id='tblZIP']//tr[2]//td[3]//a"))).Text;
+        var zipCode = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//table[@id='tblZIP']//tr[2]//td[1]//a"))).Text;
+        Console.WriteLine($"Name: '{name}'\n" + $"ZipCode: '{zipCode}'\n" + $"State: '{state}'");
         FirstCity.Click();
     }
 
+    public void SaveInformationAboutCities()
+    {
+       
+        var longtitudeAndlatitude = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//table[@class='striped']//td[2])[9]"))).Text;
+        Console.WriteLine($"Longtitute and Longtitude: '{longtitudeAndlatitude}'");
+
+
+    }
 }
     
 

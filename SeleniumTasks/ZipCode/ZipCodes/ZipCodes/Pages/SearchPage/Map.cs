@@ -21,9 +21,9 @@ public partial class SearchPage
     public IWebElement tableCityColumn => WaitAndFindElement(By.XPath("//table[@id='tblZIP']//th[contains(text(), 'City')]"));
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public IWebElement FirstCity => WaitAndFindElement(By.XPath("//table[@id='tblZIP']//tr[1]//td[2]//a"));
-    public IWebElement FieldCity => WaitAndFindElement(By.XPath("//table[@class='striped']//td[2])[2]"));
-    public IWebElement FieldState => WaitAndFindElement(By.XPath("(//input[@name='fld-state2'])[1]"));
+    public IWebElement FirstCity => WaitAndFindElement(By.XPath("//table[@id='tblZIP']//tr[2]//td[2]//a"));
+    public IWebElement FieldCity => WaitAndFindElement(By.XPath("//*[@name='fld-city2' and @class='form-control']"));
+    public IWebElement FieldState => WaitAndFindElement(By.XPath("//input[@name='fld-state2' and @class='form-control']"));
     public IWebElement PersonalZipCodeField => WaitAndFindElement(By.XPath("(//table[@id='tblZIP']//td[1])[1]"));
     public IWebElement LongtitudeLatitudeCountry => WaitAndFindElement(By.XPath("(//table[@class='striped']//td[2])[9]"));
    

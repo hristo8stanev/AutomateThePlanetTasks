@@ -44,7 +44,7 @@ public abstract class WebPage
     }
     protected IWebElement WaitElementToBeClickable(By locator)
     {
-
+        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
         return WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));
     }
 

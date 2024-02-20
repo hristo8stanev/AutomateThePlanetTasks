@@ -17,7 +17,7 @@ public class DemosBellatrixSolution : BaseTest
 {
     private string CouponVaucher => "happybirthday";
     string rocketName => "Falcon 9";
-    private int quantity => 4;
+    private int quantity => 3;
     string randomFirstName;
     string randomLastName;
     string randomEmail;
