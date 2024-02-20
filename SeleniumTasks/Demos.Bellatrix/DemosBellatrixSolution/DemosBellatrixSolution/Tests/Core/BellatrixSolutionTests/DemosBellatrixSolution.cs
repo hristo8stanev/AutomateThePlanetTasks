@@ -75,6 +75,9 @@ public class DemosBellatrixSolution : BaseTest
     public void PurchaseRocket_When_ExistingClientWithLoginForm()
     {
         //LOG BUG FOR THIS TEST
+        //IMPOSIBBLE TO USE LOGIN FORM, REGISTER FORM IS MISSING
+        //PASSWORD FIELD IS MISSING
+        //YOU CAN FIND IT IN  --> C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\SeleniumTasks\Demos.Bellatrix\BugReport
     }
 
     [Test]

@@ -27,14 +27,8 @@ public abstract class WebPage
     public void GoTo()
     {
         Driver.Navigate().GoToUrl(Url);
-        WaitForPageToLoad();
     }
-    protected virtual void WaitForPageToLoad()
-    {
-
-
-    }
-
+   
     protected IWebElement MoveToElement(By locator)
     {
         Actions actions = new Actions(Driver);
@@ -42,6 +36,7 @@ public abstract class WebPage
         actions.MoveToElement(element).Perform();
         return element;
     }
+
     protected IWebElement WaitElementToBeClickable(By locator)
     {
         var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
@@ -53,6 +48,24 @@ public abstract class WebPage
 
         return WebDriverWait.Until(ExpectedConditions.ElementExists(locator));
     }
+    
+   // protected IWebElement waitAndFindElementJS(By locator)
+   // {
+   //    var element =  WebDriverWait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
+   //     scrolltoVisible(element);
+   //     return element;
+   // }
+   //
+   // public void scrolltoVisible(WebElement element)
+   // {
+   //     try
+   //     {
+   //         ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+   //     }catch (ElementNotInteractableException ex)
+   //     {
+   //
+   //     }
+   // }
 
     protected void WaitForAjax()
     {

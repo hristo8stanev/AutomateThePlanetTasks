@@ -22,12 +22,10 @@ public partial class LambdaMainPage
 
   public void AssertSentEmailToVerify(string expectedEmail)
     {
-        
+        MoveToElement(By.XPath("//*[@class='cursor-pointer font-[500] leading-[16px] text-[#333]']"));
         string xpath = string.Format("//span[contains(@class, 'text-[#000] font-[600]') and text()='{0}']", expectedEmail);
-
         IWebElement emailElement = Driver.FindElement(By.XPath(xpath));
         string displayedEmail = emailElement.Text.Trim();
-
         Assert.That(expectedEmail, Is.EqualTo(displayedEmail), ErrorMessageEmailMismatch);
     }
 }

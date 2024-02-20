@@ -12,14 +12,12 @@ using BlueHostingLogin.@enum;
 using BlueHostingLogin.Pages.LambdaTestPage;
 using System.Net.Mail;
 using BlueHostingLogin.Pages.BlueHostPage;
+using BlueHostingLogin.Tests.Core;
 
-namespace BlueHostingLogin;
+namespace BlueHostingLogin.Tests.LoginTests;
 
-public class Tests
+public class LoginTests : BaseTest
 {
-    private IWebDriver _driver;
-    LambdaMainPage _lambdaMainPage;
-    BlueHostMainPage _blueHostMainPage;
     //Cookie cookie = new Cookie("key", "value");
     string randomEmail;
     string randomPassword;
@@ -27,36 +25,22 @@ public class Tests
     [SetUp]
     public void Setup()
     {
-        new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.CHROME);
-        _driver.Manage().Window.Maximize();
-        _lambdaMainPage = new LambdaMainPage(_driver);
-        _blueHostMainPage = new BlueHostMainPage(_driver);
-       // _driver.Manage().Cookies.AllCookies();
+        // _driver.Manage().Cookies.AllCookies();
         randomEmail = Internet.UserName() + "@gmail.com";
-        randomPassword = Faker.Name.FullName() + "S3!#%";
+        randomPassword = Name.FullName() + "S3!#%";
     }
 
-    [TearDown]
-    public void Cleanup()
-    {
-        _driver.Dispose();
-    }
-
+   
     [Test]
-     public void Try_ToLog_When_IncorrectEmailInputEntered()
-    
-     {
-
-        _blueHostMainPage.GoTo();
-        _blueHostMainPage.AcceptCookies();
-        _blueHostMainPage.ClickOnWemailLogin();
+    public void Try_ToLogin_When_IncorrectEmailInputEntered()
+    {
         var purchaseInfoBlueHost = new FillingInfo()
         {
             EmailAdress = randomEmail,
-
         };
-
+        _blueHostMainPage.GoTo();
+        _blueHostMainPage.AcceptCookies();
+        _blueHostMainPage.ClickOnWemailLogin();
         _blueHostMainPage.FillEmail(purchaseInfoBlueHost);
         _blueHostMainPage.ProceedWithLogin();
         _blueHostMainPage.AssertVerifyButtonIsDisplayed();
@@ -77,6 +61,5 @@ public class Tests
         _lambdaMainPage.ProceedToUserLogin();
         _lambdaMainPage.AssertUserSuccssesfullyLoginUrl(_driver.Url);
         _lambdaMainPage.AssertSentEmailToVerify(randomEmail);
-
     }
 }
