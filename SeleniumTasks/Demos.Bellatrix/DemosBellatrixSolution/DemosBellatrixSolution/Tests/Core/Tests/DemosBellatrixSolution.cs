@@ -16,15 +16,15 @@ namespace DemosBellatrixSolution.Tests.Core.DemosBellatrixTests;
 public class DemosBellatrixSolution : BaseTest
 {
     private string CouponVaucher => "happybirthday";
-
-    private int Quantity => 4;
+    string rocketName => "Falcon 9";
+    private int quantity => 4;
     string randomFirstName;
     string randomLastName;
     string randomEmail;
     string randomAddress1;
     string randomAddress2;
     string randomCompany;
-    string rocketName => "Falcon 9";
+    
 
     [SetUp]
     public void generateInputData()
@@ -60,10 +60,10 @@ public class DemosBellatrixSolution : BaseTest
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
-        _cartPage.IncreaseProductQuantity(Quantity);
-        _cartPage.AssertQuantityOfTheProductCartPage(Quantity);
+        _cartPage.IncreaseProductQuantity(quantity);
+        _cartPage.AssertQuantityOfTheProductCartPage(quantity);
         _cartPage.ProceedToCheckoOut();
-        _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, Quantity);
+        _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, quantity);
         _checkoutPage.AssertCheckoutPage(_driver.Url);
         _checkoutPage.FillBillingInfo(purchaseInfo);
         _checkoutPage.AssertOrderReceived();
@@ -99,10 +99,10 @@ public class DemosBellatrixSolution : BaseTest
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
-        _cartPage.IncreaseProductQuantity(Quantity);
-        _cartPage.AssertQuantityOfTheProductCartPage(Quantity);
+        _cartPage.IncreaseProductQuantity(quantity);
+        _cartPage.AssertQuantityOfTheProductCartPage(quantity);
         _cartPage.ProceedToCheckoOut();
-        _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, Quantity);
+        _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, quantity);
         _checkoutPage.AssertCheckoutPage(_driver.Url);
         _checkoutPage.FillBillingInfo(purchaseInfo);
         _checkoutPage.AssertOrderReceived();
