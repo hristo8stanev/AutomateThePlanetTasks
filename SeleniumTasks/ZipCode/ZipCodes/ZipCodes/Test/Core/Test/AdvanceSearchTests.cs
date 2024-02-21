@@ -57,11 +57,11 @@ public class AdvanceSearchTests : BaseTest
                     ss.SaveAsFile(@"C:\Users\UsernameT\Downloads\City.jpg");
 
                     cityDetailsList.Add(new CityDetails(cityName, state, zipCode, longitudeAndLatitude));
+
                     _driver.Navigate().Back();
                     table = _driver.FindElement(By.Id("tblZIP"));
                     rows = table.FindElements(By.TagName("tr"));
 
-                    
                 }
             }
 
