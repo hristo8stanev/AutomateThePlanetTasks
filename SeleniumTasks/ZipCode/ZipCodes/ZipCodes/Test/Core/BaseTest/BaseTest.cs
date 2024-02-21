@@ -21,7 +21,7 @@ public class BaseTest
     public void Setup()
     {
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.CHROME);
+        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.EDGE);
         _driver.Manage().Window.Maximize();
         _zipCodeMainPage = new ZipCodeMainPage(_driver);
         _searchPage = new SearchPage(_driver);
