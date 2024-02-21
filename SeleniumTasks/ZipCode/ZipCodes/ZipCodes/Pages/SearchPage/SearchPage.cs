@@ -13,11 +13,6 @@ namespace ZipCodes.Pages.SearchPage;
 public partial class SearchPage : WebPage
 {
 
-    string name;
-    string state;
-    string zipCode;
-    string longtitudeAndlatitude;
-
     public SearchPage(IWebDriver driver)
         : base(driver)
     {
@@ -32,6 +27,11 @@ public partial class SearchPage : WebPage
     }
 
     public void AcceptCookies()
+    {
+        acceptCookie.Click();
+    }
+
+    public void AcceptGoogleCookies()
     {
         acceptCookie.Click();
     }

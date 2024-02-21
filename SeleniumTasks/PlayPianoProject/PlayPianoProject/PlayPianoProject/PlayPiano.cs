@@ -51,6 +51,7 @@ public class PlayPiano
             else
             {
 
+
                 Actions actions = new Actions(_driver);
                 foreach (char note in span.Text)
                 {

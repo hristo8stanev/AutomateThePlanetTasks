@@ -25,7 +25,7 @@ public class LoginTests : BaseTest
 
 
    [SetUp]
-    public void Setup()
+    public void GenerateInfoBeforeTests()
     {
         randomEmail = Internet.UserName() + "@gmail.com";
         randomPassword = Name.FullName() + "S3!#%";
@@ -35,12 +35,12 @@ public class LoginTests : BaseTest
     [Test]
     public void AddCookie()
     {
-        _driver.Navigate().GoToUrl("https://www.google.com/");
-        _driver.Manage().Cookies.AddCookie(new Cookie("NID", "511=K-wYhVTBO1JmxZQpGBQUZUiAAlnDCXNU9Z7j2D14gNYRjZrirc0TM7QYr27R40yjMIe2Beyg_5t6ib2hwu-zQgV2ArWyhRKLEwchaZgI01pVFXQgxN0ChXZSpgU3JMeusWOobUtRSafwpPYwwB3A5WYvNvr7HUbKi-uZLJjzHJtzBoA9evknaFzmcJYsknx7Ai4"));
-        _driver.Manage().Cookies.AddCookie(new Cookie("AEC", "CAISHAgBEhJnd3NfMjAyNDAyMTQtMF9SQzMaAmJnIAEaBgiA-tSuBg"));
-        _driver.Manage().Cookies.AddCookie(new Cookie("AEC", "Ae3NU9MWE1FSWzFa2yf3YtINNTDDkqipi0cmsVktAM-xeGZR4Md2vLZVbV0"));
-        _driver.Manage().Cookies.AddCookie(new Cookie("NID", "511=j6wH-SnM_AjFBTjZP_ObtSWiN7XNKYHtikg2E_i3rFnLLVuUi472G2nmVWDGicrLnRupDTB-xYiYAY_4BKAwxVTWZVl1QASodJi1-lPCw7MRKywPnSnQ5qhH6Zl01BmNGyReQBwX5RTIoj94RG83nNpKMFdnzsmcUYJljlUDOtacyhOegNpTeWwf6afFqJtFbA"));
-        _driver.Manage().Cookies.AddCookie(new Cookie("SOCS", "CAISHAgBEhJnd3NfMjAyNDAyMTQtMF9SQzMaAmJnIAEaBgiA-tSuBg"));
+        _driver.Navigate().GoToUrl("https://www.virtualpiano.net/");
+       // _driver.Manage().Cookies.AddCookie(new Cookie("NID", "511=K-wYhVTBO1JmxZQpGBQUZUiAAlnDCXNU9Z7j2D14gNYRjZrirc0TM7QYr27R40yjMIe2Beyg_5t6ib2hwu-zQgV2ArWyhRKLEwchaZgI01pVFXQgxN0ChXZSpgU3JMeusWOobUtRSafwpPYwwB3A5WYvNvr7HUbKi-uZLJjzHJtzBoA9evknaFzmcJYsknx7Ai4"));
+       // _driver.Manage().Cookies.AddCookie(new Cookie("AEC", "CAISHAgBEhJnd3NfMjAyNDAyMTQtMF9SQzMaAmJnIAEaBgiA-tSuBg"));
+       // _driver.Manage().Cookies.AddCookie(new Cookie("AEC", "Ae3NU9MWE1FSWzFa2yf3YtINNTDDkqipi0cmsVktAM-xeGZR4Md2vLZVbV0"));
+       // _driver.Manage().Cookies.AddCookie(new Cookie("NID", "511=j6wH-SnM_AjFBTjZP_ObtSWiN7XNKYHtikg2E_i3rFnLLVuUi472G2nmVWDGicrLnRupDTB-xYiYAY_4BKAwxVTWZVl1QASodJi1-lPCw7MRKywPnSnQ5qhH6Zl01BmNGyReQBwX5RTIoj94RG83nNpKMFdnzsmcUYJljlUDOtacyhOegNpTeWwf6afFqJtFbA"));
+       // _driver.Manage().Cookies.AddCookie(new Cookie("SOCS", "CAISHAgBEhJnd3NfMjAyNDAyMTQtMF9SQzMaAmJnIAEaBgiA-tSuBg"));
         _driver.Navigate().Refresh();
    
         var element = _driver.FindElement(By.XPath("//*[@data-pid='23']"));

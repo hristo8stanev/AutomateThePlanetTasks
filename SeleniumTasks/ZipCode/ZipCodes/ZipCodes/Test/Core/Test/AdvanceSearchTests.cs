@@ -17,7 +17,7 @@ public class AdvanceSearchTests : BaseTest
 {
 
     [Test]
-    public void AdvanceSearchFOr()
+    public void AdvanceSearchCityNameZipCode()
     {
         _zipCodeMainPage.GoTo();
         _zipCodeMainPage.AdvanceSearch();
@@ -28,8 +28,7 @@ public class AdvanceSearchTests : BaseTest
         _searchPage.AssertOAdvanceSearchedUrl(_driver.Url);
 
         //  Screenshot ss = ((ITakesScreenshot)_driver).GetScreenshot();
-        //  ss.SaveAsFile(@"C:\Users\UsernameT\Downloads\City.jpg")
-
+        //  ss.SaveAsFile(@"C:\Users\UsernameT\Downloads\City.jpg"
         try
         { 
             IWebElement table = _driver.FindElement(By.Id("tblZIP"));
@@ -52,30 +51,51 @@ public class AdvanceSearchTests : BaseTest
                     string zipCode = _driver.FindElement(By.XPath("(.//a[contains(@href, '/zip-code/')][1])")).Text;
                     string longitudeAndLatitude = _driver.FindElement(By.XPath("(//*[@class='striped']//td)[18]")).GetText();
 
-                    //take a scrennshot of every City.
+                    string[] coordinates = longitudeAndLatitude.Split(',');
+                    string latitude = coordinates[0].Trim();
+                    string longitude = coordinates[1].Trim();
+
+                    
+                    string googleMapsLink = $"https://www.google.com/maps?q={latitude},{longitude}";
+
+                    cityDetailsList.Add(new CityDetails(cityName, state, zipCode, longitudeAndLatitude, googleMapsLink));
+
+                    
+                    ((IJavaScriptExecutor)_driver).ExecuteScript($"window.open('{googleMapsLink}', '_blank');");
+                   
+
+                    //ACCEPT GOOGLE COOOKIE
+
+                    _driver.SwitchTo().Window(_driver.WindowHandles.Last());
+
+                   
                     Screenshot ss = ((ITakesScreenshot)_driver).GetScreenshot();
-                    ss.SaveAsFile(@"C:\Users\UsernameT\Downloads\City.jpg");
+                    ss.SaveAsFile($"C:\\Users\\UsernameT\\Downloads\\{cityName}-{state}-{zipCode}.jpg");
 
-                    cityDetailsList.Add(new CityDetails(cityName, state, zipCode, longitudeAndLatitude));
+                    
+                    _driver.Close();
 
+                    
+                    _driver.SwitchTo().Window(_driver.WindowHandles.First());
+
+                   
                     _driver.Navigate().Back();
+
+                    
                     table = _driver.FindElement(By.Id("tblZIP"));
                     rows = table.FindElements(By.TagName("tr"));
-
                 }
             }
 
+          
             Console.WriteLine("City Details:");
             foreach (CityDetails cityDetails in cityDetailsList)
             {
-
                 Console.WriteLine(cityDetails.ToString());
-                
             }
         }
         finally
         {
-            
             _driver.Quit();
         }
     }

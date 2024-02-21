@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlueHostingLogin.@enum;
+using GPSCordinatesProject.Enums;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium;
 
-namespace BlueHostingLogin.DriverFacade;
+namespace GPSCordinatesProject.DriverFacade;
 public class DriverFacade
 {
+
     public static WebDriver StartBrowser(BrowserType browserType)
     {
 
@@ -19,7 +20,6 @@ public class DriverFacade
         {
             case BrowserType.CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--lang=pt-BR");
                 return new ChromeDriver(chromeOptions);
             case BrowserType.CHROME_INCOGNITO:
                 ChromeOptions chromeIncognitoOptions = new ChromeOptions();
@@ -35,6 +35,7 @@ public class DriverFacade
                 return new ChromeDriver(chromeHeadlessOptions);
             case BrowserType.FIREFOX:
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.SetPreference("intl.accept_languages", "pt-GR");
                 return new FirefoxDriver(firefoxOptions);
             case BrowserType.FIREFOX_PRIVATE:
                 FirefoxOptions firefoxPrivateOptions = new FirefoxOptions();

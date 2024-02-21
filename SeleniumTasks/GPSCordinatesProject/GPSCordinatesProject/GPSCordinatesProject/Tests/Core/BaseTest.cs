@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GPSCordinatesProject.DriverFacade;
+using GPSCordinatesProject.Enums;
 using OpenQA.Selenium;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;
 using WebDriverManager;
-using ZipCodes.Pages.ZipCodeMainPage;
-using ZipCodes.Pages.SearchPage;
+using GPSCordinatesProject.Pages.MainPage;
 
-namespace ZipCodes.Test.Core.BaseTest;
+namespace GPSCordinatesProject.Test.Core.BaseTest;
 public class BaseTest
 {
     protected IWebDriver _driver;
-    protected static ZipCodeMainPage _zipCodeMainPage;
-    protected static SearchPage _searchPage;
+    protected MainPage _mainPage;
 
     [SetUp]
     public void Setup()
     {
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.CHROME);
+        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.FIREFOX);
         _driver.Manage().Window.Maximize();
-        _zipCodeMainPage = new ZipCodeMainPage(_driver);
-        _searchPage = new SearchPage(_driver);
+        _mainPage = new MainPage(_driver);
     }
 
     [TearDown]
