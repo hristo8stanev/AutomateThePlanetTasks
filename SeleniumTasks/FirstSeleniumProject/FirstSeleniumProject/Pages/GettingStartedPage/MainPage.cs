@@ -18,20 +18,16 @@ public partial class MainPage : WebPage
 
     protected override string Url => "https://www.selenium.dev/documentation/en/getting_started";
 
-
-    public void ClickOnComponentsField()
+    public void ProceedToComponents()
     {
         
         SeleniumOverviewField.Click();
         SeleniumComponentsField.Click();
-
-        
     }
 
-    public void CliclOnGitHubRepoLink()
+    public void ProceedToGitHubLink()
     {
-           MoveToElement(By.XPath("//a[@href='https://github.com/SeleniumHQ/seleniumhq.github.io/commit/6b87463b63700d38146e82130776bf4d832bf82d']"));
+           MoveToElement(By.XPath("//*[@href='https://github.com/SeleniumHQ/seleniumhq.github.io/commit/6b87463b63700d38146e82130776bf4d832bf82d']"));
            GitHubLinkField.Click();
-
     }
 }

@@ -13,37 +13,20 @@ using static System.Net.WebRequestMethods;
 using FirstSeleniumProject.Pages.GettingStartedPage;
 using FirstSeleniumProject;
 using FirstSeleniumProject.@enum;
+using FirstSeleniumProject.Tests.Core.BaseTest;
 
 
-namespace SeleniumSiteProject;
-public class SeleniumTests : IDisposable
+namespace FirstSeleniumProject.Tests.SeleniumSiteProjectTests;
+public class SeleniumTests : BaseTest
 {
-    private static IWebDriver _driver;
-    private static MainPage _mainPage;
-
-    public SeleniumTests()
-    {
-        new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.StartBrowser(BrowserType.CHROME);
-        _driver.Manage().Window.Maximize();
-        _mainPage = new MainPage(_driver);
-    }
-
-    [TearDown]
-    public void Dispose()
-    {
-
-        _driver.Quit();
-    }
-
-
+  
     [Test]
     public void SeleniumDocumentationComponentGridFieldClicknOnGitHubRepoLink()
     {
         _mainPage.GoTo();
-        _mainPage.ClickOnComponentsField();
+        _mainPage.ProceedToComponents();
         _mainPage.AssertComponentsDocumentationPageIsShown(_driver.Url);
-        _mainPage.CliclOnGitHubRepoLink();
+        _mainPage.ProceedToGitHubLink();
         _mainPage.AssertGitHubLinkIsShown(_driver.Url);
     }
 }

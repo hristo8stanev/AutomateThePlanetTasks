@@ -10,7 +10,7 @@ using OpenQA.Selenium;
 using FirstSeleniumProject.@enum;
 
 
-namespace FirstSeleniumProject;
+namespace FirstSeleniumProject.DriverFacade;
 public class DriverFacade
 {
     public static WebDriver StartBrowser(BrowserType browserType)

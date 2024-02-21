@@ -35,6 +35,5 @@ public partial class BlueHostMainPage : WebPage
     {
         LoginButton.Click();
         NextButton.Click();
-
     }
 }
