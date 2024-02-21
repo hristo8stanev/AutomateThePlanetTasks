@@ -23,6 +23,7 @@ public partial class MainPage : WebPage
         
         SeleniumOverviewField.Click();
         SeleniumComponentsField.Click();
+        WaitForAjax();
     }
 
     public void ProceedToGitHubLink()
