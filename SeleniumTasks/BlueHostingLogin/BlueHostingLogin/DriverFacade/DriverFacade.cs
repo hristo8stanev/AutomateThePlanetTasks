@@ -19,7 +19,7 @@ public class DriverFacade
         {
             case BrowserType.CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("--lang=pt-BR");
+               
                 return new ChromeDriver(chromeOptions);
             case BrowserType.CHROME_INCOGNITO:
                 ChromeOptions chromeIncognitoOptions = new ChromeOptions();

@@ -33,9 +33,9 @@ public class LoginTests : BaseTest
 
 
     [Test]
-    public void AddCookie()
+    public void AddGoogleCookieMethod()
     {
-        _driver.Navigate().GoToUrl("https://www.google.com/");
+        _driver.Navigate().GoToUrl("https://www.googlemaps.com/");
         _driver.Manage().Cookies.AddCookie(new Cookie("NID", "511=K-wYhVTBO1JmxZQpGBQUZUiAAlnDCXNU9Z7j2D14gNYRjZrirc0TM7QYr27R40yjMIe2Beyg_5t6ib2hwu-zQgV2ArWyhRKLEwchaZgI01pVFXQgxN0ChXZSpgU3JMeusWOobUtRSafwpPYwwB3A5WYvNvr7HUbKi-uZLJjzHJtzBoA9evknaFzmcJYsknx7Ai4"));
         _driver.Manage().Cookies.AddCookie(new Cookie("AEC", "CAISHAgBEhJnd3NfMjAyNDAyMTQtMF9SQzMaAmJnIAEaBgiA-tSuBg"));
         _driver.Manage().Cookies.AddCookie(new Cookie("AEC", "Ae3NU9MWE1FSWzFa2yf3YtINNTDDkqipi0cmsVktAM-xeGZR4Md2vLZVbV0"));
