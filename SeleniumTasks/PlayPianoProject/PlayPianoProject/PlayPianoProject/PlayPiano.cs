@@ -22,9 +22,9 @@ public class PlayPiano
     public void Setup()
     {
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = new ChromeDriver();    
+        _driver = new ChromeDriver();
         _driver.Manage().Window.Maximize();
-      
+
     }
 
     [Test]
@@ -41,37 +41,47 @@ public class PlayPiano
         var songPatternDiv = _driver.FindElement(By.Id("song-pattern"));
         var allPaternSpans = songPatternDiv.FindElements(By.TagName("span"));
 
-        foreach (var span in allPaternSpans)
+        foreach (IWebElement span in allPaternSpans)
         {
-
             if (span.GetAttribute("class") == "pause")
             {
                 Thread.Sleep(NORMAL_PAUSE_BETWEEN_NOTES_MILLISECONDS);
             }
             else
             {
-
-
-                Actions actions = new Actions(_driver);
-                foreach (char note in span.Text)
-                {
-                    actions = actions.KeyDown(note.ToString());
-                }
-
-                foreach (char note in span.Text)
-                {
-                    actions = actions.KeyUp(note.ToString());
-                }
-
-                actions.Perform();
+                string notes = span.Text;
+                PlayNotes(notes);
             }
         }
+    }
+
+    public void PlayNotes(string notes)
+    {
+        Actions actions = new Actions(_driver);
+        foreach (char note in notes)
+        {
+            if (char.IsLetterOrDigit(note))
+            {
+                actions.KeyDown(note.ToString());
+            }
+        }
+        actions.Perform();
+
+        Thread.Sleep(LONG_PAUSE_BETWEEN_NOTES_MILLISECONDS);
+
+        foreach (char note in notes)
+        {
+            if (char.IsLetterOrDigit(note))
+            {
+                actions.KeyUp(note.ToString());
+            }
+        }
+        actions.Perform();
     }
 
     [TearDown]
     public void Cleanup()
     {
-
         _driver.Dispose();
     }
 }

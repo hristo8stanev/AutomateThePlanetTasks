@@ -11,7 +11,7 @@ using SeleniumWebdriverHelpers;
 namespace DemosBellatrixSolution.Pages.CartPage;
 public partial class CartPage
 {
-    private string ErrorMessageIncorrectUrl => "Your URL is not correct";
+ 
     public void AssertCouponApplied()
     {
         var couponElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='cart-discount coupon-happybirthday']")));

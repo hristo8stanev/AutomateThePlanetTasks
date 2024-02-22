@@ -28,37 +28,19 @@ public partial class SearchPage : WebPage
 
     public void AcceptCookies()
     {
-        acceptCookie.Click();
+        AcceptCookie.Click();
     }
 
     public void AcceptGoogleCookies()
     {
-        acceptCookie.Click();
+        var consentDiv = WebDriverWait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(By.XPath("//*[@class='s1EFBf']")));
+        MoveToElement(By.XPath("//*[@class='s1EFBf']"));
+        Thread.Sleep(2000);
+        Driver.FindElement(By.XPath("(//*[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 XWZjwc'])[2]")).Click();
     }
     public void SearchTownByName(string name)
     {
         CityField.SendKeys(name);
         searchField.Click();
     }
-
-    public void ChooseCity()
-    {
-        var name = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//table[@id='tblZIP']//tr[2]//td[2]//a"))).Text;
-        var state = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//table[@id='tblZIP']//tr[2]//td[3]//a"))).Text;
-        var zipCode = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//table[@id='tblZIP']//tr[2]//td[1]//a"))).Text;
-        Console.WriteLine($"Name: '{name}'\n" + $"ZipCode: '{zipCode}'\n" + $"State: '{state}'");
-        FirstCity.Click();
-    }
-
-    public void SaveInformationAboutCities()
-    {
-       
-        var longtitudeAndlatitude = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//table[@class='striped']//td[2])[9]"))).Text;
-        Console.WriteLine($"Longtitute and Longtitude: '{longtitudeAndlatitude}'");
-
-
-    }
 }
-    
-
-

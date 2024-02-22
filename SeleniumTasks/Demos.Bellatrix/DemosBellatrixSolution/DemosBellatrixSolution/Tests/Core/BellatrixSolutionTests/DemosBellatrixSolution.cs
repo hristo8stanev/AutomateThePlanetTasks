@@ -1,20 +1,14 @@
-using OpenQA.Selenium;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
-using WebDriverManager;
-using DemosBellatrixSolution.Pages.MainPage;
-using DemosBellatrixSolution.Pages.CartPage;
 using DemosBellatrixSolution.Pages.CheckoutPage;
-using Faker;
 using DemosBellatrixSolution.Tests.Core.BaseTests;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using NUnit.Framework;
+using OpenQA.Selenium.DevTools;
+using OpenQA.Selenium.Chrome;
 
 namespace DemosBellatrixSolution.Tests.Core.DemosBellatrixTests;
 
 public class DemosBellatrixSolution : BaseTest
 {
+
+    protected DevToolsSession session;
     private string CouponVaucher => "happybirthday";
     string rocketName => "Falcon 9";
     private int quantity => 3;
@@ -37,10 +31,10 @@ public class DemosBellatrixSolution : BaseTest
         randomCompany = Faker.Company.Name();
     }
 
-    
     [Test]
     public void PurchaseRocket_When_NewClientAppears()
     {
+
         var purchaseInfo = new PurchaseInfo()
         {
             FirstName = randomFirstName,
