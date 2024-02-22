@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GPSCordinatesProject.DriverFacade;
-using GPSCordinatesProject.Enums;
-using OpenQA.Selenium;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
-using WebDriverManager;
-using GPSCordinatesProject.Pages.MainPage;
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using NUnit.Framework;
+global using GPSCordinatesProject.DriverFacade;
+global using GPSCordinatesProject.Enums;
+global using OpenQA.Selenium;
+global using OpenQA.Selenium.Firefox;
+global using OpenQA.Selenium.Interactions;
+global using OpenQA.Selenium.Support.UI;
+global using WebDriverManager;
+global using WebDriverManager.DriverConfigs.Impl;
+global using WebDriverManager.Helpers;
+global using static OpenQA.Selenium.RelativeBy;
+global using static OpenQA.Selenium.By;
+global using GPSCordinatesProject.Pages.MainPage;
+global using OpenQA.Selenium.DevTools;
 
 namespace GPSCordinatesProject.Test.Core.BaseTest;
 public class BaseTest

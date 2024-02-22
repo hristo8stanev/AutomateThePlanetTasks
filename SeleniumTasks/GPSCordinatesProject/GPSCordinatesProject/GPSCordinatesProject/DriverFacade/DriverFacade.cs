@@ -35,7 +35,6 @@ public class DriverFacade
                 return new ChromeDriver(chromeHeadlessOptions);
             case BrowserType.FIREFOX:
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.SetPreference("intl.accept_languages", "pt-GR");
                 return new FirefoxDriver(firefoxOptions);
             case BrowserType.FIREFOX_PRIVATE:
                 FirefoxOptions firefoxPrivateOptions = new FirefoxOptions();

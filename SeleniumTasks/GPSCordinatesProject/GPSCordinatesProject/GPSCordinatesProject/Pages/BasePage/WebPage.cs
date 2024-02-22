@@ -15,17 +15,17 @@ public abstract class WebPage
 
     public WebPage(IWebDriver driver)
     {
-        Driver = driver;
-        WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
+        _driver = driver;
+        WebDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
 
     }
-    protected IWebDriver Driver { get; set; }
+    protected IWebDriver _driver { get; set; }
     protected WebDriverWait WebDriverWait { get; set; }
     protected abstract string Url { get; }
 
     public void GoTo()
     {
-        Driver.Navigate().GoToUrl(Url);
+        _driver.Navigate().GoToUrl(Url);
         WaitForPageToLoad();
     }
     protected virtual void WaitForPageToLoad()
@@ -36,8 +36,8 @@ public abstract class WebPage
 
     protected IWebElement MoveToElement(By locator)
     {
-        Actions actions = new Actions(Driver);
-        IWebElement element = Driver.FindElement(locator);
+        Actions actions = new Actions(_driver);
+        IWebElement element = _driver.FindElement(locator);
         actions.MoveToElement(element).Perform();
         return element;
     }
@@ -50,13 +50,13 @@ public abstract class WebPage
 
     protected void WaitForAjax()
     {
-        var js = (IJavaScriptExecutor)Driver;
+        var js = (IJavaScriptExecutor)_driver;
         WebDriverWait.Until(wd => js.ExecuteScript("return jQuery.active").ToString() == "0");
     }
 
     protected void WaintUntilPageLoadsCompletely()
     {
-        var js = (IJavaScriptExecutor)Driver;
+        var js = (IJavaScriptExecutor)_driver;
         WebDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "comeplete");
     }
 }

@@ -17,8 +17,8 @@ namespace ZipCodes.Test.Core.BaseTest;
 public class AdvanceSearchTests : BaseTest
 {
     private string firstLetter => "H";
+    bool cookiesAcceptedForFirstCity = false;
 
-    [Repeat(2)]
     [Test]
     public void AdvanceSearchCityNameZipCode()
     {
@@ -63,12 +63,13 @@ public class AdvanceSearchTests : BaseTest
                 ((IJavaScriptExecutor)_driver).ExecuteScript($"window.open('{googleMapsLink}', '_blank');");
                 _driver.SwitchTo().Window(_driver.WindowHandles.Last());
 
-               //
-               //if (cityDetailsList.Count == 1)
-               //{
+                if (!cookiesAcceptedForFirstCity)
+                {
                     _searchPage.AcceptGoogleCookies();
-              //  }
-               
+                    cookiesAcceptedForFirstCity = true;
+                }
+
+                Thread.Sleep(1500);
                 Screenshot ss = ((ITakesScreenshot)_driver).GetScreenshot();
                 ss.SaveAsFile($"C:\\Users\\UsernameT\\Downloads\\{cityName}-{state}-{zipCode}.jpg");
                 _driver.Close();
