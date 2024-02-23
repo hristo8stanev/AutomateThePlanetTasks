@@ -15,9 +15,10 @@ public partial class InvestingPage
         Assert.That(historicUrl.Contains("historical-data"), Is.True, errorMessageUrl);
     }
 
-    public void verifyButtonIsDisplayed()
+    public void AssertPriceStockIsShown()
     {
-        bool isVerifyDisplayed = Driver.FindElement(By.XPath("//button[text()='Verify']")).Displayed;
+        
+        Assert.That(PriceExtract.Text, Is.Not.Null);
     }
 
 }

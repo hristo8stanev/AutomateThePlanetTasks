@@ -8,11 +8,11 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
-namespace BlueHostingLogin.Pages;
+namespace PriceStockComapny.Pages.BasePage;
 public abstract class WebPage
 {
     private int WAIT_FOR_ELEMENT => 30;
-   
+
 
     public WebPage(IWebDriver driver)
     {
@@ -28,7 +28,7 @@ public abstract class WebPage
     {
         Driver.Navigate().GoToUrl(Url);
     }
-    
+
     protected IWebElement MoveToElement(By locator)
     {
         Actions actions = new Actions(Driver);

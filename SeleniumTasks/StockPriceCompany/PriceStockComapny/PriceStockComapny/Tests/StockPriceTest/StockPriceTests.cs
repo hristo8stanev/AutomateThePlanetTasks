@@ -11,31 +11,12 @@ using PriceStockCompany.enums;
 using PriceStockComapny.Pages;
 
 
-namespace PriceStockComapny;
+namespace PriceStockComapny.Tests.BaseTest;
 
-public class StockPriceTests
+public class StockPriceTests : BaseTest
 {
-   
-    private IWebDriver _driver;
-    public InvestingPage _investingPage;
-    string companyName;
 
-    [SetUp]
-    public void Setup()
-    {
-        new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.FIREFOX);
-        _driver.Manage().Window.Maximize();
-        _investingPage = new InvestingPage(_driver);
-        companyName = "Google";
-    }
-
-    [TearDown]
-    public void Cleanup()
-    {
-
-        _driver.Dispose();
-    }
+    string companyName = "Google";
 
     [Test]
     public void CompanyHistoryStocksPricesTest()
@@ -46,5 +27,6 @@ public class StockPriceTests
         _investingPage.ClickOnHistoryDataPage();
         _investingPage.ExtractTheStockPrice();
         _investingPage.AssertHistoricDataUrlIsCorrect(_driver.Url);
+        _investingPage.AssertPriceStockIsShown();
     }
 }

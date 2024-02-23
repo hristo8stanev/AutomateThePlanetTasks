@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlueHostingLogin.Pages;
 using OpenQA.Selenium;
+using PriceStockComapny.Pages.BasePage;
 using SeleniumExtras.WaitHelpers;
 
 namespace PriceStockComapny.Pages;
@@ -22,22 +22,20 @@ public partial class InvestingPage : WebPage
     public void SearchCompany(string value)
     {
         AcceptConceptButton.Click();
-        searchBoxFIeld.SendKeys(value);
-        searchBoxFIeld.Click();
+        SearchBoxFIeld.SendKeys(value);
+        SearchBoxFIeld.Click();
         MoveToElement((By.XPath("//li[contains(@class ,'list_list__item__dwS6E mainSearch_search-results-item-wrapper')][1]")));
         SelectCompany.Click();
     }
 
     public void ClickOnHistoryDataPage()
     {
-        historicData.Click();
+        HistoricData.Click();
 
     }
     public void ExtractTheStockPrice()
     {
-      
-        IWebElement priceElement = Driver.FindElement(By.XPath("//div[@data-test='instrument-price-last']"));
-        string priceText = priceElement.Text;
-        Console.WriteLine($"Last Stock Price:  {priceText}");
+    
+        Console.WriteLine($"Last Stock Price:  {PriceExtract.Text}");
     }
 }
