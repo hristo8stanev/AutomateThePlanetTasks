@@ -1,24 +1,4 @@
-using GPSCordinatesProject.Test.Core.BaseTest;
-using OpenQA.Selenium.DevTools.V120.Emulation;
+using GPSCordinatesProject.Test.Core.BaseTest;using OpenQA.Selenium.DevTools.V120.Emulation;using OpenQA.Selenium;using OpenQA.Selenium.Chrome;using OpenQA.Selenium.DevTools;using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V85.DevToolsSessionDomains;namespace GPSCordinatesProject.Tests.GpsCordinatesTest{        public class GPSCordinatesTests : BaseTest    {        protected IDevToolsSession session;        [Test]        public void Test1()        {            IDevTools devTools = _driver as IDevTools;
+            session = devTools.GetDevToolsSession();
 
-namespace GPSCordinatesProject.Tests.GpsCordinatesTest;
-
-public class GPSCordinatesTests : BaseTest
-{
-    
-
-    [Test]
-    public void Test1()
-    {
-
-      //  using var devToolssession = _driver.GetDevToolsSession();
-      //  var domains = devToolssession.GetVersionSpecificDomain<DevToolsSessionDomains>();
-      //  var timezoneOverrideSettings = new SetTimezoneOverrideCommandSettings();
-      //  timezoneOverrideSettings.TimezoneId = "America/Sao_Paulo";
-      //  domains.Emulation.SetLocaleOverride(SetLocaleOverrideSettings);
-
-        _mainPage.GoTo();
-        _mainPage.AcceptCookies();
-        _mainPage.RegisterForm();
-    }
-}
+            var timezoneOverrideSettings = new SetTimezoneOverrideCommandSettings();            timezoneOverrideSettings.TimezoneId = "America/Sao_Paulo";            domains.Emulation.SetTimezoneOverride(timezoneOverrideSettings);            _mainPage.GoTo();            _mainPage.AcceptCookies();        }    }}

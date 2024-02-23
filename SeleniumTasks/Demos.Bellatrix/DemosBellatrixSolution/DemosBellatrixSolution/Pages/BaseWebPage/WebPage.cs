@@ -48,24 +48,26 @@ public abstract class WebPage
 
         return WebDriverWait.Until(ExpectedConditions.ElementExists(locator));
     }
-    
-   // protected IWebElement waitAndFindElementJS(By locator)
-   // {
-   //    var element =  WebDriverWait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
-   //     scrolltoVisible(element);
-   //     return element;
-   // }
-   //
-   // public void scrolltoVisible(WebElement element)
-   // {
-   //     try
-   //     {
-   //         ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
-   //     }catch (ElementNotInteractableException ex)
-   //     {
-   //
-   //     }
-   // }
+
+    protected IWebElement waitAndFindElementJS(By locator)
+    {
+        var element = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(locator));
+        scrolltoVisible(element);
+        return element;
+    }
+
+    public void scrolltoVisible(IWebElement element)
+    {
+        try
+        {
+            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+        catch (ElementNotInteractableException ex)
+        {
+           
+        }
+    }
+
 
     protected void WaitForAjax()
     {

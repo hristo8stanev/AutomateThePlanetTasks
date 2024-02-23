@@ -27,13 +27,9 @@ public abstract class WebPage
     public void GoTo()
     {
         Driver.Navigate().GoToUrl(Url);
-        WaitForPageToLoad();
+       
     }
-    protected virtual void WaitForPageToLoad()
-    {
-
-
-    }
+   
 
     protected IWebElement MoveToElement(By locator)
     {

@@ -17,7 +17,6 @@ namespace ZipCodes.Test.Core.BaseTest;
 public class AdvanceSearchTests : BaseTest
 {
     private string firstLetter => "H";
-    bool cookiesAcceptedForFirstCity = false;
 
     [Test]
     public void AdvanceSearchCityNameZipCode()
@@ -29,55 +28,7 @@ public class AdvanceSearchTests : BaseTest
         _searchPage.AssertSearchPageIsShown(_driver.Url);
         _searchPage.SearchTownByName(firstLetter);
         _searchPage.AssertOAdvanceSearchedUrl(_driver.Url);
+        _searchPage.IterateBetweenTheCities();
 
-
-        IWebElement table = _driver.FindElement(By.Id("tblZIP"));
-        IList<IWebElement> rows = table.FindElements(By.TagName("tr"));
-        List<string> first10ResultUrls = new List<string>();
-        List<CityDetails> cityDetailsList = new List<CityDetails>();
-
-
-        for (int i = 1; i < Math.Min(11, rows.Count); i++)
-        { 
-            IList<IWebElement> links = rows[i].FindElements(By.XPath(".//a[contains(@href, '/city/')]"));
-
-            if (links.Count > 0)
-            {
-                string url = links[0].GetAttribute("href");
-                first10ResultUrls.Add(url);
-                links[0].Click();
-
-                string cityName = _driver.FindElement(By.XPath("//*[@aria-label='Enter City']")).GetAttribute("value");
-                string state = _driver.FindElement(By.XPath("//*[@aria-label='State Abbr']")).GetAttribute("value");
-                string zipCode = _driver.FindElement(By.XPath("(.//a[contains(@href, '/zip-code/')][1])")).Text;
-                string longitudeAndLatitude = _driver.FindElement(By.XPath("(//*[@class='striped']//td)[18]")).GetText();
-
-                string[] coordinates = longitudeAndLatitude.Split(',');
-                string latitude = coordinates[0].Trim();
-                string longitude = coordinates[1].Trim();
-
-                string googleMapsLink = $"https://www.google.com/maps?q={latitude},{longitude}";
-
-                cityDetailsList.Add(new CityDetails(cityName, state, zipCode, longitudeAndLatitude, googleMapsLink));
-
-                ((IJavaScriptExecutor)_driver).ExecuteScript($"window.open('{googleMapsLink}', '_blank');");
-                _driver.SwitchTo().Window(_driver.WindowHandles.Last());
-
-                if (!cookiesAcceptedForFirstCity)
-                {
-                    _searchPage.AcceptGoogleCookies();
-                    cookiesAcceptedForFirstCity = true;
-                }
-
-                Thread.Sleep(1500);
-                Screenshot ss = ((ITakesScreenshot)_driver).GetScreenshot();
-                ss.SaveAsFile($"C:\\Users\\UsernameT\\Downloads\\{cityName}-{state}-{zipCode}.jpg");
-                _driver.Close();
-                _driver.SwitchTo().Window(_driver.WindowHandles.First());
-                _driver.Navigate().Back();
-                table = _driver.FindElement(By.Id("tblZIP"));
-                rows = table.FindElements(By.TagName("tr"));
-            }
-        }
     }
 }

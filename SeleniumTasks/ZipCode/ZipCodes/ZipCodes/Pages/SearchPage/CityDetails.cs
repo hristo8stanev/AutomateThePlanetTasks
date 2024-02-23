@@ -24,9 +24,4 @@ public class CityDetails
         GoogleMapsLink = googleMapsLink;
 
     }
-    public override string ToString()
-    {
-        return $"City: {CityName}, State: {State}, ZIP Code: {ZipCode}, Longtitude and Latitude: {LongitudeAndLatitude}";
-
-    }
 }
