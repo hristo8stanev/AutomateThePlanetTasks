@@ -32,7 +32,7 @@ public class DemosBellatrixSolution : BaseTest
     }
 
     [Test]
-    public void PurchaseRocket_When_NewClientAppears()
+    public void NewClientCanPurchaseRocketSuccessfully()
     {
 
         var purchaseInfo = new PurchaseInfo()
@@ -75,7 +75,7 @@ public class DemosBellatrixSolution : BaseTest
     }
 
     [Test]
-    public void VerifyOrdersPresence_When_AccountSectionVisited()
+    public void OrdersAppearInAccountSectionAfterPurchase()
     {
         var purchaseInfo = new PurchaseInfo()
         {
