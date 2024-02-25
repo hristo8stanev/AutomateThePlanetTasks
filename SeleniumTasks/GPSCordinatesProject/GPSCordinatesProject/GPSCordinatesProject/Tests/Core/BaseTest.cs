@@ -22,7 +22,9 @@ public class BaseTest
     protected IDevToolsSession DevToolsSession;
     protected IWebDriver _driver;
     protected MainPage _mainPage;
+    
 
+    // THIS TASK HASN'T BEEN FINISHED YET.
     [SetUp]
     public void Setup()
     {
