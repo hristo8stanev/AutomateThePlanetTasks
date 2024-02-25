@@ -1,4 +1,22 @@
-using GPSCordinatesProject.Test.Core.BaseTest;using OpenQA.Selenium.DevTools.V120.Emulation;using OpenQA.Selenium;using OpenQA.Selenium.Chrome;using OpenQA.Selenium.DevTools;using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V85.DevToolsSessionDomains;namespace GPSCordinatesProject.Tests.GpsCordinatesTest{        public class GPSCordinatesTests : BaseTest    {        protected IDevToolsSession session;        [Test]        public void Test1()        {            IDevTools devTools = _driver as IDevTools;
-            session = devTools.GetDevToolsSession();
+using GPSCordinatesProject.Test.Core.BaseTest;
+using OpenQA.Selenium.DevTools.V120.Emulation;
+using OpenQA.Selenium;
+namespace SeleniumDocs.Bidirectional.ChromeDevtools
+{
 
-            var timezoneOverrideSettings = new SetTimezoneOverrideCommandSettings();            timezoneOverrideSettings.TimezoneId = "America/Sao_Paulo";            domains.Emulation.SetTimezoneOverride(timezoneOverrideSettings);            _mainPage.GoTo();            _mainPage.AcceptCookies();        }    }}
+    public class GPSCordinatesTests : BaseTest
+    {
+        [Test]
+        public void RunningFromDifferentLocation_When_DifferentCountyIsEntered()
+        {
+
+            _mainPage.GoTo();
+            _mainPage.AcceptCookies();
+            _mainPage.ScrooToTheAddress();
+            _mainPage.AssertCityAndCountryIsCorrect();
+            _mainPage.AssertLongtitudeAndLatitudeIsCorrect();
+            _mainPage.AssertMapIsDisplayed();
+          
+        }
+    }
+}

@@ -26,12 +26,25 @@ public abstract class WebPage
     public void GoTo()
     {
         _driver.Navigate().GoToUrl(Url);
-        WaitForPageToLoad();
+        
     }
-    protected virtual void WaitForPageToLoad()
+    protected IWebElement WaitAndFindElementJS(By locator)
     {
+        var element = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(locator));
+        scrolltoVisible(element);
+        return element;
+    }
 
+    public void scrolltoVisible(IWebElement element)
+    {
+        try
+        {
+            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+        catch (ElementNotInteractableException ex)
+        {
 
+        }
     }
 
     protected IWebElement MoveToElement(By locator)
