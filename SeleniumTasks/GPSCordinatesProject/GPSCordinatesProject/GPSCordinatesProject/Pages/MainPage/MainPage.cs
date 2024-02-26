@@ -5,7 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using GPSCordinatesProject.Pages.BasePage;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools;
 using SeleniumWebdriverHelpers;
+using GPSCordinatesProject.Test.Core.BaseTest;
+using OpenQA.Selenium.DevTools.V120.Emulation;
+using OpenQA.Selenium;
+using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V122.DevToolsSessionDomains;
+using OpenQA.Selenium.DevTools.V122.Emulation;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
+using GPSCordinatesProject.Pages;
+using System.Collections.Generic;
+using GPSCordinatesProject.Pages.MainPage;
+using WebDriverManager.Helpers;
+using GPSCordinatesProject.Enums;
+using NUnit.Framework;
+using OpenQA.Selenium.Chrome;
+using SetGeolocationOverrideCommandSettings = OpenQA.Selenium.DevTools.V122.Emulation.SetGeolocationOverrideCommandSettings;
 
 namespace GPSCordinatesProject.Pages.MainPage;
 public partial class MainPage : WebPage
@@ -32,6 +48,21 @@ public partial class MainPage : WebPage
          _driver.Manage().Cookies.AddCookie(new Cookie("FCNEC", "%5B%5B%22AKsRol9ltL6Lgfm5Or65xxojHB_N2o6sxVnPbAwiBz5U-hRBmUEzjqSuWAmnHGynVsnYH6vJf4t8U6QJy2bb0Y_MS2yHVxAeSnF3oWL0v0XA2CvWpbty59E7_XkOqq6jGdZUBskaPNaE4Y80-ufzO2RqgxUeQrfnnQ%3D%3D%22%5D%5D"));
          _driver.Navigate().Refresh();
 
+    }
+
+    public void SetGeolocation(double latitude, double longitude)
+    {
+        using var devToolsSession = ((IDevTools)_driver).GetDevToolsSession();
+        var domains = devToolsSession.GetVersionSpecificDomains<DevToolsSessionDomains>();
+        var emulation = domains.Emulation;
+
+        var overrideSettings = new SetGeolocationOverrideCommandSettings
+        {
+            Latitude = latitude,
+            Longitude = longitude,
+            Accuracy = 1
+        };
+        emulation.SetGeolocationOverride(overrideSettings);
     }
 
     public void ScrooToTheAddress()
