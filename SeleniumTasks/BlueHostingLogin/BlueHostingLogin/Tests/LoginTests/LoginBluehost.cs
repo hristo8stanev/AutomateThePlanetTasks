@@ -1,20 +1,7 @@
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
-using WebDriverManager;
-using SeleniumExtras.WaitHelpers;
-using System.Diagnostics;
 using Faker;
-using Faker.Extensions;
-using BlueHostingLogin.@enum;
 using BlueHostingLogin.Pages.LambdaTestPage;
-using System.Net.Mail;
 using BlueHostingLogin.Pages.BlueHostPage;
 using BlueHostingLogin.Tests.Core;
-using AngleSharp.Dom;
-using SeleniumWebdriverHelpers;
 
 namespace BlueHostingLogin.Tests.LoginTests;
 
