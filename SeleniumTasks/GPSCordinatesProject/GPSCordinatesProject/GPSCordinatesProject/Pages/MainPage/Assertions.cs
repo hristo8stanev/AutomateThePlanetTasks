@@ -13,8 +13,6 @@ public partial class MainPage
     public void AssertCityAndCountryIsCorrect(string city, string country)
     {
         MoveToElement(By.XPath("//*[@id='address']"));
-       // Console.WriteLine(AdressTitle.Text);
-       // Assert.That(AdressTitle.Text.Contains($"{country}, {city}"), ErrorMessageCity);
 
         var expecterResult = $"{country}, {city}";
         var actualResults = AdressTitle.Text;

@@ -1,24 +1,6 @@
 ﻿using GPSCordinatesProject.Test.Core.BaseTest;
-using OpenQA.Selenium.DevTools.V120.Emulation;
-using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools;
-using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V122.DevToolsSessionDomains;
-using OpenQA.Selenium.DevTools.V122.Emulation;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
-using GPSCordinatesProject.Pages;
-using System.Collections.Generic;
-using GPSCordinatesProject.Pages.MainPage;
-using WebDriverManager.Helpers;
-using GPSCordinatesProject.Enums;
-using NUnit.Framework;
 
-using OpenQA.Selenium.Chrome;
-using SetGeolocationOverrideCommandSettings = OpenQA.Selenium.DevTools.V122.Emulation.SetGeolocationOverrideCommandSettings;
-
-namespace SeleniumDocs.Bidirectional.ChromeDevtools
-{
- 
+namespace SeleniumDocs.Bidirectional.ChromeDevtools;
     public class GPSCordinatesTests : BaseTest
     {
 
@@ -44,4 +26,3 @@ namespace SeleniumDocs.Bidirectional.ChromeDevtools
             _mainPage.AssertLongtitudeAndLatitudeIsCorrect(latitude, longitude);
         }
     }
-}

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ZipCodes.Pages.SearchPage;
 public partial class SearchPage
 {
-    private string errorMessageUrl => "The URL does not contain 'order-received'";
+    private string ErrorMessageUrl => "The URL does not contain 'order-received'";
 
     public void AssertSearchPageIsShown(string receiveOrderUrl)
     {
@@ -15,7 +15,7 @@ public partial class SearchPage
     }
     public void AssertOAdvanceSearchedUrl (string receiveOrderUrl)
     {
-        Assert.That(receiveOrderUrl.Contains("Submit=Find+ZIP+Codes"), Is.True, errorMessageUrl);
+        Assert.That(receiveOrderUrl.Contains("Submit=Find+ZIP+Codes"), Is.True, ErrorMessageUrl);
     }
 }
 

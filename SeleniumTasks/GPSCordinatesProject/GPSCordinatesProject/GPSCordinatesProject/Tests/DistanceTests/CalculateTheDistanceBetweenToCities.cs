@@ -9,5 +9,15 @@ namespace GPSCordinatesProject.Tests.DistanceTests;
 public class CalculateTheDistanceBetweenToCities : BaseTest
 {
 
+    [Test]
+    public void CalculateDistanceBetweenToCity()
+    {
+
+        _distancePage.GoTo();
+        _mainPage.AcceptCookies();
+        _distancePage.AssertDistanceUrlIsShown(_driver.Url);
+
+    }
+
 
 }

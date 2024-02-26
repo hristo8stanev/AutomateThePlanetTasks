@@ -34,8 +34,4 @@
     <PackageReference Include="WebDriverManager" Version="2.17.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\DistancePage\" />
-  </ItemGroup>
-
 </Project>
