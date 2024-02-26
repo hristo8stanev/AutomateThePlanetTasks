@@ -91,6 +91,7 @@ public class DemosBellatrixSolution : BaseTest
             RocketName = rocketName,
         };
 
+
         _bellatrixMainPage.GoTo();
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
