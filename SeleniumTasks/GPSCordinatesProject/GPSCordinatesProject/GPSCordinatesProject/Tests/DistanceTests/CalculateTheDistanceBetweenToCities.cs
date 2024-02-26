@@ -6,6 +6,8 @@ using static System.Net.WebRequestMethods;
 namespace GPSCordinatesProject.Tests.DistanceTests;
 public class CalculateTheDistanceBetweenToCities : BaseTest
 {
+
+    //IN PROGRESS
     [TestCase("Germany", "Unter den Linden, Friedrichstraße, 10117 Berlin")]
     [TestCase("Argentina", "Obelisco, Avenida Corrientes, San Nicolás, Buenos Aires")]
     [TestCase("Australia", "Australian Capital Territory, CGS Rowing, Alexandrina Drive, Yarralumla 2600")]

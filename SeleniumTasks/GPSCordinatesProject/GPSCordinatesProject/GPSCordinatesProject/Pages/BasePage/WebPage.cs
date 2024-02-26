@@ -49,6 +49,13 @@ public abstract class WebPage
         actions.MoveToElement(element).Perform();
         return element;
     }
+    public IWebElement ScrollToTheElement(By locator)
+    {
+        IWebElement element = _driver.FindElement(locator);
+        IJavaScriptExecutor js = (IJavaScriptExecutor)_driver;
+        js.ExecuteScript("arguments[0].scrollIntoView();", element);
+        return element;
+    }
 
     protected IWebElement WaitAndFindElement(By locator)
     {

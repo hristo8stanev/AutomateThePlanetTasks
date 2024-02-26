@@ -26,7 +26,7 @@ public partial class DistancePage : WebPage
     public void SetSecondAddress() => SecondLocation.SendKeys("Germany, Berlin");
     public void CalculateTheDistance()
     {
-        MoveToElement(By.XPath("//button[text()='Calculate the distance']"));
+        ScrollToTheElement(By.XPath("//*[@id='address1']"));
         CalculateDistanceButton.Click();
-    } 
+    }
 }
