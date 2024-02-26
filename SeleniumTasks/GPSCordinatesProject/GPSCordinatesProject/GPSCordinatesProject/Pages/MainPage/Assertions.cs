@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
 using SeleniumWebdriverHelpers;
 
@@ -14,26 +10,26 @@ public partial class MainPage
     private string ErrorMessageCordinates => "Your expected Longtitude and Latitude is not displayed";
 
 
-    public void AssertCityAndCountryIsCorrect()
+    public void AssertCityAndCountryIsCorrect(string city, string country)
     {
         MoveToElement(By.XPath("//*[@id='address']"));
-        string cityAndCountry = AdressTitle.Text;
-        string[] coordinates = cityAndCountry.Split(',');
-        string city = coordinates[2].Trim();
-        string country = coordinates[3].Trim();
-        Console.WriteLine($"{city},{country}");
-        Assert.That(AdressTitle.Text.Contains($"{city}, {country}"), ErrorMessageCity);
+       // Console.WriteLine(AdressTitle.Text);
+       // Assert.That(AdressTitle.Text.Contains($"{country}, {city}"), ErrorMessageCity);
 
+        var expecterResult = $"{country}, {city}";
+        var actualResults = AdressTitle.Text;
+        var message = $"{ErrorMessageCity} \n Actual Text: {actualResults}, \n Expected Text: {expecterResult}";
+        CollectionAssert.AreEqual(expecterResult, actualResults, message);
     }
-  
-    public void AssertLongtitudeAndLatitudeIsCorrect()
-    {
 
-         
-         Console.WriteLine(Cordinates.Text);
-       
-       // Console.WriteLine(Cordinates.GetText());
-   
+    public void AssertLongtitudeAndLatitudeIsCorrect(double latitude, double longtitude)
+    {
+        var expecterResult = $"Latitude: {latitude} | Longitude: {longtitude}";
+        var replace = "\r\n\r\nGet Altitude";
+        var actualResults = Cordinates.GetText().Replace(replace,"");
+        var message = $"{ErrorMessageCordinates} \n Actual Text: {actualResults}, \n Expected Text: {expecterResult}";
+        CollectionAssert.AreEqual(expecterResult, actualResults,message);
+
     }
 
     public void AssertMapIsDisplayed()
