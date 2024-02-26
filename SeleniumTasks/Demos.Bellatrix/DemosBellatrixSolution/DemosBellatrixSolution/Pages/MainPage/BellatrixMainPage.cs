@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DemosBellatrixSolution.Pages.BaseWebPage;
-using DemosBellatrixSolution.Pages.CheckoutPage;
+﻿using DemosBellatrixSolution.Pages.BaseWebPage;
 using OpenQA.Selenium;
 
 namespace DemosBellatrixSolution.Pages.MainPage;

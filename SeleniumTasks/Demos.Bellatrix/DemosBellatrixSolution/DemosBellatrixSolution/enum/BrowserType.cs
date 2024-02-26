@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DemosBellatrixSolution;
-    public enum BrowserType
+﻿namespace DemosBellatrixSolution;
+public enum BrowserType
 {
     CHROME,
     CHROME_INCOGNITO,

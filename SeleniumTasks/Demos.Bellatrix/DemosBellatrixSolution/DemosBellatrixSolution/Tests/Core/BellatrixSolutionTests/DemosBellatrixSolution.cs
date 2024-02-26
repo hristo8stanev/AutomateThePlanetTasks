@@ -1,7 +1,6 @@
 using DemosBellatrixSolution.Pages.CheckoutPage;
 using DemosBellatrixSolution.Tests.Core.BaseTests;
 using OpenQA.Selenium.DevTools;
-using OpenQA.Selenium.Chrome;
 
 namespace DemosBellatrixSolution.Tests.Core.DemosBellatrixTests;
 

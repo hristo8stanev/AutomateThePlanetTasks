@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using AngleSharp.Dom;
-using DemosBellatrixSolution.Pages.BaseWebPage;
+﻿using DemosBellatrixSolution.Pages.BaseWebPage;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using SeleniumWebdriverHelpers;
 
 namespace DemosBellatrixSolution.Pages.CartPage;
 public partial class CartPage : WebPage

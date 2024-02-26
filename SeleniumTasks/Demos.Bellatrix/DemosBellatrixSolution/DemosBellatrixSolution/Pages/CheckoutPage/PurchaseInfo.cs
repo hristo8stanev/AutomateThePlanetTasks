@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DemosBellatrixSolution.Pages.CheckoutPage;
+﻿namespace DemosBellatrixSolution.Pages.CheckoutPage;
 public class PurchaseInfo
 {
     public string FirstName { get; set; }

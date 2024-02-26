@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DemosBellatrixSolution.Pages.CartPage;
+﻿using DemosBellatrixSolution.Pages.CartPage;
 using DemosBellatrixSolution.Pages.CheckoutPage;
 using OpenQA.Selenium;
 using WebDriverManager.DriverConfigs.Impl;
