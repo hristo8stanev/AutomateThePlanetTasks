@@ -19,7 +19,7 @@ namespace SeleniumDocs.Bidirectional.ChromeDevtools;
             _mainPage.SetGeolocation(latitude, longitude);
             _mainPage.GoTo();
             _mainPage.AcceptCookies();
-            _mainPage.ScrooToTheAddress();
+            _mainPage.ScrollToTheAddress();
 
             _mainPage.AssertMapIsDisplayed();
             _mainPage.AssertCityAndCountryIsCorrect(country,city);

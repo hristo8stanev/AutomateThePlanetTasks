@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Interactions;
+﻿using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
@@ -58,7 +53,7 @@ public abstract class WebPage
     protected IWebElement WaitAndFindElement(By locator)
     {
 
-        return WebDriverWait.Until(ExpectedConditions.ElementExists(locator));
+        return WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));
     }
 
     protected void WaitForAjax()

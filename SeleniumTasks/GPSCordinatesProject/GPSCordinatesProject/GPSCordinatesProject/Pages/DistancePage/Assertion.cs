@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Faker;
-using NUnit.Framework.Legacy;
+﻿using NUnit.Framework.Legacy;
 
 namespace GPSCordinatesProject.Pages.DistancePage;
 public partial class DistancePage
@@ -24,7 +18,7 @@ public partial class DistancePage
 
     public void AssertCalculateTheDistanceBetwwenTwoCities()
     {
-
-
+        bool isPriceDisplayed = DistanceElement.Displayed;
+        Assert.That(isPriceDisplayed);
     }
 }

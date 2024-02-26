@@ -1,26 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GPSCordinatesProject.Pages.BasePage;
+﻿using GPSCordinatesProject.Pages.BasePage;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
-using SeleniumWebdriverHelpers;
-using GPSCordinatesProject.Test.Core.BaseTest;
-using OpenQA.Selenium.DevTools.V120.Emulation;
-using OpenQA.Selenium;
 using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V122.DevToolsSessionDomains;
-using OpenQA.Selenium.DevTools.V122.Emulation;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
-using GPSCordinatesProject.Pages;
-using System.Collections.Generic;
-using GPSCordinatesProject.Pages.MainPage;
-using WebDriverManager.Helpers;
-using GPSCordinatesProject.Enums;
-using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
 using SetGeolocationOverrideCommandSettings = OpenQA.Selenium.DevTools.V122.Emulation.SetGeolocationOverrideCommandSettings;
 
 namespace GPSCordinatesProject.Pages.MainPage;
@@ -65,7 +46,19 @@ public partial class MainPage : WebPage
         emulation.SetGeolocationOverride(overrideSettings);
     }
 
-    public void ScrooToTheAddress()
+    public void GetTheCurrentAddress()
+    {
+        MoveToElement(By.XPath("//*[@id='address']"));
+        var currentAddress = AdressTitle.Text;
+    }
+
+    public void ScrollToTheGpsAddress()
+    {
+        MoveToElement(By.XPath("(//*[@class='btn btn-primary'])[1]"));
+        _driver.Navigate().Refresh();
+    }
+
+    public void ScrollToTheAddress()
     {
         MoveToElement(By.XPath("//*[@id='address']"));
         

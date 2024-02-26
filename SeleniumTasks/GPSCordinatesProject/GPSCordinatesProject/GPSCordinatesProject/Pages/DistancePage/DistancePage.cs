@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GPSCordinatesProject.Pages.BasePage;
+﻿using GPSCordinatesProject.Pages.BasePage;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools;
+using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V122.DevToolsSessionDomains;
+using SetGeolocationOverrideCommandSettings = OpenQA.Selenium.DevTools.V122.Emulation.SetGeolocationOverrideCommandSettings;
 
 namespace GPSCordinatesProject.Pages.DistancePage;
 public partial class DistancePage : WebPage
@@ -16,4 +14,19 @@ public partial class DistancePage : WebPage
     protected override string Url => "https://www.gps-coordinates.net/distance";
 
 
+    public void SwitchToDistancePage()
+    {
+        string gpsCoordinatesMainPage = $"https://www.gps-coordinates.net/distance";
+        ((IJavaScriptExecutor)_driver).ExecuteScript($"window.open('{gpsCoordinatesMainPage}', '_blank');");
+        _driver.SwitchTo().Window(_driver.WindowHandles.Last());
+        _driver.Navigate().Refresh();
+    }
+
+    public void SetFirstAddress(string address1) => FirstLocation.SendKeys(address1);
+    public void SetSecondAddress() => SecondLocation.SendKeys("Germany, Berlin");
+    public void CalculateTheDistance()
+    {
+        MoveToElement(By.XPath("//button[text()='Calculate the distance']"));
+        CalculateDistanceButton.Click();
+    } 
 }
