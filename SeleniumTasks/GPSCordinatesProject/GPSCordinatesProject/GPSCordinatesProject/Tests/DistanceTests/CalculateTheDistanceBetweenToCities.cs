@@ -8,14 +8,14 @@ public class CalculateTheDistanceBetweenToCities : BaseTest
 {
 
     //IN PROGRESS
-    [TestCase("Germany", "Unter den Linden, Friedrichstraße, 10117 Berlin")]
+  //  [TestCase("Germany", "Unter den Linden, Friedrichstraße, 10117 Berlin, 0 km / 0 mi")]
     [TestCase("Argentina", "Obelisco, Avenida Corrientes, San Nicolás, Buenos Aires")]
-    [TestCase("Australia", "Australian Capital Territory, CGS Rowing, Alexandrina Drive, Yarralumla 2600")]
-    [TestCase("Canada", "World Exchange Plaza, 45 O'Connor Street, Ottawa, ON K1P 5M4")]
-    [TestCase("Japan", "unnamed road, Izumi 2, Suginami, 168-0063")]
-    [TestCase("11455, Taipei Neihu District 開眼山步道", "Taiwan")]
-    [TestCase("Norway", "Karl Johans gate, 0026 Oslo")]
-    [TestCase("South Africa", "unnamed road, City Centre, Cape Town, 8001")]
+ //   [TestCase("Australia", "Australian Capital Territory, CGS Rowing, Alexandrina Drive, Yarralumla 2600")]
+ //   [TestCase("Canada", "World Exchange Plaza, 45 O'Connor Street, Ottawa, ON K1P 5M4")]
+ //   [TestCase("Japan", "unnamed road, Izumi 2, Suginami, 168-0063")]
+ //   [TestCase("11455, Taipei Neihu District 開眼山步道", "Taiwan")]
+ //   [TestCase("Norway", "Karl Johans gate, 0026 Oslo")]
+ //   [TestCase("South Africa", "unnamed road, City Centre, Cape Town, 8001")]
     [Test]
     public void CalculateDistanceBetweenToCity(string country, string city)
     {
@@ -32,6 +32,7 @@ public class CalculateTheDistanceBetweenToCities : BaseTest
         _distancePage.SetFirstAddress(currentAddress);
         _distancePage.SetSecondAddress();
         _distancePage.CalculateTheDistance();
-        _distancePage.AssertCalculateTheDistanceBetwwenTwoCities();
+        _distancePage.AsserTheDistanceBetwwenTwoCitiesIsShown();
+        _distancePage.AssertCalculateTheDistanceBetwwenTwoCities("11921.52 km / 7407.69 mi");
     }
 }

@@ -20,8 +20,8 @@ public abstract class WebPage
 
     public void GoTo()
     {
+
         _driver.Navigate().GoToUrl(Url);
-        
     }
     protected IWebElement WaitAndFindElementJS(By locator)
     {
@@ -42,6 +42,14 @@ public abstract class WebPage
         }
     }
 
+    public void WaitTextToBePresentInElement(By locator, string value)
+    {
+  
+       WebDriverWait.Until(ExpectedConditions.TextToBePresentInElement(_driver.FindElement(locator), value));
+    }
+
+    
+
     protected IWebElement MoveToElement(By locator)
     {
         Actions actions = new Actions(_driver);
@@ -49,6 +57,7 @@ public abstract class WebPage
         actions.MoveToElement(element).Perform();
         return element;
     }
+
     public IWebElement ScrollToTheElement(By locator)
     {
         IWebElement element = _driver.FindElement(locator);
