@@ -1,8 +1,5 @@
 ﻿using GPSCordinatesProject.Pages.BasePage;
 using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools;
-using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V122.DevToolsSessionDomains;
-using SetGeolocationOverrideCommandSettings = OpenQA.Selenium.DevTools.V122.Emulation.SetGeolocationOverrideCommandSettings;
 
 namespace GPSCordinatesProject.Pages.DistancePage;
 public partial class DistancePage : WebPage

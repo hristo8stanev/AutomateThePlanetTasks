@@ -1,7 +1,4 @@
-﻿using System.Reflection.Emit;
-using GPSCordinatesProject.Test.Core.BaseTest;
-using OpenQA.Selenium;
-using static System.Net.WebRequestMethods;
+﻿using GPSCordinatesProject.Test.Core.BaseTest;
 
 namespace GPSCordinatesProject.Tests.DistanceTests;
 public class CalculateTheDistanceBetweenToCities : BaseTest

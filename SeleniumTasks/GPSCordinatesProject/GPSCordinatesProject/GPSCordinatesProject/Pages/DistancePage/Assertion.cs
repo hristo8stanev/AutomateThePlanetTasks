@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-using NUnit.Framework.Legacy;
+﻿using NUnit.Framework.Legacy;
 using OpenQA.Selenium;
 using SeleniumWebdriverHelpers;
 
