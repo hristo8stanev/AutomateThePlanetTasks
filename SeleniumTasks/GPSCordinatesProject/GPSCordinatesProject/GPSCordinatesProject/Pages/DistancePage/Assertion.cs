@@ -25,7 +25,7 @@ public partial class DistancePage
       
         WaitTextToBePresentInElement(By.XPath("//*[@id='distance']"), DistanceElement.GetText());
         ScrollToTheElement(By.XPath("//*[@id='distance']"));
-        Thread.Sleep(700);
+        MoveToElement(By.XPath("//*[@id='distance']"));
         var message = $"{ErrorMessagePrice} \n Actual Text: {DistanceElement.Text}, \n Expected Text: {expectedDistance}";      
         CollectionAssert.AreEqual(expectedDistance, DistanceElement.Text, message);
     }
