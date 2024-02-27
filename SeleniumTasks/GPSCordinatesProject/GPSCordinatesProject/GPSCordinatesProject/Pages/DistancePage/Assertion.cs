@@ -22,11 +22,12 @@ public partial class DistancePage
 
     public void AssertCalculateTheDistanceBetwwenTwoCities(string expectedDistance)
     {
-        var actualDistance = DistanceElement.Text;
-        WaitTextToBePresentInElement(By.XPath("//*[@id='distance']"), actualDistance);
-        var message = $"{ErrorMessagePrice} \n Actual Text: {actualDistance}, \n Expected Text: {expectedDistance}";
-
-        CollectionAssert.AreEqual(expectedDistance, actualDistance, message);
+      
+        WaitTextToBePresentInElement(By.XPath("//*[@id='distance']"), DistanceElement.GetText());
+        ScrollToTheElement(By.XPath("//*[@id='distance']"));
+        Thread.Sleep(700);
+        var message = $"{ErrorMessagePrice} \n Actual Text: {DistanceElement.Text}, \n Expected Text: {expectedDistance}";      
+        CollectionAssert.AreEqual(expectedDistance, DistanceElement.Text, message);
     }
 
     public void AsserTheDistanceBetwwenTwoCitiesIsShown()
