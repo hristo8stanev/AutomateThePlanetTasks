@@ -7,8 +7,9 @@ namespace GPSCordinatesProject.Pages.DistancePage;
 public partial class DistancePage
 {
 
-    private string ErrorMessageUrl => "The URL does not contain 'order-received'";
-    private string ErrorMessagePrice = "The expected price is not correct";
+    private string ErrorMessageUrl => "The URL is not correct";
+    private string ErrorMessageIsPriceDisplayed => "The distance is not displayed";
+    private string ErrorMessagePrice = "The expected distance is not correct";
 
     public void AssertDistanceUrlIsShown(string distanceUrl)
     {
@@ -33,6 +34,6 @@ public partial class DistancePage
     public void AsserTheDistanceBetwwenTwoCitiesIsShown()
     {
         bool isPriceDisplayed = DistanceElement.Displayed;
-        Assert.That(isPriceDisplayed);
+        Assert.That(isPriceDisplayed, ErrorMessageIsPriceDisplayed);
     }
 }
