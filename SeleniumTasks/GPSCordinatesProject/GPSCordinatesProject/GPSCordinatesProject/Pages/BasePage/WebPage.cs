@@ -48,8 +48,6 @@ public abstract class WebPage
        WebDriverWait.Until(ExpectedConditions.TextToBePresentInElement(_driver.FindElement(locator), value));
     }
 
-    
-
     protected IWebElement MoveToElement(By locator)
     {
         Actions actions = new Actions(_driver);

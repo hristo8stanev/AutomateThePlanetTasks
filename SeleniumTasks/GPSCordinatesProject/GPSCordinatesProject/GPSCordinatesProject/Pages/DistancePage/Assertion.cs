@@ -22,7 +22,7 @@ public partial class DistancePage
 
     public void AssertCalculateTheDistanceBetwwenTwoCities(string expectedDistance)
     {
-        var actualDistance = DistanceElement.GetText();
+        var actualDistance = DistanceElement.Text;
         WaitTextToBePresentInElement(By.XPath("//*[@id='distance']"), actualDistance);
         var message = $"{ErrorMessagePrice} \n Actual Text: {actualDistance}, \n Expected Text: {expectedDistance}";
 
