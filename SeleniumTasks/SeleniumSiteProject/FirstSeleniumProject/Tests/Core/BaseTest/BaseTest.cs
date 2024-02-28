@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FirstSeleniumProject.Pages.GettingStartedPage;
+﻿using FirstSeleniumProject.Pages.GettingStartedPage;
 using OpenQA.Selenium;
 using WebDriverManager.DriverConfigs.Impl;
 using WebDriverManager.Helpers;

@@ -4,7 +4,6 @@ namespace GPSCordinatesProject.Tests.DistanceTests;
 public class CalculateTheDistanceBetweenToCities : BaseTest
 {
 
-     
      [TestCase("Germany", "Unter den Linden, Friedrichstraße, 10117 Berlin", "0.01 km / 0 mi")]
      [TestCase("Argentina", "Obelisco, Avenida Corrientes, San Nicolás, Buenos Aires", "11921.52 km / 7407.69 mi")]
      [TestCase("Australia", "Australian Capital Territory, CGS Rowing, Alexandrina Drive, Yarralumla 2600", "16089.14 km / 9997.33 mi")]
@@ -14,7 +13,7 @@ public class CalculateTheDistanceBetweenToCities : BaseTest
      [TestCase("Norway", "Karl Johans gate, 0026 Oslo", "839.35 km / 521.55 mi")]
      [TestCase("South Africa", "unnamed road, City Centre, Cape Town, 8001", "9635.01 km / 5986.92 mi")]
      [Test]
-    public void CalculateDistanceBetweenToCity(string country, string city, string distance)
+    public void CalculateDistanceBetweenTheTwoCities(string country, string city, string distance)
     {
         var (latitude, longitude) = CountryCoordinates[country];
 

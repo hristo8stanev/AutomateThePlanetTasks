@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZipCodes.Pages.SearchPage;
+﻿namespace ZipCodes.Pages.SearchPage;
 public partial class SearchPage
 {
     private string ErrorMessageUrl => "The URL does not contain 'order-received'";

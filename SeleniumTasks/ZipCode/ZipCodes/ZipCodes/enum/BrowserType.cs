@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZipCodes;
-    public enum BrowserType
+﻿namespace ZipCodes;
+public enum BrowserType
 {
     CHROME,
     CHROME_INCOGNITO,

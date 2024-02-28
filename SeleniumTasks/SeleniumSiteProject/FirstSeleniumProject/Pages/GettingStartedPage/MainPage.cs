@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using static System.Net.WebRequestMethods;
+﻿using OpenQA.Selenium;
+using SeleniumSiteProject.Pages.BasePage;
 
 namespace FirstSeleniumProject.Pages.GettingStartedPage;
 public partial class MainPage : WebPage

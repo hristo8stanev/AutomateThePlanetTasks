@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
+﻿using OpenQA.Selenium;
 using ZipCodes.Pages.BasePage;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ZipCodes.Pages.SearchPage;
 public partial class SearchPage : WebPage

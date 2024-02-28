@@ -9,7 +9,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
-namespace FirstSeleniumProject.Pages;
+namespace SeleniumSiteProject.Pages.BasePage;
 public abstract class WebPage
 {
     private int WAIT_FOR_ELEMENT => 20;
@@ -18,7 +18,7 @@ public abstract class WebPage
     {
         Driver = driver;
         WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
-       
+
     }
 
     protected IWebDriver Driver { get; set; }
@@ -30,7 +30,7 @@ public abstract class WebPage
         Driver.Navigate().GoToUrl(Url);
     }
 
-  
+
     protected IWebElement MoveToElement(By locator)
     {
         Actions actions = new Actions(Driver);

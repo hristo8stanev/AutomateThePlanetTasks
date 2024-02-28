@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZipCodes.Pages.ZipCodeMainPage;
+﻿namespace ZipCodes.Pages.ZipCodeMainPage;
 public partial class ZipCodeMainPage
 {
 

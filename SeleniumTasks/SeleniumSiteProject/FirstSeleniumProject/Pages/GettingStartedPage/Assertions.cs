@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FirstSeleniumProject.Pages.GettingStartedPage;
+﻿namespace FirstSeleniumProject.Pages.GettingStartedPage;
 public partial class MainPage
 {
     private  string ErrorMessageIncorrectUrl => "Your URL is not correct";
