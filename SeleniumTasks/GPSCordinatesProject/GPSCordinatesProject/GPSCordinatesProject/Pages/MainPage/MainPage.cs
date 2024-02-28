@@ -16,8 +16,10 @@ public partial class MainPage : WebPage
 
     public void AcceptCookies()
     {
-        //_driver.Manage().Cookies.AddCookie(new Cookie("cookieconsent_dismissed", "yes"));
-        _driver.Manage().Cookies.AddCookie(new Cookie("__eoi", "ID=f8a8d2b19e5a7307:T=1708612288:RT=1708612288:S=AA-AfjbXKpjBh0_zCDqICA-KEzdi"));
+         //_driver.Manage().Cookies.AddCookie(new Cookie("cookie_dismissed", "yes"));
+
+    
+         _driver.Manage().Cookies.AddCookie(new Cookie("__eoi", "ID=f8a8d2b19e5a7307:T=1708612288:RT=1708612288:S=AA-AfjbXKpjBh0_zCDqICA-KEzdi"));
          _driver.Manage().Cookies.AddCookie(new Cookie("__gads", "ID=cff0ebc0485cb786:T=1708612288:RT=1708612288:S=ALNI_MZKBzHIEijVqjkQl_cX6VNci-a8Qg"));
          _driver.Manage().Cookies.AddCookie(new Cookie("__gpi", "UID=00000d5f2df5b034:T=1708612288:RT=1708612288:S=ALNI_MYO_U8oDXsTw51iZZpzcJ3xb86oeA"));
          _driver.Manage().Cookies.AddCookie(new Cookie("_ga_MCB31SCPPD", "GS1.1.1708612271.1.0.1708612291.0.0.0"));

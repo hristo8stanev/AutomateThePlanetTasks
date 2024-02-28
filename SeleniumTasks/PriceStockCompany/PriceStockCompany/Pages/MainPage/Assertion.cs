@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
@@ -21,7 +16,7 @@ public partial class MainPage
     public void AssertThePriceOfStockIsShown()
     {
 
-        var price = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='flex flex-wrap gap-x-4 gap-y-2 items-center md:gap-6 mb-3 md:mb-0.5']"))).Text;
+        var price = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@class='text-5xl/9 font-bold text-[#232526] md:text-[42px] md:leading-[60px]']"))).Text;
         Console.WriteLine(price);
     }
 }

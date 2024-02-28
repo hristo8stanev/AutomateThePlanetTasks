@@ -32,6 +32,7 @@ public partial class SearchPage : WebPage
 
     public void AcceptCookies()
     {
+        
         AcceptCookie.Click();
     }
 

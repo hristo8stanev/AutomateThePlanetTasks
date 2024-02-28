@@ -52,13 +52,18 @@ public class DemosBellatrixSolution : BaseTest
         _bellatrixMainPage.GoTo();
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
+
         _cartPage.AssertCouponApplied();
+
         _cartPage.IncreaseProductQuantity(quantity);
         _cartPage.AssertQuantityOfTheProductCartPage(quantity);
         _cartPage.ProceedToCheckoOut();
+
         _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, quantity);
         _checkoutPage.AssertCheckoutPage(_driver.Url);
+
         _checkoutPage.FillBillingInfo(purchaseInfo);
+
         _checkoutPage.AssertOrderReceived();
         _checkoutPage.AssertOrderReceivedUr(_driver.Url);
     }
@@ -96,14 +101,18 @@ public class DemosBellatrixSolution : BaseTest
         _bellatrixMainPage.AddRocketToCart(rocketName);
         _cartPage.AppluCouponVaucher(CouponVaucher);
         _cartPage.AssertCouponApplied();
+
         _cartPage.IncreaseProductQuantity(quantity);
         _cartPage.AssertQuantityOfTheProductCartPage(quantity);
+
         _cartPage.ProceedToCheckoOut();
         _checkoutPage.AssertQuantityOfTheProductCheckoutPage(rocketName, quantity);
         _checkoutPage.AssertCheckoutPage(_driver.Url);
+
         _checkoutPage.FillBillingInfo(purchaseInfo);
         _checkoutPage.AssertOrderReceived();
         _checkoutPage.AssertOrderReceivedUr(_driver.Url);
+
         _bellatrixMainPage.EnterMyOrderSection();
         _bellatrixMainPage.AssertMyOrdersIsShown();
     }
