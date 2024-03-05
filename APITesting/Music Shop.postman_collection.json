@@ -1,0 +1,1257 @@
+{
+	"info": {
+		"_postman_id": "32b6468e-255a-4305-b335-e8b561da49a0",
+		"name": "Music Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33293619"
+	},
+	"item": [
+		{
+			"name": "Albums",
+			"item": [
+				{
+					"name": "Get all  albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"var responseBody = pm.response.json();\r",
+									"pm.test(\"Check if albumId is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.albumId).to.not.equal(null);\r",
+									"    pm.expect(responseBody.albumId).to.not.equal(\"\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if title is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.title).to.not.equal(null);\r",
+									"    pm.expect(responseBody.title).to.not.equal(\"\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if artistId is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.artistId).to.not.equal(null);\r",
+									"    pm.expect(responseBody.artistId).to.not.equal(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{AlbumsEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{AlbumsEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"var JsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Album Id is not null\", function(){\r",
+									"   pm.expect(JsonData.albumId, \"AlbumId should not be null\").to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains the requested content body\",() => {\r",
+									"    var actualContent = JsonData.albumId.toString();\r",
+									"    var expectedContent = pm.collectionVariables.get(\"generatedId\");\r",
+									"    pm.expect(actualContent, `Expected content: ${expectedContent}, Actual: ${actualContent}`).to.equal(expectedContent);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var randomId = Math.floor(Math.random() * 345) + 1;\r",
+									"pm.collectionVariables.set(\"generatedId\", randomId.toString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{AlbumsEndPoint}}/{{generatedId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{AlbumsEndPoint}}",
+								"{{generatedId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Album",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var albumId = (Math.floor)(Math.random() * (10000000)) + 500;\r",
+									"pm.collectionVariables.set(\"randomAlbumId\", albumId)\r",
+									"\r",
+									"var randomTitle = pm.variables.replaceIn(\"{{$randomCompanySuffix}}{{$randomFirstName}}\")\r",
+									"pm.collectionVariables.set(\"randomTitle\", randomTitle)\r",
+									"\r",
+									"var artistId = Math.floor(Math.random() * 280) + 1;\r",
+									"pm.collectionVariables.set(\"randomArtistId\", artistId)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function () {",
+									"    pm.response.to.have.status(201, 'Status received is ' + pm.response.status);",
+									"})",
+									"",
+									"",
+									"pm.test(\"Response body contains the requested content body - albumId\",() => {",
+									"    var actualContent = pm.response.json().albumId;",
+									"    var expectedContent = pm.collectionVariables.get(\"randomAlbumId\");",
+									"    pm.expect(actualContent, `Expected content: ${expectedContent}, Actual: ${actualContent}`).to.equal(expectedContent);",
+									"});",
+									"",
+									"pm.test(\"Response body contains the requested content body - title\",() => {",
+									"    var actualContent = pm.response.json().title.toString();",
+									"    var expectedContent = pm.collectionVariables.get(\"randomTitle\");",
+									"    pm.expect(actualContent, `Expected content: ${expectedContent}, Actual: ${actualContent}`).to.equal(expectedContent);",
+									"});",
+									"",
+									"pm.test(\"Response body contains the requested content body - artistId\",() => {",
+									"    var actualContent = pm.response.json().artistId;",
+									"    var expectedContent = pm.collectionVariables.get(\"randomArtistId\");",
+									"    pm.expect(actualContent, `Expected content: ${expectedContent}, Actual: ${actualContent}`).to.equal(expectedContent);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": {{randomAlbumId}},\r\n    \"title\": \"{{randomTitle}}\",\r\n    \"artistId\": {{randomArtistId}},\r\n    \"artist\": null,\r\n    \"tracks\": []\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{AlbumsEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{AlbumsEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update name of album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 204', () => {\r",
+									"    pm.response.to.have.status(204, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check response headers\", () => {\r",
+									"    pm.response.to.not.have.header(\"Content-Length\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var editedTitle = pm.variables.replaceIn(\"{{$randomFirstName}}\")\r",
+									"pm.collectionVariables.set(\"editedTitle\", editedTitle)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": {{generatedId}},\r\n    \"title\": \"{{editedTitle}}\",\r\n    \"artistId\": 8,\r\n    \"artist\": null,\r\n    \"tracks\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{AlbumsEndPoint}}/{{generatedId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{AlbumsEndPoint}}",
+								"{{generatedId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200, 'Status received is ' + pm.response.status);",
+									"})",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{AlbumsEndPoint}}/{{randomAlbumId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{AlbumsEndPoint}}",
+								"{{randomAlbumId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "Get all  genres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"var responseBody = pm.response.json();\r",
+									"pm.test(\"Check if albumId is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.name).to.not.equal(null);\r",
+									"    pm.expect(responseBody.name).to.not.equal(\"\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if title is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.genreId).to.not.equal(null);\r",
+									"    pm.expect(responseBody.genreId).to.not.equal(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{GenresEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{GenresEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var randomId = Math.floor(Math.random()* 50);\r",
+									"pm.collectionVariables.set(\"randomGenreId\", randomId);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', () => {",
+									"    pm.response.to.have.status(200, 'Status received is ' + pm.response.status);",
+									"})",
+									"",
+									"pm.test('Response body contains the requested content body - name', () => {",
+									"    var actualContent = pm.response.json().name;",
+									"    pm.expect(actualContent).to.not.be.null;",
+									"})",
+									"",
+									"pm.test('Response body contains the requested content body - genreId', () => {",
+									"    var actualContent = pm.response.json().genreId;",
+									"    pm.expect(actualContent).to.not.be.null;",
+									"})",
+									"",
+									"var randomGenreId = pm.collectionVariables.get(\"randomGenreId\");",
+									"var genreId = pm.response.json().genreId;",
+									"pm.test(\"Check if randomGenreId is equal to genreId\", function () {",
+									"    pm.expect(randomGenreId).to.equal(genreId);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{GenresEndPoint}}/{{randomGenreId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{GenresEndPoint}}",
+								"{{randomGenreId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Genres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var randomGenre = pm.variables.replaceIn(\"{{$randomBitcoin}}\")\r",
+									"pm.collectionVariables.set(\"randomGenre\", randomGenre)\r",
+									"\r",
+									"var genreId = (Math.floor)(Math.random() * (10000000)) + 500;\r",
+									"pm.collectionVariables.set(\"randomGenreId\", genreId)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function () {\r",
+									"    pm.response.to.have.status(201, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body contains the requested content body - genreId\",() => {\r",
+									"    var actualContent = pm.response.json().genreId;\r",
+									"    var expectedContent = pm.collectionVariables.get(\"randomGenreId\");\r",
+									"    pm.expect(actualContent, `Expected content: ${expectedContent}, Actual: ${actualContent}`).to.equal(expectedContent);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains the requested content body - randomGenreId\",() => {\r",
+									"    var actualContent = pm.response.json().name.toString();\r",
+									"    var expectedContent = pm.collectionVariables.get(\"randomGenre\");\r",
+									"    pm.expect(actualContent, `Expected content: ${expectedContent}, Actual: ${actualContent}`).to.equal(expectedContent);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genreId\": {{randomGenreId}},\r\n    \"name\": \"{{randomGenre}}\",\r\n    \"tracks\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{GenresEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{GenresEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update name of genres",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var editedGenreName = pm.variables.replaceIn(\"{{$randomFirstName}}{{$randomLasttName}}\")\r",
+									"pm.collectionVariables.set(\"editedGenreName\", editedGenreName)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 204', function () {\r",
+									"    pm.response.to.have.status(204, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check response headers\", () => {\r",
+									"    pm.response.to.not.have.header(\"Content-Length\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genreId\": {{randomGenreId}},\r\n    \"name\": \"{{randomGenre}}\",\r\n    \"tracks\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{GenresEndPoint}}/{{randomGenreId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{GenresEndPoint}}",
+								"{{randomGenreId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Genres",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200, 'Status received is ' + pm.response.status);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{GenresEndPoint}}/{{randomGenreId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{GenresEndPoint}}",
+								"{{randomGenreId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tracks",
+			"item": [
+				{
+					"name": "Get all  tracks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"var responseBody = pm.response.json();\r",
+									"pm.test(\"Check if albumId is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.trackId).to.not.equal(null);\r",
+									"    pm.expect(responseBody.trackId).to.not.equal(\"\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if title is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.name).to.not.equal(null);\r",
+									"    pm.expect(responseBody.name).to.not.equal(\"\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if title is not empty or null\", function () {\r",
+									"    pm.expect(responseBody.albumId).to.not.equal(null);\r",
+									"    pm.expect(responseBody.albumId).to.not.equal(\"\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{TracksEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{TracksEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get track by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var randomId = Math.floor(Math.random() * 345) + 1;\r",
+									"pm.collectionVariables.set(\"generatedId\", randomId.toString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"var randomGenreId = parseInt(pm.collectionVariables.get(\"generatedId\"));\r",
+									"var trackId = pm.response.json().trackId;\r",
+									"pm.test(\"Check if randomGenreId is equal to trackId\", function () {\r",
+									"    pm.expect(randomGenreId).to.equal(trackId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{TracksEndPoint}}/{{generatedId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{TracksEndPoint}}",
+								"{{generatedId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Track",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var trackId = (Math.floor)(Math.random() * (10000000)) + 500;\r",
+									"pm.collectionVariables.set(\"generateTrackId\", trackId)\r",
+									"\r",
+									"var randomName = pm.variables.replaceIn(\"{{$randomBitcoin}}\")\r",
+									"pm.collectionVariables.set(\"RandomName\", randomName)\r",
+									"\r",
+									"var randomComsposer = pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\")\r",
+									"pm.collectionVariables.set(\"RandomComsposer\", randomComsposer)\r",
+									"\r",
+									"const unitPrice = (Math.floor)(Math.random() * (10)) + 50;\r",
+									"pm.collectionVariables.set(\"UnitPrice\", unitPrice)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function () {\r",
+									"    pm.response.to.have.status(201, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check if generated trackId matches the expected value\", () => {\r",
+									"    var actualTrackId = parseInt(pm.response.json().trackId);\r",
+									"    var expectedTrackId = parseInt(pm.collectionVariables.get(\"generateTrackId\"));\r",
+									"    pm.expect(actualTrackId).to.equal(expectedTrackId, `Expected trackId: ${expectedTrackId}, Actual trackId: ${actualTrackId}`);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if generated randomName matches the expected value\", () => {\r",
+									"    var actualRandomName = pm.response.json().name;\r",
+									"    var expectedRandomName = pm.collectionVariables.get(\"RandomName\");\r",
+									"    pm.expect(actualRandomName).to.equal(expectedRandomName, `Expected randomName: ${expectedRandomName}, Actual randomName: ${actualRandomName}`);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if generated randomComsposer matches the expected value\", () => {\r",
+									"    var actualRandomComsposer = pm.response.json().composer;\r",
+									"    var expectedRandomComsposer = pm.collectionVariables.get(\"RandomComsposer\");\r",
+									"    pm.expect(actualRandomComsposer).to.equal(expectedRandomComsposer, `Expected randomComsposer: ${expectedRandomComsposer}, Actual randomComsposer: ${actualRandomComsposer}`);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if generated trackId matches the expected value\", () => {\r",
+									"    var actualTrackId = parseFloat(pm.response.json().unitPrice);\r",
+									"    var expectedTrackId = parseFloat(pm.collectionVariables.get(\"UnitPrice\"));\r",
+									"    pm.expect(actualTrackId).to.equal(expectedTrackId, `Expected trackId: ${expectedTrackId}, Actual trackId: ${actualTrackId}`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trackId\": {{generateTrackId}},\r\n    \"name\": \"{{RandomName}}\",\r\n    \"albumId\": 20,\r\n    \"mediaTypeId\": 1,\r\n    \"genreId\": 6,\r\n    \"composer\": \"{{RandomComsposer}}\",\r\n    \"milliseconds\": 182491,\r\n    \"bytes\": 6022698,\r\n    \"unitPrice\": \"{{UnitPrice}}\",\r\n    \"album\": null,\r\n    \"genre\": null,\r\n    \"mediaType\": null,\r\n    \"invoiceItems\": [],\r\n    \"playlistTrack\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{TracksEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{TracksEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Track name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var editedRandomName = pm.variables.replaceIn(\"{{$randomLastName}}\")\r",
+									"pm.collectionVariables.set(\"EditedRandomName\", editedRandomName)\r",
+									"\r",
+									"var editedRandomComsposer = pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\")\r",
+									"pm.collectionVariables.set(\"EditedRandomComsposer\", editedRandomComsposer)\r",
+									"\r",
+									"const editedUnitPrice = (Math.floor)(Math.random() * (10)) + 50;\r",
+									"pm.collectionVariables.set(\"EditedUnitPrice\", editedUnitPrice)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 204', function () {\r",
+									"    pm.response.to.have.status(204, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check response headers\", () => {\r",
+									"    pm.response.to.not.have.header(\"Content-Length\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trackId\": {{generateTrackId}},\r\n    \"name\": \"{{EditedRandomName}}\",\r\n    \"albumId\": 20,\r\n    \"mediaTypeId\": 1,\r\n    \"genreId\": 6,\r\n    \"composer\": \"{{EditedRandomComsposer}}\",\r\n    \"milliseconds\": 182491,\r\n    \"bytes\": 6022698,\r\n    \"unitPrice\": \"{{EditedUnitPrice}}\",\r\n    \"album\": null,\r\n    \"genre\": null,\r\n    \"mediaType\": null,\r\n    \"invoiceItems\": [],\r\n    \"playlistTrack\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{TracksEndPoint}}/{{generateTrackId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{TracksEndPoint}}",
+								"{{generateTrackId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Track",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200, 'Status received is ' + pm.response.status);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{TracksEndPoint}}/{{generateTrackId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{TracksEndPoint}}",
+								"{{generateTrackId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artists",
+			"item": [
+				{
+					"name": "Get all  artists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"var JsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Album Id is not null\", function(){\r",
+									"   pm.expect(JsonData.albumId, \"AlbumId should not be null\").to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Artist Id is not null\", function(){\r",
+									"   pm.expect(JsonData.artistId, \"Artist should not be null\").to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is not empy\", function(){\r",
+									"   pm.expect(JsonData.title, \"Title should not be empty\").not.to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{ArtistsEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{ArtistsEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get artist by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200,'Status received is ' + pm.response.status);\r",
+									"});\r",
+									"\r",
+									"var JsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Album Id is not null\", function(){\r",
+									"   pm.expect(JsonData.albumId, \"AlbumId should not be null\").to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Artist Id is not null\", function(){\r",
+									"   pm.expect(JsonData.artistId, \"Artist should not be null\").to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is not empy\", function(){\r",
+									"   pm.expect(JsonData.title, \"Title should not be empty\").not.to.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var randomId = Math.floor(Math.random() * 275) + 1;\r",
+									"pm.collectionVariables.set(\"generatedId\", randomId.toString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{ArtistsEndPoint}}/{{generatedId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{ArtistsEndPoint}}",
+								"{{generatedId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Artist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var artistId = (Math.floor)(Math.random() * (10000000)) + 500;\r",
+									"pm.collectionVariables.set(\"generatedArtistId\", artistId)\r",
+									"\r",
+									"var randomName = pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\")\r",
+									"pm.collectionVariables.set(\"generateArtistName\", randomName)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function () {\r",
+									"    pm.response.to.have.status(201, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check if generated trackId matches the expected value\", () => {\r",
+									"    var actualTrackId = parseInt(pm.response.json().artistId);\r",
+									"    var expectedTrackId = parseInt(pm.collectionVariables.get(\"generatedArtistId\"));\r",
+									"    pm.expect(actualTrackId).to.equal(expectedTrackId, `Expected trackId: ${expectedTrackId}, Actual trackId: ${actualTrackId}`);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if generated randomName matches the expected value\", () => {\r",
+									"    var actualRandomName = pm.response.json().name;\r",
+									"    var expectedRandomName = pm.collectionVariables.get(\"generateArtistName\");\r",
+									"    pm.expect(actualRandomName).to.equal(expectedRandomName, `Expected randomName: ${expectedRandomName}, Actual randomName: ${actualRandomName}`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"artistId\": {{generatedArtistId}},\r\n    \"name\": \"{{generateArtistName}}\",\r\n    \"albums\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{ArtistsEndPoint}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{ArtistsEndPoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Artist name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var editedName = pm.variables.replaceIn(\"{{$randomFullName}}\")\r",
+									"pm.collectionVariables.set(\"EditedName\", editedName)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 204', function () {\r",
+									"    pm.response.to.have.status(204, 'Status received is ' + pm.response.status);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Check response headers\", () => {\r",
+									"    pm.response.to.not.have.header(\"Content-Length\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"artistId\": {{generatedArtistId}},\r\n    \"name\": \"{{EditedName}}\",\r\n    \"albums\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MusicShop}}/{{ArtistsEndPoint}}/{{generatedArtistId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{ArtistsEndPoint}}",
+								"{{generatedArtistId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Artist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200, 'Status received is ' + pm.response.status);\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{MusicShop}}/{{ArtistsEndPoint}}/{{generatedArtistId}}",
+							"host": [
+								"{{MusicShop}}"
+							],
+							"path": [
+								"{{ArtistsEndPoint}}",
+								"{{generatedArtistId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "generatedId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "randomAlbumId",
+			"value": ""
+		},
+		{
+			"key": "randomTitle",
+			"value": ""
+		},
+		{
+			"key": "randomArtistId",
+			"value": ""
+		},
+		{
+			"key": "editedTitle",
+			"value": ""
+		},
+		{
+			"key": "randomGenreId",
+			"value": ""
+		},
+		{
+			"key": "randomGenre",
+			"value": ""
+		},
+		{
+			"key": "editedGenreName",
+			"value": ""
+		},
+		{
+			"key": "RandomComsposer",
+			"value": "Robert Geddins/Ron Badger/Sheldon Feinberg"
+		},
+		{
+			"key": "RandomName",
+			"value": "My Time After Awhile"
+		},
+		{
+			"key": "UnitPrice",
+			"value": "0.99"
+		},
+		{
+			"key": "generateTrackId",
+			"value": ""
+		},
+		{
+			"key": "EditedRandomName",
+			"value": ""
+		},
+		{
+			"key": "EditedRandomComsposer",
+			"value": ""
+		},
+		{
+			"key": "EditedUnitPrice",
+			"value": ""
+		},
+		{
+			"key": "generatedArtistId",
+			"value": ""
+		},
+		{
+			"key": "generateArtistName",
+			"value": ""
+		},
+		{
+			"key": "EditedName",
+			"value": ""
+		}
+	]
+}

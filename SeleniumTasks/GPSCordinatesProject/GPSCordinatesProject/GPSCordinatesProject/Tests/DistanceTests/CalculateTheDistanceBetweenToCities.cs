@@ -32,3 +32,4 @@ public class CalculateTheDistanceBetweenToCities : BaseTest
         _distancePage.AsserTheDistanceBetwwenTwoCitiesIsShown();
     }
 }
+ 
