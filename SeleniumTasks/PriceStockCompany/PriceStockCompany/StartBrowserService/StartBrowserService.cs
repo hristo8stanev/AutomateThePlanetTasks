@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 using PriceStockCompany.enums;
 
 namespace PriceStockCompany.DriverFacade;
-public class DriverFacade
+public static class StartBrowserService
 {
 
     public static WebDriver StartBrowser(BrowserType browserType)

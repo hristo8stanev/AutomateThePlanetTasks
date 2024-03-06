@@ -6,13 +6,15 @@ using SeleniumExtras.WaitHelpers;
 namespace PriceStockCompany.Pages.BasePage;
 public abstract class WebPage
 {
-    private int WAIT_FOR_ELEMENT => 20;
+    private int WAIT_FOR_ELEMENT => 30;
+    Actions actions;
 
 
     public WebPage(IWebDriver driver)
     {
         Driver = driver;
         WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
+        actions = new Actions(Driver);
 
     }
     protected IWebDriver Driver { get; set; }
@@ -24,18 +26,24 @@ public abstract class WebPage
         Driver.Navigate().GoToUrl(Url);
     }
 
-    protected IWebElement MoveToElement(By locator)
+    protected IWebElement MoveToElement(string locator)
     {
-        Actions actions = new Actions(Driver);
-        IWebElement element = Driver.FindElement(locator);
+        IWebElement element = Driver.FindElement(By.XPath(locator));
         actions.MoveToElement(element).Perform();
         return element;
     }
 
-    public void verifyButtonIsDisplayed()
+
+    public void VisibilityOfAllElementsLocated(string locator)
     {
-        bool isVerifyDisplayed = Driver.FindElement(By.XPath("//button[text()='Verify']")).Displayed;
+        WebDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath(locator)));
     }
+
+    public void IsElementDisplayed(string locator)
+    {
+        var element = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
+    }
+
 
     protected IWebElement WaitAndFindElement(By locator)
     {

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using SeleniumWebdriverHelpers;
-using ZipCodes.Pages.SearchPage;
-using ZipCodes.Pages.ZipCodeMainPage;
-using static System.Net.Mime.MediaTypeNames;
+﻿using ZipCodes.Pages.SearchPage;
 
 namespace ZipCodes.Test.Core.BaseTest;
 public class AdvanceSearchTests : BaseTest
@@ -29,6 +16,9 @@ public class AdvanceSearchTests : BaseTest
         _searchPage.SearchTownByName(firstLetter);
         _searchPage.AssertOAdvanceSearchedUrl(_driver.Url);
         _searchPage.IterateBetweenTheCities();
+        CityDetails cityDetails = _searchPage.GetCityDetails();
+        _searchPage.SaveScreenshot(cityDetails);
+        _searchPage.GoBackToTable();
 
     }
 }

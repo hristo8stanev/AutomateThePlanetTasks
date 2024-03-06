@@ -5,7 +5,7 @@ namespace PriceStockCompany.Tests.Tests;
 public class StockPricesTests : BaseTest
 {
     
-    string compnanyName = "Tesla";
+    string compnanyName = "Google";
     
     [Test]
     public void CompanyHistoryStocksPricesTest()

@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using PriceStockCompany.Pages.BasePage;
+using SeleniumExtras.WaitHelpers;
 
 namespace PriceStockCompany.Pages.MainPage;
 public partial class MainPage : WebPage
@@ -21,13 +22,14 @@ public partial class MainPage : WebPage
         SearchBoxField.Click();
         SearchBoxField.SendKeys(companyName);
         SearchBoxField.Click();
-
+       
     }
 
     public void ChooseFirstResultFromSearchButton()
     {
-        Thread.Sleep(500);
-        MoveToElement(By.XPath("(//*[@class='mainSearch_description__mrmg5'])[1]"));
+        VisibilityOfAllElementsLocated(MainSearchDescription);
+        MoveToElement(FirstResultCompany);
+        VisibilityOfAllElementsLocated(FirstResultCompany);
         ClickOnFirstResult.Click();
     }
     

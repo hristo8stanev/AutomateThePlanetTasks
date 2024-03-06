@@ -1,10 +1,14 @@
 ﻿using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
+using NUnit.Framework.Legacy;
+using System.Diagnostics.Metrics;
 
 namespace PriceStockCompany.Pages.MainPage;
 public partial class MainPage
 {
+    private const string ErrorMessagePrice = "The price is not displated";
+
     private string ErrorMessageUrl => "Your URL is not correct";
 
     public void AssertHistoricalDataUrlIsShown(string currentUrl)
@@ -16,8 +20,13 @@ public partial class MainPage
     public void AssertThePriceOfStockIsShown()
     {
 
-        var price = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@class='text-5xl/9 font-bold text-[#232526] md:text-[42px] md:leading-[60px]']"))).Text;
-        Console.WriteLine(price);
+        MoveToElement(PriceElement);
+        bool actualResults = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PriceElement))).Displayed;
+        Assert.That(actualResults, ErrorMessagePrice);
+
+        var price = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PriceElement))).Text;
+        var message = $"Actual Text: {price}";
+        Console.WriteLine(message);
     }
 }
     
