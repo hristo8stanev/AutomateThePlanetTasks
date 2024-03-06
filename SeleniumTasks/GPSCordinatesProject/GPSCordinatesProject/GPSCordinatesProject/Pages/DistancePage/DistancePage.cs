@@ -4,6 +4,8 @@ using OpenQA.Selenium;
 namespace GPSCordinatesProject.Pages.DistancePage;
 public partial class DistancePage : WebPage
 {
+    private string SetCountries => "Germany, Berlin";
+
     public DistancePage(IWebDriver driver) : base(driver)
     {
     }
@@ -21,11 +23,11 @@ public partial class DistancePage : WebPage
 
     public void SetFirstAddress(string address1) => FirstLocation.SendKeys(address1);
 
-    public void SetSecondAddress() => SecondLocation.SendKeys("Germany, Berlin");
+    public void SetSecondAddress() => SecondLocation.SendKeys(SetCountries);
 
     public void CalculateTheDistance()
     {
-        ScrollToTheElement(By.XPath("//*[@id='address1']"));
+        ScrollToTheElement(Address1);
         CalculateDistanceButton.Click();
     }
 }

@@ -12,11 +12,11 @@ public partial class MainPage
 
     public void AssertCityAndCountryIsCorrect(string city, string country)
     {
-        MoveToElement(By.XPath("//*[@id='address']"));
+        MoveToElement(Address);
 
         var expecterResult = $"{country}, {city}";
         var actualResults = AdressTitle.Text;
-        var message = $"{ErrorMessageCity} \n Actual Text: {actualResults}, \n Expected Text: {expecterResult}";
+        var message = $"{ErrorMessageCity} \n Actual SetCountries: {actualResults}, \n Expected SetCountries: {expecterResult}";
         CollectionAssert.AreEqual(expecterResult, actualResults, message);
     }
 
@@ -25,7 +25,7 @@ public partial class MainPage
         var expecterResult = $"Latitude: {latitude} | Longitude: {longtitude}";
         var replace = "\r\n\r\nGet Altitude";
         var actualResults = Cordinates.GetText().Replace(replace,"");
-        var message = $"{ErrorMessageCordinates} \n Actual Text: {actualResults}, \n Expected Text: {expecterResult}";
+        var message = $"{ErrorMessageCordinates} \n Actual SetCountries: {actualResults}, \n Expected SetCountries: {expecterResult}";
         CollectionAssert.AreEqual(expecterResult, actualResults,message);
 
     }

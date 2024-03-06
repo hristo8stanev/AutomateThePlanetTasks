@@ -47,19 +47,19 @@ public partial class MainPage : WebPage
 
     public void GetTheCurrentAddress()
     {
-        MoveToElement(By.XPath("//*[@id='address']"));
+        MoveToElement(AddressField);
         var currentAddress = AdressTitle.Text;
     }
 
     public void ScrollToTheGpsAddress()
     {
-        MoveToElement(By.XPath("(//*[@class='btn btn-primary'])[1]"));
+        MoveToElement(GpsField);
         _driver.Navigate().Refresh();
     }
 
     public void ScrollToTheAddress()
     {
-        MoveToElement(By.XPath("//*[@id='address']"));
+        MoveToElement(AddressField);
         
     }
 }

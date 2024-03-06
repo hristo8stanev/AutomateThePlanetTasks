@@ -7,28 +7,28 @@ namespace PriceStockCompany.Pages.BasePage;
 public abstract class WebPage
 {
     private int WAIT_FOR_ELEMENT => 30;
-    Actions actions;
+    protected Actions actions;
 
 
     public WebPage(IWebDriver driver)
     {
-        Driver = driver;
-        WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
-        actions = new Actions(Driver);
+        _driver = driver;
+        WebDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
+        actions = new Actions(_driver);
 
     }
-    protected IWebDriver Driver { get; set; }
+    protected IWebDriver _driver { get; set; }
     protected WebDriverWait WebDriverWait { get; set; }
     protected abstract string Url { get; }
 
     public void GoTo()
     {
-        Driver.Navigate().GoToUrl(Url);
+        _driver.Navigate().GoToUrl(Url);
     }
 
     protected IWebElement MoveToElement(string locator)
     {
-        IWebElement element = Driver.FindElement(By.XPath(locator));
+        IWebElement element = _driver.FindElement(By.XPath(locator));
         actions.MoveToElement(element).Perform();
         return element;
     }
@@ -53,13 +53,13 @@ public abstract class WebPage
 
     protected void WaitForAjax()
     {
-        var js = (IJavaScriptExecutor)Driver;
+        var js = (IJavaScriptExecutor)_driver;
         WebDriverWait.Until(wd => js.ExecuteScript("return jQuery.active").ToString() == "0");
     }
 
     protected void WaintUntilPageLoadsCompletely()
     {
-        var js = (IJavaScriptExecutor)Driver;
+        var js = (IJavaScriptExecutor)_driver;
         WebDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "comeplete");
     }
 }

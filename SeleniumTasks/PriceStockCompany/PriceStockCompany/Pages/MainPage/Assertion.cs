@@ -21,10 +21,10 @@ public partial class MainPage
     {
 
         MoveToElement(PriceElement);
-        bool actualResults = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PriceElement))).Displayed;
+        bool actualResults = priceDisplayed.Displayed;
         Assert.That(actualResults, ErrorMessagePrice);
 
-        var price = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PriceElement))).Text;
+        var price = priceDisplayed.Text;
         var message = $"Actual Text: {price}";
         Console.WriteLine(message);
     }

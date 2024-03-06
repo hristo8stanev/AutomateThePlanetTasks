@@ -8,15 +8,14 @@ public partial class DistancePage
 
     private string ErrorMessageUrl => "The URL is not correct";
     private string ErrorMessageIsPriceDisplayed => "The distance is not displayed";
-    private string ErrorMessagePrice = "The expected distance is not correct";
+    private string ExpectedUrl =>"https://www.gps-coordinates.net/distance";
+    private string ErrorMessagePrice => "The expected distance is not correct";
 
     public void AssertDistanceUrlIsShown(string distanceUrl)
     {
-
-        var expecterResult = "https://www.gps-coordinates.net/distance";
-        var actualResults = distanceUrl;
-        var message = $"{ErrorMessageUrl} \n Actual Text: {actualResults}, \n Expected Text: {expecterResult}";
-        CollectionAssert.AreEqual(expecterResult, actualResults, message);
+  
+        var message = $"{ErrorMessageUrl} \n Actual URL:{distanceUrl} \n Expected URL:{ExpectedUrl}";
+        CollectionAssert.AreEqual(distanceUrl,ExpectedUrl, message);
 
     }
 
@@ -24,10 +23,10 @@ public partial class DistancePage
     {
       
         WaitTextToBePresentInElement(By.XPath("//*[@id='distance']"), DistanceElement.GetText());
-        ScrollToTheElement(By.XPath("//*[@id='distance']"));
-        MoveToElement(By.XPath("//*[@id='distance']"));
-        var message = $"{ErrorMessagePrice} \n Actual Text: {DistanceElement.Text}, \n Expected Text: {expectedDistance}";      
-        CollectionAssert.AreEqual(expectedDistance, DistanceElement.Text, message);
+        ScrollToTheElement(Distance);
+        MoveToElement(DistanceField);
+        var message = $"{ErrorMessagePrice} \n Actual Distance:{DistanceElement.Text}, \n Expected Distance:{expectedDistance}";      
+        CollectionAssert.AreEqual(expectedDistance,DistanceElement.Text, message);
     }
 
     public void AsserTheDistanceBetwwenTwoCitiesIsShown()
