@@ -40,16 +40,8 @@ public class BaseRestSharp
 
     }
 
-    [Test]
-    public async Task DataPopulatedAsList_When_GetGenericAlbums()
-    {
-        var request = new RestRequest("api/Albums");
-        var response = await _restClient.ExecuteAsync<List<Album>>(request);
+    
 
-        Assert.AreEqual(544, response.Data.Count);
-    }
-
-    //POST METHODS
     protected async Task<Artists> CreateUniqueArtists()
     {
         var artists = await _restClient.GetAsync<List<Artists>>(new RestRequest("api/Artists"));
@@ -69,33 +61,5 @@ public class BaseRestSharp
             GenreId = genres.OrderBy(x => x.GenreId).Last().GenreId + 1,
         };
         return newGenres;
-    }
-
-
-   
-
-    //PUT REQUEST
-    [Test]
-    public async Task ContentPopulated_When_PutModifiedContent()
-    {
-        var newGenres = await CreateUniqueGenres();
-
-        var request = new RestRequest("api/Genres", Method.Post);
-        request.AddJsonBody(newGenres);
-
-        var insertedGenres = await _restClient.ExecuteAsync<Genres>(request);
-
-        var putRequest = new RestRequest($"api/Genres/{insertedGenres.Data.GenreId}", Method.Put);
-        string updatedName = Guid.NewGuid().ToString();
-        insertedGenres.Data.Name = updatedName;
-        putRequest.AddJsonBody(insertedGenres.Data);
-
-        await _restClient.ExecuteAsync(putRequest);
-
-        request = new RestRequest($"api/Genres/{insertedGenres.Data.GenreId}", Method.Get);
-
-        var getUpdatedResponse = await _restClient.ExecuteAsync<Genres>(request);
-
-        Assert.IsNotNull(getUpdatedResponse.Content);
     }
 }

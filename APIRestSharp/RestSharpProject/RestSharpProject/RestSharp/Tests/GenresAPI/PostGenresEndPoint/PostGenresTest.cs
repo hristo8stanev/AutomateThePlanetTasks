@@ -12,13 +12,14 @@ using RestSharpProject.AssertiExtensions;
 namespace RestSharpProject.RestSharp.Tests.GenresAPI.PostGenresEndPoint;
 public class PostGenresTest : BaseRestSharp
 {
+    private string GenresEndPoint => "api/Genres";
 
     [Test]
     public async Task DataPopulatedAsGenres_When_NewAlbumInsertedViaPost()
     {
         var newAlbum = await CreateUniqueGenres();
 
-        var request = new RestRequest("api/Genres", Method.Post);
+        var request = new RestRequest(GenresEndPoint, Method.Post);
         request.AddJsonBody(newAlbum);
 
         var response = await _restClient.ExecuteAsync<Genres>(request);

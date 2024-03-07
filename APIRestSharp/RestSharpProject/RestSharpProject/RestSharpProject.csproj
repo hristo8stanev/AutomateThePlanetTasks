@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RestSharp\Tests\AlbumsAPI\PostAlbumsEndPoint\**" />
+    <EmbeddedResource Remove="RestSharp\Tests\AlbumsAPI\PostAlbumsEndPoint\**" />
+    <None Remove="RestSharp\Tests\AlbumsAPI\PostAlbumsEndPoint\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Flurl" Version="4.0.0" />
     <PackageReference Include="Flurl.Http" Version="4.0.2" />
     <PackageReference Include="HttpTracer" Version="2.1.1" />
@@ -23,21 +29,6 @@
     <PackageReference Include="Polly" Version="8.3.1" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="RestSharp\Tests\AlbumsAPI\PostAlbumsEndPoint\" />
-    <Folder Include="RestSharp\Tests\ArtistsAPI\DeleteArtistsEndPoint\" />
-    <Folder Include="RestSharp\Tests\ArtistsAPI\GetArtistsEndPoint\" />
-    <Folder Include="RestSharp\Tests\ArtistsAPI\PostArtistsEndPoint\" />
-    <Folder Include="RestSharp\Tests\ArtistsAPI\PutArtistsEndPoint\" />
-    <Folder Include="RestSharp\Tests\GenresAPI\DeleteGenresEndPoint\" />
-    <Folder Include="RestSharp\Tests\GenresAPI\GetGenresEndPoint\" />
-    <Folder Include="RestSharp\Tests\GenresAPI\PutGenresEndPoint\" />
-    <Folder Include="RestSharp\Tests\TracksAPI\DeleteTracksEndPoint\" />
-    <Folder Include="RestSharp\Tests\TracksAPI\GetTracksEndPoint\" />
-    <Folder Include="RestSharp\Tests\TracksAPI\PostTracksEndPoint\" />
-    <Folder Include="RestSharp\Tests\TracksAPI\PutTracksEndPoint\" />
   </ItemGroup>
 
 </Project>

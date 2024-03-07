@@ -38,5 +38,14 @@ public class RestSharpGetAllTests : BaseRestSharp
 
     }
 
-    
+    [Test]
+    public async Task DataPopulatedAsList_When_GetGenericAlbums()
+    {
+        var request = new RestRequest(AlbumsEndPoint);
+        var response = await _restClient.ExecuteAsync<List<Album>>(request);
+
+        response.AssertStatusCode(HttpStatusCode.OK);
+        Assert.AreEqual(544, response.Data.Count);
+    }
+
 }
