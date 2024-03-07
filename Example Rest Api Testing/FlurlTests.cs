@@ -5,7 +5,8 @@ using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
 
-namespace Examples;
+
+namespace Examples.Models;
 
 [TestFixture]
 public class FlurlTests

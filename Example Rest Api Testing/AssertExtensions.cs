@@ -5,7 +5,7 @@ using System.Xml.Schema;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
-namespace Examples;
+namespace Examples.Models;
 public static class ApiAssertExtensions
 {
     private static List<string> _xmlSchemaValidationErrors;

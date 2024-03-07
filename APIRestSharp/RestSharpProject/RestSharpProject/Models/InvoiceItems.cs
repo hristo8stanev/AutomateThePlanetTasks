@@ -1,4 +1,4 @@
-﻿namespace Examples.Models;
+﻿namespace RestSharpProject.Models;
 public class InvoiceItems
 {
     public long InvoiceLineId { get; set; }

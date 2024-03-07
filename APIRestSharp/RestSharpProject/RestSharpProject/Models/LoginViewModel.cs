@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Examples.Models;
+namespace RestSharpProject.Models;
 public class LoginViewModel
 {
     [Required]

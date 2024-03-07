@@ -1,12 +1,10 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Examples.Models;
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
 
-
-namespace RestSharpProject;
+namespace RestSharpProject.Flurl;
 public class FlurlAPI
 {
 
@@ -28,7 +26,7 @@ public class FlurlAPI
     {
         RegenerateUrl();
     }
-  
+
     /// GET REQUESTS
     [Test]
     public async Task ContentPopulated_When_SendAsync()
@@ -61,7 +59,7 @@ public class FlurlAPI
              .AppendPathSegment(10)
              .WithOAuthBearerToken(AUTH_TOKEN)
              .GetStringAsync();
-        var result = JsonConvert.DeserializeObject<Albums>(responseJsonResult);
+        var result = JsonConvert.DeserializeObject<Album>(responseJsonResult);
 
         Assert.AreEqual(10, result.AlbumId);
     }
@@ -146,9 +144,9 @@ public class FlurlAPI
         };
         return newArtists;
     }
-    
+
     //////////////////////////////////////////
-   
+
 
     [Test]
     public async Task DataPopulatedAsList_When_GetGenericAlbums()
@@ -156,7 +154,7 @@ public class FlurlAPI
         var albums = await BASE_URL
               .AppendPathSegment("Albums")
               .WithOAuthBearerToken(AUTH_TOKEN)
-              .GetJsonAsync<List<Albums>>();
+              .GetJsonAsync<List<Album>>();
 
         Assert.AreEqual(544, albums.Count);
     }

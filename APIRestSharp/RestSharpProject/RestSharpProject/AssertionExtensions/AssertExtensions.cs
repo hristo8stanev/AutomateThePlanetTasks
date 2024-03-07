@@ -1,13 +1,12 @@
 ﻿using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using RestSharp;
 
-namespace Examples;
+namespace RestSharpProject.AssertiExtensions;
 public static class ApiAssertExtensions
 {
     private static List<string> _xmlSchemaValidationErrors;
@@ -106,10 +105,10 @@ public static class ApiAssertExtensions
         Assert.AreEqual(expectedContentType, response.ContentType);
     }
 
-   // public static void AssertContentEncoding(this RestResponse response, string expectedContentEncoding)
-   //// {
-   ////     Assert.AreEqual(expectedContentEncoding, response.ContentEncoding);
-   // }
+    //public static void AssertContentEncoding(this RestResponse response, string expectedContentEncoding)
+    // {
+    //     Assert.AreEqual(expectedContentEncoding, response.ContentEncoding);
+    //}
 
     // Assert.IsTrue(response.Cookies.Any(x => x.Name.Equals(cookieName)), $"Response's cookie with name {cookieName} was not present. URL = {response.ResponseUri}");
     public static void AssertCookieExists(this RestResponse response, string cookieName)

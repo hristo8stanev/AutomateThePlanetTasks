@@ -1,6 +1,6 @@
 ﻿using Flurl;
 
-namespace Examples;
+namespace Examples.Models;
 // Ivaylo i made this extension method that will prevent url tracking
 public static class FlurlExtensions
 {

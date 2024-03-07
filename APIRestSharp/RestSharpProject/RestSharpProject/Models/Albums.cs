@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace Examples.Models;
-public class Albums : IEquatable<Albums>
+namespace RestSharpProject.Models;
+public class Album : IEquatable<Album>
 {
-    public Albums() => Tracks = new HashSet<Tracks>();
+    public Album() => Tracks = new HashSet<Tracks>();
 
     [JsonProperty(Required = Required.Always)]
     public long AlbumId { get; set; }
@@ -17,13 +17,13 @@ public class Albums : IEquatable<Albums>
     [JsonProperty(Required = Required.AllowNull)]
     public ICollection<Tracks> Tracks { get; set; }
 
-    public bool Equals(Albums other)
+    public bool Equals(Album other)
     {
         return AlbumId.Equals(other.AlbumId);
     }
 
     public override bool Equals(object obj)
     {
-        return Equals(obj as Albums);
+        return Equals(obj as Album);
     }
 }

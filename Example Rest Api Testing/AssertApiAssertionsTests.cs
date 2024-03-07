@@ -10,7 +10,7 @@ using RestSharp.Serializers.NewtonsoftJson;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Examples;
+namespace Examples.Models;
 
 [TestFixture]
 public class AssertApiAssertionsTests

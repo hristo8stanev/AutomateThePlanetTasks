@@ -1,4 +1,4 @@
-﻿namespace Examples.Models;
+﻿namespace RestSharpProject.Models;
 public class Tracks
 {
     public Tracks()
@@ -16,8 +16,7 @@ public class Tracks
     public long Milliseconds { get; set; }
     public long? Bytes { get; set; }
     public string UnitPrice { get; set; }
-
-    public Albums Album { get; set; }
+    public Album Album { get; set; }
     public Genres Genre { get; set; }
     public MediaTypes MediaType { get; set; }
     public ICollection<InvoiceItems> InvoiceItems { get; set; }

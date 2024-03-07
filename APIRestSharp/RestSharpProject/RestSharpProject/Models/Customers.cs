@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Examples.Models;
+namespace RestSharpProject.Models;
 public class Customers
 {
     public Customers() => Invoices = new HashSet<Invoices>();

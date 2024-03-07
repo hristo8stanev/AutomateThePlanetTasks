@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Examples;
+namespace Examples.Models;
 public class LoadTestService
 {
     public void ExecuteForTime(int numberOfProcesses, int pauseBetweenStartSeconds, int secondsToBeExecuted, Action testBody)

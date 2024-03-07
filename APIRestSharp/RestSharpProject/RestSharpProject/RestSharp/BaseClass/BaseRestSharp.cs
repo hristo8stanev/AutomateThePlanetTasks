@@ -3,18 +3,12 @@ using RestSharp.Authenticators.OAuth2;
 using RestSharp;
 using HttpTracer;
 using HttpTracer.Logger;
-using Examples.Models;
-using HttpTracer.Logger;
-using Newtonsoft.Json;
-using Examples;
 
-
-
-namespace RestSharpProject;
-public class RestSharp
+namespace RestSharpProject.RestSharp.BaseClass;
+public class BaseRestSharp
 {
-    private string BASE_URL => "http://localhost:60715/";
-    private static RestClient _restClient;
+    protected string BASE_URL => "http://localhost:60715/";
+    protected static RestClient _restClient;
 
     [OneTimeSetUp]
     public void ClassSetup()
@@ -46,45 +40,17 @@ public class RestSharp
 
     }
 
-    //GET METHODS
-  
-    [Test]
-    public async Task DataPopulatedAsList_When_GetGenericAlbumsById()
-    {
-        var request = new RestRequest("api/Albums/10");
-        var response = await _restClient.ExecuteAsync<Albums>(request);
-        
-        Assert.AreEqual(10, response.Data.AlbumId);
-    }
-
-    [Test]
-    public async Task AssertContentContainsAudioSlave()
-    {
-        var request = new RestRequest("api/Albums/10",Method.Get);
-        var response = await _restClient.ExecuteAsync<Albums>(request);
-
-        response.AssertContentContains("Audioslave");
-    }
     [Test]
     public async Task DataPopulatedAsList_When_GetGenericAlbums()
     {
         var request = new RestRequest("api/Albums");
-        var response = await _restClient.ExecuteAsync<List<Albums>>(request);
+        var response = await _restClient.ExecuteAsync<List<Album>>(request);
 
         Assert.AreEqual(544, response.Data.Count);
     }
 
-    [Test]
-    public async Task ContentPopulated_When_GetAlbums()
-    {
-        var request = new RestRequest("api/Albums", Method.Get);
-        var response = await _restClient.ExecuteAsync(request);
-
-        Assert.IsNotNull(response.Content);
-    }
-
     //POST METHODS
-    private async Task<Artists> CreateUniqueArtists()
+    protected async Task<Artists> CreateUniqueArtists()
     {
         var artists = await _restClient.GetAsync<List<Artists>>(new RestRequest("api/Artists"));
         var newArtists = new Artists
@@ -94,7 +60,7 @@ public class RestSharp
         };
         return newArtists;
     }
-    private async Task<Genres> CreateUniqueGenres()
+    protected async Task<Genres> CreateUniqueGenres()
     {
         var genres = await _restClient.GetAsync<List<Genres>>(new RestRequest("api/Genres"));
         var newGenres = new Genres
@@ -106,18 +72,7 @@ public class RestSharp
     }
 
 
-    [Test]
-    public async Task DataPopulatedAsGenres_When_NewAlbumInsertedViaPost()
-    {
-        var newAlbum = await CreateUniqueGenres();
-
-        var request = new RestRequest("api/Genres", Method.Post);
-        request.AddJsonBody(newAlbum);
-
-        var response = await _restClient.ExecuteAsync<Genres>(request);
-
-        Assert.AreEqual(newAlbum.Name, response.Data.Name);
-    }
+   
 
     //PUT REQUEST
     [Test]
@@ -142,34 +97,5 @@ public class RestSharp
         var getUpdatedResponse = await _restClient.ExecuteAsync<Genres>(request);
 
         Assert.IsNotNull(getUpdatedResponse.Content);
-    }
-
-    //DELETE REQUEST
-    [Test]
-    public async Task ArtistsDeleted_When_PerformDeleteRequest()
-    {
-        var newArtist = await CreateUniqueArtists();
-        var request = new RestRequest("api/Artists", Method.Post);
-        request.AddJsonBody(newArtist);
-        await _restClient.ExecuteAsync<Artists>(request);
-
-        var deleteRequest = new RestRequest($"api/Artists/{newArtist.ArtistId}", Method.Delete);
-        var response = await _restClient.ExecuteAsync(deleteRequest);
-
-        Assert.IsTrue(response.IsSuccessful);
-    }
-
-    [Test]
-    public async Task ArtistsDeleted_When_PerformGenericDeleteRequest()
-    {
-        var newArtist = await CreateUniqueArtists();
-        var request = new RestRequest("api/Artists", Method.Post);
-        request.AddJsonBody(newArtist);
-        await _restClient.ExecuteAsync<Artists>(request);
-
-        var deleteRequest = new RestRequest($"api/Artists/{newArtist.ArtistId}", Method.Delete);
-        var response = await _restClient.ExecuteAsync<Artists>(deleteRequest);
-
-        Assert.IsTrue(response.IsSuccessful);
     }
 }

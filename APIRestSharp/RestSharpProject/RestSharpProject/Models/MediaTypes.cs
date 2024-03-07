@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Examples.Models;
+namespace RestSharpProject.Models;
 public class MediaTypes
 {
     public MediaTypes() => Tracks = new HashSet<Tracks>();

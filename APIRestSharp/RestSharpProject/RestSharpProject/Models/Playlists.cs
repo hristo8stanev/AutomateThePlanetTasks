@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Examples.Models;
+namespace RestSharpProject.Models;
 public class Playlists
 {
     public Playlists() => PlaylistTrack = new HashSet<PlaylistTrack>();

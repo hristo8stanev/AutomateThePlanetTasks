@@ -1,8 +1,8 @@
 using System.Net.Http.Headers;
 using System.Text;
-using Examples.Models;
 using Newtonsoft.Json;
 using RestSharp;
+
 namespace RestSharpProject;
 
 public class HttpClientAPI
@@ -100,7 +100,7 @@ public class HttpClientAPI
     {
         var response = await _httpClient.GetAsync("api/Albums");
         var responseJsonResult = await response.Content.ReadAsStringAsync();
-        var albums = JsonConvert.DeserializeObject<List<Albums>>(responseJsonResult);
+        var albums = JsonConvert.DeserializeObject<List<Album>>(responseJsonResult);
 
         Assert.AreEqual(544, albums.Count);
     }

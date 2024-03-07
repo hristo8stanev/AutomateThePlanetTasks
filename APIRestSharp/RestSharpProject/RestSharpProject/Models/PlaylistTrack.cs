@@ -1,4 +1,4 @@
-﻿namespace Examples.Models;
+﻿namespace RestSharpProject.Models;
 public class PlaylistTrack
 {
     public long PlaylistId { get; set; }

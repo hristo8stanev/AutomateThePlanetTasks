@@ -3,11 +3,9 @@ using Examples.Models;
 using HttpTracer;
 using HttpTracer.Logger;
 using Newtonsoft.Json;
-using RestSharp;
 using RestSharp.Authenticators.OAuth2;
-using RestSharp.Serializers;
 using RestSharp.Serializers.NewtonsoftJson;
-namespace Examples;
+namespace Examples.Models;
 
 [TestFixture]
 public class UtilitiesTests

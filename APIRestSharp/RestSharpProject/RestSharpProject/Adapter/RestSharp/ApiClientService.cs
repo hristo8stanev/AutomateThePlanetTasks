@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Polly;
+using RestSharp;
 using RestSharp.Authenticators;
 
-namespace Examples.Adapter.httpClient;
+namespace RestSharpProject.Adapter.RestSharp;
 public class ApiClientService
 {
     private readonly int _maxRetryAttempts;
@@ -144,7 +145,7 @@ public class ApiClientService
             watch.Stop();
             measuredResponse = new MeasuredResponse<TReturnType>(response, watch.Elapsed);
 
-            if (!measuredResponse.IsSuccessful)
+            if (!measuredResponse.Response.IsSuccessful)
             {
                 throw new NotSuccessfulRequestException();
             }
@@ -170,12 +171,12 @@ public class ApiClientService
 
             request.Method = method;
 
-            var response = await WrappedClient.ExecuteAsync(request, cancellationTokenSource.Token);
+            var response = await WrappedClient.HeadAsync(request, cancellationTokenSource.Token);
 
             watch.Stop();
             var measuredResponse = new MeasuredResponse(response, watch.Elapsed);
 
-            if (!measuredResponse.IsSuccessful)
+            if (!measuredResponse.Response.IsSuccessful)
             {
                 throw new NotSuccessfulRequestException();
             }

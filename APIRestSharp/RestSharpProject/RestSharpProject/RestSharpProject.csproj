@@ -20,8 +20,24 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
     <PackageReference Include="NUnit.Analyzers" Version="3.6.1" />
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
+    <PackageReference Include="Polly" Version="8.3.1" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="RestSharp\Tests\AlbumsAPI\PostAlbumsEndPoint\" />
+    <Folder Include="RestSharp\Tests\ArtistsAPI\DeleteArtistsEndPoint\" />
+    <Folder Include="RestSharp\Tests\ArtistsAPI\GetArtistsEndPoint\" />
+    <Folder Include="RestSharp\Tests\ArtistsAPI\PostArtistsEndPoint\" />
+    <Folder Include="RestSharp\Tests\ArtistsAPI\PutArtistsEndPoint\" />
+    <Folder Include="RestSharp\Tests\GenresAPI\DeleteGenresEndPoint\" />
+    <Folder Include="RestSharp\Tests\GenresAPI\GetGenresEndPoint\" />
+    <Folder Include="RestSharp\Tests\GenresAPI\PutGenresEndPoint\" />
+    <Folder Include="RestSharp\Tests\TracksAPI\DeleteTracksEndPoint\" />
+    <Folder Include="RestSharp\Tests\TracksAPI\GetTracksEndPoint\" />
+    <Folder Include="RestSharp\Tests\TracksAPI\PostTracksEndPoint\" />
+    <Folder Include="RestSharp\Tests\TracksAPI\PutTracksEndPoint\" />
   </ItemGroup>
 
 </Project>
