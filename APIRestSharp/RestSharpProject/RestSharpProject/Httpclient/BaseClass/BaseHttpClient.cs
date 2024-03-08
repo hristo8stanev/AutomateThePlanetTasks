@@ -4,12 +4,14 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using RestSharpProject.AssertiExtensions;
+using System.Text;
 
 namespace RestSharpProject.Httpclient.BaseClass;
 
 [TestFixture]
 public class BaseHttpClient
 {
+
     protected int Wait = 2;
     protected Endpoints _endpoints;
    
@@ -49,19 +51,19 @@ public class BaseHttpClient
         return newArtists;
     }
 
-   // [Test]
-   // public async Task ArtistsDeleted_When_PerformDeleteRequest()
-   // {
-   //     var newArtist = await CreateUniqueArtists();
-   //     var json = JsonConvert.SerializeObject(newArtist);
-   //     var data = new StringContent(json, Encoding.UTF8, "application/json");
-   //     var response = await _httpClient.PostAsync("api/Artists", data);
-   //
-   //     var deleteResponse = await _httpClient.DeleteAsync($"api/Artists/{newArtist.ArtistId}");
-   //
-   //     Assert.IsTrue(deleteResponse.IsSuccessStatusCode);
-   // }
-   //
+    [Test]
+    public async Task ArtistsDeleted_When_PerformDeleteRequest()
+    {
+        var newArtist = await CreateUniqueArtists();
+        var json = JsonConvert.SerializeObject(newArtist);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync("api/Artists", data);
+   
+        var deleteResponse = await _httpClient.DeleteAsync($"api/Artists/{newArtist.ArtistId}");
+   
+        Assert.IsTrue(deleteResponse.IsSuccessStatusCode);
+    }
+   
     //PUT REQUEST
     private async Task<Genres> CreateUniqueGenres()
     {
