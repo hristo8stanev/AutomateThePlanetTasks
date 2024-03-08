@@ -1,31 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using RestSharp;
-using RestSharpProject.AssertiExtensions;
-using RestSharpProject.RestSharp.BaseClass;
-using RestSharpProject.AssertiExtensions;
-
-namespace RestSharpProject.RestSharp.Tests.GenresAPI.PostGenresEndPoint;
+﻿namespace RestSharpProject.RestSharp.Tests.GenresAPI.PostGenresEndPoint;
 public class PostGenresTest : BaseRestSharp
 {
-    private string GenresEndPoint => "api/Genres";
-
+ 
     [Test]
     public async Task DataPopulatedAsGenres_When_NewAlbumInsertedViaPost()
     {
-        var newAlbum = await CreateUniqueGenres();
+        var newGenres = await CreateUniqueGenres();
 
-        var request = new RestRequest(GenresEndPoint, Method.Post);
-        request.AddJsonBody(newAlbum);
+        var request = new RestRequest(_endpoints.GenresEndPoint, Method.Post);
+        request.AddJsonBody(newGenres);
 
         var response = await _restClient.ExecuteAsync<Genres>(request);
 
-
         response.AssertSuccessStatusCode();
-        Assert.AreEqual(newAlbum.Name, response.Data.Name);
+        Assert.AreEqual(newGenres.Name, response.Data.Name);
+        Assert.IsNotNull(newGenres.GenreId);
     }
 }

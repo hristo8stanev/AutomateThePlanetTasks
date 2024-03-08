@@ -3,16 +3,21 @@ using RestSharp.Authenticators.OAuth2;
 using RestSharp;
 using HttpTracer;
 using HttpTracer.Logger;
+using RestSharpProject.Models;
+using RestSharpProject.RestSharp.EndPoints;
 
 namespace RestSharpProject.RestSharp.BaseClass;
 public class BaseRestSharp
 {
+    protected Endpoints _endpoints;
     protected string BASE_URL => "http://localhost:60715/";
     protected static RestClient _restClient;
 
     [OneTimeSetUp]
     public void ClassSetup()
     {
+        _endpoints = new Endpoints();
+
         var options = new RestClientOptions(BASE_URL)
         {
             ThrowOnAnyError = true,
@@ -40,11 +45,9 @@ public class BaseRestSharp
 
     }
 
-    
-
     protected async Task<Artists> CreateUniqueArtists()
     {
-        var artists = await _restClient.GetAsync<List<Artists>>(new RestRequest("api/Artists"));
+        var artists = await _restClient.GetAsync<List<Artists>>(new RestRequest(_endpoints.ArtistEndPoint));
         var newArtists = new Artists
         {
             Name = Guid.NewGuid().ToString(),
@@ -52,14 +55,45 @@ public class BaseRestSharp
         };
         return newArtists;
     }
+
     protected async Task<Genres> CreateUniqueGenres()
     {
-        var genres = await _restClient.GetAsync<List<Genres>>(new RestRequest("api/Genres"));
+        var genres = await _restClient.GetAsync<List<Genres>>(new RestRequest(_endpoints.GenresEndPoint));
         var newGenres = new Genres
         {
             Name = Guid.NewGuid().ToString(),
             GenreId = genres.OrderBy(x => x.GenreId).Last().GenreId + 1,
         };
         return newGenres;
+    }
+
+    protected async Task<Album> CreateUniqueAlbum()
+    {
+        var albums = await _restClient.GetAsync<List<Album>>(new RestRequest(_endpoints.AlbumsEndPoint));
+
+        var newAlbum = new Album
+        {
+             AlbumId = albums.OrderBy(x => x.AlbumId).Last().AlbumId + 1,
+             Title = Guid.NewGuid() + "TitleName".ToString(),
+           
+        };
+
+        return newAlbum;
+     }
+
+    protected async Task<Tracks> CreateUniqueTrack()
+    {
+        var tracks = await _restClient.GetAsync<List<Tracks>>(new RestRequest(_endpoints.TracksEndPoint));
+        var newTrack = new Tracks
+        {
+            TrackId = tracks.OrderBy(x => x.TrackId).Last().TrackId + 1,
+            Name = Guid.NewGuid() + "TrackName".ToString(),
+            MediaTypeId = 1,
+            Composer = Guid.NewGuid() + "ComposerName".ToString(),
+            UnitPrice = Guid.NewGuid() + "88".ToString(),
+
+        };
+
+        return newTrack;
     }
 }

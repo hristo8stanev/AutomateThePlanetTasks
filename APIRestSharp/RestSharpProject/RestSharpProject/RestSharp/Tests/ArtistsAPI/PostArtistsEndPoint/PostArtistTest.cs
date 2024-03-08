@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint
+﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint
 {
-    public class PostArtistTest
+    public class PostArtistTest : BaseRestSharp
     {
 
+        [Test]
+        public async Task DataPopulatedAsArtists_When_NewArtistNameInsertedViaPost()
+        {
+            var newArtist = await CreateUniqueArtists();
 
+            var request = new RestRequest(_endpoints.ArtistEndPoint, Method.Post);
+            request.AddJsonBody(newArtist);
+
+            var response = await _restClient.ExecuteAsync<Artists>(request);
+
+            response.AssertSuccessStatusCode();
+            Assert.AreEqual(newArtist.Name, response.Data.Name);
+        }
 
     }
 }

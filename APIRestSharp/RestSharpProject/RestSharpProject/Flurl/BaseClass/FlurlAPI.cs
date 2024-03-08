@@ -4,7 +4,7 @@ using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
 
-namespace RestSharpProject.Flurl;
+namespace RestSharpProject.Flurl.BaseClass;
 public class FlurlAPI
 {
 

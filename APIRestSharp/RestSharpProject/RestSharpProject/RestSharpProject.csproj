@@ -28,7 +28,42 @@
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
     <PackageReference Include="Polly" Version="8.3.1" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Flurl\Test\AlbumsAPI\DeleteAlbumsEndPoint\" />
+    <Folder Include="Flurl\Test\AlbumsAPI\GetAlbumsEndPoint\" />
+    <Folder Include="Flurl\Test\AlbumsAPI\PostAlbumsEndPoint\" />
+    <Folder Include="Flurl\Test\AlbumsAPI\PutAlbumsEndPoint\" />
+    <Folder Include="Flurl\Test\ArtistsAPI\DeleteArtistsEndPoint\" />
+    <Folder Include="Flurl\Test\ArtistsAPI\GetArtistsEndPoint\" />
+    <Folder Include="Flurl\Test\ArtistsAPI\PostArtistsEndPoint\" />
+    <Folder Include="Flurl\Test\ArtistsAPI\PutAlbumsEndPoint\" />
+    <Folder Include="Flurl\Test\GenresAPI\DeleteGenresEndPoint\" />
+    <Folder Include="Flurl\Test\GenresAPI\GetGenresEndPoint\" />
+    <Folder Include="Flurl\Test\GenresAPI\PostGenresEndPoint\" />
+    <Folder Include="Flurl\Test\GenresAPI\PutGenresEndPoint\" />
+    <Folder Include="Flurl\Test\TracksAPI\DeleteTracksEndPoint\" />
+    <Folder Include="Flurl\Test\TracksAPI\GetTracksEndPoint\" />
+    <Folder Include="Flurl\Test\TracksAPI\PostTracksEndPoint\" />
+    <Folder Include="Flurl\Test\TracksAPI\PutTracksEndPoint\" />
+    <Folder Include="Httpclient\Test\AlbumsAPI\PostAlbumsEndPoint\" />
+    <Folder Include="Httpclient\Test\AlbumsAPI\PutAlbumsEndPoint\" />
+    <Folder Include="Httpclient\Test\AlbumsAPI\DeleteAlbumsEndPoint\" />
+    <Folder Include="Httpclient\Test\ArtistsAPI\DeleteArtistsEndPoint\" />
+    <Folder Include="Httpclient\Test\ArtistsAPI\PostArtistsEndPoint\" />
+    <Folder Include="Httpclient\Test\ArtistsAPI\PutAlbumsEndPoint\" />
+    <Folder Include="Httpclient\Test\ArtistsAPI\GetArtistsEndPoint\" />
+    <Folder Include="Httpclient\Test\GenresAPI\PostGenresEndPoint\" />
+    <Folder Include="Httpclient\Test\GenresAPI\DeleteGenresEndPoint\" />
+    <Folder Include="Httpclient\Test\GenresAPI\PutGenresEndPoint\" />
+    <Folder Include="Httpclient\Test\GenresAPI\GetGenresEndPoint\" />
+    <Folder Include="Httpclient\Test\TracksAPI\DeleteTracksEndPoint\" />
+    <Folder Include="Httpclient\Test\TracksAPI\PostTracksEndPoint\" />
+    <Folder Include="Httpclient\Test\TracksAPI\GetTracksEndPoint\" />
+    <Folder Include="Httpclient\Test\TracksAPI\PutTracksEndPoint\" />
   </ItemGroup>
 
 </Project>
