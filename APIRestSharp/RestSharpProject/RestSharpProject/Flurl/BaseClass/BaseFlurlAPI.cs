@@ -5,7 +5,7 @@ using Flurl.Http;
 using Newtonsoft.Json;
 
 namespace RestSharpProject.Flurl.BaseClass;
-public class FlurlAPI
+public class BaseFlurlAPI
 {
 
     private const string URL = "https://localhost:60714/api/";

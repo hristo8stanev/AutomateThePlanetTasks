@@ -18,7 +18,4 @@ public class DeleteGenresTests : BaseHttpClient
 
         Assert.IsTrue(deleteResponse.IsSuccessStatusCode);
     }
-
-
 }
-
