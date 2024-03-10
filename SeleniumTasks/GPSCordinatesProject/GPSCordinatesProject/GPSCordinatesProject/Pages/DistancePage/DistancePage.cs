@@ -27,7 +27,7 @@ public partial class DistancePage : WebPage
 
     public void CalculateTheDistance()
     {
-        ScrollToTheElement(Address1);
+        ScrollToTheElement(FirstLocation);
         CalculateDistanceButton.Click();
     }
 }

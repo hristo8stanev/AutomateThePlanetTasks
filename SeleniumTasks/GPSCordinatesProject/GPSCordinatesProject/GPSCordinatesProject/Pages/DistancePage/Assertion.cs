@@ -22,9 +22,9 @@ public partial class DistancePage
     public void AssertCalculateTheDistanceBetwwenTwoCities(string expectedDistance)
     {
       
-        WaitTextToBePresentInElement(By.XPath("//*[@id='distance']"), DistanceElement.GetText());
-        ScrollToTheElement(Distance);
-        MoveToElement(DistanceField);
+        WaitTextToBePresentInElement(DistanceElement, DistanceElement.GetText());
+        ScrollToTheElement(DistanceElement);
+        MoveToElement(DistanceElement);
         var message = $"{ErrorMessagePrice} \n Actual Distance:{DistanceElement.Text}, \n Expected Distance:{expectedDistance}";      
         CollectionAssert.AreEqual(expectedDistance,DistanceElement.Text, message);
     }

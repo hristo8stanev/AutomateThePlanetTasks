@@ -45,23 +45,21 @@ public abstract class WebPage
         }
     }
 
-    public void WaitTextToBePresentInElement(By locator, string value)
+
+    public void WaitTextToBePresentInElement(IWebElement element, string value)
     {
-  
-       WebDriverWait.Until(ExpectedConditions.TextToBePresentInElement(_driver.FindElement(locator), value));
+        WebDriverWait.Until(ExpectedConditions.TextToBePresentInElement(element, value));
     }
 
-    protected IWebElement MoveToElement(string locator)
-    {
 
-        IWebElement element = _driver.FindElement(By.XPath(locator));
+    protected IWebElement MoveToElement(IWebElement element)
+    {
         actions.MoveToElement(element).Perform();
         return element;
     }
 
-    public IWebElement ScrollToTheElement(string locator)
+    public IWebElement ScrollToTheElement(IWebElement element)
     {
-       IWebElement element = _driver.FindElement(By.XPath(locator));
         IJavaScriptExecutor js = (IJavaScriptExecutor)_driver;
         js.ExecuteScript("arguments[0].scrollIntoView();", element);
         return element;

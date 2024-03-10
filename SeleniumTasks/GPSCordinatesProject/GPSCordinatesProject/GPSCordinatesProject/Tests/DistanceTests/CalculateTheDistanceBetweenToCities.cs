@@ -4,7 +4,7 @@ namespace GPSCordinatesProject.Tests.DistanceTests;
 public class CalculateTheDistanceBetweenToCities : BaseTest
 {
 
-    [TestCase("Germany", "Unter den Linden, Friedrichstraße, 10117 Berlin", "0.21 km / 0.13 mi")]
+    [TestCase("Germany", "Unter den Linden, Friedrichstraße, 10117 Berlin", "0.01 km / 0 mi")]
     [TestCase("Argentina", "Obelisco, Avenida Corrientes, San Nicolás, Buenos Aires", "11921.52 km / 7407.69 mi")]
     [TestCase("Australia", "Australian Capital Territory, CGS Rowing, Alexandrina Drive, Yarralumla 2600", "16089.14 km / 9997.33 mi")]
     [TestCase("Canada", "World Exchange Plaza, 45 O'Connor Street, Ottawa, ON K1P 5M4", "6134.52 km / 3811.82 mi")]

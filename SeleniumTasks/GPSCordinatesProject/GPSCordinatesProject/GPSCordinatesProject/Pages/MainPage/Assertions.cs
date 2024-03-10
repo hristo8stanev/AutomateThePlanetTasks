@@ -9,7 +9,6 @@ public partial class MainPage
     private string ErrorMessageCity => "Your expected City and Country is not displayed";
     private string ErrorMessageCordinates => "Your expected Longtitude and Latitude is not displayed";
 
-
     public void AssertCityAndCountryIsCorrect(string city, string country)
     {
         MoveToElement(Address);
