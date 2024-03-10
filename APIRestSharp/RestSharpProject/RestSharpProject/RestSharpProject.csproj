@@ -49,21 +49,6 @@
     <Folder Include="Flurl\Test\TracksAPI\GetTracksEndPoint\" />
     <Folder Include="Flurl\Test\TracksAPI\PostTracksEndPoint\" />
     <Folder Include="Flurl\Test\TracksAPI\PutTracksEndPoint\" />
-    <Folder Include="Httpclient\Test\AlbumsAPI\PostAlbumsEndPoint\" />
-    <Folder Include="Httpclient\Test\AlbumsAPI\PutAlbumsEndPoint\" />
-    <Folder Include="Httpclient\Test\AlbumsAPI\DeleteAlbumsEndPoint\" />
-    <Folder Include="Httpclient\Test\ArtistsAPI\DeleteArtistsEndPoint\" />
-    <Folder Include="Httpclient\Test\ArtistsAPI\PostArtistsEndPoint\" />
-    <Folder Include="Httpclient\Test\ArtistsAPI\PutAlbumsEndPoint\" />
-    <Folder Include="Httpclient\Test\ArtistsAPI\GetArtistsEndPoint\" />
-    <Folder Include="Httpclient\Test\GenresAPI\PostGenresEndPoint\" />
-    <Folder Include="Httpclient\Test\GenresAPI\DeleteGenresEndPoint\" />
-    <Folder Include="Httpclient\Test\GenresAPI\PutGenresEndPoint\" />
-    <Folder Include="Httpclient\Test\GenresAPI\GetGenresEndPoint\" />
-    <Folder Include="Httpclient\Test\TracksAPI\DeleteTracksEndPoint\" />
-    <Folder Include="Httpclient\Test\TracksAPI\PostTracksEndPoint\" />
-    <Folder Include="Httpclient\Test\TracksAPI\GetTracksEndPoint\" />
-    <Folder Include="Httpclient\Test\TracksAPI\PutTracksEndPoint\" />
   </ItemGroup>
 
 </Project>
