@@ -1,20 +1,19 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using Flurl;
+﻿using Flurl;
 using Flurl.Http;
-using Newtonsoft.Json;
 
 namespace RestSharpProject.Flurl.BaseClass;
 public class BaseFlurlAPI
 {
-
-    private const string URL = "https://localhost:60714/api/";
-    private Url BASE_URL = new Url(URL);
-    private const string AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZWxsYXRyaXhVc2VyIiwianRpIjoiNjEyYjIzOTktNDUzMS00NmU0LTg5NjYtN2UxYmRhY2VmZTFlIiwibmJmIjoxNTE4NTI0NDg0LCJleHAiOjE1MjM3MDg0ODQsImlzcyI6ImF1dG9tYXRldGhlcGxhbmV0LmNvbSIsImF1ZCI6ImF1dG9tYXRldGhlcGxhbmV0LmNvbSJ9.Nq6OXqrK82KSmWNrpcokRIWYrXHanpinrqwbUlKT_cs";
+    protected EndPointsFlurl _flurlEndPoints;
+    protected const string URL = "https://localhost:60714/api/";
+    protected Url BASE_URL = new Url(URL);
+    protected string AUTH_TOKEN => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZWxsYXRyaXhVc2VyIiwianRpIjoiNjEyYjIzOTktNDUzMS00NmU0LTg5NjYtN2UxYmRhY2VmZTFlIiwibmJmIjoxNTE4NTI0NDg0LCJleHAiOjE1MjM3MDg0ODQsImlzcyI6ImF1dG9tYXRldGhlcGxhbmV0LmNvbSIsImF1ZCI6ImF1dG9tYXRldGhlcGxhbmV0LmNvbSJ9.Nq6OXqrK82KSmWNrpcokRIWYrXHanpinrqwbUlKT_cs";
+    
 
     [OneTimeSetUp]
     public void ClassInitialize()
     {
+        _flurlEndPoints = new EndPointsFlurl();
         var client = new FlurlClient(BASE_URL);
         client.Settings.Timeout = TimeSpan.FromSeconds(600);
         client.Settings.Redirects.Enabled = false;
@@ -27,48 +26,11 @@ public class BaseFlurlAPI
         RegenerateUrl();
     }
 
-    /// GET REQUESTS
-    [Test]
-    public async Task ContentPopulated_When_SendAsync()
-    {
-        var response = await BASE_URL
-             .AppendPathSegment("Albums")
-             .WithOAuthBearerToken(AUTH_TOKEN)
-             .SendAsync(HttpMethod.Get);
-
-        response.ResponseMessage.EnsureSuccessStatusCode();
-    }
-    //////////////////////////////////////////
-    [Test]
-    public async Task DownloadImage()
-    {
-        var url = "https://www.automatetheplanet.com/wp-content/uploads/2020/03/atp_logo.svg";
-        string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-        string downloadedFilePath = await url.DownloadFileAsync(documentsPath, "atp_logo.svg");
-        string localFilename = "atp_logo.svg";
-        string expectedDownloadedFilePath = Path.Combine(documentsPath, localFilename);
-
-        Assert.AreEqual(expectedDownloadedFilePath, downloadedFilePath);
-    }
-    //////////////////////////////////////////
-    [Test]
-    public async Task DataPopulatedAsList_When_GetGenericAlbumsById()
-    {
-        var responseJsonResult = await BASE_URL
-             .AppendPathSegment("Albums")
-             .AppendPathSegment(10)
-             .WithOAuthBearerToken(AUTH_TOKEN)
-             .GetStringAsync();
-        var result = JsonConvert.DeserializeObject<Album>(responseJsonResult);
-
-        Assert.AreEqual(10, result.AlbumId);
-    }
-    //////////////////////////////////////////
-    //PUT REQUESTS
-    private async Task<Genres> CreateUniqueGenres()
+    
+    protected async Task<Genres> CreateUniqueGenres()
     {
         RegenerateUrl();
-        var allGenres = await BASE_URL.AppendPathSegment("Genres")
+        var allGenres = await BASE_URL.AppendPathSegment(_flurlEndPoints.GenresEndPoint)
                               .WithOAuthBearerToken(AUTH_TOKEN)
                               .GetJsonAsync<List<Genres>>();
         RegenerateUrl();
@@ -81,58 +43,12 @@ public class BaseFlurlAPI
         return newGenre;
     }
 
-    [Test]
-    public async Task ContentPopulated_When_PutModifiedContent()
-    {
-        var newGenre = await CreateUniqueGenres();
+   
 
-        var response = await BASE_URL.AppendPathSegments("Genres")
-                                     .WithOAuthBearerToken(AUTH_TOKEN)
-                                     .PostJsonAsync(newGenre);
-        RegenerateUrl();
-
-        var createdGenre = await response.GetJsonAsync<Genres>();
-
-        string updatedName = Guid.NewGuid().ToString();
-        createdGenre.Name = updatedName;
-
-        var putResponse = await BASE_URL.AppendPathSegment("Genres")
-                                .AppendPathSegment(createdGenre.GenreId)
-                                .WithOAuthBearerToken(AUTH_TOKEN)
-                                .PutJsonAsync(createdGenre);
-        RegenerateUrl();
-
-        var actualUpdatedGenres = await BASE_URL.AppendPathSegments("Genres")
-                               .AppendPathSegment(createdGenre.GenreId)
-                               .WithOAuthBearerToken(AUTH_TOKEN)
-                               .GetJsonAsync<Genres>();
-        RegenerateUrl();
-
-        Assert.AreEqual(updatedName, actualUpdatedGenres.Name);
-    }
-    //////////////////////////////////////////
-    //DELETE REQUEST
-    [Test]
-    public async Task ArtistsDeleted_When_PerformGenericDeleteRequest()
-    {
-        var newArtist = await CreateUniqueArtists();
-
-        var response = await BASE_URL.AppendPathSegment("Artists")
-                                   .WithOAuthBearerToken(AUTH_TOKEN)
-                                   .PostJsonAsync(newArtist);
-        RegenerateUrl();
-
-        var deleteResponse = await BASE_URL.AppendPathSegments("Artists", newArtist.ArtistId)
-                                   .WithOAuthBearerToken(AUTH_TOKEN)
-                                   .DeleteAsync();
-
-        deleteResponse.ResponseMessage.EnsureSuccessStatusCode();
-    }
-
-    private async Task<Artists> CreateUniqueArtists()
+    protected async Task<Artists> CreateUniqueArtists()
     {
         RegenerateUrl();
-        var artists = await BASE_URL.AppendPathSegment("Artists")
+        var artists = await BASE_URL.AppendPathSegment(_flurlEndPoints.ArtistsEndPoint)
                                     .WithOAuthBearerToken(AUTH_TOKEN)
                                     .GetJsonAsync<List<Artists>>();
         RegenerateUrl();
@@ -145,21 +61,45 @@ public class BaseFlurlAPI
         return newArtists;
     }
 
-    //////////////////////////////////////////
-
-
-    [Test]
-    public async Task DataPopulatedAsList_When_GetGenericAlbums()
+    protected async Task<Album> CreateUniqueAlbum()
     {
-        var albums = await BASE_URL
-              .AppendPathSegment("Albums")
-              .WithOAuthBearerToken(AUTH_TOKEN)
-              .GetJsonAsync<List<Album>>();
+        RegenerateUrl();
+        var albums = await BASE_URL.AppendPathSegment(_flurlEndPoints.AlbumsEndPoint)
+                                    .WithOAuthBearerToken(AUTH_TOKEN)
+                                    .GetJsonAsync<List<Album>>();
+        RegenerateUrl();
 
-        Assert.AreEqual(544, albums.Count);
+        var newAlbums = new Album
+        {
+            Title = Guid.NewGuid().ToString(),
+            AlbumId = albums.OrderBy(x => x.AlbumId).Last().AlbumId + 1,
+        };
+        return newAlbums;
+
     }
 
-    private void RegenerateUrl()
+    protected async Task<Tracks> CreateUniqueTracks()
+    {
+        RegenerateUrl();
+        var tracks = await BASE_URL.AppendPathSegment(_flurlEndPoints.TracksEndPoint)
+                                    .WithOAuthBearerToken(AUTH_TOKEN)
+                                    .GetJsonAsync<List<Tracks>>();
+        RegenerateUrl();
+
+        var newTrack = new Tracks()
+        {
+            TrackId = tracks.OrderBy(x => x.TrackId).Last().TrackId + 1,
+            Name = Guid.NewGuid() + "TrackName".ToString(),
+            MediaTypeId = 1,
+            Composer = Guid.NewGuid() + "ComposerName".ToString(),
+            UnitPrice = Guid.NewGuid() + "88".ToString(),
+
+        };
+        return newTrack;
+    }
+
+
+        protected void RegenerateUrl()
     {
         BASE_URL.Reset();
     }

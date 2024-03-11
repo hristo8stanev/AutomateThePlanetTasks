@@ -6,11 +6,11 @@
         public async Task TracksDeleted_When_PerformetGenericDeleteRequest()
         {
             var newTrack = await CreateUniqueTrack();
-            var request = new RestRequest($"{_endpoints.TracksEndPoint}", Method.Post);
+            var request = new RestRequest($"{_endpoints.TrackEndPoint}", Method.Post);
             request.AddJsonBody(newTrack);
             await _restClient.ExecuteAsync<Tracks>(request);
 
-            var deleteRequest = new RestRequest($"{_endpoints.TracksEndPoint}/{newTrack.TrackId}", Method.Delete);
+            var deleteRequest = new RestRequest($"{_endpoints.TrackEndPoint}/{newTrack.TrackId}", Method.Delete);
             var response = await _restClient.ExecuteAsync<Tracks>(deleteRequest);
 
             response.AssertSuccessStatusCode();

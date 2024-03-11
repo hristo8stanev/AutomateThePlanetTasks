@@ -7,14 +7,14 @@ public class DeleteGenresTests : BaseHttpClient
 {
 
     [Test]
-    public async Task ArtistsDeleted_When_PerformDeleteRequest()
+    public async Task GenresDeleted_When_PerformDeleteRequest()
     {
-        var newArtist = await CreateUniqueArtists();
-        var json = JsonConvert.SerializeObject(newArtist);
+        var newGenres = await CreateUniqueGenres();
+        var json = JsonConvert.SerializeObject(newGenres);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await _httpClient.PostAsync(_endpoints.GenresEndPoint, data);
 
-        var deleteResponse = await _httpClient.DeleteAsync($"api/Artists/{newArtist.ArtistId}");
+        var deleteResponse = await _httpClient.DeleteAsync($"{_endpoints.GenresEndPoint}/{newGenres.GenreId}");
 
         Assert.IsTrue(deleteResponse.IsSuccessStatusCode);
     }

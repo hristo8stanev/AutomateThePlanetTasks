@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RestSharpProject.Httpclient.Test.AlbumsAPI.DeleteAlbumsEndPoint
-{
-    public class DeleteAlbumsTests
+﻿namespace RestSharpProject.Httpclient.Test.AlbumsAPI.DeleteAlbumsEndPoint;
+public class DeleteAlbumsTests
     {
+        [Test]
+        public async Task ArtistsDeleted_When_PerformDeleteRequest()
+        {
 
-
+        }
     }
-}
+

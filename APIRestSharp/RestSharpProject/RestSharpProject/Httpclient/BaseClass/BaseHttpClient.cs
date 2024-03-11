@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using RestSharpProject.RestSharp.EndPoints;
 using System.Net.Http.Headers;
-using System.Text;
 
 namespace RestSharpProject.Httpclient.BaseClass;
 
@@ -11,7 +10,6 @@ public class BaseHttpClient
 
     protected int Wait = 2;
     protected Endpoints _endpoints;
-   
     protected static HttpClient _httpClient;
     protected string BASE_URL => "https://localhost:60714/";
 
@@ -33,11 +31,13 @@ public class BaseHttpClient
        _httpClient.Dispose();
 
     }
+
       protected async Task<Artists> CreateUniqueArtists()
   {
-      var response = await _httpClient.GetAsync("api/Artists");
+      var response = await _httpClient.GetAsync(_endpoints.ArtistEndPoint);
       var responseJsonResult = await response.Content.ReadAsStringAsync();
       var artists = JsonConvert.DeserializeObject<List<Artists>>(responseJsonResult);
+
       var newArtists = new Artists
       {
           Name = Guid.NewGuid().ToString(),
@@ -47,12 +47,12 @@ public class BaseHttpClient
   }
 
   
-    
     protected async Task<Genres> CreateUniqueGenres()
     {
-        var response = await _httpClient.GetAsync("api/Genres");
+        var response = await _httpClient.GetAsync(_endpoints.GenresEndPoint);
         var responseJsonResult = await response.Content.ReadAsStringAsync();
         var allGenres = JsonConvert.DeserializeObject<List<Genres>>(responseJsonResult);
+
         var newGenre = new Genres
         {
             Name = Guid.NewGuid().ToString(),
@@ -61,4 +61,42 @@ public class BaseHttpClient
         return newGenre;
     }
 
+    protected async Task<Album> CreateUniqueAlbum()
+    {
+
+        var response = await _httpClient.GetAsync(_endpoints.AlbumsEndPoint);
+        var responseJsonResult = await response.Content.ReadAsStringAsync();
+        var allAlbums = JsonConvert.DeserializeObject<List<Album>>(responseJsonResult);
+
+
+        var newAlbum = new Album()
+        {
+            AlbumId = allAlbums.OrderBy(x => x.AlbumId).Last().AlbumId + 1,
+            Title = Guid.NewGuid().ToString(),
+            ArtistId = 134,
+            Artist = null
+
+        };
+
+        return newAlbum;
+    }
+
+    protected async Task<Tracks> CreateUniqueTrack()
+    {
+
+        var response = await _httpClient.GetAsync(_endpoints.TrackEndPoint);
+        var responseJsonResult = await response.Content.ReadAsStringAsync();
+        var allTracks = JsonConvert.DeserializeObject<List<Tracks>>(responseJsonResult);
+
+        var newTrack = new Tracks()
+        {
+            TrackId = allTracks.OrderBy(x => x.TrackId).Last().TrackId + 1,
+            Name = Guid.NewGuid() + "TrackName".ToString(),
+            MediaTypeId = 1,
+            Composer = Guid.NewGuid() + "ComposerName".ToString(),
+            UnitPrice = Guid.NewGuid() + "88".ToString(),
+
+        };
+        return newTrack;
+    }
 }

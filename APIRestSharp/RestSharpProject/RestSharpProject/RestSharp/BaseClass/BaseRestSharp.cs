@@ -83,7 +83,7 @@ public class BaseRestSharp
 
     protected async Task<Tracks> CreateUniqueTrack()
     {
-        var tracks = await _restClient.GetAsync<List<Tracks>>(new RestRequest(_endpoints.TracksEndPoint));
+        var tracks = await _restClient.GetAsync<List<Tracks>>(new RestRequest(_endpoints.TrackEndPoint));
         var newTrack = new Tracks
         {
             TrackId = tracks.OrderBy(x => x.TrackId).Last().TrackId + 1,

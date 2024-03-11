@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace RestSharpProject.RestSharp.Tests.GenresAPI.DeleteGenresEndPoint
+﻿namespace RestSharpProject.RestSharp.Tests.GenresAPI.DeleteGenresEndPoint
 {
     public class DeleteGenresTest : BaseRestSharp
     {

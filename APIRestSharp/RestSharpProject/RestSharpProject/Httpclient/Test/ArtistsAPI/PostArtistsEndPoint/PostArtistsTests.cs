@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
 using System.Text;
-using System.Threading.Tasks;
+using RestSharpProject.Httpclient.BaseClass;
 
-namespace RestSharpProject.Httpclient.Test.ArtistsAPI.PostArtistsEndPoint
+namespace RestSharpProject.Httpclient.Test.ArtistsAPI.PostArtistsEndPoint;
+public class PostArtistsTests : BaseHttpClient
 {
-    internal class PostArtistsTests
+
+    [Test]
+    public async Task ContentPopulated_When_NewArtistsInsertedViaPost()
     {
+        var newArtist = await CreateUniqueArtists();
+        var json = JsonConvert.SerializeObject(newArtist);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _httpClient.PostAsync(_endpoints.ArtistEndPoint, data);
+        var responseJsonResult = await response.Content.ReadAsStringAsync();
+        var createdArtist = JsonConvert.DeserializeObject<Artists>(responseJsonResult);
+
+        response.EnsureSuccessStatusCode();
+        Assert.AreEqual(newArtist.Name, createdArtist.Name);
+
     }
 }

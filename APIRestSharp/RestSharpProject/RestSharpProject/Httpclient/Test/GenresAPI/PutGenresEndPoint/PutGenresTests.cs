@@ -5,13 +5,14 @@ using System.Text;
 namespace RestSharpProject.Httpclient.Test.GenresAPI.PutGenresEndPoint;
 public class PutGenresTests : BaseHttpClient
 {
+
     [Test]
     public async Task ContentPopulated_When_PutModifiedContent()
     {
         var newGenre = await CreateUniqueGenres();
         var json = JsonConvert.SerializeObject(newGenre);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync("api/Genres", data);
+        var response = await _httpClient.PostAsync(_endpoints.GenresEndPoint, data);
         var responseJsonResult = await response.Content.ReadAsStringAsync();
         var insertedGenres = JsonConvert.DeserializeObject<Genres>(responseJsonResult);
 
@@ -20,12 +21,13 @@ public class PutGenresTests : BaseHttpClient
         json = JsonConvert.SerializeObject(insertedGenres);
         data = new StringContent(json, Encoding.UTF8, "application/json");
 
-        await _httpClient.PutAsync($"api/Genres/{insertedGenres.GenreId}", data);
+        await _httpClient.PutAsync($"{_endpoints.GenresEndPoint}/{insertedGenres.GenreId}", data);
 
-        var getResponse = await _httpClient.GetAsync($"api/Genres/{insertedGenres.GenreId}");
+        var getResponse = await _httpClient.GetAsync($"{_endpoints.GenresEndPoint}/{insertedGenres.GenreId}");
         var getResponseJsonResult = await getResponse.Content.ReadAsStringAsync();
         var actualUpdatedGenres = JsonConvert.DeserializeObject<Genres>(getResponseJsonResult);
 
+        response.EnsureSuccessStatusCode();
         Assert.AreEqual(updatedName, actualUpdatedGenres.Name);
     }
 

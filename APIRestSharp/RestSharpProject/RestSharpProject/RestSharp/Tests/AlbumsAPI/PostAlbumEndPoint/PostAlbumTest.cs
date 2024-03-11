@@ -1,10 +1,4 @@
-﻿using RestSharp;
-using RestSharpProject.RestSharp.BaseClass;
-using RestSharp;
-using RestSharpProject.AssertiExtensions;
-using RestSharpProject.RestSharp.BaseClass;
-
-namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
+﻿namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
 
 public class PostAlbumTest : BaseRestSharp
 {

@@ -5,7 +5,7 @@
     [Test]
     public async Task DataPopulatedTracksS_When_GetAllTrack()
     {
-        var request = new RestRequest(_endpoints.TracksEndPoint, Method.Get);
+        var request = new RestRequest(_endpoints.TrackEndPoint, Method.Get);
         var response = await _restClient.ExecuteAsync(request);
 
         Assert.IsNotNull(response.Content);
@@ -16,12 +16,12 @@
     public async Task DataPopulatedTracks_WhenGetTrackById()
     {
         var newTrack = await CreateUniqueTrack();
-        var newTrackRequest = new RestRequest(_endpoints.TracksEndPoint, Method.Post);
+        var newTrackRequest = new RestRequest(_endpoints.TrackEndPoint, Method.Post);
         newTrackRequest.AddJsonBody(newTrack);
         var insertedTrack = await _restClient.ExecuteAsync<Tracks>(newTrackRequest);
 
       
-        var request = new RestRequest(($"{_endpoints.TracksEndPoint}/{insertedTrack.Data.TrackId}"), Method.Get);
+        var request = new RestRequest(($"{_endpoints.TrackEndPoint}/{insertedTrack.Data.TrackId}"), Method.Get);
         var response = await _restClient.ExecuteAsync<Tracks>(request);
 
         

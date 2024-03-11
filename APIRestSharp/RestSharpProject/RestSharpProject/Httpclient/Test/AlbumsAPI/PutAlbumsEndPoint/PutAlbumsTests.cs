@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace RestSharpProject.Httpclient.Test.AlbumsAPI.PutAlbumsEndPoint;
+public class PutAlbumsTests
+{
 
-namespace RestSharpProject.Httpclient.Test.AlbumsAPI.PutAlbumsEndPoint;
-    public class PutAlbumsTests
+    [Test]
+    public async Task ContentPopulated_When_PutModifiedContent()
     {
+
+
+    }
+
 
 
     }

@@ -12,14 +12,16 @@ public class PutAlbumsTest : BaseRestSharp
 
         var insertedAlbum = await _restClient.ExecuteAsync<Album>(request);
 
-        var putRequest = new RestRequest($"{_endpoints.AlbumsEndPoint}/{insertedAlbum.Data.AlbumId}", Method.Put);
-        string updatedName = Guid.NewGuid() + "UpdatedName".ToString();
+        var putRequest = new RestRequest($"{_endpoints.AlbumsEndPoint}{insertedAlbum.Data.AlbumId}", Method.Put);
+
+        string updatedName = Guid.NewGuid()+"updatedName".ToString();
         insertedAlbum.Data.Title = updatedName;
         putRequest.AddJsonBody(insertedAlbum.Data);
 
         await _restClient.ExecuteAsync(putRequest);
 
-        request = new RestRequest($"{_endpoints.AlbumsEndPoint}/{insertedAlbum.Data.AlbumId}", Method.Get);
+        request = new RestRequest($"{_endpoints.AlbumsEndPoint}{insertedAlbum.Data.AlbumId}", Method.Get);
+
         var getUpdatedResponse = await _restClient.ExecuteAsync<Album>(request);
 
         getUpdatedResponse.AssertSuccessStatusCode();

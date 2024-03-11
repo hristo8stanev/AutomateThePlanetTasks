@@ -26,7 +26,7 @@ public class GetAllAlbumsTests : BaseRestSharp
         newAlbumRequest.AddJsonBody(newAlbum);
         var insertedAlbum = await _restClient.ExecuteAsync<Album>(newAlbumRequest);
 
-        var request = new RestRequest($"{_endpoints.AlbumsEndPoint}/{insertedAlbum.Data.AlbumId}");
+        var request = new RestRequest($"{_endpoints.AlbumsEndPoint}{insertedAlbum.Data.AlbumId}");
         var response = await _restClient.ExecuteAsync<Album>(request);
 
         response.AssertStatusCode(HttpStatusCode.OK);

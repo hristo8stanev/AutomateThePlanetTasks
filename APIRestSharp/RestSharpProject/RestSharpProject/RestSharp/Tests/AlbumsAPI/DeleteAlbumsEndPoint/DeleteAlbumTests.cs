@@ -1,9 +1,4 @@
-﻿using System.Net;
-using RestSharp;
-using RestSharpProject.AssertiExtensions;
-using RestSharpProject.RestSharp.BaseClass;
-
-namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.DeleteAlbumsEndPoint;
+﻿namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.DeleteAlbumsEndPoint;
 public class DeleteAlbumTests : BaseRestSharp
 {
     [Test]
@@ -15,7 +10,7 @@ public class DeleteAlbumTests : BaseRestSharp
         request.AddJsonBody(newAlbum);
         await _restClient.ExecuteAsync<Album>(request);
 
-        var deleteRequest = new RestRequest($"{_endpoints.AlbumsEndPoint}/{newAlbum.AlbumId}", Method.Delete);
+        var deleteRequest = new RestRequest($"{_endpoints.AlbumsEndPoint}{newAlbum.AlbumId}", Method.Delete);
         var response = await _restClient.ExecuteAsync<Album>(deleteRequest);
 
         response.AssertSuccessStatusCode();
