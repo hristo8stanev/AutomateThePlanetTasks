@@ -20,10 +20,6 @@ public class GetAlbumsTests : BaseFlurlAPI
     [Test]
     public async Task DataPopulatedAsList_When_GetGenericAlbumsById()
     {
-
-
-
-
         var responseJsonResult = await BASE_URL
              .AppendPathSegment(_flurlEndPoints.AlbumsEndPoint)
              .AppendPathSegment(10)

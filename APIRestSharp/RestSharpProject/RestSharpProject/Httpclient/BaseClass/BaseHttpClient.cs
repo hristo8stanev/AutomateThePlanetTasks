@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using RestSharpProject.RestSharp.EndPoints;
+using System.Net;
 using System.Net.Http.Headers;
 
 namespace RestSharpProject.Httpclient.BaseClass;
@@ -16,6 +17,7 @@ public class BaseHttpClient
     [OneTimeSetUp]
     public void ClassInitialize()
     {
+     
         _endpoints = new Endpoints();
         _httpClient = new HttpClient();
         _httpClient.BaseAddress = new Uri(BASE_URL);

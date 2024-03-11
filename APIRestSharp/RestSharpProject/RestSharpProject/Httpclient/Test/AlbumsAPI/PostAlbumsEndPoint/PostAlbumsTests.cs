@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net;
+using System.Text;
 using Newtonsoft.Json;
 using RestSharpProject.Httpclient.BaseClass;
 
@@ -9,6 +10,7 @@ public class PostAlbumsTests : BaseHttpClient
     [Test]
     public async Task DataPopulatedAsAlbums_When_NewAlbumInsertedViaPost()
     {
+       
         var newAlbum = await CreateUniqueAlbum();
         var json = JsonConvert.SerializeObject(newAlbum);
         var data = new StringContent(json, Encoding.UTF8, "application/json");

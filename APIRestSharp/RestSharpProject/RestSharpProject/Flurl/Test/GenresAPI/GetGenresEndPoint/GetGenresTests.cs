@@ -1,5 +1,6 @@
 ﻿using Flurl.Http;
 using RestSharpProject.Flurl.BaseClass;
+using System.Net;
 
 namespace RestSharpProject.Flurl.Test.GenresAPI.GetGenresEndPoint;
     public class GetGenresTests : BaseFlurlAPI
@@ -8,6 +9,8 @@ namespace RestSharpProject.Flurl.Test.GenresAPI.GetGenresEndPoint;
     [Test]
     public async Task ContentPopulated_When_GetAllGenres()
     {
+       
+
         var response = await BASE_URL
             .AppendPathSegment(_flurlEndPoints.GenresEndPoint)
             .WithOAuthBearerToken(AUTH_TOKEN)

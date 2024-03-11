@@ -1,11 +1,13 @@
 ﻿using Flurl;
 using Flurl.Http;
+using System.Net;
 
 namespace RestSharpProject.Flurl.BaseClass;
 public class BaseFlurlAPI
 {
     protected EndPointsFlurl _flurlEndPoints;
     protected const string URL = "https://localhost:60714/api/";
+    private int Wait => 600;
     protected Url BASE_URL = new Url(URL);
     protected string AUTH_TOKEN => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZWxsYXRyaXhVc2VyIiwianRpIjoiNjEyYjIzOTktNDUzMS00NmU0LTg5NjYtN2UxYmRhY2VmZTFlIiwibmJmIjoxNTE4NTI0NDg0LCJleHAiOjE1MjM3MDg0ODQsImlzcyI6ImF1dG9tYXRldGhlcGxhbmV0LmNvbSIsImF1ZCI6ImF1dG9tYXRldGhlcGxhbmV0LmNvbSJ9.Nq6OXqrK82KSmWNrpcokRIWYrXHanpinrqwbUlKT_cs";
     
@@ -13,9 +15,11 @@ public class BaseFlurlAPI
     [OneTimeSetUp]
     public void ClassInitialize()
     {
+       
+
         _flurlEndPoints = new EndPointsFlurl();
         var client = new FlurlClient(BASE_URL);
-        client.Settings.Timeout = TimeSpan.FromSeconds(600);
+        client.Settings.Timeout = TimeSpan.FromSeconds(Wait);
         client.Settings.Redirects.Enabled = false;
 
     }
@@ -103,5 +107,7 @@ public class BaseFlurlAPI
     {
         BASE_URL.Reset();
     }
+
+   
 }
 
