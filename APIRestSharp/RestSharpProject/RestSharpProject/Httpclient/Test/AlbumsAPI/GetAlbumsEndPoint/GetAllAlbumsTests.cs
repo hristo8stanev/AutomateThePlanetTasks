@@ -18,6 +18,7 @@ public class GetAllAlbumsTests : BaseHttpClient
     [Test]
     public async Task DataPopulatedAsList_When_GetGenericAlbumsById()
     {
+
         var response = await _httpClient.GetAsync($"{_endpoints.AlbumsEndPoint}10");
         var responseJsonResult = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<Album>(responseJsonResult);

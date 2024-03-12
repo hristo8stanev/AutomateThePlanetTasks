@@ -12,9 +12,9 @@ public class DeleteTracksTests : BaseHttpClient
         var newTrack = await CreateUniqueTrack();
         var json = JsonConvert.SerializeObject(newTrack);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await _httpClient.PostAsync(_endpoints.GenresEndPoint, data);
+        var response = await _httpClient.PostAsync(_endpoints.TrackEndPoint, data);
 
-        var deleteResponse = await _httpClient.DeleteAsync($"{_endpoints.GenresEndPoint}/{newTrack.TrackId}");
+        var deleteResponse = await _httpClient.DeleteAsync($"{_endpoints.TrackEndPoint}/{newTrack.TrackId}");
 
         Assert.IsTrue(deleteResponse.IsSuccessStatusCode);
         deleteResponse.EnsureSuccessStatusCode();

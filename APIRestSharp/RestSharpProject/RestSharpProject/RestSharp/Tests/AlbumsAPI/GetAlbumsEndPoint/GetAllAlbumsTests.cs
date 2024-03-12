@@ -4,7 +4,6 @@ namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.GetAlbumsEndPoint;
 public class GetAllAlbumsTests : BaseRestSharp
 {
     
-
     [Test]
     public async Task ContentPopulated_When_GetAlbums()
     {
@@ -15,7 +14,6 @@ public class GetAllAlbumsTests : BaseRestSharp
         Assert.IsNotNull(response.Content);
 
     }
-
 
     [Test]
     public async Task DataPopulatedAsList_When_GetGenericAlbumsById()
@@ -45,4 +43,19 @@ public class GetAllAlbumsTests : BaseRestSharp
         Assert.IsNotNull(response.Data.Count);
     }
 
+    [Test]
+    public async Task DataPopulatedAsList_When_DataDrivenTestAlbumsById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string albumId)
+    {
+       
+        var request = new RestRequest($"{_endpoints.AlbumsEndPoint}{albumId}", Method.Get);
+        var response = await _restClient.ExecuteAsync<Album>(request);
+
+       
+        var insertedAlbumRequest = new RestRequest($"{_endpoints.AlbumsEndPoint}{albumId}", Method.Get);
+        var insertedAlbumResponse = await _restClient.ExecuteAsync<Album>(insertedAlbumRequest);
+
+        insertedAlbumResponse.AssertSuccessStatusCode();
+        Assert.AreEqual(response.Data.AlbumId, insertedAlbumResponse.Data.AlbumId);
+        Assert.AreEqual(response.Data.Title, insertedAlbumResponse.Data.Title);
+    }
 }

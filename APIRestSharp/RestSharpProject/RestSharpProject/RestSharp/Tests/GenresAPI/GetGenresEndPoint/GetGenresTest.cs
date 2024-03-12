@@ -1,4 +1,6 @@
-﻿namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
+﻿using RestSharpProject.Models;
+
+namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
 {
     public class GetGenresTest : BaseRestSharp
     {
@@ -28,6 +30,22 @@
             insertedGenres.AssertSuccessStatusCode();
             Assert.AreEqual(insertedGenres.Data.GenreId, response.Data.GenreId);
             Assert.AreEqual(insertedGenres.Data.Name, response.Data.Name);
+        }
+
+
+        [Test]
+        public async Task DataPopulatedAsList_When_DataDrivenTestGenresById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string genreId)
+        {
+            var request = new RestRequest($"{_endpoints.GenresEndPoint}/{genreId}", Method.Get);
+            var response = await _restClient.ExecuteAsync<Genres>(request);
+
+            var insertedArtistRequest = new RestRequest($"{_endpoints.GenresEndPoint}/{genreId}", Method.Get);
+            var insertedArtistResponse = await _restClient.ExecuteAsync<Genres>(insertedArtistRequest);
+
+
+            Assert.AreEqual(response.Data.GenreId, insertedArtistResponse.Data.GenreId);
+            response.AssertSuccessStatusCode();
+
         }
     }
 }

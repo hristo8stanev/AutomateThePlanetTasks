@@ -1,4 +1,6 @@
-﻿namespace RestSharpProject.RestSharp.Tests.TracksAPI.GetTracksEndPoint;
+﻿using RestSharpProject.Models;
+
+namespace RestSharpProject.RestSharp.Tests.TracksAPI.GetTracksEndPoint;
     public class GetTracksTest : BaseRestSharp
     {
 
@@ -28,5 +30,21 @@
         response.AssertSuccessStatusCode();
         Assert.AreEqual(insertedTrack.Data.TrackId, response.Data.TrackId);
         Assert.AreEqual(insertedTrack.Data.Name, response.Data.Name);
+    }
+
+
+    [Test]
+    public async Task DataPopulatedAsList_When_DataDrivenTestTracksById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string trackId)
+    {
+       
+        var request = new RestRequest($"{_endpoints.TrackEndPoint}/{trackId}", Method.Get);
+        var response = await _restClient.ExecuteAsync<Tracks>(request);
+
+        var insertedArtistRequest = new RestRequest($"{_endpoints.TrackEndPoint}/{trackId}", Method.Get);
+        var insertedArtistResponse = await _restClient.ExecuteAsync<Tracks>(insertedArtistRequest);
+
+       
+        Assert.AreEqual(response.Data.TrackId, insertedArtistResponse.Data.TrackId);
+        response.AssertSuccessStatusCode();
     }
 }

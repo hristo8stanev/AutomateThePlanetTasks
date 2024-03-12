@@ -23,12 +23,19 @@ namespace RestSharpProject.Flurl.Test.GenresAPI.GetGenresEndPoint;
     [Test]
     public async Task ContentPopulated_When_GetGenresById()
     {
+
+        var newGenre = await CreateUniqueGenres();
+
         var response = await BASE_URL
             .AppendPathSegment(_flurlEndPoints.GenresEndPoint)
-            .AppendPathSegment(10)
             .WithOAuthBearerToken(AUTH_TOKEN)
-            .GetAsync();
+            .PostJsonAsync(newGenre);
 
+        var responseJsonResult = await BASE_URL.AppendPathSegments(newGenre.GenreId)
+                                  .WithOAuthBearerToken(AUTH_TOKEN)
+                                  .GetStringAsync();
+
+   
         response.ResponseMessage.EnsureSuccessStatusCode();
         Assert.NotNull(response.ResponseMessage);
     }

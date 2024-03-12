@@ -19,15 +19,21 @@ namespace RestSharpProject.Flurl.Test.TracksAPI.GetTracksEndPoint;
 
 
     [Test]
-    public async Task ContentPopulated_When_GetGenresById()
+    public async Task ContentPopulated_When_GetTracksById()
         {
-            var response = await BASE_URL
-                .AppendPathSegment(_flurlEndPoints.TracksEndPoint)
-                .AppendPathSegment(10)
-                .WithOAuthBearerToken(AUTH_TOKEN)
-                .GetAsync();
+        var newTrack = await CreateUniqueTracks();
 
-            response.ResponseMessage.EnsureSuccessStatusCode();
-            Assert.NotNull(response.ResponseMessage);
-        }
+        var response = await BASE_URL
+            .AppendPathSegment(_flurlEndPoints.TracksEndPoint)
+            .WithOAuthBearerToken(AUTH_TOKEN)
+            .PostJsonAsync(newTrack);
+
+        var responseJsonResult = await BASE_URL.AppendPathSegments(newTrack.TrackId)
+                                  .WithOAuthBearerToken(AUTH_TOKEN)
+                                  .GetStringAsync();
+
+
+        response.ResponseMessage.EnsureSuccessStatusCode();
+        Assert.NotNull(response.ResponseMessage);
+    }
     }

@@ -4,7 +4,7 @@ namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.GetArtistsEndPoint
 {
     public class GetArtistTest : BaseRestSharp
     {
-       
+
         [Test]
         public async Task ContentPopulated_When_GetArtist()
         {
@@ -30,6 +30,23 @@ namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.GetArtistsEndPoint
             response.AssertStatusCode(HttpStatusCode.OK);
             Assert.AreEqual(insertedArtist.Data.ArtistId, response.Data.ArtistId);
             Assert.AreEqual(insertedArtist.Data.Name, response.Data.Name);
+        }
+
+        [Test]
+        public async Task DataPopulatedAsList_When_DataDrivenTestArtistsById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string artistId)
+        {
+
+            var request = new RestRequest($"{_endpoints.ArtistEndPoint}/{artistId}", Method.Get);
+            var response = await _restClient.ExecuteAsync<Artists>(request);
+
+
+            var insertedAlbumRequest = new RestRequest($"{_endpoints.ArtistEndPoint}/{artistId}", Method.Get);
+            var insertedAlbumResponse = await _restClient.ExecuteAsync<Artists>(insertedAlbumRequest);
+
+            insertedAlbumResponse.AssertSuccessStatusCode();
+            Assert.AreEqual(insertedAlbumResponse.Data.ArtistId, response.Data.ArtistId);
+            Assert.AreEqual(insertedAlbumResponse.Data.Name, response.Data.Name);
+
         }
     }
 }

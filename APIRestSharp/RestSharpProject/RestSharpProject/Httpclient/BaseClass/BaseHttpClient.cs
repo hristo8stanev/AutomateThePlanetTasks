@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using RestSharpProject.RestSharp.EndPoints;
-using System.Net;
 using System.Net.Http.Headers;
 
 namespace RestSharpProject.Httpclient.BaseClass;

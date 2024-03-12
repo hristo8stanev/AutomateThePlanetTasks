@@ -7,7 +7,7 @@ public class PostTracksTests : BaseHttpClient
     {
 
     [Test]
-    public async Task ContentPopulated_When_NewAlbumInsertedViaPost()
+    public async Task ContentPopulated_When_NewTrackInsertedViaPost()
     {
         var newTrack = await CreateUniqueTrack();
         var json = JsonConvert.SerializeObject(newTrack);

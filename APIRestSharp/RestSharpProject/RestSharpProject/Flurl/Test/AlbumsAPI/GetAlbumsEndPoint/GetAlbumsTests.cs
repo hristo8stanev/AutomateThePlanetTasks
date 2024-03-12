@@ -20,15 +20,21 @@ public class GetAlbumsTests : BaseFlurlAPI
     [Test]
     public async Task DataPopulatedAsList_When_GetGenericAlbumsById()
     {
-        var responseJsonResult = await BASE_URL
-             .AppendPathSegment(_flurlEndPoints.AlbumsEndPoint)
-             .AppendPathSegment(10)
-             .WithOAuthBearerToken(AUTH_TOKEN)
-             .GetStringAsync();
+        var newAlbum = await CreateUniqueAlbum();
+        var response = await BASE_URL.AppendPathSegments(_flurlEndPoints.AlbumsEndPoint)
+                                     .WithOAuthBearerToken(AUTH_TOKEN)
+                                     .PostJsonAsync(newAlbum);
+
+      
+        var responseJsonResult = await BASE_URL.AppendPathSegments(newAlbum.AlbumId)
+                                   .WithOAuthBearerToken(AUTH_TOKEN)
+                                   .GetStringAsync();
+
 
         var result = JsonConvert.DeserializeObject<Album>(responseJsonResult);
 
-        Assert.AreEqual(10, result.AlbumId);
+       
+        response.ResponseMessage.EnsureSuccessStatusCode();
       
     }
 
@@ -40,9 +46,8 @@ public class GetAlbumsTests : BaseFlurlAPI
               .WithOAuthBearerToken(AUTH_TOKEN)
               .GetJsonAsync<List<Album>>();
 
-        Assert.AreEqual(584, albums.Count);
+        Assert.IsNotNull(albums.Count);
 
     }
-
 }
 

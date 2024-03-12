@@ -19,6 +19,10 @@ public class Album : IEquatable<Album>
 
     public bool Equals(Album other)
     {
+        if (other == null)
+        {
+            return false;
+        }
         return AlbumId.Equals(other.AlbumId);
     }
 

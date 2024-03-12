@@ -13,7 +13,7 @@ public class PostTracksTests : BaseFlurlAPI
                                   .WithOAuthBearerToken(AUTH_TOKEN)
                                   .PostJsonAsync(newTracks);
 
-        var createdGenre = await response.GetJsonAsync<Genres>();
+        var createdGenre = await response.GetJsonAsync<Tracks>();
 
         response.ResponseMessage.EnsureSuccessStatusCode();
         Assert.AreEqual(newTracks.Name, createdGenre.Name);
