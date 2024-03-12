@@ -1,0 +1,28 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome5",
+    "definitions": {
+        "Welcome5": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "artistId": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "null"
+                },
+                "albums": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "albums",
+                "artistId",
+                "name"
+            ],
+            "title": "Welcome5"
+        }
+    }
+}

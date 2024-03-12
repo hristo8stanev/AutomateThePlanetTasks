@@ -1,4 +1,7 @@
-﻿namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
+﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+
+namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
 
 public class PostAlbumTest : BaseRestSharp
 {
@@ -17,4 +20,7 @@ public class PostAlbumTest : BaseRestSharp
         response.AssertSuccessStatusCode();
         Assert.AreEqual(response.Data.Title, newAlbum.Title);
     }
+
+
+   
 }
