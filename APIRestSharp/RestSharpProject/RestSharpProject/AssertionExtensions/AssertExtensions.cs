@@ -132,24 +132,23 @@ public static class ApiAssertExtensions
 
 
     //THIS IS ADDITIONAL METHOD TO ASSERT JSON SCHEMA
-    public static void AssertSchema(this RestResponse response,JSchema jSchema,  JToken jToken)
-   {
-  
-      
-       bool valid = jToken.IsValid(jSchema);
-   
-       Console.WriteLine(valid);
-   
-       jToken.IsValid(jSchema, out IList<ValidationError> errors);
-   
-       foreach (ValidationError err in errors)
-       {
-           Console.WriteLine(err.Message);
-       }
+    public static void AssertSchema(this RestResponse response, JSchema jSchema, JToken jToken)
+    {
+        if (response.Request.RequestFormat == DataFormat.Json)
+        {
+            bool valid = jToken.IsValid(jSchema);
 
+            Console.WriteLine(valid);
+
+            jToken.IsValid(jSchema, out IList<ValidationError> errors);
+
+            foreach (ValidationError err in errors)
+            {
+                Console.WriteLine(err.Message);
+            }
+
+        }
     }
-
-
 
     public static void AssertSchema(this RestResponse response, string schemaContent)
      {
