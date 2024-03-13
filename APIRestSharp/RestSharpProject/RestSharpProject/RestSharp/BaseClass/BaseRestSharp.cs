@@ -5,11 +5,13 @@ using HttpTracer;
 using HttpTracer.Logger;
 using RestSharpProject.Models;
 using RestSharpProject.RestSharp.EndPoints;
+using System.Xml.Schema;
 
 namespace RestSharpProject.RestSharp.BaseClass;
 public class BaseRestSharp
 {
     protected Endpoints _endpoints;
+    public XmlSchemaSet _xmlSchemaSet;
     protected string BASE_URL => "http://localhost:60715/";
     protected static RestClient _restClient;
 
@@ -17,6 +19,7 @@ public class BaseRestSharp
     public void ClassSetup()
     {
         _endpoints = new Endpoints();
+        _xmlSchemaSet = new XmlSchemaSet();
 
         var options = new RestClientOptions(BASE_URL)
         {

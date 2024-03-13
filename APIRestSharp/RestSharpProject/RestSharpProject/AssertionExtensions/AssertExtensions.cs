@@ -130,18 +130,39 @@ public static class ApiAssertExtensions
         }
     }
 
-    public static void AssertSchema(this RestResponse response, string schemaContent)
-    {
-        if (response.Request.RequestFormat == DataFormat.Json)
-        {
-            AssertJsonSchema(response, schemaContent);
-        }
-        else
-        {
-            AssertXmlSchema(response, schemaContent);
-        }
+
+    //THIS IS ADDITIONAL METHOD TO ASSERT JSON SCHEMA
+    public static void AssertSchema(this RestResponse response,JSchema jSchema,  JToken jToken)
+   {
+  
+      
+       bool valid = jToken.IsValid(jSchema);
+   
+       Console.WriteLine(valid);
+   
+       jToken.IsValid(jSchema, out IList<ValidationError> errors);
+   
+       foreach (ValidationError err in errors)
+       {
+           Console.WriteLine(err.Message);
+       }
+
     }
 
+
+
+    public static void AssertSchema(this RestResponse response, string schemaContent)
+     {
+         if (response.Request.RequestFormat == DataFormat.Json)
+         {
+             AssertJsonSchema(response, schemaContent);
+         }
+         else
+         {
+             AssertXmlSchema(response, schemaContent);
+         }
+     }
+  
     public static void AssertSchema(this RestResponse response, Uri schemaUri)
     {
         if (response.Request.RequestFormat == DataFormat.Json)
@@ -153,11 +174,11 @@ public static class ApiAssertExtensions
             AssertXmlSchema(response, schemaUri);
         }
     }
-
-    private static void AssertJsonSchema(RestResponse response, string schemaContent)
+  
+    public static void AssertJsonSchema(RestResponse response, string schemaContent)
     {
         JSchema jsonSchema;
-
+  
         try
         {
             jsonSchema = JSchema.Parse(schemaContent);
@@ -166,19 +187,19 @@ public static class ApiAssertExtensions
         {
             throw new ArgumentException("Schema is not valid schema", ex);
         }
-
+  
         AssertJsonSchema(response, jsonSchema);
     }
-
-    private static async Task AssertJsonSchemaAsync(RestResponse response, Uri schemaUri)
+  
+    public static async Task AssertJsonSchemaAsync(RestResponse response, Uri schemaUri)
     {
         var client = new RestClient();
         var schemaResponse = await client.ExecuteAsync(new RestRequest(schemaUri));
-
+  
         AssertJsonSchema(response, schemaResponse.Content);
     }
-
-    private static void AssertJsonSchema(RestResponse response, JSchema jsonSchema)
+  
+    public static void AssertJsonSchema(RestResponse response, JSchema jsonSchema)
     {
         IList<string> messages;
 
@@ -218,7 +239,7 @@ public static class ApiAssertExtensions
         AssertXmlSchema(response, schemaSet);
     }
 
-    private static void AssertXmlSchema(RestResponse response, XmlSchemaSet xmlSchemaSet)
+    public static void AssertXmlSchema(RestResponse response, XmlSchemaSet xmlSchemaSet)
     {
         _xmlSchemaValidationErrors = new List<string>();
 
