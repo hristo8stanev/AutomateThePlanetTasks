@@ -34,17 +34,25 @@ namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
 
 
         [Test]
-        public async Task DataPopulatedAsList_When_DataDrivenTestGenresById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string genreId)
+        public async Task DataPopulatedAsList_When_DataDrivenTestGenresById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string genresId)
         {
-            var request = new RestRequest($"{_endpoints.GenresEndPoint}/{genreId}", Method.Get);
+
+            var allGenresRequest = new RestRequest(_endpoints.GenresEndPoint, Method.Get);
+            var allGenresResponse = await _restClient.ExecuteAsync<List<Genres>>(allGenresRequest);
+            allGenresResponse.AssertSuccessStatusCode();
+
+
+            var genres = allGenresResponse.Data.FirstOrDefault(a => a.GenreId == int.Parse(genresId));
+            Assert.IsNotNull(genres, $"Album with ID {genresId} not found in the list of all albums.");
+
+
+            var request = new RestRequest($"{_endpoints.GenresEndPoint}/{genresId}", Method.Get);
             var response = await _restClient.ExecuteAsync<Genres>(request);
-
-            var insertedArtistRequest = new RestRequest($"{_endpoints.GenresEndPoint}/{genreId}", Method.Get);
-            var insertedArtistResponse = await _restClient.ExecuteAsync<Genres>(insertedArtistRequest);
-
-
-            Assert.AreEqual(response.Data.GenreId, insertedArtistResponse.Data.GenreId);
             response.AssertSuccessStatusCode();
+
+
+            Assert.AreEqual(genres.GenreId, response.Data.GenreId);
+            Assert.AreEqual(genres.Name, response.Data.Name);
 
         }
     }

@@ -46,40 +46,24 @@ public class GetAllAlbumsTests : BaseRestSharp
     [Test]
     public async Task DataPopulatedAsList_When_DataDrivenTestAlbumsById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string albumId)
     {
-
-        var request = new RestRequest($"{_endpoints.AlbumsEndPoint}{albumId}", Method.Get);
-        var response = await _restClient.ExecuteAsync<Album>(request);
-
-
-        var insertedAlbumRequest = new RestRequest($"{_endpoints.AlbumsEndPoint}{albumId}", Method.Get);
-        var insertedAlbumResponse = await _restClient.ExecuteAsync<Album>(insertedAlbumRequest);
-
-        insertedAlbumResponse.AssertSuccessStatusCode();
-        Assert.AreEqual(response.Data.AlbumId, insertedAlbumResponse.Data.AlbumId);
-        Assert.AreEqual(response.Data.Title, insertedAlbumResponse.Data.Title);
-    }
-
-    [Test]
-    public async Task DataPopulatedAsList_When_DataDrivenTestAlbumsById22([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string albumId)
-    {
-        // Retrieve all albums
+       
         var allAlbumsRequest = new RestRequest(_endpoints.AlbumsEndPoint, Method.Get);
         var allAlbumsResponse = await _restClient.ExecuteAsync<List<Album>>(allAlbumsRequest);
         allAlbumsResponse.AssertSuccessStatusCode();
 
-        // Find the album with the specified ID
+       
         var album = allAlbumsResponse.Data.FirstOrDefault(a => a.AlbumId == int.Parse(albumId));
         Assert.IsNotNull(album, $"Album with ID {albumId} not found in the list of all albums.");
 
-        // Retrieve the album by its ID
+       
         var request = new RestRequest($"{_endpoints.AlbumsEndPoint}{albumId}", Method.Get);
         var response = await _restClient.ExecuteAsync<Album>(request);
         response.AssertSuccessStatusCode();
 
-        // Compare the retrieved album data with the expected data from the list of all albums
+        
         Assert.AreEqual(album.AlbumId, response.Data.AlbumId);
         Assert.AreEqual(album.Title, response.Data.Title);
-        // Add more assertions as needed for other properties of the album
+        
     }
 
 }

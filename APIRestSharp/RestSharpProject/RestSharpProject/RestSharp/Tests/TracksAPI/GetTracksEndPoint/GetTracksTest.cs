@@ -36,15 +36,23 @@ namespace RestSharpProject.RestSharp.Tests.TracksAPI.GetTracksEndPoint;
     [Test]
     public async Task DataPopulatedAsList_When_DataDrivenTestTracksById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string trackId)
     {
-       
+
+        var allTracksRequest = new RestRequest(_endpoints.TrackEndPoint, Method.Get);
+        var allTracksResponse = await _restClient.ExecuteAsync<List<Tracks>>(allTracksRequest);
+        allTracksResponse.AssertSuccessStatusCode();
+
+
+        var track = allTracksResponse.Data.FirstOrDefault(a => a.TrackId == int.Parse(trackId));
+        Assert.IsNotNull(track, $"Album with ID {trackId} not found in the list of all albums.");
+
+
         var request = new RestRequest($"{_endpoints.TrackEndPoint}/{trackId}", Method.Get);
         var response = await _restClient.ExecuteAsync<Tracks>(request);
-
-        var insertedArtistRequest = new RestRequest($"{_endpoints.TrackEndPoint}/{trackId}", Method.Get);
-        var insertedArtistResponse = await _restClient.ExecuteAsync<Tracks>(insertedArtistRequest);
-
-       
-        Assert.AreEqual(response.Data.TrackId, insertedArtistResponse.Data.TrackId);
         response.AssertSuccessStatusCode();
+
+
+        Assert.AreEqual(track.TrackId, response.Data.TrackId);
+        Assert.AreEqual(track.Name, response.Data.Name);
+
     }
 }

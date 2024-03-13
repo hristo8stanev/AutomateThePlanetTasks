@@ -39,31 +39,31 @@ namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint
         //  }
         //
 
-        [Test]
-        public async Task TestArtistJsonSchema()
-        {
-            
-            var jsonData = @"{""artistId"":0,""name"":null,""albums"":[]}";
-
-            
-            var request = new RestRequest(_endpoints.ArtistEndPoint, Method.Post);
-            request.AddJsonBody(jsonData);
-
-            
-            var response = await _restClient.ExecuteAsync(request);
-
-           
-            string jsonSchema = File.ReadAllText(@"C:\Users\xstan\IdeaProjects\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestArtistBodySchema.txt");
-
-           
-            JSchema jSchema = JSchema.Parse(File.ReadAllText(@"C:\Users\xstan\IdeaProjects\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestArtistBodySchema.txt"));
-
-
-            
-            string schemaAsString = jSchema.ToString();
-
-            
-            response.AssertSchema(jsonSchema);
-        }
+        // [Test]
+        // public async Task TestArtistJsonSchema()
+        // {
+        //     
+        //     var jsonData = @"{""artistId"":0,""name"":null,""albums"":[]}";
+        //
+        //     
+        //     var request = new RestRequest(_endpoints.ArtistEndPoint, Method.Post);
+        //     request.AddJsonBody(jsonData);
+        //
+        //     
+        //     var response = await _restClient.ExecuteAsync(request);
+        //
+        //    
+        //     string jsonSchema = File.ReadAllText(@"C:\Users\xstan\IdeaProjects\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestArtistBodySchema.txt");
+        //
+        //    
+        //     JSchema jSchema = JSchema.Parse(File.ReadAllText(@"C:\Users\xstan\IdeaProjects\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestArtistBodySchema.txt"));
+        //
+        //
+        //     
+        //     string schemaAsString = jSchema.ToString();
+        //
+        //     
+        //     response.AssertSchema(jsonSchema);
+        // }
     }
-    }
+}

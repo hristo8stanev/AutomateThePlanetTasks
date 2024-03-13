@@ -36,16 +36,22 @@ namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.GetArtistsEndPoint
         public async Task DataPopulatedAsList_When_DataDrivenTestArtistsById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string artistId)
         {
 
+            var allArtistsRequest = new RestRequest(_endpoints.ArtistEndPoint, Method.Get);
+            var allArtistsResponse = await _restClient.ExecuteAsync<List<Artists>>(allArtistsRequest);
+            allArtistsResponse.AssertSuccessStatusCode();
+
+
+            var artist = allArtistsResponse.Data.FirstOrDefault(a => a.ArtistId == int.Parse(artistId));
+            Assert.IsNotNull(artist, $"Album with ID {artistId} not found in the list of all albums.");
+
+
             var request = new RestRequest($"{_endpoints.ArtistEndPoint}/{artistId}", Method.Get);
             var response = await _restClient.ExecuteAsync<Artists>(request);
+            response.AssertSuccessStatusCode();
 
 
-            var insertedAlbumRequest = new RestRequest($"{_endpoints.ArtistEndPoint}/{artistId}", Method.Get);
-            var insertedAlbumResponse = await _restClient.ExecuteAsync<Artists>(insertedAlbumRequest);
-
-            insertedAlbumResponse.AssertSuccessStatusCode();
-            Assert.AreEqual(insertedAlbumResponse.Data.ArtistId, response.Data.ArtistId);
-            Assert.AreEqual(insertedAlbumResponse.Data.Name, response.Data.Name);
+            Assert.AreEqual(artist.ArtistId, response.Data.ArtistId);
+            Assert.AreEqual(artist.Name, response.Data.Name);
 
         }
     }
