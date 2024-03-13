@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
+using static RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint.PostAlbumTest;
 
 namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
 
@@ -9,47 +10,37 @@ public class PostAlbumTest : BaseRestSharp
 
     [Test]
     public async Task DataPopulatedAsGenres_When_NewAlbumInsertedViaPost()
-    {
+    { 
         var newAlbum = await CreateUniqueAlbum();
 
         var request = new RestRequest(_endpoints.AlbumsEndPoint, Method.Post);
         request.AddJsonBody(newAlbum);
 
         var response = await _restClient.ExecuteAsync<Album>(request);
+        string schemaJson = File.ReadAllText(@"C:\Users\xstan\IdeaProjects\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestAlbumBodySchema.txt");
 
         response.AssertSuccessStatusCode();
         Assert.AreEqual(response.Data.Title, newAlbum.Title);
+        response.AssertSchema(schemaJson);
     }
 
-    [Test]
-    public async Task TestValidAlbumJsonSchema()
+
+    //SECOND WAY
+    public static class JsonSchemas
     {
-        var jsonData = @"{""albumId"":0,""title"":""6a1b2a49-3070-4ab6-a402-6b1a39d0f1eb"",""artistId"":0,""artist"":null,""tracks"":[]}";
-
-        var request = new RestRequest(_endpoints.AlbumsEndPoint, Method.Post);
-        request.AddJsonBody(jsonData);
-
-        string jsonSchema = File.ReadAllText(@"C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestAlbumBodySchema.txt");
-        JSchema jSchema = JSchema.Parse(jsonSchema);
-
-        JToken jToken = JToken.Parse(jsonData);
-
-        AssertJsonSchema(jSchema, jToken);
-
-
-    }
-
-    public static void AssertJsonSchema(JSchema jSchema, JToken jToken)
-    {
-        bool valid = jToken.IsValid(jSchema);
-
-        Console.WriteLine(valid);
-
-        jToken.IsValid(jSchema, out IList<ValidationError> errors);
-
-        foreach (ValidationError err in errors)
+        public static string AlbumSchema { get; } = @"
         {
-            Console.WriteLine(err.Message);
+            ""$schema"": ""http://json-schema.org/draft-04/schema#"",
+            ""type"": ""object"",
+            ""properties"": {
+                ""albumId"": { ""type"": ""integer"" },
+                ""title"": { ""type"": ""string"" },
+                ""artistId"": { ""type"": ""integer"" },
+                ""artist"": { ""type"": ""null"" },
+                ""tracks"": { ""type"": ""array"", ""items"": {} }
+            },
+            ""required"": [ ""albumId"", ""title"", ""artistId"", ""artist"", ""tracks"" ]
         }
+    ";
     }
 }
