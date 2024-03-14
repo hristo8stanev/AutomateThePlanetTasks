@@ -12,12 +12,14 @@ public class BaseRestSharp
 {
     protected Endpoints _endpoints;
     public XmlSchemaSet _xmlSchemaSet;
+    public JsonSchemas _jsonSchemas;
     protected string BASE_URL => "http://localhost:60715/";
     protected static RestClient _restClient;
 
     [OneTimeSetUp]
     public void ClassSetup()
     {
+        _jsonSchemas = new JsonSchemas();
         _endpoints = new Endpoints();
         _xmlSchemaSet = new XmlSchemaSet();
 

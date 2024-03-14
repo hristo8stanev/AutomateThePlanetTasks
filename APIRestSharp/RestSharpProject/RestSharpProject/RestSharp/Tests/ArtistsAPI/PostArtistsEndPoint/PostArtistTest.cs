@@ -23,37 +23,10 @@ namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint;
 
         response.AssertSuccessStatusCode();
         Assert.AreEqual(newArtist.Name, response.Data.Name);
+
+        //assert JSON schema
+        response.AssertSchema(_jsonSchemas.ArtistsSchema);
     }
-
-    [Test]
-    public async Task TestValidArtistJsonSchema()
-    {
-        var jsonData = @"{""artistId"":0,""name"":null,""albums"":[]}";
-
-        var request = new RestRequest(_endpoints.ArtistEndPoint, Method.Post);
-        request.AddJsonBody(jsonData);
-
-        string jsonSchema = File.ReadAllText(@"C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\APIRestSharp\RestSharpProject\RestSharpProject\RestSharp\RequestArtistBodySchema.txt");
-        JSchema jSchema = JSchema.Parse(jsonSchema);
-
-        JToken jToken = JToken.Parse(jsonData);
-
-        AssertJsonSchema(jSchema,jToken);
-
-       
-    }
-
-   public static void AssertJsonSchema(JSchema jSchema, JToken jToken)
-   {
-       bool valid = jToken.IsValid(jSchema);
-  
-       Console.WriteLine(valid);
-  
-       jToken.IsValid(jSchema, out IList<ValidationError> errors);
-  
-       foreach (ValidationError err in errors)
-       {
-           Console.WriteLine(err.Message);
-       }
-   }
 }
+
+   
