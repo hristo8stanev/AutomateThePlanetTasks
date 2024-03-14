@@ -17,23 +17,13 @@ public class BaseRestSharp
     public JsonSchemas _jsonSchemas;
     protected string BASE_URL => "http://localhost:60715/";
     protected static RestClient _restClient;
-    protected ExtentReports _extent;
-    protected ExtentTest _test;
-   
+
+
     [OneTimeSetUp]
     public void ClassSetup()
     {
         _jsonSchemas = new JsonSchemas();
         _endpoints = new Endpoints();
-        
-
-       // var htmlReporter = new ExtentHtmlReporter("TestReport.html");
-       // _extent = new ExtentReports();
-       // _extent.AttachReporter(htmlReporter);
-       //
-       //
-       // _extent = new ExtentReports();
-       // _extent.AttachReporter(htmlReporter);
 
         var options = new RestClientOptions(BASE_URL)
         {
@@ -58,15 +48,6 @@ public class BaseRestSharp
     [OneTimeTearDown]
     public void TestCleanup()
     {
-        var status = TestContext.CurrentContext.Result.Outcome.Status;
-        var stackTrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace) ? "" : TestContext.CurrentContext.Result.StackTrace;
-        var errorMessage = string.IsNullOrEmpty(TestContext.CurrentContext.Result.Message) ? "" : TestContext.CurrentContext.Result.Message;
-        // Log test result
-        if (status == NUnit.Framework.Interfaces.TestStatus.Failed)
-        {
-            _test.Log(Status.Fail, "Test Failed: " + errorMessage);
-            _test.Fail("Snapshot below: " + _test.AddScreenCaptureFromPath(Capture(_restClient)));
-        }
 
 
         _restClient.Dispose();
@@ -100,13 +81,13 @@ public class BaseRestSharp
 
         var newAlbum = new Album
         {
-             AlbumId = albums.OrderBy(x => x.AlbumId).Last().AlbumId + 1,
-             Title = Guid.NewGuid() + "TitleName".ToString(),
-           
+            AlbumId = albums.OrderBy(x => x.AlbumId).Last().AlbumId + 1,
+            Title = Guid.NewGuid() + "TitleName".ToString(),
+
         };
 
         return newAlbum;
-     }
+    }
 
     protected async Task<Tracks> CreateUniqueTrack()
     {
@@ -122,15 +103,5 @@ public class BaseRestSharp
         };
 
         return newTrack;
-    }
-
-    public static string Capture(RestClient _restClient)
-    {
-        string fileName = DateTime.Now.ToString("yyyy-MM-dd-HH_mm_ss") + ".png";
-        string screenShotPath = AppDomain.CurrentDomain.BaseDirectory + @"\Screenshots\" + fileName;
-        ITakesScreenshot takesScreenshot = (ITakesScreenshot)_restClient;
-        Screenshot screenshot = takesScreenshot.GetScreenshot();
-        screenshot.SaveAsFile(screenShotPath);
-        return screenShotPath;
     }
 }

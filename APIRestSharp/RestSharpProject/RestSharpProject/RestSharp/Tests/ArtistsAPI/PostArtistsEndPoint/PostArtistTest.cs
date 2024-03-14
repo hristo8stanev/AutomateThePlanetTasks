@@ -1,14 +1,6 @@
-﻿using System.Text;
-using System.Xml.Schema;
-using System.Xml;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-using RestSharpProject.AssertiExtensions;
-using System.Xml.Serialization;
+﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint;
 
-namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint;
-
-    public class PostArtistTest : BaseRestSharp
+public class PostArtistTest : BaseRestSharp
     {
 
     [Test]
