@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Windows;
 using System;
 
 namespace WinAppTask.Views;
@@ -35,6 +36,12 @@ public partial class CalculatorStandardView
        InputUnitButton.SendKeys("Celsius");
        FiveButton.Click();
        OutputUnitButton.SendKeys("Fahrenheit");
+    }
+
+    protected void ClearCalcInput()
+    {
+        var clear = _driver.FindElement(By.Name("Clear"));
+        clear?.Click();
     }
 
     public void NavigationalMenu()
@@ -117,6 +124,13 @@ public partial class CalculatorStandardView
                 PercentButton.Click();
                 break;
 
+        }
+    }
+    public void AddNumberToFormula(int number)
+    {
+        foreach (char digit in number.ToString())
+        {
+            _driver.FindElementByName(digit.ToString()).Click();
         }
     }
 }
