@@ -1,6 +1,6 @@
-# MediaStore.Demo.API Project
+# PostmanAPITesting Project
 
-- This repository contains the MediaStore.Demo.API project, which is a demonstration API for a media store. Follow the instructions below to set up and run the project.
+- This repository contains the PostmanAPITesting  project, which is a demonstration API for a media store. Follow the instructions below to set up and run the project.
 
 ## Prerequisites
 
