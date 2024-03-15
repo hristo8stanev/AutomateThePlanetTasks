@@ -11,6 +11,9 @@ public class CalculatorPageObject
     protected WindowsDriver<WindowsElement> _driver;
     protected CalculatorStandardView _calcStandardView;
 
+    //CREATE ENUMS FOR TEMPERATURE AND CALCULATOR TYPE.
+   //REMOVE NAVIGATEPAGE FROM THE METHODS
+
     [SetUp]
     public void TestInit()
     {
@@ -23,7 +26,6 @@ public class CalculatorPageObject
 
     }
 
- 
 
     [TearDown]
     public void TestCleanup()

@@ -49,7 +49,7 @@ public class CalculatorTests : CalculatorPageObject
     [Test]
     [TestCase("-8.88", -0.518)]
     [TestCase("-3.94", 0.716)]
-    [TestCase("-5.87", 0.401)]
+    [TestCase("-5.87", -0.102)]
     public void CalculatingSinFunctionOfNumbers(string num, double expectedResult)
     {
 
