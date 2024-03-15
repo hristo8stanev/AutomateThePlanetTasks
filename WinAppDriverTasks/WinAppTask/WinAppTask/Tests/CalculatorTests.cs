@@ -1,12 +1,8 @@
-﻿using OpenQA.Selenium;
-using WinAppTask.BaseClass;
-
+﻿using WinAppTask.BaseClass;
 
 namespace WinAppTask.Tests;
 public class CalculatorTests : CalculatorPageObject
 {
-
-
     [Test]
     [TestCase("32", "89.6")]
     public void ConvertingFromCelsiumToFahrenheit(string value, double expectedResult)
@@ -46,15 +42,35 @@ public class CalculatorTests : CalculatorPageObject
        _calcStandardView.NavigateToScientificMenu();
        _calcStandardView.ExecuteFormulaFormula(n, x, y);
 
-        _calcStandardView.AssertResultStartsWith(expectedResult);
-      }
+       _calcStandardView.AssertResultStartsWith(expectedResult);
+    }
+
 
     [Test]
-    public void CalculatingSinAndTan()
+    [TestCase("-8.88", -0.518)]
+    [TestCase("-3.94", 0.716)]
+    [TestCase("-5.87", 0.401)]
+    public void CalculatingSinFunctionOfNumbers(string num, double expectedResult)
     {
-        //SIN a = b/c
 
-        //TAN
+        _calcStandardView.NavigationalMenu();
+        _calcStandardView.NavigateToScientificMenu();
+        _calcStandardView.ExecuteSinFucntionOfNumbers(num);
 
+        _calcStandardView.AssertResultStartsWith(expectedResult);
+    }
+
+    [Test]
+    [TestCase("-8.88", 0.605)]
+    [TestCase("-3.94", -1.026)]
+    [TestCase("-5.87", 0.438)]
+    public void CalculatingTanFunctionOfNumbers(string num, double expectedResult)
+    {
+
+        _calcStandardView.NavigationalMenu();
+        _calcStandardView.NavigateToScientificMenu();
+        _calcStandardView.ExecuteTanFucntionOfNumbers(num);
+
+        _calcStandardView.AssertResultStartsWith(expectedResult);
     }
 }

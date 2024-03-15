@@ -13,6 +13,7 @@ public partial class CalculatorStandardView
 
     public void PerformCalculation(string num1, char option, string num2)
     {
+        ClearCalcInput();
         PickNumericValue(num1);
         PerformOperation(option);
         PickNumericValue(num2);
@@ -22,6 +23,7 @@ public partial class CalculatorStandardView
 
     public void PerformSquareCantimetersCalculation(string num1, string num2)
     {
+        ClearCalcInput();
         PickNumericValue(num1);
         DivideButton.Click();
         PickNumericValue(num2);
@@ -45,58 +47,54 @@ public partial class CalculatorStandardView
 
     protected string ResultText => GetResultElement().Text.Replace("Display is", string.Empty).Replace("point", string.Empty).Trim();
     protected string ResultTextTemp => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace("Fahrenheit", string.Empty).Trim();
+    public void NavigationalMenu() => NavigationButton.Click();
+    public void NavigateToScientificMenu() => ScientificMenuButton.Click();
+    protected string GetCalculatorResultText() => CalculatorResultButton.Text.Replace("Display is", string.Empty).Trim();
 
     public void ConvertTemperatures(string num2)
     {
+        ClearCalcInput();
         TemperatureConverterMenuButton.Click();
         InputUnitButton.SendKeys("Celsius");
         PickNumericValue(num2);
         OutputUnitButton.SendKeys("Fahrenheit");
     }
 
-    protected void ClearCalcInput()
-    {
-        var clear = ClearInput;
-        clear?.Click();
-    }
-
-    public void NavigationalMenu()
-    {
-        NavigationButton.Click();
-    }
-    public void NavigateToScientificMenu()
-    {
-        ScientificMenuButton.Click();
-    }
-
-
-
-
-    protected string GetCalculatorResultText() => CalculatorResultButton.Text.Replace("Display is", string.Empty).Trim();
-
-
-    public string GetCalculatorResultTextValue2() => _driver.FindElementByAccessibilityId("Value2").Text.Replace("Display is", string.Empty).Trim();
+    protected void ClearCalcInput() => ClearInput.Click();
+    
 
     public void ExecuteFormulaFormula(string n, string x, string y)
     {
        ClearCalcInput();
-
        PiButton.Click();
        PlusButton.Click();
-
        PickNumericValue(n);
-
        LogButton.Click();
        MinusButton.Click();
-
        PickNumericValue(x);
-
        PowerButton.Click();
-
        PickNumericValue(y);
-
        PowerButton.Click();
        EqualButton.Click();
+
+    }
+
+    public void ExecuteTanFucntionOfNumbers(string num)
+    {
+        ClearCalcInput();
+        DegreeButtonElement.Click();
+        PickNumericValue(num);
+        TrigonometricsElement.Click();
+        TanFunctionElement.Click();
+       
+    }
+    public void ExecuteSinFucntionOfNumbers(string num)
+    {
+        ClearCalcInput();
+        DegreeButtonElement.Click();
+        PickNumericValue(num);
+        TrigonometricsElement.Click();
+        SinFunctionElement.Click();
 
 
     }
@@ -155,45 +153,7 @@ public partial class CalculatorStandardView
             }
         }
     }
-    private void ClickByDigit(double digit)
-    {
-        switch (digit)
-        {
-            case 1:
-                OneButton.Click();
-                break;
-            case 2:
-                TwoButton.Click();
-                break;
-            case 3:
-                ThreeButton.Click();
-                break;
-            case 4:
-                FourButton.Click();
-                break;
-            case 5:
-                FiveButton.Click();
-                break;
-            case 6:
-                SixButton.Click();
-                break;
-            case 7:
-                SevenButton.Click();
-                break;
-            case 8:
-                EightButton.Click();
-                break;
-            case 9:
-                NineButton.Click();
-                break;
-            case 0:
-                ZeroButton.Click();
-                break;
-            default:
-                throw new NotSupportedException($"Not Supported digit = {digit}");
-        }
-    }
-
+  
     private void PerformOperation(char operation)
     {
         switch (operation)
@@ -226,14 +186,6 @@ public partial class CalculatorStandardView
                 PowerButton.Click();
                 break;
 
-
-        }
-    }
-    public void AddNumberToFormula(int number)
-    {
-        foreach (char digit in number.ToString())
-        {
-            _driver.FindElementByName(digit.ToString()).Click();
         }
     }
 }

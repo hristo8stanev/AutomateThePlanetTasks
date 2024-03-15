@@ -41,6 +41,10 @@ public partial class CalculatorStandardView
     public WindowsElement OutputValueDegreeButton => _driver.FindElementByAccessibilityId("Value2");
     public WindowsElement NegateButton => _driver.FindElementByAccessibilityId("negateButton");
     public WindowsElement DecimalSeparator => _driver.FindElementByAccessibilityId("decimalSeparatorButton");
+    public WindowsElement TrigonometricsElement => _driver.FindElementByAccessibilityId("trigButton");
+    public WindowsElement NegateButtonElement => _driver.FindElementByAccessibilityId("negateButton");
+    public WindowsElement SinFunctionElement => _driver.FindElementByAccessibilityId("sinButton");
+    public WindowsElement TanFunctionElement => _driver.FindElementByAccessibilityId("tanButton");
+    public WindowsElement DegreeButtonElement => _driver.FindElementByAccessibilityId("degButton");
 
-    
 }
