@@ -15,6 +15,9 @@ public partial class CalculatorStandardView
     public WindowsElement NineButton => _driver.FindElementByName("Nine");
     public WindowsElement MinusButton => _driver.FindElementByName("Minus");
     public WindowsElement PlusButton => _driver.FindElementByName("Plus");
+    public WindowsElement PiButton => _driver.FindElementByName("Pi");
+    public WindowsElement LogButton => _driver.FindElementByName("Log");
+    public WindowsElement PowerButton => _driver.FindElementByAccessibilityId("powerButton");
     public WindowsElement EqualButton => _driver.FindElementByName("Equals");
     public WindowsElement MultiplyButton => _driver.FindElementByName("Multiply by");
     public WindowsElement DivideButton => _driver.FindElementByName("Divide by");
@@ -26,7 +29,9 @@ public partial class CalculatorStandardView
     public WindowsElement SquareButton => _driver.FindElementByName("Square");
     public WindowsElement SquareRootButton => _driver.FindElementByName("Square root");
     public WindowsElement NavigationButton => _driver.FindElementByName("Open Navigation");
-    public WindowsElement TemperatureConverterButton => _driver.FindElementByName("Temperature Converter");
+    public WindowsElement TemperatureConverterMenuButton => _driver.FindElementByName("Temperature Converter");
+    public WindowsElement ClearInput => _driver.FindElementByName("Clear");
+    public WindowsElement ScientificMenuButton => _driver.FindElementByAccessibilityId("Scientific");
     public WindowsElement StandardTypeCalculatorButton => _driver.FindElementByName("Standard Calculator");
     public WindowsElement InputUnitButton => _driver.FindElementByName("Input unit");
     public WindowsElement OutputUnitButton => _driver.FindElementByName("Output unit");
@@ -34,5 +39,8 @@ public partial class CalculatorStandardView
     public WindowsElement CelsiumButton => _driver.FindElementByName("Celsius");
     public WindowsElement CalculatorResultButton => _driver.FindElementByAccessibilityId("CalculatorResults");
     public WindowsElement OutputValueDegreeButton => _driver.FindElementByAccessibilityId("Value2");
+    public WindowsElement NegateButton => _driver.FindElementByAccessibilityId("negateButton");
+    public WindowsElement DecimalSeparator => _driver.FindElementByAccessibilityId("decimalSeparatorButton");
 
+    
 }

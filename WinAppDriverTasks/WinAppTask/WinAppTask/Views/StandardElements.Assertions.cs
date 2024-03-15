@@ -5,15 +5,12 @@ namespace WinAppTask.Views;
 public partial class CalculatorStandardView
 {
 
-    public void AssertResult(decimal expectedReslt)
+    public void AssertResult(double expectedReslt)
     {
-        string strResult = GetCalculatorResultText();
-        var actualResult = decimal.Parse(strResult);
-
-        Assert.AreEqual(expectedReslt, actualResult);
+        Assert.AreEqual(expectedReslt.ToString(),ResultTextTemp, "The calculation result wasn't correct.");
     }
 
-    public void AssertSquareCentimetersResult(double expectedResult)
+        public void AssertDoubleResult(double expectedResult)
     {
 
         string result = GetCalculatorResultText();
@@ -22,12 +19,9 @@ public partial class CalculatorStandardView
         Assert.AreEqual(expectedResult, actualResult);
 
     }
-
-    public void AssertCorrectConvertioningFromCelsiumToFahrenheit(double expectedResult)
+    public void AssertResultStartsWith(double expectedResult)
     {
-       //string result = GetCalculatorResultTextValue2();
-       //var actualResult = double.Parse(result);
-
-        Assert.AreEqual(expectedResult, 41);
+        Assert.IsTrue(ResultText.StartsWith(expectedResult.ToString()), "The calculation result wasn't correct.");
     }
 }
+

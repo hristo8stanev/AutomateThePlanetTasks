@@ -1,8 +1,5 @@
-﻿using System;
-using NUnit.Framework;
-using OpenQA.Selenium.Appium;
+﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Remote;
 using WinAppTask.Views;
 
 namespace WinAppTask.BaseClass;
