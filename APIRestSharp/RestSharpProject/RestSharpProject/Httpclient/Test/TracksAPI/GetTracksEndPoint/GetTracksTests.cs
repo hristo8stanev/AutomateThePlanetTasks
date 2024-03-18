@@ -1,16 +1,10 @@
 ﻿using Newtonsoft.Json;
 using RestSharpProject.Httpclient.BaseClass;
-using RestSharpProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RestSharpProject.Httpclient.Test.TracksAPI.GetTracksEndPoint;
-    public class GetTracksTests : BaseHttpClient
+public class GetTracksTests : BaseHttpClient
 {
-
 
     [Test]
     public async Task DataPopulateAsList_When_GetAllTracks()
@@ -41,4 +35,3 @@ namespace RestSharpProject.Httpclient.Test.TracksAPI.GetTracksEndPoint;
         Assert.AreEqual(newTrack.Name, albums.Name);
     }
 }
-

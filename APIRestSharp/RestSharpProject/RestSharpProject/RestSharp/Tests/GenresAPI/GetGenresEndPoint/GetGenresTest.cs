@@ -1,8 +1,5 @@
-﻿using RestSharpProject.Models;
-
-namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
-{
-    public class GetGenresTest : BaseRestSharp
+﻿namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint;
+public class GetGenresTest : BaseRestSharp
     {
         [Test]
         public async Task ContentPopulated_When_GetAllGeners()
@@ -14,7 +11,6 @@ namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
             response.AssertSuccessStatusCode();
 
         }
-
 
         [Test]
         public async Task ContentPopulated_When_GetAllGenersById()
@@ -31,7 +27,6 @@ namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
             Assert.AreEqual(insertedGenres.Data.GenreId, response.Data.GenreId);
             Assert.AreEqual(insertedGenres.Data.Name, response.Data.Name);
         }
-
 
         [Test]
         public async Task DataPopulatedAsList_When_DataDrivenTestGenresById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string genresId)
@@ -56,4 +51,3 @@ namespace RestSharpProject.RestSharp.Tests.GenresAPI.GetGenresEndPoint
 
         }
     }
-}

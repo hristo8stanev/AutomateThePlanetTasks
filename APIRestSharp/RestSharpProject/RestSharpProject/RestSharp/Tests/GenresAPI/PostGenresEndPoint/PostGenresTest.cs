@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-
-namespace RestSharpProject.RestSharp.Tests.GenresAPI.PostGenresEndPoint;
+﻿namespace RestSharpProject.RestSharp.Tests.GenresAPI.PostGenresEndPoint;
 public class PostGenresTest : BaseRestSharp
 {
 
@@ -23,4 +20,3 @@ public class PostGenresTest : BaseRestSharp
         response.AssertSchema(_jsonSchemas.GenreSchema);
     }
 }
-

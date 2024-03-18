@@ -1,5 +1,4 @@
-﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.DeleteArtistsEndPoint
-{
+﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.DeleteArtistsEndPoint;
     public class DeleteArtistTest : BaseRestSharp
     {
 
@@ -18,4 +17,3 @@
             Assert.IsTrue(response.IsSuccessful);
         }
     }
-}

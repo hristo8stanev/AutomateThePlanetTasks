@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using RestSharp.Authenticators.OAuth2;
-using RestSharp;
 using HttpTracer;
 using HttpTracer.Logger;
 using RestSharpProject.RestSharp.EndPoints;
 using System.Xml.Schema;
-using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
-using OpenQA.Selenium;
 
 namespace RestSharpProject.RestSharp.BaseClass;
 public class BaseRestSharp

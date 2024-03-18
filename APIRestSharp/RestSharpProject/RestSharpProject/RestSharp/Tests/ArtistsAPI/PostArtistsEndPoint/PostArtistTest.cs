@@ -1,5 +1,4 @@
 ﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PostArtistsEndPoint;
-
 public class PostArtistTest : BaseRestSharp
     {
 
@@ -20,5 +19,3 @@ public class PostArtistTest : BaseRestSharp
         response.AssertSchema(_jsonSchemas.ArtistsSchema);
     }
 }
-
-   

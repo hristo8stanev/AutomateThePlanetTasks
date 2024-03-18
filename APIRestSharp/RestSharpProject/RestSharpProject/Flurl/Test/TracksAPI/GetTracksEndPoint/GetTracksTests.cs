@@ -2,8 +2,8 @@
 using RestSharpProject.Flurl.BaseClass;
 
 namespace RestSharpProject.Flurl.Test.TracksAPI.GetTracksEndPoint;
-    public class GetTracksTests : BaseFlurlAPI
-    {
+public class GetTracksTests : BaseFlurlAPI
+{
 
     [Test]
     public async Task ContentPopulated_When_GetAllTracks()
@@ -17,10 +17,9 @@ namespace RestSharpProject.Flurl.Test.TracksAPI.GetTracksEndPoint;
         Assert.NotNull(response.ResponseMessage);
     }
 
-
     [Test]
     public async Task ContentPopulated_When_GetTracksById()
-        {
+    {
         var newTrack = await CreateUniqueTracks();
 
         var response = await BASE_URL
@@ -36,4 +35,4 @@ namespace RestSharpProject.Flurl.Test.TracksAPI.GetTracksEndPoint;
         response.ResponseMessage.EnsureSuccessStatusCode();
         Assert.NotNull(response.ResponseMessage);
     }
-    }
+}

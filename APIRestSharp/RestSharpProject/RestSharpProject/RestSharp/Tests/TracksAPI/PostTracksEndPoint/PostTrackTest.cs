@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-using RestSharpProject.AssertiExtensions;
-
-namespace RestSharpProject.RestSharp.Tests.TracksAPI.PostTracksEndPoint
-{
+﻿namespace RestSharpProject.RestSharp.Tests.TracksAPI.PostTracksEndPoint;
     public class PostTrackTest : BaseRestSharp
     {
 
@@ -25,4 +20,3 @@ namespace RestSharpProject.RestSharp.Tests.TracksAPI.PostTracksEndPoint
 
         }
     }
-}

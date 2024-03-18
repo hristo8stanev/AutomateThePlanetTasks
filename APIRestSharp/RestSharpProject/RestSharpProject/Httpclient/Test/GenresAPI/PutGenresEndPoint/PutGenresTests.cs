@@ -30,5 +30,4 @@ public class PutGenresTests : BaseHttpClient
         response.EnsureSuccessStatusCode();
         Assert.AreEqual(updatedName, actualUpdatedGenres.Name);
     }
-
 }

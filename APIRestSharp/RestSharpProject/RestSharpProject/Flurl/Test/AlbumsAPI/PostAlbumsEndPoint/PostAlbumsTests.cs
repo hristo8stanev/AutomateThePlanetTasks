@@ -20,4 +20,3 @@ public  class PostAlbumsTests : BaseFlurlAPI
         Assert.AreEqual(newAlbum.Title, createdAlbums.Title);
     }
 }
-

@@ -35,4 +35,3 @@ public class PutGenresTests : BaseFlurlAPI
         Assert.AreEqual(updatedName, actualUpdatedGenres.Name);
     }
 }
-

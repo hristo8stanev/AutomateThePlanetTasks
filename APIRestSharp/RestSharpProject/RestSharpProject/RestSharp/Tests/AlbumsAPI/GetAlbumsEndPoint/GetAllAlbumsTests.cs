@@ -63,7 +63,5 @@ public class GetAllAlbumsTests : BaseRestSharp
         
         Assert.AreEqual(album.AlbumId, response.Data.AlbumId);
         Assert.AreEqual(album.Title, response.Data.Title);
-        
     }
-
 }

@@ -1,6 +1,5 @@
 ﻿using Flurl;
 using Flurl.Http;
-using System.Net;
 
 namespace RestSharpProject.Flurl.BaseClass;
 public class BaseFlurlAPI
@@ -15,8 +14,7 @@ public class BaseFlurlAPI
     [OneTimeSetUp]
     public void ClassInitialize()
     {
-       
-
+      
         _flurlEndPoints = new EndPointsFlurl();
         var client = new FlurlClient(BASE_URL);
         client.Settings.Timeout = TimeSpan.FromSeconds(Wait);
@@ -46,7 +44,6 @@ public class BaseFlurlAPI
         };
         return newGenre;
     }
-
    
 
     protected async Task<Artists> CreateUniqueArtists()
@@ -102,12 +99,9 @@ public class BaseFlurlAPI
         return newTrack;
     }
 
-
         protected void RegenerateUrl()
     {
         BASE_URL.Reset();
     }
-
    
 }
-

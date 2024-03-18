@@ -35,7 +35,6 @@ public class PutAlbumTests : BaseFlurlAPI
         Assert.AreEqual(updatedName, actualUpdatedArtists.Name);
         response.ResponseMessage.EnsureSuccessStatusCode();
 
-
     }
 }
 

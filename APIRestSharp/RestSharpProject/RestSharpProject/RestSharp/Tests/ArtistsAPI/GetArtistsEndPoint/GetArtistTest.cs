@@ -1,7 +1,6 @@
 ﻿using System.Net;
 
-namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.GetArtistsEndPoint
-{
+namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.GetArtistsEndPoint;
     public class GetArtistTest : BaseRestSharp
     {
 
@@ -55,4 +54,3 @@ namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.GetArtistsEndPoint
 
         }
     }
-}

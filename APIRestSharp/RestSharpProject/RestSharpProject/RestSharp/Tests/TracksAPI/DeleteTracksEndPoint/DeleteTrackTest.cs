@@ -1,5 +1,4 @@
-﻿namespace RestSharpProject.RestSharp.Tests.TracksAPI.DeleteTracksEndPoint
-{
+﻿namespace RestSharpProject.RestSharp.Tests.TracksAPI.DeleteTracksEndPoint;
     public class DeleteTrackTest : BaseRestSharp
     {
         [Test]
@@ -16,7 +15,5 @@
             response.AssertSuccessStatusCode();
             Assert.IsTrue(response.IsSuccessful);
 
-
         }
     }
-}

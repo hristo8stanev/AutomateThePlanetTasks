@@ -1,7 +1,5 @@
-﻿using RestSharpProject.Models;
-
-namespace RestSharpProject.RestSharp.Tests.TracksAPI.GetTracksEndPoint;
-    public class GetTracksTest : BaseRestSharp
+﻿namespace RestSharpProject.RestSharp.Tests.TracksAPI.GetTracksEndPoint;
+public class GetTracksTest : BaseRestSharp
     {
 
     [Test]
@@ -31,7 +29,6 @@ namespace RestSharpProject.RestSharp.Tests.TracksAPI.GetTracksEndPoint;
         Assert.AreEqual(insertedTrack.Data.TrackId, response.Data.TrackId);
         Assert.AreEqual(insertedTrack.Data.Name, response.Data.Name);
     }
-
 
     [Test]
     public async Task DataPopulatedAsList_When_DataDrivenTestTracksById([Values("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")] string trackId)

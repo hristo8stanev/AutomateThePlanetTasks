@@ -1,9 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
-using RestSharpProject.AssertiExtensions;
-using static RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint.PostAlbumTest;
-
-namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
+﻿namespace RestSharpProject.RestSharp.Tests.AlbumsAPI.PostAlbumEndPoint;
 
 public class PostAlbumTest : BaseRestSharp
 {

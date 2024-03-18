@@ -1,5 +1,4 @@
-﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PutArtistsEndPoint
-{
+﻿namespace RestSharpProject.RestSharp.Tests.ArtistsAPI.PutArtistsEndPoint;
     public class PutArtistTest : BaseRestSharp
     {
    
@@ -31,4 +30,3 @@
 
         }
     }
-}

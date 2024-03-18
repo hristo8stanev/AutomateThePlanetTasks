@@ -1,9 +1,8 @@
 ﻿using Flurl.Http;
 using RestSharpProject.Flurl.BaseClass;
-using System.Net;
 
 namespace RestSharpProject.Flurl.Test.GenresAPI.GetGenresEndPoint;
-    public class GetGenresTests : BaseFlurlAPI
+public class GetGenresTests : BaseFlurlAPI
 {
 
     [Test]
