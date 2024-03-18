@@ -1,8 +1,6 @@
-﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
+﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using WinAppTask.Enums;
 
 namespace WinAppTask.Views;
 public partial class CalculatorStandardView
@@ -46,22 +44,19 @@ public partial class CalculatorStandardView
     }
 
     protected string ResultText => GetResultElement().Text.Replace("Display is", string.Empty).Replace("point", string.Empty).Trim();
-    protected string ResultTextTemp => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace("Fahrenheit", string.Empty).Trim();
-    public void NavigationalMenu() => NavigationButton.Click();
-    public void NavigateToScientificMenu() => ScientificMenuButton.Click();
+    protected string ResultTextTemp => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(TemperatureScale.Fahrenheit.ToString(), string.Empty).Trim();
     protected string GetCalculatorResultText() => CalculatorResultButton.Text.Replace("Display is", string.Empty).Trim();
 
     public void ConvertTemperatures(string num2)
     {
-        ClearCalcInput();
-        TemperatureConverterMenuButton.Click();
-        InputUnitButton.SendKeys("Celsius");
+        Clear();
+        InputUnitButton.SendKeys(TemperatureScale.Celsius.ToString());
         PickNumericValue(num2);
-        OutputUnitButton.SendKeys("Fahrenheit");
+        OutputUnitButton.SendKeys(TemperatureScale.Fahrenheit.ToString());
     }
 
     protected void ClearCalcInput() => ClearInput.Click();
-    
+    protected void Clear() => ClearButton.Click();
 
     public void ExecuteFormulaFormula(string n, string x, string y)
     {

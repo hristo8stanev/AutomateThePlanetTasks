@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium;
+using OpenQA.Selenium.Appium.Windows;
+using WinAppTask.Enums;
 
 namespace WinAppTask.Views;
 public partial class CalculatorStandardView
@@ -46,5 +48,7 @@ public partial class CalculatorStandardView
     public WindowsElement SinFunctionElement => _driver.FindElementByAccessibilityId("sinButton");
     public WindowsElement TanFunctionElement => _driver.FindElementByAccessibilityId("tanButton");
     public WindowsElement DegreeButtonElement => _driver.FindElementByAccessibilityId("degButton");
+    public WindowsElement TogglePanelButton => _driver.FindElement(ByAccessibilityId.AccessibilityId("TogglePaneButton"));
+    public WindowsElement CalculatorTypeButton(CalculatorType calculatorType) => _driver.FindElement(ByAccessibilityId.AccessibilityId(calculatorType.ToString()));
 
 }

@@ -1,4 +1,5 @@
 ﻿using WinAppTask.BaseClass;
+using WinAppTask.Enums;
 
 namespace WinAppTask.Tests;
 public class CalculatorTests : CalculatorPageObject
@@ -7,7 +8,8 @@ public class CalculatorTests : CalculatorPageObject
     [TestCase("32", "89.6")]
     public void ConvertingFromCelsiumToFahrenheit(string value, double expectedResult)
     {
-        _calcStandardView.NavigationalMenu();
+       
+         SelectCalculator(CalculatorType.Temperature);
         _calcStandardView.ConvertTemperatures(value);
 
         _calcStandardView.AssertResult(expectedResult);
@@ -23,9 +25,9 @@ public class CalculatorTests : CalculatorPageObject
 
     public void ConvertingSquareCentimeters(string x, string y, double expectedResult)
     {
-        _calcStandardView.NavigationalMenu();
+       // _calcStandardView.NavigationalMenu();
 
-        _calcStandardView.StandardTypeCalculatorButton.Click();
+        SelectCalculator(CalculatorType.Standard);
         _calcStandardView.PerformSquareCantimetersCalculation(x, y);
 
         _calcStandardView.AssertDoubleResult(expectedResult);
@@ -38,9 +40,8 @@ public class CalculatorTests : CalculatorPageObject
       [TestCase("77", "9.12", "1.6", -5.87)]
       public void ScientificFormula(string n, string x, string y, double expectedResult)
       {
-       _calcStandardView.NavigationalMenu();
-       _calcStandardView.NavigateToScientificMenu();
-       _calcStandardView.ExecuteFormulaFormula(n, x, y);
+        SelectCalculator(CalculatorType.Scientific);
+        _calcStandardView.ExecuteFormulaFormula(n, x, y);
 
        _calcStandardView.AssertResultStartsWith(expectedResult);
     }
@@ -49,12 +50,11 @@ public class CalculatorTests : CalculatorPageObject
     [Test]
     [TestCase("-8.88", -0.518)]
     [TestCase("-3.94", 0.716)]
-    [TestCase("-5.87", -0.102)]
+    [TestCase("-5.87", 0.401)]
     public void CalculatingSinFunctionOfNumbers(string num, double expectedResult)
     {
 
-        _calcStandardView.NavigationalMenu();
-        _calcStandardView.NavigateToScientificMenu();
+        SelectCalculator(CalculatorType.Scientific);
         _calcStandardView.ExecuteSinFucntionOfNumbers(num);
 
         _calcStandardView.AssertResultStartsWith(expectedResult);
@@ -67,8 +67,7 @@ public class CalculatorTests : CalculatorPageObject
     public void CalculatingTanFunctionOfNumbers(string num, double expectedResult)
     {
 
-        _calcStandardView.NavigationalMenu();
-        _calcStandardView.NavigateToScientificMenu();
+        SelectCalculator(CalculatorType.Scientific);
         _calcStandardView.ExecuteTanFucntionOfNumbers(num);
 
         _calcStandardView.AssertResultStartsWith(expectedResult);
