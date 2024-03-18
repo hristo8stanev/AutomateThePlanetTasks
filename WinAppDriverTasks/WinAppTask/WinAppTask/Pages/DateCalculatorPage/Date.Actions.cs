@@ -1,13 +1,14 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
+using WinAppTask.Pages.BaseClass;
 
-namespace WinAppTask.Views;
-public partial class CalculatorStandardView
+namespace WinAppTask.Pages.ScientificCalculatorPage;
+public partial class CalculatorStandardPage : CalculatorPageObject
 {
 
     private readonly WindowsDriver<WindowsElement> _driver;
-    public CalculatorStandardView(WindowsDriver<WindowsElement> driver) => _driver = driver;
+    public CalculatorStandardPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
 
     public void PerformCalculation(string num1, char option, string num2)
     {
@@ -45,6 +46,9 @@ public partial class CalculatorStandardView
 
     protected string ResultText => GetResultElement().Text.Replace("Display is", string.Empty).Replace("point", string.Empty).Trim();
     protected string ResultTextTemp => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(TemperatureScale.Fahrenheit.ToString(), string.Empty).Trim();
+    protected string ResultTextWeitght => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(" Pounds", string.Empty).Trim();
+    protected string ResultTextDays => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(" Seconds", string.Empty).Trim();
+    protected string ResultBytesToGigabytes => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(" Gigabytes", string.Empty).Trim();
     protected string GetCalculatorResultText() => CalculatorResultButton.Text.Replace("Display is", string.Empty).Trim();
 
     public void ConvertTemperatures(string num2)
@@ -55,8 +59,33 @@ public partial class CalculatorStandardView
         OutputUnitButton.SendKeys(TemperatureScale.Fahrenheit.ToString());
     }
 
-    protected void ClearCalcInput() => ClearInput.Click();
-    protected void Clear() => ClearButton.Click();
+    public void ConvertFromKilogramsToPounds(string num2)
+    {
+        Clear();
+        InputUnitButton.SendKeys("Kilograms");
+        PickNumericValue(num2);
+        OutputUnitButton.SendKeys("Pounds");
+    }
+
+    public void ConvertBetweenBytesAndGigabytes(string num1)
+    {
+        Clear();
+        InputUnitButton.SendKeys("Bytes");
+        PickNumericValue(num1);
+        OutputUnitButton.SendKeys("Gigabytes");
+    }
+
+    public void ConvertBetweenDaysAndSeconds(string num1)
+    {
+        Clear();
+        InputUnitButton.SendKeys("Days");
+        PickNumericValue(num1);
+        OutputUnitButton.SendKeys("Seconds");
+
+    }
+
+    protected void ClearCalcInput() => ClearCalcInputButton.Click();
+    protected void Clear() => ClearEntryButton.Click();
 
     public void ExecuteFormulaFormula(string n, string x, string y)
     {
@@ -71,7 +100,7 @@ public partial class CalculatorStandardView
        PickNumericValue(y);
        PowerButton.Click();
        EqualButton.Click();
-
+       
     }
 
     public void ExecuteTanFucntionOfNumbers(string num)
@@ -92,6 +121,14 @@ public partial class CalculatorStandardView
         SinFunctionElement.Click();
 
 
+    }
+
+    public void ChooseFromDateToDate(string firstDate, string SecondDate)
+    {
+       FromDatePickerButton.Click();
+       FromDate(firstDate).Click();
+       ToDatePickerButton.Click();
+       ToDate(SecondDate).Click();
     }
 
     public void PickNumericValue(string numberCharacter)

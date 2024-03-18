@@ -4,5 +4,9 @@ public enum CalculatorType
     Standard,
     Scientific,
     Temperature,
-    Area
+    Area,
+    Date,
+    Time,
+    Data,
+    Weight
 }
