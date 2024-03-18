@@ -1,14 +1,14 @@
 ﻿using WinAppTask.Enums;
 using WinAppTask.Pages.BaseClass;
 
-namespace WinAppTask.Tests;
+namespace WinAppTask.Tests.StandardCalculatorTests;
 public class StandardCalculatorTests : CalculatorPageObject
 {
     [Test]
     [TestCase("32", "89.6")]
     public void ConvertingFromCelsiumToFahrenheit(string value, double expectedResult)
     {
-         SelectCalculator(CalculatorType.Temperature);
+        SelectCalculator(CalculatorType.Temperature);
         _standardCalculatorPage.ConvertTemperatures(value);
 
         _standardCalculatorPage.AssertResult(expectedResult);
@@ -30,16 +30,16 @@ public class StandardCalculatorTests : CalculatorPageObject
         _standardCalculatorPage.AssertDoubleResult(expectedResult);
     }
 
-      [Test]
-      [TestCase("45", "5", "2", -8.88)]
-      [TestCase("6", "2", "6", -3.94)]
-      [TestCase("77", "9.12", "1.6", -5.87)]
-      public void ScientificCalculateFormula(string n, string x, string y, double expectedResult)
-      {
+    [Test]
+    [TestCase("45", "5", "2", -8.88)]
+    [TestCase("6", "2", "6", -3.94)]
+    [TestCase("77", "9.12", "1.6", -5.87)]
+    public void ScientificCalculateFormula(string n, string x, string y, double expectedResult)
+    {
         SelectCalculator(CalculatorType.Scientific);
         _standardCalculatorPage.ExecuteFormulaFormula(n, x, y);
 
-       _standardCalculatorPage.AssertResultStartsWith(expectedResult);
+        _standardCalculatorPage.AssertResultStartsWith(expectedResult);
     }
 
 
@@ -76,7 +76,7 @@ public class StandardCalculatorTests : CalculatorPageObject
     public void Date(string firstDate, string SecondDate, string expectedResult)
     {
         SelectCalculator(CalculatorType.Date);
-        _standardCalculatorPage.ChooseFromDateToDate(firstDate,SecondDate);
+        _standardCalculatorPage.ChooseFromDateToDate(firstDate, SecondDate);
 
         _standardCalculatorPage.AssertDate(expectedResult);
     }
@@ -84,7 +84,7 @@ public class StandardCalculatorTests : CalculatorPageObject
     [Test]
     [TestCase("32", 70.54792)]
     [TestCase("1", 2.204623)]
-    [TestCase("15",33.06934)]
+    [TestCase("15", 33.06934)]
     [TestCase("88", 194.0068)]
 
     public void Weight(string weight, double expectedResult)
@@ -101,7 +101,7 @@ public class StandardCalculatorTests : CalculatorPageObject
     [TestCase("5", 432.000)]
     [TestCase("7", 604.800)]
     [TestCase("9", 777.600)]
-    public void Time(string days,double expectedResultSeconds)
+    public void Time(string days, double expectedResultSeconds)
     {
         SelectCalculator(CalculatorType.Time);
         _standardCalculatorPage.ConvertBetweenDaysAndSeconds(days);
