@@ -15,10 +15,10 @@ You can run the project from the command line with `dotnet run` in the project d
 1. Flurl
 2. HttpClient
 3. RestSharp
-4.Adapter
-5.AssertonExtensions
-6.JsonSchema
-7.Models.
+4. Adapter
+5. AssertonExtensions
+6. JsonSchema
+7. Models.
 
 
 ## Flurl, HttpClient and RestSharp folders contains the following subfolders:
