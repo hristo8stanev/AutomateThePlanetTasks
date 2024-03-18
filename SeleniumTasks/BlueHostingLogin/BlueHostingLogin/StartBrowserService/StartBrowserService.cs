@@ -1,12 +1,12 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using BlueHostingLogin.@enum;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 
-namespace ZipCodes.DriverFacade;
+namespace BlueHostingLogin.DriverFacade;
 public class DriverFacade
 {
-
     public static WebDriver StartBrowser(BrowserType browserType)
     {
 
@@ -53,4 +53,3 @@ public class DriverFacade
         return null;
     }
 }
-

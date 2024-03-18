@@ -23,6 +23,4 @@ public partial class LambdaMainPage : WebPage
         LambdaVerifyButton.Click();
 
     }
-
-    
 }

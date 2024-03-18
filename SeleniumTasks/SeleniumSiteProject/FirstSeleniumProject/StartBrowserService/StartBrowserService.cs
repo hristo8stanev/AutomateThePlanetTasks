@@ -6,7 +6,7 @@ using FirstSeleniumProject.@enum;
 
 
 namespace FirstSeleniumProject.DriverFacade;
-public class DriverFacade
+public class StartBrowserService
 {
     public static WebDriver StartBrowser(BrowserType browserType)
     {

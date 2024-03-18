@@ -1,8 +1,4 @@
-﻿using System;
-using System.Reflection;
-
-
-class Program
+﻿class Program
 {
     public static void Main(string[] args)
     {
@@ -11,6 +7,7 @@ class Program
 
         var fullNameProperty = workerType.GetProperty(nameof(Worker.FullName), typeof(string));
         var ageProperty = workerType.GetProperty(nameof(Worker.Age), typeof(int));
+
         if (fullNameProperty != null)
         {
             fullNameProperty.SetValue(worker, "Ivan Draganov");

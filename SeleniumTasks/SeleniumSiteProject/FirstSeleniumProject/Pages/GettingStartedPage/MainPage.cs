@@ -17,12 +17,13 @@ public partial class MainPage : WebPage
         
         SeleniumOverviewField.Click();
         SeleniumComponentsField.Click();
-        WaitForAjax();
+        
     }
 
     public void ProceedToGitHubLink()
     {
-           MoveToElement(By.XPath("//*[@href='https://github.com/SeleniumHQ/seleniumhq.github.io/commit/6b87463b63700d38146e82130776bf4d832bf82d']"));
-           GitHubLinkField.Click();
+        MoveToElement(GitHubLink);
+        GitHubLinkField.Click();
+        
     }
 }

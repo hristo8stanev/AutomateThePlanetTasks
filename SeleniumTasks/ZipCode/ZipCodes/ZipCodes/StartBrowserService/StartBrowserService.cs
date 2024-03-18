@@ -1,12 +1,12 @@
-﻿using BlueHostingLogin.@enum;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 
-namespace BlueHostingLogin.DriverFacade;
-public class DriverFacade
+namespace ZipCodes.DriverFacade;
+public class StartBrowserService
 {
+
     public static WebDriver StartBrowser(BrowserType browserType)
     {
 
@@ -14,7 +14,6 @@ public class DriverFacade
         {
             case BrowserType.CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
-               
                 return new ChromeDriver(chromeOptions);
             case BrowserType.CHROME_INCOGNITO:
                 ChromeOptions chromeIncognitoOptions = new ChromeOptions();
@@ -54,3 +53,4 @@ public class DriverFacade
         return null;
     }
 }
+

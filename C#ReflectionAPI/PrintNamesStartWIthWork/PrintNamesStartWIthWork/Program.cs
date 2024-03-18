@@ -5,7 +5,7 @@ using System.Reflection;
 namespace Work;
 class Program
 {
-    private const string notExistWorkMessage = "Namespace start with 'Work' doesn't exist!";
+    private string notExistWorkMessage => "Namespace start with 'Work' doesn't exist!";
 
     static void Main(string[] args)
     {

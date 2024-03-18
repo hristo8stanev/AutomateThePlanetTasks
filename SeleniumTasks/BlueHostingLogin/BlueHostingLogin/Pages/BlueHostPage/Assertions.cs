@@ -6,9 +6,7 @@ public partial class BlueHostMainPage
 {
     public void AssertVerifyButtonIsDisplayed()
     {
-
-        var errorMessageElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[text()='Couldn’t find your Google Account']")));
-        bool isDisplayed = errorMessageElement.Displayed;
+        bool isDisplayed = IncorrectMessageAfterLogin.Displayed;
 
         Assert.That(isDisplayed);
     }

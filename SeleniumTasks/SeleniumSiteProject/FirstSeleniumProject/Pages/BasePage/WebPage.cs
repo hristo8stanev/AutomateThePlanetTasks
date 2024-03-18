@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FirstSeleniumProject.Pages.GettingStartedPage;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -13,29 +7,29 @@ namespace SeleniumSiteProject.Pages.BasePage;
 public abstract class WebPage
 {
     private int WAIT_FOR_ELEMENT => 20;
-
+    Actions _actions;
     public WebPage(IWebDriver driver)
     {
-        Driver = driver;
-        WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
-
+        _driver = driver;
+        WebDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
+        _actions = new Actions(_driver);
     }
 
-    protected IWebDriver Driver { get; set; }
+    protected IWebDriver _driver { get; set; }
     protected WebDriverWait WebDriverWait { get; set; }
     protected abstract string Url { get; }
 
     public void GoTo()
     {
-        Driver.Navigate().GoToUrl(Url);
+        _driver.Navigate().GoToUrl(Url);
     }
 
 
-    protected IWebElement MoveToElement(By locator)
+    protected IWebElement MoveToElement(string locator)
     {
-        Actions actions = new Actions(Driver);
-        IWebElement element = Driver.FindElement(locator);
-        actions.MoveToElement(element).Perform();
+        
+        IWebElement element = _driver.FindElement(By.XPath(locator));
+        _actions.MoveToElement(element).Perform();
         return element;
     }
 
@@ -47,13 +41,13 @@ public abstract class WebPage
 
     protected void WaitForAjax()
     {
-        var js = (IJavaScriptExecutor)Driver;
+        var js = (IJavaScriptExecutor)_driver;
         WebDriverWait.Until(wd => js.ExecuteScript("return jQuery.active").ToString() == "0");
     }
 
     protected void WaintUntilPageLoadsCompletely()
     {
-        var js = (IJavaScriptExecutor)Driver;
+        var js = (IJavaScriptExecutor)_driver;
         WebDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "comeplete");
     }
 }

@@ -9,6 +9,6 @@ public partial class LambdaMainPage
     public IWebElement LambdaVerifyButton => WaitAndFindElement(By.XPath("//button[text()='Verify']"));
     public IWebElement GetEmailFromVerifyForm(string email)
     {
-        return WaitAndFindElement(By.XPath("//span[contains(@class, 'text-[#000] font-[600]') and text()='{0}']"));
+     return WaitAndFindElement(By.XPath("//span[contains(@class, 'text-[#000] font-[600]') and text()='{0}']"));
     }
 }
