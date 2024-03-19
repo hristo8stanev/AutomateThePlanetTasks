@@ -5,7 +5,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 
 namespace BlueHostingLogin.DriverFacade;
-public class DriverFacade
+public class StartBrowserType
 {
     public static WebDriver StartBrowser(BrowserType browserType)
     {

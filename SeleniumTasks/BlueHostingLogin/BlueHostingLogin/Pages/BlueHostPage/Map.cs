@@ -10,8 +10,5 @@ public partial class BlueHostMainPage
     public IWebElement IncorrectMessageAfterLogin => WaitAndFindElement(By.XPath("//div[text()='Couldn’t find your Google Account']"));
     public IWebElement AcceptCookie => WaitAndFindElement(By.XPath("//button[@id='onetrust-accept-btn-handler']"));
     public IWebElement ErrorMessageIncorrectEmail => WaitAndFindElement(By.XPath("//div[text()='Couldn’t find your Google Account']"));
-    
-    public string emailAssert = "//*[@class='cursor-pointer font-[500] leading-[16px] text-[#333]']";
-
-    
+    public IWebElement emailAssert => MoveToElement(By.XPath("//*[@class='cursor-pointer font-[500] leading-[16px] text-[#333]']"));
 }

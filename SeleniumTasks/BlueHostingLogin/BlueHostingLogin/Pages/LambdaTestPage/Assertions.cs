@@ -13,9 +13,9 @@ public partial class LambdaMainPage
         Assert.That(currentUrl, Is.EqualTo("https://accounts.lambdatest.com/email/verify"), ErrorMessageIncorrectUrl);
     }
 
-  public void AssertSentEmailToVerify(string expectedEmail)
-    {
-        MoveToElement(VerifyEmail);
-        Assert.That(expectedEmail, Is.EqualTo(EmailElement(expectedEmail).Text.Trim()), ErrorMessageEmailMismatch);
-    }
+
+   public void AssertSentEmailToVerify(string expectedEmail)
+   {
+       Assert.That(expectedEmail, Is.EqualTo(EmailElement(expectedEmail).Text.Trim()), ErrorMessageEmailMismatch);
+   }
 }
