@@ -8,7 +8,7 @@ public partial class BellatrixMainPage
 
     public void AssertMyOrdersIsShown()
     {
-        var myOrders = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//td[@data-title='Order'][1])//a")));
+        var myOrders = _webDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//td[@data-title='Order'][1])//a")));
         bool isDisplayed = myOrders.Displayed;
         Assert.That(isDisplayed);
     }

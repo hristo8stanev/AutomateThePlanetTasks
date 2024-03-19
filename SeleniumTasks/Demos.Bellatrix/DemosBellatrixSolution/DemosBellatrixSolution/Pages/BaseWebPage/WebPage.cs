@@ -8,45 +8,46 @@ namespace DemosBellatrixSolution.Pages.BaseWebPage;
 public abstract class WebPage
 {
     private int WAIT_FOR_ELEMENT => 30;
+    Actions _actions;
 
     public WebPage(IWebDriver driver)
     {
-        Driver = driver;
-        WebDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
-
+        _driver = driver;
+        _webDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
+        _actions = new Actions(_driver);
     }
-    protected IWebDriver Driver { get; set; }
-    protected WebDriverWait WebDriverWait { get; set; }
+    protected IWebDriver _driver { get; set; }
+    protected WebDriverWait _webDriverWait { get; set; }
     protected abstract string Url { get; }
 
     public void GoTo()
     {
-        Driver.Navigate().GoToUrl(Url);
+        _driver.Navigate().GoToUrl(Url);
     }
    
     protected IWebElement MoveToElement(By locator)
     {
-        Actions actions = new Actions(Driver);
-        IWebElement element = Driver.FindElement(locator);
-        actions.MoveToElement(element).Perform();
+       
+        IWebElement element = _driver.FindElement(locator);
+        _actions.MoveToElement(element).Perform();
         return element;
     }
 
     protected IWebElement WaitElementToBeClickable(By locator)
     {
-        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
-        return WebDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));
+        var webDriverWait = new WebDriverWait(_driver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
+        return _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));
     }
 
     protected IWebElement WaitAndFindElement(By locator)
     {
 
-        return WebDriverWait.Until(ExpectedConditions.ElementExists(locator));
+        return _webDriverWait.Until(ExpectedConditions.ElementExists(locator));
     }
 
     protected IWebElement waitAndFindElementJS(By locator)
     {
-        var element = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(locator));
+        var element = _webDriverWait.Until(ExpectedConditions.ElementIsVisible(locator));
         scrolltoVisible(element);
         return element;
     }
@@ -55,7 +56,7 @@ public abstract class WebPage
     {
         try
         {
-            ((IJavaScriptExecutor)Driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+            ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
         catch (ElementNotInteractableException ex)
         {
@@ -63,16 +64,15 @@ public abstract class WebPage
         }
     }
 
-
     protected void WaitForAjax()
     {
-        var js = (IJavaScriptExecutor)Driver;
-        WebDriverWait.Until(wd => js.ExecuteScript("return jQuery.active").ToString() == "0");
+        var js = (IJavaScriptExecutor)_driver;
+        _webDriverWait.Until(wd => js.ExecuteScript("return jQuery.active").ToString() == "0");
     }
 
     protected void WaintUntilPageLoadsCompletely()
     {
-        var js = (IJavaScriptExecutor)Driver;
-        WebDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "comeplete");
+        var js = (IJavaScriptExecutor)_driver;
+        _webDriverWait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "comeplete");
     }
 }

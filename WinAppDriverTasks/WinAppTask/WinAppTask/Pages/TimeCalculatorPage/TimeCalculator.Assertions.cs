@@ -1,5 +1,5 @@
-﻿namespace WinAppTask.Views;
-public partial class StandardCalculatorPage
+﻿namespace WinAppTask.Pages.TimeCalculatorPage;
+public partial class TimeCalculatorPage
 {
     public void AssertResult(double expectedReslt)
     {

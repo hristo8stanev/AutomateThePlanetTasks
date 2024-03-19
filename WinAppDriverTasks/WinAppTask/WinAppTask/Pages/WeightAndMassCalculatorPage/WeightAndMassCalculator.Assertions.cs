@@ -1,5 +1,5 @@
-﻿namespace WinAppTask.Views;
-public partial class StandardCalculatorPage
+﻿namespace WinAppTask.Pages.WeightAndMassCalculatorPage;
+public partial class WeightAndMassCalculator
 {
     public void AssertResult(double expectedReslt)
     {

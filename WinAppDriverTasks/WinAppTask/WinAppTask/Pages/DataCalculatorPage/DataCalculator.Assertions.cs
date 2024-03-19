@@ -1,6 +1,6 @@
-﻿namespace WinAppTask.Views;
-public partial class StandardCalculatorPage
-{
+﻿namespace WinAppTask.Pages.DataCalculatorPage;
+public partial class DataCalculator
+{ 
     public void AssertResult(double expectedReslt)
     {
         Assert.AreEqual(expectedReslt.ToString(), ResultTextTemp, "The calculation result wasn't correct.");

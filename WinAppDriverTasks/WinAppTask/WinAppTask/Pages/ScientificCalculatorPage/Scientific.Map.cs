@@ -1,9 +1,8 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using WinAppTask.Enums;
 
-namespace WinAppTask.Tests.StandardCalculatorTests;
-public partial class CalculatorStandardPage
+namespace WinAppTask.Pages.ScientificCalculatorPage;
+public partial class ScientificCalculatorPages
 {
     public WindowsElement ZeroButton => _driver.FindElementByName("Zero");
     public WindowsElement OneButton => _driver.FindElementByName("One");
@@ -34,7 +33,6 @@ public partial class CalculatorStandardPage
     public WindowsElement NavigationButton => _driver.FindElementByName("Open Navigation");
     public WindowsElement TemperatureConverterMenuButton => _driver.FindElementByName("Temperature Converter");
     public WindowsElement ScientificMenuButton => _driver.FindElementByAccessibilityId("Scientific");
-    public WindowsElement StandardTypeCalculatorButton => _driver.FindElementByName("Standard Calculator");
     public WindowsElement InputUnitButton => _driver.FindElementByName("Input unit");
     public WindowsElement OutputUnitButton => _driver.FindElementByName("Output unit");
     public WindowsElement FahrenheitButton => _driver.FindElementByName("Fahrenheit");
@@ -49,13 +47,4 @@ public partial class CalculatorStandardPage
     public WindowsElement TanFunctionElement => _driver.FindElementByAccessibilityId("tanButton");
     public WindowsElement DegreeButtonElement => _driver.FindElementByAccessibilityId("degButton");
     public WindowsElement TogglePanelButton => _driver.FindElement(ByAccessibilityId.AccessibilityId("TogglePaneButton"));
-    public WindowsElement CalculatorTypeButton(CalculatorType calculatorType) => _driver.FindElement(ByAccessibilityId.AccessibilityId(calculatorType.ToString()));
-    public WindowsElement FromDatePickerButton => _driver.FindElementByAccessibilityId("DateDiff_FromDate");
-    public WindowsElement ToDatePickerButton => _driver.FindElementByAccessibilityId("DateDiff_ToDate");
-    public WindowsElement FromDate(string date) => _driver.FindElementByName(date);
-    public WindowsElement ToDate(string date) => _driver.FindElementByName(date);
-     public WindowsElement DateResult => _driver.FindElementByAccessibilityId("DateDiffAllUnitsResultLabel");
-    public WindowsElement TimeInput => _driver.FindElementByAccessibilityId("Units1");
-    public WindowsElement TimeOutput => _driver.FindElementByAccessibilityId("Units2");
-
 }

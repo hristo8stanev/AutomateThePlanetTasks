@@ -1,9 +1,10 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
+using WinAppTask.Tests.BaseTest;
 
-namespace WinAppTask.Pages.ScientificCalculatorPage;
-public partial class CalculatorStandardPage
+namespace WinAppTask.Pages.TemperatureCalculatorPage;
+public partial class TemperatureCalculatorPage
 {
     public WindowsElement ZeroButton => _driver.FindElementByName("Zero");
     public WindowsElement OneButton => _driver.FindElementByName("One");

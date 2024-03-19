@@ -1,5 +1,5 @@
-﻿namespace WinAppTask.Pages.ScientificCalculatorPage;
-public partial class CalculatorStandardPage
+﻿namespace WinAppTask.Pages.TemperatureCalculatorPage;
+public partial class TemperatureCalculatorPage
 {
     public void AssertResult(double expectedReslt)
     {
@@ -13,7 +13,7 @@ public partial class CalculatorStandardPage
 
     public void AssertResultDaysToSecondsIsCorrect(double expectedReslt)
     {
-        //svar expectedResult = 
+        //var expectedResult = 
 
         Assert.AreEqual(expectedReslt.ToString("F3").Replace(".", ","), ResultTextDays, "The calculation result wasn't correct.");
     }
@@ -30,8 +30,8 @@ public partial class CalculatorStandardPage
         var actualResult = double.Parse(result);
 
         Assert.AreEqual(expectedResult, actualResult);
-
     }
+
     public void AssertResultStartsWith(double expectedResult)
     {
         Assert.IsTrue(ResultText.StartsWith(expectedResult.ToString()), "The calculation result wasn't correct.");

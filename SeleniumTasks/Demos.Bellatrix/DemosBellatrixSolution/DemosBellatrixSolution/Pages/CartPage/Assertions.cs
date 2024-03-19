@@ -8,7 +8,7 @@ public partial class CartPage
  
     public void AssertCouponApplied()
     {
-        var couponElement = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='cart-discount coupon-happybirthday']")));
+        var couponElement = _webDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//tr[@class='cart-discount coupon-happybirthday']")));
         bool isDisplayed = couponElement.Displayed;
         Assert.That(isDisplayed);
     }
@@ -17,7 +17,7 @@ public partial class CartPage
    {
         Thread.Sleep(2000);
         MoveToElement(By.XPath("//*[@id='site-header-cart']"));
-        var quantity = WebDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//*[@class='count'])[1]"))).Text;
+        var quantity = _webDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("(//*[@class='count'])[1]"))).Text;
         Assert.That(quantity.Equals($"{expectedQuantity} items"));
         Console.WriteLine(quantity);
     }

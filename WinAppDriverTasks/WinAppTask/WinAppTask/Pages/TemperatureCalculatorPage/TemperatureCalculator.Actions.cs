@@ -1,14 +1,14 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
-using WinAppTask.Pages.BaseClass;
+using WinAppTask.Pages.BaseCalculatorPage;
 
-namespace WinAppTask.Pages.ScientificCalculatorPage;
-public partial class CalculatorStandardPage : CalculatorPageObject
+namespace WinAppTask.Pages.TemperatureCalculatorPage;
+public partial class TemperatureCalculatorPage : BasePage
 {
 
-    private readonly WindowsDriver<WindowsElement> _driver;
-    public CalculatorStandardPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
+    public readonly WindowsDriver<WindowsElement> _driver;
+    public TemperatureCalculatorPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
 
     public void PerformCalculation(string num1, char option, string num2)
     {
@@ -17,7 +17,6 @@ public partial class CalculatorStandardPage : CalculatorPageObject
         PerformOperation(option);
         PickNumericValue(num2);
         EqualButton.Click();
-
     }
 
     public void PerformSquareCantimetersCalculation(string num1, string num2)
@@ -83,6 +82,7 @@ public partial class CalculatorStandardPage : CalculatorPageObject
         OutputUnitButton.SendKeys("Seconds");
 
     }
+
 
     protected void ClearCalcInput() => ClearCalcInputButton.Click();
     protected void Clear() => ClearEntryButton.Click();

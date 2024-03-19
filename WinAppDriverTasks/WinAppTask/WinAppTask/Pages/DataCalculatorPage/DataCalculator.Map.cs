@@ -3,8 +3,8 @@ using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
 using WinAppTask.Tests.BaseTest;
 
-namespace WinAppTask.Views;
-public partial class StandardCalculatorPage
+namespace WinAppTask.Pages.DataCalculatorPage;
+public partial class DataCalculator
 {
     public WindowsElement ZeroButton => _driver.FindElementByName("Zero");
     public WindowsElement OneButton => _driver.FindElementByName("One");
