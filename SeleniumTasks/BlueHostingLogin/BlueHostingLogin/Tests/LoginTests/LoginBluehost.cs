@@ -31,6 +31,7 @@ public class LoginTests : BaseTest
         _blueHostMainPage.ClickOnWemailLogin();
         _blueHostMainPage.FillEmail(purchaseInfoBlueHost);
         _blueHostMainPage.ProceedWithLogin();
+
         _blueHostMainPage.AssertVerifyButtonIsDisplayed();
 
     }
@@ -47,6 +48,7 @@ public class LoginTests : BaseTest
 
         _lambdaMainPage.FillBillingInfo(purchaseInfo);
         _lambdaMainPage.ProceedToUserLogin();
+
         _lambdaMainPage.AssertUserSuccssesfullyLoginUrl(_driver.Url);
         _lambdaMainPage.AssertSentEmailToVerify(randomEmail);
     }

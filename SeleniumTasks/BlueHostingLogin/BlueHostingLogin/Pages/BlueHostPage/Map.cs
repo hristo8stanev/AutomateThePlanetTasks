@@ -12,4 +12,6 @@ public partial class BlueHostMainPage
     public IWebElement ErrorMessageIncorrectEmail => WaitAndFindElement(By.XPath("//div[text()='Couldn’t find your Google Account']"));
     
     public string emailAssert = "//*[@class='cursor-pointer font-[500] leading-[16px] text-[#333]']";
+
+    
 }

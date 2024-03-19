@@ -15,10 +15,7 @@ public partial class LambdaMainPage
 
   public void AssertSentEmailToVerify(string expectedEmail)
     {
-        MoveToElement(ErrorMessageIncorrectEmail);
-        string xpath = string.Format("//span[contains(@class, 'text-[#000] font-[600]') and text()='{0}']", expectedEmail);
-        IWebElement emailElement = _driver.FindElement(By.XPath(xpath));
-        string displayedEmail = emailElement.Text.Trim();
-        Assert.That(expectedEmail, Is.EqualTo(displayedEmail), ErrorMessageEmailMismatch);
+        MoveToElement(VerifyEmail);
+        Assert.That(expectedEmail, Is.EqualTo(EmailElement(expectedEmail).Text.Trim()), ErrorMessageEmailMismatch);
     }
 }
