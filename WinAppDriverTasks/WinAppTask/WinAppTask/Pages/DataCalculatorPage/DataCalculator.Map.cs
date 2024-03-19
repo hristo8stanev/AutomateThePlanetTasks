@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
-using WinAppTask.Tests.BaseTest;
+
 
 namespace WinAppTask.Pages.DataCalculatorPage;
 public partial class DataCalculator

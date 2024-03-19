@@ -15,9 +15,7 @@ public partial class ScientificCalculatorPages : BasePage
     }
 
     protected string ResultText => GetResultElement().Text.Replace("Display is", string.Empty).Replace("point", string.Empty).Trim();
-    protected string GetCalculatorResultText() => CalculatorResultButton.Text.Replace("Display is", string.Empty).Trim();
     protected void ClearCalcInput() => ClearCalcInputButton.Click();
-    protected void Clear() => ClearEntryButton.Click();
 
     public void ExecuteFormulaFormula(string n, string x, string y)
     {

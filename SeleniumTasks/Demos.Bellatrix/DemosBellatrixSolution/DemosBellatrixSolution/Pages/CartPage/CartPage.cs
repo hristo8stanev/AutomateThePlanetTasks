@@ -10,8 +10,6 @@ public partial class CartPage : WebPage
     }
     protected override string Url => "https://demos.bellatrix.solutions/cart/";
 
-
-
     public void AppluCouponVaucher(string vaucher)
     {
         CouponCodeField.SendKeys(vaucher);

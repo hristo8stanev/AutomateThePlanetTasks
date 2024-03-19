@@ -4,12 +4,11 @@ namespace WinAppTask.Pages.BaseCalculatorPage;
 public abstract class BasePage
 {
     protected int WAIT => 5;
-    protected WindowsDriver<WindowsElement> _driver;
 
+  //  protected BasePage(WindowsDriver<WindowsElement> driver)
+  //  {
+  //      _driver = driver;
+  //  }
 
-  // public void SelectCalculator(CalculatorType calculatorType)
-  // {
-  //     _standardCalculatorPage.TogglePanelButton.Click();
-  //     _standardCalculatorPage.CalculatorTypeButton(calculatorType).Click();
-  // }
+    protected WindowsDriver<WindowsElement> _driver { get; set; }
 }

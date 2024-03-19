@@ -18,5 +18,4 @@ public class DataCalculatorTests : BaseCalculatorTest
 
         _dataCalculatorPage.AssertResultBytesToGigabytesIsCorrect(expectedResultGigabytes);
     }
-
 }
