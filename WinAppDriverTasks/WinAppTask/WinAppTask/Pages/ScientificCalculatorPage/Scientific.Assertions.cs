@@ -1,4 +1,4 @@
-﻿namespace WinAppTask.Pages.ScientificCalculatorPage;
+﻿namespace WinAppTask.Tests.StandardCalculatorTests;
 public partial class CalculatorStandardPage
 {
     public void AssertResult(double expectedReslt)

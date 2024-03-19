@@ -3,11 +3,11 @@ using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
 using WinAppTask.Pages.BaseClass;
 
-namespace WinAppTask.Pages.ScientificCalculatorPage;
+namespace WinAppTask.Tests.StandardCalculatorTests;
 public partial class CalculatorStandardPage : CalculatorPageObject
 {
 
-    private readonly WindowsDriver<WindowsElement> _driver;
+    public readonly WindowsDriver<WindowsElement> _driver;
     public CalculatorStandardPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
 
     public void PerformCalculation(string num1, char option, string num2)

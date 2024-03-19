@@ -26,6 +26,7 @@ public class LoginTests : BaseTest
         {
             EmailAdress = randomEmail,
         };
+
         _blueHostMainPage.GoTo();
         _blueHostMainPage.AcceptCookies();
         _blueHostMainPage.ClickOnWemailLogin();

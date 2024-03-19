@@ -23,7 +23,6 @@ public class CalculatorPageObject
         _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(WAIT);
         _standardCalculatorPage = new CalculatorStandardPage(_driver);
 
-
     }
 
     public void SelectCalculator(CalculatorType calculatorType)

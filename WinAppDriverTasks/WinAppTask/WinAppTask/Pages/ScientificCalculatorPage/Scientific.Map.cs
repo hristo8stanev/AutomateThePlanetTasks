@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Appium.Windows;
 using WinAppTask.Enums;
 
-namespace WinAppTask.Pages.ScientificCalculatorPage;
+namespace WinAppTask.Tests.StandardCalculatorTests;
 public partial class CalculatorStandardPage
 {
     public WindowsElement ZeroButton => _driver.FindElementByName("Zero");
