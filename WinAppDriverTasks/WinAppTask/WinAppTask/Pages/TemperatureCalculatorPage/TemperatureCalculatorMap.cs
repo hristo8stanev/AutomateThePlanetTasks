@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium.Appium;
-using OpenQA.Selenium.Appium.Windows;
-using WinAppTask.Enums;
+﻿using OpenQA.Selenium.Appium.Windows;
 
 namespace WinAppTask.Pages.TemperatureCalculatorPage;
 public partial class TemperatureCalculatorPage

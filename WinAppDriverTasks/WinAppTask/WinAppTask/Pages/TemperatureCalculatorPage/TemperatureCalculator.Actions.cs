@@ -21,13 +21,8 @@ public partial class TemperatureCalculatorPage : BasePage
         var result = OutputValueDegreeButton;
         return result;
     }
-
-    protected string ResultText => GetResultElement().Text.Replace("Display is", string.Empty).Replace("point", string.Empty).Trim();
     protected string ResultTextTemp => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(TemperatureScale.Fahrenheit.ToString(), string.Empty).Trim();
-    protected string ResultTextWeitght => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(" Pounds", string.Empty).Trim();
-    protected string ResultTextDays => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(" Seconds", string.Empty).Trim();
-    protected string ResultBytesToGigabytes => GetResultElementTemp().Text.Replace("Converts into ", string.Empty).Replace(" Gigabytes", string.Empty).Trim();
-    protected string GetCalculatorResultText() => CalculatorResultButton.Text.Replace("Display is", string.Empty).Trim();
+
 
     public void ConvertTemperatures(string num2)
     {

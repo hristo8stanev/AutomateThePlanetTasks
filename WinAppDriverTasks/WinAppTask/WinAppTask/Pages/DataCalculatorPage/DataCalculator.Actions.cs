@@ -1,5 +1,7 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using System.ComponentModel.DataAnnotations;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using WinAppTask.Enums;
 using WinAppTask.Pages.BaseCalculatorPage;
 
 namespace WinAppTask.Pages.DataCalculatorPage;
@@ -20,9 +22,9 @@ public partial class DataCalculator : BasePage
     public void ConvertBetweenBytesAndGigabytes(string num1)
     {
         Clear();
-        InputUnitButton.SendKeys("Bytes");
+        InputUnitButton.SendKeys(DataTypes.Bytes.ToString());
         PickNumericValue(num1);
-        OutputUnitButton.SendKeys("Gigabytes");
+        OutputUnitButton.SendKeys(DataTypes.Gigabytes.ToString());
     }
     protected void Clear() => ClearEntryButton.Click();
 
