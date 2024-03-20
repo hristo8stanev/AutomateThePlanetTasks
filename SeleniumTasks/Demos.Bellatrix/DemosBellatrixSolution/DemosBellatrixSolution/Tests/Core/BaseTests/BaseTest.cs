@@ -18,7 +18,7 @@ public class BaseTest
     public void Setup()
     {
         new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
-        _driver = DriverFacade.DriverFacade.StartBrowser(BrowserType.CHROME);
+        _driver = DriverFacade.StartBrowserType.StartBrowser(BrowserType.CHROME);
         _driver.Manage().Window.Maximize();
         _bellatrixMainPage = new BellatrixMainPage(_driver);
         _checkoutPage = new CheckoutPage(_driver);

@@ -20,8 +20,7 @@ public partial class BellatrixMainPage : WebPage
 
     public void EnterMyOrderSection()
     {
-        //Thread.Sleep(2000);
-        MoveToElement(By.XPath("(//li[@class='page_item page-item-8'])[1]"));
+
         MyAccountButton.Click();
         MyOrders.Click();
     }

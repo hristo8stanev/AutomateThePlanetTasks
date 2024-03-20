@@ -26,11 +26,6 @@ public partial class CartPage : WebPage
 
     public void ProceedToCheckoOut()
     {
-         Thread.Sleep(3000);
-       // var waitProceedButtonToBeClickable = _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(ProceedToCheckoutButton));
-       // _webDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[contains(text(), 'Cart updated')]")));
-       //_webDriverWait.Until(_driver => !CartTotals.GetAttribute("class").Contains("processing"));
-        MoveToElement(By.CssSelector("[class*='checkout-button button alt wc-forward']"));
         ProceedToCheckoutButton.Click();
     }
 }

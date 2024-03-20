@@ -4,7 +4,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 
 namespace DemosBellatrixSolution.DriverFacade;
-public class DriverFacade
+public static class StartBrowserType
 {
 
     public static WebDriver StartBrowser(BrowserType browserType)

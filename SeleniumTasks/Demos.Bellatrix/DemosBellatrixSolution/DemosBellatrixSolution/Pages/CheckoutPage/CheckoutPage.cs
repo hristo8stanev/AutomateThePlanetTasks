@@ -12,8 +12,6 @@ public partial class CheckoutPage : WebPage
 
     protected override string Url => "https://demos.bellatrix.solutions/checkout/";
 
-
-
     public void FillBillingInfo(PurchaseInfo purchaseInfo)
     {
         BillingFirstName.SendKeys(purchaseInfo.FirstName);
@@ -37,8 +35,9 @@ public partial class CheckoutPage : WebPage
 
         if (purchaseInfo.ShouldCheckPayment == false)
         {
-            MoveToElement(By.Id("place_order"));
-            MoveToElement(By.CssSelector("[for*='payment_method_cheque']"));
+            
+            var PlaceOrderLocator = PlaceOrderButton.Displayed;
+            var PaymentLocator = PaymentElement.Displayed;
             CheckPaymentsButton.Click();
         }
 

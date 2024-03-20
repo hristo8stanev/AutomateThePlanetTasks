@@ -8,8 +8,8 @@ public partial class CheckoutPage
 
     public void AssertOrderReceived()
     {
-        var errorMessageElement = _webDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//h1")));
-        bool isDisplayed = errorMessageElement.Displayed;
+
+        bool isDisplayed = OrderReceive.Displayed;
         Assert.That(isDisplayed);
     }
 
@@ -21,9 +21,9 @@ public partial class CheckoutPage
   public void AssertQuantityOfTheProductCheckoutPage(string product, int expectedQuantity)
   {
 
-      var quantity = _webDriverWait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//td[@class='product-name']"))).Text;
-      Assert.That(quantity.Equals($"{product}  × {expectedQuantity}"));
-      Console.WriteLine(quantity);
+        
+      Assert.That(QuantityElement.Text.Equals($"{product}  × {expectedQuantity}"));
+      Console.WriteLine(QuantityElement.Text);
   }
 
     public void AssertCheckoutPage(string currentUrl)

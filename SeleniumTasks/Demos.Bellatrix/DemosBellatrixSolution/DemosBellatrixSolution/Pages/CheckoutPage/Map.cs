@@ -16,10 +16,13 @@ public partial class CheckoutPage
     public IWebElement BillingZip => WaitAndFindElement(By.Id("billing_postcode"));
     public IWebElement BillingPhone => WaitAndFindElement(By.Id("billing_phone"));
     public IWebElement BillingEmail => WaitAndFindElement(By.Id("billing_email"));
-    public IWebElement PlaceOrderButton => WaitAndFindElement(By.Id("place_order"));
+    public IWebElement PlaceOrderButton => MoveToElement(By.Id("place_order"));
+    public IWebElement PaymentElement => MoveToElement(By.CssSelector("[for*='payment_method_cheque']"));
     public IWebElement ShowCoupon => WaitAndFindElement(By.XPath("//a[@class='showcoupon']"));
     public IWebElement CreateAccountButtonBox => WaitAndFindElement(By.Id("createaccount"));
-    public IWebElement CheckPaymentsButton => WaitElementToBeClickable(By.CssSelector("[for*='payment_method_cheque']"));
-    public IWebElement OrderReceive => WaitAndFindElement(By.XPath("//h1"));
+    public IWebElement CheckPaymentsButton => MoveToElement(By.CssSelector("[for*='payment_method_cheque']"));
+    public IWebElement OrderReceive => MoveToElement(By.XPath("//h1"));
+    public IWebElement QuantityElement => WaitAndFindElement(By.XPath("//td[@class='product-name']"));
+
 
 }
