@@ -1,12 +1,8 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-using OpenQA.Selenium;
-
+﻿
 namespace EcommerceLambdaProject.Pages.SearchPage;
-public partial class SearchPage : WebPage
+public partial class SearchPages : WebPage
 {
-    public SearchPage(IWebDriver driver) : base(driver)
+    public SearchPages(IDriver driver) : base(driver)
     {
     }
-
-    protected override string Url => "https://ecommerce-playground.lambdatest.io/index.php?route=product%2Fsearch&search=";
 }

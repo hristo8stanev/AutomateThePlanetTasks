@@ -1,5 +1,5 @@
 ﻿namespace EcommerceLambdaProject.Pages.ProductPage;
-public partial class ProductPage
+public partial class ProductPages
 {
 
 

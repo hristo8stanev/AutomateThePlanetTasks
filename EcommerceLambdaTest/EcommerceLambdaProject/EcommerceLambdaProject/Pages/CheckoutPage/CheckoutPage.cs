@@ -1,8 +1,9 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
+﻿
 
 namespace EcommerceLambdaProject.Pages.CheckoutPage;
-public partial class Checkout : WebPage
+public partial class CheckoutPages : WebPage
 {
-
-
+    public CheckoutPages(IDriver driver) : base(driver)
+    {
+    }
 }

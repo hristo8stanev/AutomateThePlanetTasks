@@ -1,4 +1,5 @@
 ﻿namespace EcommerceLambdaProject.Pages.SearchPage;
-public partial class SearchPage
+public partial class SearchPages
 {
+
 }

@@ -1,4 +1,4 @@
 ﻿namespace EcommerceLambdaProject.Pages.LoginPage;
-public partial class LoginPage
+public partial class LoginPages
 {
 }

@@ -1,5 +1,5 @@
 ﻿namespace EcommerceLambdaProject.Pages.RegisterPage;
-public partial class RegsiterPage
+public partial class RegsiterPages
 {
 
 
