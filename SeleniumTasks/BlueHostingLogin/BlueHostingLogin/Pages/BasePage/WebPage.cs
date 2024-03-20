@@ -26,9 +26,9 @@ public abstract class WebPage
        
     }
 
-    public IWebElement MoveToElement(string locator)
+    public IWebElement MoveToElement(By locator)
     {
-        IWebElement element = _driver.FindElement(By.XPath(locator));
+        IWebElement element = _driver.FindElement(locator);
         _actions.MoveToElement(element).Perform();
         return element;
     }
