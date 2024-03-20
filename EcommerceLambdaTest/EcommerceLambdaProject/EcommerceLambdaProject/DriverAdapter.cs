@@ -9,7 +9,6 @@ public class DriverAdapter : IDriver
 {
     private IWebDriver _webDriver;
     private WebDriverWait _webDriverWait;
-
     public string Url => _webDriver.Url;
 
     public void Start(BrowserType browser)
@@ -48,8 +47,7 @@ public class DriverAdapter : IDriver
 
     public IComponent FindComponent(By locator)
     {
-        IWebElement nativeWebElement = 
-            _webDriverWait.Until(ExpectedConditions.ElementExists(locator));
+        IWebElement nativeWebElement = _webDriverWait.Until(ExpectedConditions.ElementExists(locator));
         IComponent element = new ComponentAdapter(_webDriver, nativeWebElement, locator);
         ScrollIntoView(element);
   
@@ -58,9 +56,9 @@ public class DriverAdapter : IDriver
 
     public List<IComponent> FindComponents(By locator)
     {
-        ReadOnlyCollection<IWebElement> nativeWebElements = 
-            _webDriverWait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
+        ReadOnlyCollection<IWebElement> nativeWebElements = _webDriverWait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
         var elements = new List<IComponent>();
+
         foreach (var nativeWebElement in nativeWebElements)
         {
             IComponent element = new ComponentAdapter(_webDriver, nativeWebElement, locator);

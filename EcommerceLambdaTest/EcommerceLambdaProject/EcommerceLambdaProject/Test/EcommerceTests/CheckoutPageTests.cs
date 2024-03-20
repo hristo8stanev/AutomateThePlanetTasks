@@ -7,7 +7,7 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void CheckoutTests()
     {
-        _driver.GoToUrl("https://ecommerce-playground.lambdatest.io/");
+        _driver.GoToUrl(Url.CHECKOUT_PAGE);
         
     }
 }
