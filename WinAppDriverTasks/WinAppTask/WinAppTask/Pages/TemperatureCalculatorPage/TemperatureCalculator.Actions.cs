@@ -8,8 +8,11 @@ public partial class TemperatureCalculatorPage : BasePage
 {
 
     public readonly WindowsDriver<WindowsElement> _driver;
-    public TemperatureCalculatorPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
 
+    public TemperatureCalculatorPage(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
     protected AppiumWebElement GetResultElement()
     {
         var result = CalculatorResultButton;

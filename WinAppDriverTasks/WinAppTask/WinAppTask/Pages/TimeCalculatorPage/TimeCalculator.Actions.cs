@@ -8,7 +8,11 @@ public partial class TimeCalculatorPage : BasePage
 {
 
     public readonly WindowsDriver<WindowsElement> _driver;
-    public TimeCalculatorPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
+
+    public TimeCalculatorPage(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
 
     protected AppiumWebElement GetResultElementTemp()
     {

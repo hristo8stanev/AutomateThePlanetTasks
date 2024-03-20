@@ -7,7 +7,12 @@ public partial class ScientificCalculatorPages : BasePage
 {
 
     public readonly WindowsDriver<WindowsElement> _driver;
-    public ScientificCalculatorPages(WindowsDriver<WindowsElement> driver) => _driver = driver;
+
+    public ScientificCalculatorPages(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
+
     protected AppiumWebElement GetResultElement()
     {
         var result = CalculatorResultButton;

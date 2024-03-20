@@ -6,7 +6,10 @@ public partial class DateCalculatorPage : BasePage
 {
 
     public readonly WindowsDriver<WindowsElement> _driver;
-    public DateCalculatorPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
+    public DateCalculatorPage(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
 
     public void ChooseFromDateToDate(string firstDate, string SecondDate)
     {

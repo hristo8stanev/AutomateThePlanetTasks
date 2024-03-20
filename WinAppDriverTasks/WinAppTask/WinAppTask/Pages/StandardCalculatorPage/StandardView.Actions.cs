@@ -5,8 +5,11 @@ namespace WinAppTask.Views;
 public partial class StandardCalculatorPage : BasePage
 {
     public readonly WindowsDriver<WindowsElement> _driver;
-    public StandardCalculatorPage(WindowsDriver<WindowsElement> driver) => _driver = driver;
 
+    public StandardCalculatorPage(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
     public void PerformSquareCantimetersCalculation(string num1, string num2)
     {
         ClearCalcInput();

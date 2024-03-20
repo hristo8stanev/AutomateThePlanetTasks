@@ -9,7 +9,10 @@ public partial class DataCalculator : BasePage
 {
 
     public readonly WindowsDriver<WindowsElement> _driver;
-    public DataCalculator(WindowsDriver<WindowsElement> driver) => _driver = driver;
+    public DataCalculator(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
 
     protected AppiumWebElement GetResultElementTemp()
     {

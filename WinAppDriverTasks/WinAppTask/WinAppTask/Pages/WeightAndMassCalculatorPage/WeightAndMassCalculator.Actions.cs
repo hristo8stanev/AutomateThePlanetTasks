@@ -8,8 +8,11 @@ public partial class WeightAndMassCalculator : BasePage
 {
 
     public readonly WindowsDriver<WindowsElement> _driver;
-    public WeightAndMassCalculator(WindowsDriver<WindowsElement> driver) => _driver = driver;
 
+    public WeightAndMassCalculator(WindowsDriver<WindowsElement> driver) : base(driver)
+    {
+        _driver = driver;
+    }
     protected AppiumWebElement GetResultElementTemp()
     {
         var result = OutputValueDegreeButton;
