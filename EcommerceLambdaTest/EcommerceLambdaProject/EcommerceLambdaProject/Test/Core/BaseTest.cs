@@ -15,8 +15,6 @@ public class BaseTest
         _driver = new DriverAdapter();
         _driver.Start(BrowserType.CHROME);
         _webSite = new WebSite(_driver);
-
-
     }
 
     [TearDown]

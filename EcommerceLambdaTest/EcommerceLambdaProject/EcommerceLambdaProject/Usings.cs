@@ -1,4 +1,5 @@
 global using NUnit.Framework;
+global using NUnit.Framework.Legacy;
 global using EcommerceLambdaProject.Urls;
 global using NUnit.Allure.Core;
 global using EcommerceLambdaProject.Pages.BasePage;
@@ -9,3 +10,4 @@ global using OpenQA.Selenium.Support.UI;
 global using EcommerceLambdaProject.Enums;
 global using WebDriverManager.DriverConfigs.Impl;
 global using SeleniumExtras.WaitHelpers;
+global using Bogus;

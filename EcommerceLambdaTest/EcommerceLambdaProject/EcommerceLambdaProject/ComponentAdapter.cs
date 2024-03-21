@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using SeleniumExtras.WaitHelpers;
+﻿using OpenQA.Selenium.Interactions;
 
 namespace EcommerceLambdaProject;
 
@@ -9,7 +8,7 @@ public class ComponentAdapter : IComponent
     private readonly Actions _actions;
     private readonly IWebElement _webElement;
     private readonly By _by;
-
+    protected WebDriverWait _webDriverWait { get; set; }
     public ComponentAdapter(IWebDriver webDriver, IWebElement webElement, By by)
     {
         _webDriver = webDriver;
@@ -55,11 +54,23 @@ public class ComponentAdapter : IComponent
         _actions.MoveToElement(_webElement).Perform();
     }
 
-    private void WaitToBeClickable(By by)
+
+    protected IWebElement MoveToElement(IWebElement element)
+    {
+        _actions.MoveToElement(element).Perform();
+        return element;
+    }
+
+
+
+    public void WaitToBeClickable(By by)
     {
         var webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
         webDriverWait.Until(ExpectedConditions.ElementToBeClickable(by));
     }
+
+   
+
 
     public IComponent FindComponent(By locator)
     {

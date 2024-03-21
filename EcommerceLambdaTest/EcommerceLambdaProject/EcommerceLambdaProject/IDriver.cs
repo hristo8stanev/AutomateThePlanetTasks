@@ -9,6 +9,7 @@ public interface IDriver
     public void Quit();
     public void GoToUrl(string url);
     public IComponent FindComponent(By locator);
+    public IComponent WaitAndFindElementJS(By locator);
     public List<IComponent> FindComponents(By locator);
     public bool ComponentExists(IComponent component);
     public void ExecuteScript(string script, params object[] args);

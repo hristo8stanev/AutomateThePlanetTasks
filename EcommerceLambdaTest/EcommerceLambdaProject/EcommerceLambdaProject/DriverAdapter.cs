@@ -9,6 +9,7 @@ public class DriverAdapter : IDriver
 {
     private IWebDriver _webDriver;
     private WebDriverWait _webDriverWait;
+    private Actions _actions;
     public string Url => _webDriver.Url;
 
     public void Start(BrowserType browser)
@@ -65,10 +66,12 @@ public class DriverAdapter : IDriver
             elements.Add(element);
         }
 
-        
-
         return elements;
     }
+
+   
+
+
 
     public void Refresh()
     {
@@ -109,10 +112,31 @@ public class DriverAdapter : IDriver
         });
     }
 
+    public IComponent ScrollToTheElement(IComponent element)
+    {
+        IJavaScriptExecutor js = (IJavaScriptExecutor)_webDriver;
+        js.ExecuteScript("arguments[0].scrollIntoView();", element);
+        return element;
+    }
+
+
     private void ScrollIntoView(IComponent element)
     {
         ExecuteScript("arguments[0].scrollIntoView(true);", element.WrappedElement);
     }
+
+
+    public IComponent WaitAndFindElementJS(By locator)
+    {
+        IWebElement nativeWebElement = _webDriverWait.Until(ExpectedConditions.ElementExists(locator));
+        IComponent element = new ComponentAdapter(_webDriver, nativeWebElement, locator);
+        ScrollIntoView(element);
+
+        return element;
+    }
+
+    
+
 
     private void HighlightElement(IComponent element)
     {
