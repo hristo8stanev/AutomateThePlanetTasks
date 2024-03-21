@@ -6,4 +6,10 @@ public partial class ShoppingCartPages : WebPage
     public ShoppingCartPages(IDriver driver) : base(driver)
     {
     }
+
+
+    public void RemoveProductFromTheCart()
+    {
+        RemoveButton.Click();
+    }
 }

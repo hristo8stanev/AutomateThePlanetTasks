@@ -4,11 +4,11 @@ public partial class CheckoutPages
 {
     public string ErrorMessageLogoutButton => "Your order hasn't been placed successfully";
 
-    public void AssertSuccessfullyCheckoutUrl(string distanceUrl)
+    public void AssertSuccessfullyCheckoutUrl(string expectedUrl)
     {
 
-        var message = $"{Url.SUCCESSFUL_ORDER_PAGE} \n Actual URL:{distanceUrl} \n Expected URL:{Url.SUCCESSFUL_ORDER_PAGE}";
-        CollectionAssert.AreEqual(distanceUrl, Url.SUCCESSFUL_ORDER_PAGE, message);
+        var message = $"{Url.SUCCESSFUL_ORDER_PAGE} \n Actual URL:{expectedUrl} \n Expected URL:{Url.SUCCESSFUL_ORDER_PAGE}";
+        CollectionAssert.AreEqual(expectedUrl, Url.SUCCESSFUL_ORDER_PAGE, message);
 
     }
 
