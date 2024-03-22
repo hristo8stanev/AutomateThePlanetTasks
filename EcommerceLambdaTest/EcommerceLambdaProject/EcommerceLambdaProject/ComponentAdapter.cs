@@ -55,7 +55,7 @@ public class ComponentAdapter : IComponent
     }
 
 
-    protected IWebElement MoveToElement(IWebElement element)
+    public IWebElement MoveToElement(IWebElement element)
     {
         _actions.MoveToElement(element).Perform();
         return element;

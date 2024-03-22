@@ -11,7 +11,4 @@ public partial class LoginPages : WebPage
         PasswordLogin.TypeText(login.PasswordField);
         LoginButton.Click();
     }
-
-
-
 }

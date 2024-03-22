@@ -7,6 +7,7 @@ namespace EcommerceLambdaProject;
 
 public class DriverAdapter : IDriver
 {
+    private  int WAIT_FOR_ELEMENT => 30;
     private IWebDriver _webDriver;
     private WebDriverWait _webDriverWait;
     private Actions _actions;
@@ -33,7 +34,7 @@ public class DriverAdapter : IDriver
         }
 
         _webDriver.Manage().Window.Maximize();
-        _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(30));
+        _webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
     }
 
     public void Quit()
@@ -70,9 +71,6 @@ public class DriverAdapter : IDriver
     }
 
    
-
-
-
     public void Refresh()
     {
         _webDriver.Navigate().Refresh();
@@ -134,8 +132,16 @@ public class DriverAdapter : IDriver
 
         return element;
     }
+    public IComponent WaitToBeClickable(By locator)
+    {
+        var nativeWebElement = _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));
+        IComponent element = new ComponentAdapter(_webDriver, nativeWebElement, locator);
 
-    
+        ScrollIntoView(element);
+
+        return element;
+    }
+
 
 
     private void HighlightElement(IComponent element)

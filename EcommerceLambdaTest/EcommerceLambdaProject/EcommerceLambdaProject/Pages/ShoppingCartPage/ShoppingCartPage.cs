@@ -7,6 +7,12 @@ public partial class ShoppingCartPages : WebPage
     {
     }
 
+    public void UpdateQuantity(string product)
+    {
+        UpdateQuantityTextField.TypeText(product);
+        UpdateQuantityButton.Click();
+    }
+
 
     public void RemoveProductFromTheCart()
     {

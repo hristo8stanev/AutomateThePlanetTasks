@@ -7,4 +7,5 @@ public class PersonalInformation
     public string Telephone { get; set; }
     public string Password { get; set; }
     public string ConfirmPassword { get; set; }
+    public DifferentAccountType AccountType { get; set; }
 }
