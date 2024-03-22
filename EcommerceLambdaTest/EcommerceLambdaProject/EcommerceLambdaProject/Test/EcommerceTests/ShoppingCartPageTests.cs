@@ -40,7 +40,7 @@ public class ShoppingCartPageTests : BaseTest
 
         _webSite.ShoppingCartPage.RemoveProductFromTheCart();
         _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertShoppingCartIsEmpty();
+        _webSite.ShoppingCartPage.assertProductRemoveFromTheCart(existingProduct);
 
     }
 }

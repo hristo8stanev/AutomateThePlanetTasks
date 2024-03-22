@@ -9,5 +9,4 @@ public partial class CheckoutPages
     public IComponent Total => Driver.FindComponent(By.XPath("//table/tbody/tr/td[text()='Total:']"));
     public IComponent SuccessfullyConfirmOrderText => Driver.WaitAndFindElementJS(By.XPath("//h1[@class='page-title my-3']"));
 
-
 }
