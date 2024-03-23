@@ -11,9 +11,5 @@ public partial class HomePages : WebPage
     public void SearchProductByName(string productName)
     {
         SearchField.TypeText(productName);
-
-
-
-
     }
 }

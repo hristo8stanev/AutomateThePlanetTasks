@@ -10,7 +10,6 @@ public class DriverAdapter : IDriver
     private  int WAIT_FOR_ELEMENT => 30;
     private IWebDriver _webDriver;
     private WebDriverWait _webDriverWait;
-    private Actions _actions;
     public string Url => _webDriver.Url;
 
     public void Start(BrowserType browser)

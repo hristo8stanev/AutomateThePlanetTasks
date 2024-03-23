@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using EcommerceLambdaProject.Pages.CheckoutPage;
 using EcommerceLambdaProject.Pages.LoginPage;
+using EcommerceLambdaProject.Pages.ProductPage;
 using EcommerceLambdaProject.Pages.RegisterPage;
 
 
@@ -38,7 +39,6 @@ public static class CustomerFactory
             .RuleFor(c => c.Country, f => "Bulgaria")
             .RuleFor(c => c.Region, f => "Blagoevgrad");
 
-
         return faker.Generate();
     }
        
@@ -51,5 +51,20 @@ public static class CustomerFactory
         loginDetails.PasswordField = password;
 
         return loginDetails;
+    }
+     
+    public static ProductDetails Product(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string quantity = null)
+    {
+        var productDetails = new ProductDetails();
+        productDetails.Name = name;
+        productDetails.Brand = brand;
+        productDetails.Weight = weight;
+        productDetails.Id = id;
+        productDetails.Price = price;
+        productDetails.Model = model;
+
+        productDetails.Quantity = quantity;
+
+        return productDetails;
     }
 }
