@@ -40,6 +40,18 @@ public partial class ProductPages : WebPage
         CompareProductButton.Click();
     }
 
+    public void AddProductToWishlist()
+    {
+        FindProduct.Click();
+        WishlistButton.Click();
+    }
+    
+    public void GoToWishlist()
+    {
+        SearchField.Hover();
+        WishlistPage.Click();
+       
+    }
     public void GoToCompare()
     {
 
