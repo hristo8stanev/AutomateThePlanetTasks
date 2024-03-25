@@ -1,6 +1,4 @@
-﻿
-
-namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class CheckoutPageTests : BaseTest
 {
 
@@ -24,6 +22,7 @@ public class CheckoutPageTests : BaseTest
 
         _webSite.CheckoutPage.BillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
+
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
         _webSite.CheckoutPage.ConfirmOrder();
 
@@ -49,6 +48,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
         _webSite.CheckoutPage.BillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
+
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
         _webSite.CheckoutPage.ConfirmOrder();
 
@@ -72,6 +72,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.GuesUserPayment(personalInformation);
         _webSite.CheckoutPage.BillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
+
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
         _webSite.CheckoutPage.ConfirmOrder();
 

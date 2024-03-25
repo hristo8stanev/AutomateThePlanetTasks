@@ -11,4 +11,15 @@ public partial class LoginPages : WebPage
         PasswordLogin.TypeText(login.PasswordField);
         LoginButton.Click();
     }
+
+    public void GoToForgottenPassword()
+    {
+        ForgotPasswordButton.Click();
+    }
+
+    public void SentEmail(string validEmail)
+    {
+        EmailAddressFieldForgotPassword.TypeText(validEmail);
+        ContinueButton.Click();
+    }
 }
