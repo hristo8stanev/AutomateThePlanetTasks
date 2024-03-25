@@ -4,10 +4,22 @@ public partial class MyAccountPages
 
     public IComponent EditMyAccountButton => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/edit')]")).Last();
     public IComponent ChangeMyPasswordButton => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/password')]")).Last();
+    public IComponent AddressBookSection => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/address')]")).Last();
+    public IComponent NewAddressButton => Driver.FindComponent(By.XPath("//a[@class='btn btn-primary' and contains(text(),'New Address')]"));
+    public IComponent CompanyField => Driver.FindComponent(By.Id("input-company"));
+    public IComponent AddressField1 => Driver.FindComponent(By.Id("input-address-1"));
+    public IComponent AddressField2 => Driver.FindComponent(By.Id("input-address-2"));
+    public IComponent CityField => Driver.FindComponent(By.Id("input-city"));
+    public IComponent PostCodeField => Driver.FindComponent(By.Id("input-postcode"));
+    public IComponent CountryField => Driver.FindComponent(By.Id("input-country"));
+    public IComponent SelectCountry(string country) => CountryField.FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
+    public IComponent Region => Driver.FindComponent(By.Id("input-zone"));
+    public IComponent SelectRegion(string region) => Region.FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
     public IComponent PasswordField => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordField => Driver.FindComponent(By.Id("input-confirm"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//*[@value='Continue']"));
     public IComponent SuccessfullyMessageChangePassword => Driver.FindComponent(By.XPath("//*[@class='alert alert-success alert-dismissible']"));
+    public IComponent SuccessfullyPurchaseCertificate => Driver.FindComponent(By.XPath("//h1[@class='page-title my-3']"));
     public IComponent FirstNameInput => Driver.FindComponent(By.Id("input-firstname"));
     public IComponent LastaNameInput => Driver.FindComponent(By.Id("input-lastname"));
     public IComponent EmailAddressNameInput => Driver.FindComponent(By.Id("input-email"));

@@ -42,10 +42,28 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void PurchaseGiftCerticate_When_AutheticatedUserProvided()
     {
-        var gift = new PurchaseGiftCertificate();
+        var gift = Factories.CustomerFactory.GiftCertificate();
 
         _driver.GoToUrl(Url.VOUCHER_PAGE);
         _webSite.MyAccountPage.PuchaseGiftCertificate(gift);
 
+        _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
+        _webSite.MyAccountPage.AssertAccountVoucherSuccessUrl(_driver.Url);
+
     }
+
+    [Test]
+    public void AddNewAddress_When_AddressAddFromAddressBookAutheticatedUserProvided()
+    {
+        var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
+        var newAddress = Factories.CustomerFactory.BillingAddress();
+        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.GoToAddressBookSection();
+        _webSite.MyAccountPage.AddNewAddress(newAddress);
+
+        //add assertions
+
+    }
+
 }

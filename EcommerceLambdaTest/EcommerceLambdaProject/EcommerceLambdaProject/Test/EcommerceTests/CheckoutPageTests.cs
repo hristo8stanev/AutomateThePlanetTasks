@@ -37,7 +37,6 @@ public class CheckoutPageTests : BaseTest
     { 
         var billingDetails = Factories.CustomerFactory.BillingAddress();
         var personalInformation = Factories.CustomerFactory.UserDetails();
-
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(existingProduct);
         _webSite.ProductPage.AddProductToCart(existingProduct);

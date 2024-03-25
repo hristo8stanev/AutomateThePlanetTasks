@@ -1,4 +1,6 @@
-﻿using EcommerceLambdaProject.Pages.RegisterPage;
+﻿using EcommerceLambdaProject.Pages.BasePage;
+using EcommerceLambdaProject.Pages.CheckoutPage;
+using EcommerceLambdaProject.Pages.RegisterPage;
 
 namespace EcommerceLambdaProject.Pages.MyAccountPage;
 public partial class MyAccountPages : WebPage
@@ -7,10 +9,54 @@ public partial class MyAccountPages : WebPage
     {
     }
 
+    public void SelectGiftType(GiftCertificateType giftCertificateType)
+    {
+        switch (giftCertificateType)
+        {
+            case GiftCertificateType.General:
+                GeneralCertificate.Click();
+                break;
+            case GiftCertificateType.Birthday:
+                BirthdayCertificate.Click();
+                break;
+            case GiftCertificateType.Christmas:
+                ChristmasCertificate.Click();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(giftCertificateType), giftCertificateType, "Unsupported gitft certificate type");
+        }
+    }
+
     public void GoToEditMyAccount()
     {
         EditMyAccountButton.Click();
     }
+
+    public void GoToAddressBookSection()
+    {
+        AddressBookSection.Click();
+        NewAddressButton.Click();
+    }
+    public void AddNewAddress(BillingInformation billingInformation)
+    {
+        FirstNameInput.TypeText(billingInformation.FirstName);
+        LastaNameInput.TypeText(billingInformation.LastName);
+        CompanyField.TypeText(billingInformation.Company);
+        AddressField1.TypeText(billingInformation.Address1);
+        AddressField2.TypeText(billingInformation.Address2);
+        CityField.TypeText(billingInformation.City);
+        PostCodeField.TypeText(billingInformation.PostCode);
+
+        CountryField.Click();
+        SelectCountry(billingInformation.Country).Click();
+        Driver.WaitForAjax();
+
+        Region.Click();
+        SelectRegion(billingInformation.Region).Click();
+        ContinueButton.Click();
+    }
+
+
 
 
     public void ChangeMyAccountInfrmation(PersonalInformation user)
@@ -38,7 +84,8 @@ public partial class MyAccountPages : WebPage
         RecipientEmail.TypeText(gift.RecipientEmail);
         YourName.TypeText(gift.YourName);
         YourEmail.TypeText(gift.YourEmail);
-        BirthdayCertificate.Click();
+        SelectGiftType(GiftCertificateType.Birthday);
+
         AmountCertificate.TypeText(gift.Amount);
         AgreeGiftCertificate.Click();
         ContinueButton.Click();

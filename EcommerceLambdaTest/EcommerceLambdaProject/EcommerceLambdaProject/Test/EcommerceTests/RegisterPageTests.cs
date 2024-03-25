@@ -8,8 +8,8 @@ public class RegisterPageTests : BaseTest
     {
         _driver.GoToUrl(Url.REGISTER_PAGE);
 
-        var registerUser = Factories.CustomerFactory.UserDetails();
-        _webSite.RegisterPage.RegisterUer(registerUser);
+        var purchaseGift = Factories.CustomerFactory.UserDetails();
+        _webSite.RegisterPage.RegisterUer(purchaseGift);
 
 
         _webSite.RegisterPage.AssertSuccessfullyRegisterUrlIsShown(_driver.Url);
