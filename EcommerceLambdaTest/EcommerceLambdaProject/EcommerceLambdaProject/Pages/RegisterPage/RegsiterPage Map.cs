@@ -11,5 +11,6 @@ public partial class RegisterPages
     public IComponent AgreePrivacy => Driver.FindComponent(By.XPath("//*[@for='input-agree']"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//*[@value='Continue']"));
     public IComponent LogoutButton => Driver.WaitAndFindElementJS(By.XPath("(//a[contains(@href, 'logout')])[2]"));
+   
 
 }

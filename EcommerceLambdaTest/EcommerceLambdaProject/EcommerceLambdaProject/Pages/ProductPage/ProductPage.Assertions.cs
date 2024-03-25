@@ -24,7 +24,6 @@ public partial class ProductPages
        CollectionAssert.AreEqual(GetCompareProduct("Model", index).Text, expectedProduct.Model, modelMessage);
     }
 
-
    public void AssertProductIsAddedToWishlist(ProductDetails expectedProduct, int indexName, int indexModel, int indexStock, int unitPrice)
    {
         var message = $"{ErrorMessagePrice} \n Actual Result:{GetProduct("text-center",indexName).Text} \n Expected Result:{expectedProduct.Name}";

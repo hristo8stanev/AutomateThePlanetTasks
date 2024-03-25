@@ -5,6 +5,7 @@ using EcommerceLambdaProject.Pages.LoginPage;
 using EcommerceLambdaProject.Pages.RegisterPage;
 using EcommerceLambdaProject.Pages.SearchPage;
 using EcommerceLambdaProject.Pages.ShoppingCartPage;
+using EcommerceLambdaProject.Pages.MyAccountPage;
 
 namespace EcommerceLambdaProject.Pages.BasePage;
 public class WebSite
@@ -22,6 +23,7 @@ public class WebSite
         RegisterPage = new RegisterPages(_driver);
         SearchPage = new SearchPages(_driver);
         ShoppingCartPage = new ShoppingCartPages(_driver);
+        MyAccountPage = new MyAccountPages(_driver);
 
     }
 
@@ -32,6 +34,7 @@ public class WebSite
     public RegisterPages RegisterPage { get; set; }
     public SearchPages SearchPage { get; set; }
     public ShoppingCartPages ShoppingCartPage { get; set; }
+    public MyAccountPages MyAccountPage { get; set; }
 
 
 }

@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using EcommerceLambdaProject.Pages.CheckoutPage;
 using EcommerceLambdaProject.Pages.LoginPage;
+using EcommerceLambdaProject.Pages.MyAccountPage;
 using EcommerceLambdaProject.Pages.ProductPage;
 using EcommerceLambdaProject.Pages.RegisterPage;
 
@@ -43,7 +44,6 @@ public static class CustomerFactory
     }
        
 
-
     public static LoginInformation LoginUser(string email, string password)
     {
         var loginDetails = new LoginInformation();
@@ -62,9 +62,21 @@ public static class CustomerFactory
         productDetails.Id = id;
         productDetails.Price = price;
         productDetails.Model = model;
-
         productDetails.Quantity = quantity;
 
         return productDetails;
+    }
+
+    public static PurchaseGiftCertificate GiftCertificate(string recipientName = null, string recipientEmail = null, string name = null, string email = null, string amount = null)
+    {
+
+        var faker = new Faker<PurchaseGiftCertificate>()
+           .RuleFor(c => c.RecipientName, f => recipientName ?? f.Name.FirstName())
+           .RuleFor(c => c.RecipientEmail, f => recipientEmail ?? f.Internet.Email())
+           .RuleFor(c => c.YourName, f => name ?? f.Name.FirstName())
+           .RuleFor(c => c.YourEmail, f => email ?? f.Internet.Email())
+           .RuleFor(c => c.Amount, f => "2");
+
+        return faker.Generate();
     }
 }

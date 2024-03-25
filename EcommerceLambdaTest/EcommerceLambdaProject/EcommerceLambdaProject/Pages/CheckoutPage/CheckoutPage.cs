@@ -14,8 +14,6 @@ public partial class CheckoutPages : WebPage
 
     public void BillingDetails(BillingInformation billingInformation)
     {
-
-
         ApplyCoupon.Hover();
         FirstNameField.TypeText(billingInformation.FirstName);
         LastNameField.TypeText(billingInformation.LastName);

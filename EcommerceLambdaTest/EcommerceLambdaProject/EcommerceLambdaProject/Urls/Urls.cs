@@ -20,6 +20,7 @@
         public static string ORDER_HISTORY_PAGE => BASE_URL + "index.php?route=account/order";
         public static string ORDER_PAGE => BASE_URL + "index.php?route=account/order/info";
         public static string ACCOUNT_PAGE => BASE_URL + "index.php?route=account/account";
+        public static string VOUCHER_PAGE => BASE_URL + "index.php?route=account/voucher";
         public static string ADDRESS_BOOK_PAGE => BASE_URL + "index.php?route=account/address";
         public static string NEW_ADDRESS_PAGE => BASE_URL + "index.php?route=account/address/add";
         public static string EDIT_ADDRESS_PAGE => BASE_URL + "index.php?route=account/address/edit";
