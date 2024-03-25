@@ -1,15 +1,12 @@
-﻿
-using EcommerceLambdaProject.Pages.ProductPage;
-using System.Net.Mail;
+﻿using EcommerceLambdaProject.Pages.ProductPage;
 
 namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class ProductPageTests : BaseTest
 {
-    string  existingProduct= "Sony VAIO";
-    string  existingProduct2 = "Ip";
-    string  existingProduct3 = "HTC";
-
+    string  existingProduct1= "HTC Touch HD";
+    string  existingProduct2 = "iPod Touch";
+    string  existingProduct3 = "Sony VAIO";
     string emailAddress = "alabala@gmail.com";
     string password = "tester";
 
@@ -19,27 +16,51 @@ public class ProductPageTests : BaseTest
     {
         var expectedProduct1 = new ProductDetails
         {
+            Name = "HTC Touch HD",
+            Id = 28,
+            Price = "$146.00",
+            Model = "Product 1",
+            Brand = "HTC",
+            Availability = "In Stock",
+            Weight = "146.40g"
+        };
+
+        var expectedProduct2 = new ProductDetails
+        {
             Name = "iPod Touch",
             Id = 32,
             Price = "$194.00",
             Model = "Product 5",
             Brand = "Apple",
+            Availability = "In Stock",
             Weight = "5.00kg"
         };
 
+        var expectedProduct3 = new ProductDetails
+        {
+            Name = "Sony VAIO",
+            Id = 46,
+            Price = "$1,202.00",
+            Model = "Product 19",
+            Brand = "Sony",
+            Availability = "In Stock",
+            Weight = "0.00kg"
+        };
+
         _driver.GoToUrl(Url.COMPARISON_PAGE);
-        _webSite.HomePage.SearchProductByName(existingProduct2);
+        _webSite.HomePage.SearchProductByName(existingProduct1);
         _webSite.ProductPage.ClickOnCompareButton();
 
-        _webSite.HomePage.SearchProductByName(existingProduct);
+        _webSite.HomePage.SearchProductByName(existingProduct2);
         _webSite.ProductPage.ClickOnCompareButton();
 
         _webSite.HomePage.SearchProductByName(existingProduct3);
         _webSite.ProductPage.ClickOnCompareButton();
-
         _driver.GoToUrl(Url.COMPARISON_PAGE);
-        
-        _webSite.ProductPage.AssertTheProductNameIsCorrect(expectedProduct1); 
+     
+        _webSite.ProductPage.AssertTheProductDetailsIsCorrect(expectedProduct1, 1);
+        _webSite.ProductPage.AssertTheProductDetailsIsCorrect(expectedProduct2, 2);
+        _webSite.ProductPage.AssertTheProductDetailsIsCorrect(expectedProduct3, 3);
     }
 
     [Test]
@@ -47,23 +68,57 @@ public class ProductPageTests : BaseTest
     {
         var expectedProduct1 = new ProductDetails
         {
+           
+
+            Name = "HTC Touch HD",
+            Id = 28,
+            Price = "$120.00",
+            Model = "Product 1",
+            Brand = "HTC",
+            Availability = "In Stock",
+            Weight = "146.40g"
+        };
+
+        var expectedProduct2 = new ProductDetails
+        {
             Name = "iPod Touch",
             Id = 32,
-            Price = "$194.00",
+            Price = "$160.00",
             Model = "Product 5",
             Brand = "Apple",
+            Availability = "In Stock",
             Weight = "5.00kg"
+        };
+
+        var expectedProduct3 = new ProductDetails
+        {
+            Name = "Sony VAIO",
+            Id = 46,
+            Price = "$1,000.00",
+            Model = "Product 19",
+            Brand = "Sony",
+            Availability = "In Stock",
+            Weight = "0.00kg"
         };
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
 
+        _webSite.HomePage.SearchProductByName(existingProduct1);
+        _webSite.ProductPage.AddProductToWishlist();
+
         _webSite.HomePage.SearchProductByName(existingProduct2);
         _webSite.ProductPage.AddProductToWishlist();
+      
+        _webSite.HomePage.SearchProductByName(existingProduct3);
+        _webSite.ProductPage.AddProductToWishlist();
+
         _webSite.ProductPage.GoToWishlist();
 
-        _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct1);
+        _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct1, 1, 2, 3, 4);
+        _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct2, 1, 2, 3, 4);
+        _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct3, 1, 2, 3, 4);
 
     }
 }

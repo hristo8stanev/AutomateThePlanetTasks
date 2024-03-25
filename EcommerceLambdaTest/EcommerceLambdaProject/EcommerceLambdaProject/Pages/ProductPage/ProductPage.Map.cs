@@ -11,7 +11,7 @@ public partial class ProductPages
     public IComponent FindProduct => Driver.FindComponent(By.XPath("//h4/a"));
     public IComponent WishlistPage => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/wishlist')]")).Last();
     public IComponent WishlistButton => Driver.FindComponent(By.XPath("//*[@title='Add to Wish List' and @onclick]"));
-    public IComponent GetCompareProduct(string cell) => Driver.FindComponent(By.XPath($"//*//tbody//td[contains(text(),'{cell}')]/following-sibling::td"));
-    public IComponent GetProduct(string cell) => Driver.FindComponent(By.XPath($"//*//tbody//td[@class='{cell}']//following-sibling::td[1]"));
+    public IComponent GetCompareProduct(string cell, int index) => Driver.FindComponent(By.XPath($"//*//tbody//td[contains(text(),'{cell}')]/following-sibling::td[{index}]"));
+    public IComponent GetProduct(string cell, int index) => Driver.FindComponent(By.XPath($"//*//tbody//td[@class='{cell}']//following-sibling::td[{index}]"));
     // public IComponent SelectCell(string cell) => GetCompareProduct.FindComponent(By.XPath(GetCompareProduct(cell));
 }
