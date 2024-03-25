@@ -19,7 +19,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(existingProduct);
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
-        _webSite.CheckoutPage.LoginAccountType();
+        _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Login);
         _webSite.CheckoutPage.LoginUser(emailAddress, password);
 
         _webSite.CheckoutPage.BillingDetails(billingDetails);
@@ -44,28 +44,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(existingProduct);
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
-
-
-        var accountType = DifferentAccountType.Register; 
-        SelectAccountType(accountType);
-
-        
-        switch (accountType)
-        {
-            case DifferentAccountType.Login:
-                
-                break;
-            case DifferentAccountType.Register:
-                _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
-                break;
-            case DifferentAccountType.Guest:
-                
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-
-
+        _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
 
         _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
         _webSite.CheckoutPage.BillingDetails(billingDetails);
@@ -89,7 +68,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(existingProduct);
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
-        _webSite.CheckoutPage.GuestAccType.Click();
+        _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);
         _webSite.CheckoutPage.GuesUserPayment(personalInformation);
         _webSite.CheckoutPage.BillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
@@ -98,25 +77,5 @@ public class CheckoutPageTests : BaseTest
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutUrl(_driver.Url);
-    }
-
-
-
-    public void SelectAccountType(DifferentAccountType accountType)
-    {
-        switch (accountType)
-        {
-            case DifferentAccountType.Login:    
-                
-                break;
-            case DifferentAccountType.Register:
-                _webSite.CheckoutPage.RegisterAccountType();
-                break;
-            case DifferentAccountType.Guest:        
-                
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(accountType), accountType, "Unsupported account type");
-        }
     }
 }

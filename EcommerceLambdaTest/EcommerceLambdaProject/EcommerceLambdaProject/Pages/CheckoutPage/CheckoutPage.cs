@@ -1,4 +1,5 @@
 ﻿
+using EcommerceLambdaProject.Pages.BasePage;
 using EcommerceLambdaProject.Pages.RegisterPage;
 using Faker;
 
@@ -53,16 +54,24 @@ public partial class CheckoutPages : WebPage
         TelephonePaymentField.TypeText(user.Telephone);
     }
 
-    public void LoginAccountType()
+    public  void SelectAccountType(DifferentAccountType accountType)
     {
-        LoginAccType.Click();
+        switch (accountType)
+        {
+            case DifferentAccountType.Login:
+                LoginAccType.Click();
+                break;
+            case DifferentAccountType.Register:
+                RegisterAccType.Click();
+                break;
+            case DifferentAccountType.Guest:
+                GuestAccType.Click();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(accountType), accountType, "Unsupported account type");
+        }
     }
 
-
-    public void RegisterAccountType()
-    {
-        RegisterAccType.Click();
-    }
 
     public void Continue()
     {
