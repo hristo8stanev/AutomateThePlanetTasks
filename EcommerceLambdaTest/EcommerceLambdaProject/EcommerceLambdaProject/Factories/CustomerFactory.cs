@@ -60,7 +60,7 @@ public static class CustomerFactory
         productDetails.Brand = brand;
         productDetails.Weight = weight;
         productDetails.Id = id;
-        productDetails.Price = price;
+        productDetails.UnitPrice = price;
         productDetails.Model = model;
         productDetails.Quantity = quantity;
 

@@ -7,9 +7,10 @@ public partial class ProductPages : WebPage
     {
     }
 
-    public void AddProductToCart(string product)
+    public void AddProductToCart(string quantity)
     {
         FindProduct.Click();
+        QuantityField.TypeText(quantity);
         AddToCartButton.Click();
 
     }

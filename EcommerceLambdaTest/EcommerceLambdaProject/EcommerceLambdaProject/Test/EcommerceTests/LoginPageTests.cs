@@ -13,10 +13,35 @@ public class LoginPageTests : BaseTest
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertSuccessfullyLoginUrlIsShown(_driver.Url);
+        _webSite.LoginPage.AssertUrlPage(Url.ACCOUNT_PAGE);
         _webSite.LoginPage.AssertLogoutButtonIsDisplayed();
+    }
 
-        _webSite.LoginPage.LogoutButton.Click();
+    [Test]
+    public void TryLoginIntoTheSystem_When_InvalidCredentialsAreProvided()
+    {
+        var loginUser = Factories.CustomerFactory.LoginUser(invalidEmail, password);
+
+        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _webSite.LoginPage.LoginUser(loginUser);
+
+        _webSite.LoginPage.AssertUrlPage(Url.LOGIN_PAGE);
+        _webSite.LoginPage.AssertErrorMessageWithWrongCreedntials();
+    }
+
+    [Test]
+    public void LogoutFromTheSystem_When_ValidCredentialsAreProvided()
+    {
+        var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
+
+        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _webSite.LoginPage.LoginUser(loginUser);
+
+        _webSite.LoginPage.AssertUrlPage(Url.ACCOUNT_PAGE);
+
+        _webSite.LoginPage.LogoutUser();
+        _webSite.LoginPage.AssertUrlPage(Url.LOGOUT_USER_PAGE);
+        _webSite.LoginPage.AssertAccountSuccessfullyLogout();
     }
 
     [Test]
@@ -24,12 +49,12 @@ public class LoginPageTests : BaseTest
     {
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.GoToForgottenPassword();
-        _webSite.LoginPage.AssertSuccessfullyForgottenPasswordUrlIsShown(_driver.Url);
+        _webSite.LoginPage.AssertUrlPage(Url.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(validEmail);
-        _webSite.LoginPage.AssertSuccessfullySentEmail();
-        _webSite.LoginPage.AssertLoginUrlIsShown(_driver.Url);
 
+        _webSite.LoginPage.AssertSuccessfullySentEmail();
+        _webSite.LoginPage.AssertUrlPage(Url.LOGIN_PAGE);
     }
 
     [Test]
@@ -37,11 +62,12 @@ public class LoginPageTests : BaseTest
     {
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.GoToForgottenPassword();
-        _webSite.LoginPage.AssertSuccessfullyForgottenPasswordUrlIsShown(_driver.Url);
+        _webSite.LoginPage.AssertUrlPage(Url.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(invalidEmail);
-        _webSite.LoginPage.AssertWarningMessageInvalidEmail();
-        _webSite.LoginPage.AssertSuccessfullyForgottenPasswordUrlIsShown(_driver.Url);
 
+        _webSite.LoginPage.AssertWarningMessageInvalidEmail();
+        _webSite.LoginPage.AssertUrlPage(Url.FORGOTTEN_PASSWORD_PAGE);
     }
+
 }

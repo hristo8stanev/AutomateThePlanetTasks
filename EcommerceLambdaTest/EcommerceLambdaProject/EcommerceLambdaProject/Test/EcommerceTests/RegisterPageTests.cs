@@ -12,7 +12,7 @@ public class RegisterPageTests : BaseTest
         _webSite.RegisterPage.RegisterUer(purchaseGift);
 
 
-        _webSite.RegisterPage.AssertSuccessfullyRegisterUrlIsShown(_driver.Url);
+        _webSite.MyAccountPage.AssertUrlPage(Url.SUCCESSFUL_REGISTRATION_PAGE);
         _webSite.RegisterPage.AssertLogoutButtonIsDisplayed();
 
     }

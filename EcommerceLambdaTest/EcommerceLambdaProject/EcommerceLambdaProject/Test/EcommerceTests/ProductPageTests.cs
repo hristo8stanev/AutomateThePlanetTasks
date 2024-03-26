@@ -18,7 +18,7 @@ public class ProductPageTests : BaseTest
         {
             Name = "HTC Touch HD",
             Id = 28,
-            Price = "$146.00",
+            UnitPrice = "$146.00",
             Model = "Product 1",
             Brand = "HTC",
             Availability = "In Stock",
@@ -29,7 +29,7 @@ public class ProductPageTests : BaseTest
         {
             Name = "iPod Touch",
             Id = 32,
-            Price = "$194.00",
+            UnitPrice = "$194.00",
             Model = "Product 5",
             Brand = "Apple",
             Availability = "In Stock",
@@ -40,7 +40,7 @@ public class ProductPageTests : BaseTest
         {
             Name = "Sony VAIO",
             Id = 46,
-            Price = "$1,202.00",
+            UnitPrice = "$1,202.00",
             Model = "Product 19",
             Brand = "Sony",
             Availability = "In Stock",
@@ -50,14 +50,13 @@ public class ProductPageTests : BaseTest
         _driver.GoToUrl(Url.COMPARISON_PAGE);
         _webSite.HomePage.SearchProductByName(existingProduct1);
         _webSite.ProductPage.ClickOnCompareButton();
-
         _webSite.HomePage.SearchProductByName(existingProduct2);
         _webSite.ProductPage.ClickOnCompareButton();
-
         _webSite.HomePage.SearchProductByName(existingProduct3);
         _webSite.ProductPage.ClickOnCompareButton();
         _driver.GoToUrl(Url.COMPARISON_PAGE);
-     
+
+        _webSite.MyAccountPage.AssertUrlPage(Url.COMPARISON_PAGE);
         _webSite.ProductPage.AssertTheProductDetailsIsCorrect(expectedProduct1, 1);
         _webSite.ProductPage.AssertTheProductDetailsIsCorrect(expectedProduct2, 2);
         _webSite.ProductPage.AssertTheProductDetailsIsCorrect(expectedProduct3, 3);
@@ -72,7 +71,7 @@ public class ProductPageTests : BaseTest
 
             Name = "HTC Touch HD",
             Id = 28,
-            Price = "$120.00",
+            UnitPrice = "$120.00",
             Model = "Product 1",
             Brand = "HTC",
             Availability = "In Stock",
@@ -83,7 +82,7 @@ public class ProductPageTests : BaseTest
         {
             Name = "iPod Touch",
             Id = 32,
-            Price = "$160.00",
+            UnitPrice = "$160.00",
             Model = "Product 5",
             Brand = "Apple",
             Availability = "In Stock",
@@ -94,7 +93,7 @@ public class ProductPageTests : BaseTest
         {
             Name = "Sony VAIO",
             Id = 46,
-            Price = "$1,000.00",
+            UnitPrice = "$1,000.00",
             Model = "Product 19",
             Brand = "Sony",
             Availability = "In Stock",
@@ -102,20 +101,18 @@ public class ProductPageTests : BaseTest
         };
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
-
         _webSite.HomePage.SearchProductByName(existingProduct1);
         _webSite.ProductPage.AddProductToWishlist();
-
         _webSite.HomePage.SearchProductByName(existingProduct2);
         _webSite.ProductPage.AddProductToWishlist();
-      
         _webSite.HomePage.SearchProductByName(existingProduct3);
         _webSite.ProductPage.AddProductToWishlist();
-
         _webSite.ProductPage.GoToWishlist();
 
+        _webSite.MyAccountPage.AssertUrlPage(Url.WISHLIST_PAGE);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct1, 1, 2, 3, 4);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct2, 1, 2, 3, 4);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct3, 1, 2, 3, 4);

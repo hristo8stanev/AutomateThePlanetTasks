@@ -1,4 +1,6 @@
-﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿using EcommerceLambdaProject.Pages.ProductPage;
+
+namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class CheckoutPageTests : BaseTest
 {
 
@@ -10,24 +12,42 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_LoginUserTypeSelectedTest()
     {
+
+        var expectedProduct1 = new ProductDetails
+        {
+            Name = "Sony VAIO",
+            Id = 46,
+            UnitPrice = "$1,202.00",
+            Model = "Model: Product 19",
+            Brand = "Sony",
+            Quantity = "3",
+        };
+
+
+
         var billingDetails = Factories.CustomerFactory.BillingAddress();
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(existingProduct);
-        _webSite.ProductPage.AddProductToCart(existingProduct);
+        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
+        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Login);
         _webSite.CheckoutPage.LoginUser(emailAddress, password);
 
+        _webSite.CheckoutPage.AssertUrlPage(Url.CHECKOUT_PAGE);
+        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
+        _webSite.CheckoutPage.AssertProductInformationIsCorrect(expectedProduct1, 46);
+
         _webSite.CheckoutPage.BillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
+
         _webSite.CheckoutPage.ConfirmOrder();
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutUrl(_driver.Url);
+        _webSite.CheckoutPage.AssertUrlPage(Url.SUCCESSFUL_ORDER_PAGE);
     }
 
 
@@ -52,7 +72,8 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.ConfirmOrder();
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutUrl(_driver.Url);
+        _webSite.MyAccountPage.AssertUrlPage(Url.SUCCESSFUL_ORDER_PAGE);
+
     }
 
 
@@ -76,6 +97,6 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.ConfirmOrder();
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutUrl(_driver.Url);
+        _webSite.MyAccountPage.AssertUrlPage(Url.SUCCESSFUL_ORDER_PAGE);
     }
 }

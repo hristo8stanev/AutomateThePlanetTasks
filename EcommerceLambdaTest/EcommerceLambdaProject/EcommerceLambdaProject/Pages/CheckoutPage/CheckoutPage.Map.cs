@@ -32,5 +32,9 @@ public partial class CheckoutPages
     public IComponent SelectRegion(string region) => Region.FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
     public IComponent AgreePrivacy => Driver.FindComponent(By.XPath("//*[@for='input-account-agree']"));
     public IComponent AgreeTermsConditions => Driver.FindComponent(By.XPath("//*[@for='input-agree']"));
+    public IComponent ProductModelCheckoutPage(int id) => Driver.FindComponents(By.XPath($"//tbody//tr//td//a[contains(@href, 'product/product&product_id={id}')]//following-sibling::small")).Last();
+    public IComponent ProductQuantityCheckoutPage(string cell) => Driver.FindComponent(By.XPath($"//tbody//tr//td[@class='{cell}']//following-sibling::input"));
+
+    ////table[@class='table']//tbody//tr//td[@class='text-right']//following-sibling::td     -->   TOTAL SUM
 
 }

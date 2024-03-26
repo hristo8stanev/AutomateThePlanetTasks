@@ -141,35 +141,4 @@ public class DriverAdapter : IDriver
         return element;
     }
 
-
-
-    private void HighlightElement(IComponent element)
-    {
-        try
-        {
-           
-            var originalElementBackground = element.WrappedElement.GetCssValue("background");
-            var originalElementColor = element.WrappedElement.GetCssValue("color");
-            var originalElementOutline = element.WrappedElement.GetCssValue("outline");
-
-           
-            var script = @"
-                let defaultBG = arguments[0].style.backgroundColor;
-                let defaultOutline = arguments[0].style.outline;
-                arguments[0].style.backgroundColor = '#FDFF47';
-                arguments[0].style.outline = '#f00 solid 2px';
-
-                setTimeout(function()
-                {
-                    arguments[0].style.backgroundColor = defaultBG;
-                    arguments[0].style.outline = defaultOutline;
-                }, 500);";
-
-            ExecuteScript(script, element.WrappedElement);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    }
 }

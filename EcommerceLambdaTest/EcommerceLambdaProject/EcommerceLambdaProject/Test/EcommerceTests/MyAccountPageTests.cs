@@ -1,7 +1,4 @@
-﻿using EcommerceLambdaProject.Pages.MyAccountPage;
-
-namespace EcommerceLambdaProject.Test.EcommerceTests;
-
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class MyAccountPageTests : BaseTest
 {
@@ -21,7 +18,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.ChangeMyAccountInfrmation(myAccountInfomraiton);
 
         _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
-        _webSite.MyAccountPage.AssertMyAccountUrlIsShown(_driver.Url);
+        _webSite.MyAccountPage.AssertUrlPage(Url.ACCOUNT_PAGE);
 
     }
 
@@ -35,8 +32,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.ChangeMyPassword();
 
         _webSite.MyAccountPage.AssertPasswordIsSuccessfullyChanged();
-        _webSite.MyAccountPage.AssertMyAccountUrlIsShown(_driver.Url);
-
+        _webSite.MyAccountPage.AssertUrlPage(Url.ACCOUNT_PAGE);
     }
 
     [Test]
@@ -48,8 +44,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.PuchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
-        _webSite.MyAccountPage.AssertAccountVoucherSuccessUrl(_driver.Url);
-
+        _webSite.MyAccountPage.AssertUrlPage(Url.SUCCESSFUL_VAUCHER_PAGE);
     }
 
     [Test]
@@ -60,10 +55,13 @@ public class MyAccountPageTests : BaseTest
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.GoToAddressBookSection();
+
+        _webSite.MyAccountPage.AssertSuccessfullyGoToAddNewAddressUrl(_driver.Url);
+
         _webSite.MyAccountPage.AddNewAddress(newAddress);
 
-        //add assertions
-
+        _webSite.MyAccountPage.AssertSuccessfullyAddedNewAddres();
+        _webSite.MyAccountPage.AssertUrlPage(Url.ADDRESS_BOOK_PAGE);
     }
 
 }

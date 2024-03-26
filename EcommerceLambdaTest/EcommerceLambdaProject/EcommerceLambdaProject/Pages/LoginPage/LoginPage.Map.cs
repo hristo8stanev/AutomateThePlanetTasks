@@ -9,6 +9,8 @@ public partial class LoginPages
     public IComponent ForgotPasswordButton => Driver.WaitAndFindElementJS(By.XPath("//div[@class='form-group']//following-sibling::a"));
     public IComponent EmailAddressFieldForgotPassword => Driver.FindComponent(By.Name("email"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//div[@class='buttons clearfix']//following-sibling::button"));
-    public IComponent ConfirmationSentEmailMessage => Driver.FindComponent(By.XPath("//div[@class='alert alert-success alert-dismissible']"));
-    public IComponent WarningEmailMessage => Driver.FindComponent(By.XPath("//div[@class='alert alert-danger alert-dismissible']"));
+    public IComponent ConfirmationMessage => Driver.FindComponent(By.XPath("//div[@class='alert alert-success alert-dismissible']"));
+    public IComponent WarningMessage => Driver.FindComponent(By.XPath("//div[@class='alert alert-danger alert-dismissible']"));
+    public IComponent AccountLogout => Driver.FindComponent(By.XPath("//h1[@class='page-title my-3']"));
+    
 }

@@ -18,7 +18,7 @@ public partial class MyAccountPages
     public IComponent PasswordField => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordField => Driver.FindComponent(By.Id("input-confirm"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//*[@value='Continue']"));
-    public IComponent SuccessfullyMessageChangePassword => Driver.FindComponent(By.XPath("//*[@class='alert alert-success alert-dismissible']"));
+    public IComponent SuccessfullyMessage => Driver.FindComponent(By.XPath("//*[@class='alert alert-success alert-dismissible']"));
     public IComponent SuccessfullyPurchaseCertificate => Driver.FindComponent(By.XPath("//h1[@class='page-title my-3']"));
     public IComponent FirstNameInput => Driver.FindComponent(By.Id("input-firstname"));
     public IComponent LastaNameInput => Driver.FindComponent(By.Id("input-lastname"));

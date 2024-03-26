@@ -12,6 +12,10 @@ public partial class LoginPages : WebPage
         LoginButton.Click();
     }
 
+    public void LogoutUser()
+    {
+        LogoutButton.Click();
+    }
     public void GoToForgottenPassword()
     {
         ForgotPasswordButton.Click();

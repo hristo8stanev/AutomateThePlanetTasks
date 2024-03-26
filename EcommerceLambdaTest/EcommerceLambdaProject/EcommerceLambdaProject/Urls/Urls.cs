@@ -17,6 +17,7 @@
         public static string COMPARISON_PAGE => BASE_URL + "index.php?route=product/compare";
         public static string SUCCESSFUL_REGISTRATION_PAGE => BASE_URL + "index.php?route=account/success";
         public static string FORGOTTEN_PASSWORD_PAGE => BASE_URL + "index.php?route=account/forgotten";
+        public static string LOGOUT_USER_PAGE => BASE_URL + "index.php?route=account/logout";
         public static string ORDER_HISTORY_PAGE => BASE_URL + "index.php?route=account/order";
         public static string ORDER_PAGE => BASE_URL + "index.php?route=account/order/info";
         public static string ACCOUNT_PAGE => BASE_URL + "index.php?route=account/account";

@@ -8,8 +8,8 @@ public partial class ProductPages
         var nameMessage = $"{ErrorMessagePrice} \n Actual Result:{GetCompareProduct("Product",index).Text} \n Expected Result:{expectedProduct.Name}";
         CollectionAssert.AreEqual(GetCompareProduct("Product", index).Text, expectedProduct.Name, nameMessage);
 
-        var priceMessage = $"{ErrorMessagePrice} \n Actual Result:{GetCompareProduct("Price", index).Text} \n Expected Result:{expectedProduct.Price}";
-        CollectionAssert.AreEqual(GetCompareProduct("Price", index).Text, expectedProduct.Price, priceMessage);
+        var priceMessage = $"{ErrorMessagePrice} \n Actual Result:{GetCompareProduct("Price", index).Text} \n Expected Result:{expectedProduct.UnitPrice}";
+        CollectionAssert.AreEqual(GetCompareProduct("Price", index).Text, expectedProduct.UnitPrice, priceMessage);
 
         var brandMessage = $"{ErrorMessagePrice} \n Actual Result:{GetCompareProduct("Brand", index).Text} \n Expected Result:{expectedProduct.Brand}";
         CollectionAssert.AreEqual(GetCompareProduct("Brand", index).Text, expectedProduct.Brand, brandMessage);
@@ -35,8 +35,8 @@ public partial class ProductPages
         var stockMessage = $"{ErrorMessagePrice} \n Actual Result:{GetProduct("text-center", indexStock).Text} \n Expected Result:{expectedProduct.Availability}";
         CollectionAssert.AreEqual(GetProduct("text-center", indexStock).Text, expectedProduct.Availability, stockMessage);
 
-        var priceMessage = $"{ErrorMessagePrice} \n Actual Result:{GetProduct("text-center", unitPrice).Text} \n Expected Result:{expectedProduct.Price}";
-        CollectionAssert.AreEqual(GetProduct("text-center", unitPrice).Text, expectedProduct.Price, priceMessage);
+        var priceMessage = $"{ErrorMessagePrice} \n Actual Result:{GetProduct("text-center", unitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
+        CollectionAssert.AreEqual(GetProduct("text-center", unitPrice).Text, expectedProduct.UnitPrice, priceMessage);
     
         RemoveFromWishlist.Click();
    }

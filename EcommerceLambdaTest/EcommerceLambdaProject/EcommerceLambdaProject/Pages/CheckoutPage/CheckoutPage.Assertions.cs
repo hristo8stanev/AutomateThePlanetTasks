@@ -1,7 +1,11 @@
 ﻿
+using EcommerceLambdaProject.Pages.ProductPage;
+
 namespace EcommerceLambdaProject.Pages.CheckoutPage;
 public partial class CheckoutPages
 {
+
+    private string ErrorMessageProduct => "This product is not exist";
     public string ErrorMessageLogoutButton => "Your order hasn't been placed successfully";
 
     public void AssertSuccessfullyCheckoutUrl(string expectedUrl)
@@ -27,5 +31,16 @@ public partial class CheckoutPages
         
         var message = $"{ErrorMessageLogoutButton} \n Actual Result:{SuccessfullyConfirmOrderText.Text} \n Expected Result:{expectedMessage}";
         CollectionAssert.AreEqual(SuccessfullyConfirmOrderText.Text, expectedMessage, message);
+    }
+
+    public void AssertProductInformationIsCorrect(ProductDetails expectedProductInfo, int indexModel)
+    {
+        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductModelCheckoutPage(indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
+        CollectionAssert.AreEqual(ProductModelCheckoutPage(indexModel).Text, expectedProductInfo.Model, message);
+
+        var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityCheckoutPage("text-left").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
+        CollectionAssert.AreEqual(ProductQuantityCheckoutPage("text-left").GetAttribute("value"), expectedProductInfo.Quantity, messageQuantity);
+       
+
     }
 }
