@@ -1,5 +1,4 @@
-﻿
-namespace EcommerceLambdaProject.Test.Core;
+﻿namespace EcommerceLambdaProject.Test.Core;
 
 [TestFixture]
 [AllureNUnit]

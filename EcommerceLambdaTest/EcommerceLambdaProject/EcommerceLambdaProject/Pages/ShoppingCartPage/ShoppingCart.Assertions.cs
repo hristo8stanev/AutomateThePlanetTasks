@@ -16,8 +16,8 @@ public partial class ShoppingCartPages
 
     public void AssertProductNameIsCorrect(ProductDetails expectedProductName, int indexName)
     {
-        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductNameElement(indexName).Text} \n Expected Result:{expectedProductName.Name}";
-        CollectionAssert.AreEqual(ProductNameElement(indexName).Text, expectedProductName.Name, message);
+        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductNameElement(indexName,expectedProductName.Name).Text} \n Expected Result:{expectedProductName.Name}";
+        CollectionAssert.AreEqual(ProductNameElement(indexName, expectedProductName.Name).Text, expectedProductName.Name, message);
 
         Driver.WaitForAjax();
 
@@ -25,9 +25,8 @@ public partial class ShoppingCartPages
     public void AssertProductInformationIsCorrect(ProductDetails expectedProductInfo, int indexModel, int indexQuantity, int indexUnitPrice)
     {
 
-
-        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductNameElement(indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
-        CollectionAssert.AreEqual(ProductNameElement(indexModel).Text, expectedProductInfo.Model, message);
+       var message = $"{ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
+       CollectionAssert.AreEqual(ProductElementInformation("text-left", indexModel).Text, expectedProductInfo.Model, message);
 
         var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("text-left").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
         CollectionAssert.AreEqual(ProductQuantityInformation("text-left").GetAttribute("value"), expectedProductInfo.Quantity, messageQuantity);
@@ -42,17 +41,14 @@ public partial class ShoppingCartPages
 
 
     
-    public void AssertProductRemoveFromTheCart(string product)
+    public void AssertProductRemoveFromTheCart(string expectedProductInfo)
     {
-        var errorMessageRemovedProduct = $"The product '{product}' is still present in the Shopping Cart.";
+        var errorMessageRemovedProduct = $"The product '{expectedProductInfo}' is still present in the Shopping Cart.";
         var expectedMessage = "Your shopping cart is empty!";
 
-        var actualMessage = RemovedProduct(expectedMessage).Text;
-        var message = $"{errorMessageRemovedProduct} \n Actual Result:{actualMessage} \n Expected Result:{expectedMessage}";
-        Assert.That(actualMessage.Contains(expectedMessage), message);
+        var message = $"{errorMessageRemovedProduct} \n Actual Result:{RemovedProduct(expectedMessage).Text} \n Expected Result:{expectedMessage}";
+        Assert.That(RemovedProduct(expectedMessage).Text.Contains(expectedMessage), message);
 
-        RemoveButton.Click();
-        Driver.WaitForAjax();
     }
 
     public void AssertSuccessfullyUpdatedQuantityOfProduct(string expectedQuantity)

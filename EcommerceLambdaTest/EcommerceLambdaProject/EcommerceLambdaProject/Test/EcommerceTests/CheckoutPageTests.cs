@@ -24,7 +24,6 @@ public class CheckoutPageTests : BaseTest
         };
 
 
-
         var billingDetails = Factories.CustomerFactory.BillingAddress();
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
@@ -54,12 +53,24 @@ public class CheckoutPageTests : BaseTest
 
     [Test]
     public void Checkout_When_RegisterTypeSelectedTest()
-    { 
+    {
+
+        var expectedProduct2 = new ProductDetails
+        {
+            Name = "HTC Touch HD",
+            Id = 28,
+            UnitPrice = "$146.00",
+            Model = "Product 1",
+            Brand = "HTC",
+            Quantity = "2",
+        };
+       
         var billingDetails = Factories.CustomerFactory.BillingAddress();
         var personalInformation = Factories.CustomerFactory.UserDetails();
+
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(existingProduct);
-        _webSite.ProductPage.AddProductToCart(existingProduct);
+        _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
+        _webSite.ProductPage.AddProductToCart(expectedProduct2.Quantity);
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
@@ -80,12 +91,24 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_GuestTypeSelectedTest()
     {
+
+        var expectedProduct3 = new ProductDetails
+        {
+            Name = "iPod Touch",
+            Id = 32,
+            UnitPrice = "$194.00",
+            Model = "Product 5",
+            Brand = "Apple",
+            Quantity = "1",
+        };
+
+
         var billingDetails = Factories.CustomerFactory.BillingAddress();
         var personalInformation = Factories.CustomerFactory.UserDetails();
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(existingProduct);
-        _webSite.ProductPage.AddProductToCart(existingProduct);
+        _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
+        _webSite.ProductPage.AddProductToCart(expectedProduct3.Quantity);
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);

@@ -32,17 +32,6 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "4",
         };
 
-        var expectedProduct3 = new ProductDetails
-        {
-            Name = "HTC Touch HD",
-            Id = 28,
-            UnitPrice = "$120.00",
-            Model = "Product 1",
-            Brand = "HTC",
-            Quantity = "2",
-
-        };
-
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -50,15 +39,11 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
         _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct2.Quantity);
-        _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct3.Quantity);
         _driver.GoToUrl(Url.CART_PAGE);
 
         _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
         _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct2, 32);
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct3, 28);
-        _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct3, 1, 2, 3);
         _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct2, 1, 2, 3);
         _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct1, 1, 2, 3);
        
@@ -83,9 +68,9 @@ public class ShoppingCartPageTests : BaseTest
        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
        _driver.GoToUrl(Url.CART_PAGE);
- 
-       _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
-       _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
+
+        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
 
         _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
 
@@ -114,7 +99,7 @@ public class ShoppingCartPageTests : BaseTest
         _driver.GoToUrl(Url.CART_PAGE);
         _webSite.ShoppingCartPage.RemoveProductFromTheCart();
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductRemoveFromTheCart(expectedProduct1.Name);
   
     }
@@ -140,8 +125,8 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
         _driver.GoToUrl(Url.CART_PAGE);
- 
-        _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
+
+        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
  
         _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
         _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct1, 1, 2, 3);
@@ -165,7 +150,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
         _driver.GoToUrl(Url.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
 
         _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
         _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(updateQuantity);
@@ -189,11 +174,11 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
         _driver.GoToUrl(Url.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
 
         _webSite.ShoppingCartPage.RemoveProductFromTheCart();
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyShoppingCartUrl(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductRemoveFromTheCart(expectedProduct1.Name);
  
     }

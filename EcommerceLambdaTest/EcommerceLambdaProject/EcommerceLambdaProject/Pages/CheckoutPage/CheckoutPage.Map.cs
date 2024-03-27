@@ -1,5 +1,4 @@
-﻿
-namespace EcommerceLambdaProject.Pages.CheckoutPage;
+﻿namespace EcommerceLambdaProject.Pages.CheckoutPage;
 public partial class CheckoutPages
 {
 

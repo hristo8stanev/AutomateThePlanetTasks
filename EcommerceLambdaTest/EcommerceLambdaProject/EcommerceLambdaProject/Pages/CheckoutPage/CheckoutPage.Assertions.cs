@@ -1,5 +1,4 @@
-﻿
-using EcommerceLambdaProject.Pages.ProductPage;
+﻿using EcommerceLambdaProject.Pages.ProductPage;
 
 namespace EcommerceLambdaProject.Pages.CheckoutPage;
 public partial class CheckoutPages
@@ -13,7 +12,6 @@ public partial class CheckoutPages
 
         var message = $"{Url.SUCCESSFUL_ORDER_PAGE} \n Actual URL:{expectedUrl} \n Expected URL:{Url.SUCCESSFUL_ORDER_PAGE}";
         CollectionAssert.AreEqual(expectedUrl, Url.SUCCESSFUL_ORDER_PAGE, message);
-
     }
 
      public void AssertConfirmButtonIsDisplayed()
@@ -23,8 +21,6 @@ public partial class CheckoutPages
          var message = $"{ErrorMessageLogoutButton} \n Actual Result:{!isMapDisplayed} \n Expected Result:{isMapDisplayed}";
          Assert.That((bool)isMapDisplayed, ErrorMessageLogoutButton, message);
      }
-
-
 
     public void AssertSuccessfullyCheckoutTheOrder(string expectedMessage)
     {
@@ -40,7 +36,6 @@ public partial class CheckoutPages
 
         var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityCheckoutPage("text-left").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
         CollectionAssert.AreEqual(ProductQuantityCheckoutPage("text-left").GetAttribute("value"), expectedProductInfo.Quantity, messageQuantity);
-       
-
     }
+
 }

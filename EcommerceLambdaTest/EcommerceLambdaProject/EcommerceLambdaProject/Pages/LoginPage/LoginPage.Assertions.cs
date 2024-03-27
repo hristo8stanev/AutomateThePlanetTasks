@@ -29,7 +29,7 @@ public partial class LoginPages
     {
 
         var message = $"{ErrorMessageConfirmationEmail} \n Actual Result:{!WarningMessage.Displayed} \n Expected Result:{WarningMessage.Displayed}";
-        Assert.That((bool)ConfirmationMessage.Displayed, ExpectedMessageWrongCredentials, message);
+        Assert.That((bool)WarningMessage.Displayed, ExpectedMessageWrongCredentials, message);
     }
 
     public void AssertWarningMessageInvalidEmail()
