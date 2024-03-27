@@ -18,7 +18,7 @@ public class CheckoutPageTests : BaseTest
             Name = "Sony VAIO",
             Id = 46,
             UnitPrice = "$1,202.00",
-            Model = "Model: Product 19",
+            Model = "Product 19",
             Brand = "Sony",
             Quantity = "3",
         };
@@ -35,13 +35,15 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.LoginUser(emailAddress, password);
 
         _webSite.CheckoutPage.AssertUrlPage(Url.CHECKOUT_PAGE);
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
-        _webSite.CheckoutPage.AssertProductInformationIsCorrect(expectedProduct1, 46);
 
+       // _webSite.CheckoutPage.AssertProductNameIsCorrect(expectedProduct1, 46);
+       // _webSite.CheckoutPage.AssertProductNameIsCorrect(expectedProduct1, 46);
         _webSite.CheckoutPage.BillingDetails(billingDetails);
+
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct1);
 
         _webSite.CheckoutPage.ConfirmOrder();
 

@@ -12,7 +12,7 @@ public partial class CheckoutPages
     public IComponent AgreeTerms => Driver.FindComponent(By.XPath("//*[@for='input-agree']"));
     public IComponent ContinueButton => Driver.FindComponent(By.Id("button-save"));
     public IComponent ConfirmOrderButton => Driver.FindComponent(By.Id("button-confirm"));
-    public IComponent Total => Driver.FindComponent(By.XPath("//table/tbody/tr/td[text()='Total:']"));
+    
     public IComponent SuccessfullyConfirmOrderText => Driver.WaitAndFindElementJS(By.XPath("//h1[@class='page-title my-3']"));
     public IComponent FirstNameField => Driver.FindComponent(By.Id("input-payment-firstname"));
     public IComponent LastNameField => Driver.FindComponent(By.Id("input-payment-lastname"));
@@ -31,9 +31,9 @@ public partial class CheckoutPages
     public IComponent SelectRegion(string region) => Region.FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
     public IComponent AgreePrivacy => Driver.FindComponent(By.XPath("//*[@for='input-account-agree']"));
     public IComponent AgreeTermsConditions => Driver.FindComponent(By.XPath("//*[@for='input-agree']"));
+    public IComponent ProductNameElement(int id, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}') and normalize-space()='{productName}']]"));
     public IComponent ProductModelCheckoutPage(int id) => Driver.FindComponents(By.XPath($"//tbody//tr//td//a[contains(@href, 'product/product&product_id={id}')]//following-sibling::small")).Last();
     public IComponent ProductQuantityCheckoutPage(string cell) => Driver.FindComponent(By.XPath($"//tbody//tr//td[@class='{cell}']//following-sibling::input"));
-
-    ////table[@class='table']//tbody//tr//td[@class='text-right']//following-sibling::td     -->   TOTAL SUM
-
+    public IComponent ConfirmOrderProductName(string cell, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='{cell}' and normalize-space()='{productName}']"));
+    public IComponent ConfirmOrderInformation(string cell, string productInfo) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[@class='{cell}' and contains(text(), '{productInfo}')]"));
 }
