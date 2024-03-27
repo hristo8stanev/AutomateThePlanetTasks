@@ -22,19 +22,17 @@ public partial class ShoppingCartPages
         Driver.WaitForAjax();
 
     }
-    public void AssertProductInformationIsCorrect(ProductDetails expectedProductInfo, int indexModel, int indexQuantity, int indexUnitPrice)
-    {
-
+    public void AssertProductInformationIsCorrect(ProductDetails expectedProductInfo, int indexModel)
+    { 
        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
        CollectionAssert.AreEqual(ProductElementInformation("text-left", indexModel).Text, expectedProductInfo.Model, message);
 
-        var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("text-left").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
-        CollectionAssert.AreEqual(ProductQuantityInformation("text-left").GetAttribute("value"), expectedProductInfo.Quantity, messageQuantity);
+        var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
+        CollectionAssert.AreEqual(ProductQuantityInformation("form-control").GetAttribute("value"), expectedProductInfo.Quantity, messageQuantity);
 
-        var messagePrice = $"{ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", indexUnitPrice).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
-        CollectionAssert.AreEqual(ProductElementInformation("text-left", indexUnitPrice).Text, expectedProductInfo.UnitPrice, messagePrice);
+        var messagePrice = $"{ErrorMessageProduct} \n Actual Result:{ProductPriceElement(expectedProductInfo.UnitPrice).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
+        CollectionAssert.AreEqual(ProductPriceElement(expectedProductInfo.UnitPrice).Text, expectedProductInfo.UnitPrice, messagePrice);
 
-        
         RemoveButton.Click();
         Driver.WaitForAjax();
     }
