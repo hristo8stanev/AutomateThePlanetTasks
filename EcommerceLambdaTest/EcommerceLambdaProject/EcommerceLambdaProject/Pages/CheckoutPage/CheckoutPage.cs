@@ -1,7 +1,4 @@
-﻿
-using EcommerceLambdaProject.Pages.BasePage;
-using EcommerceLambdaProject.Pages.RegisterPage;
-using Faker;
+﻿using EcommerceLambdaProject.Pages.RegisterPage;
 
 namespace EcommerceLambdaProject.Pages.CheckoutPage;
 public partial class CheckoutPages : WebPage
@@ -9,9 +6,6 @@ public partial class CheckoutPages : WebPage
     public CheckoutPages(IDriver driver) : base(driver)
     {
     }
-
-
-
     public void BillingDetails(BillingInformation billingInformation)
     {
         ApplyCoupon.Hover();

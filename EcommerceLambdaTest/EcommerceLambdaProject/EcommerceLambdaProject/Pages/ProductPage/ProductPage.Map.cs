@@ -16,5 +16,5 @@ public partial class ProductPages
     public IComponent ProductNameElement(int id, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}') and normalize-space()='{productName}']]"));
     public IComponent ProductPriceWishlistElement(string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[@class='text-right' and normalize-space()='{price}']"));
     public IComponent ProductElementInformation(string expectedElement) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[contains(text(),'{expectedElement}')]"));
-    public IComponent ProductWeightElement(string weight) => Driver.WaitAndFindElementJS(By.XPath($"//div[@id='content']//tr//td[contains(text(),'{weight}')]")); 
+    public IComponent ProductWeightElement(string weight) => Driver.WaitAndFindElementJS(By.XPath($"//div[@id='content']//tr//td[contains(text(),'{weight}')]"));
 }

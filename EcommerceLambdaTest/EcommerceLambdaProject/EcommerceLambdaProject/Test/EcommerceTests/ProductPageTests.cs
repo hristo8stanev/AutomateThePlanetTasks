@@ -127,7 +127,7 @@ public class ProductPageTests : BaseTest
     //NON-AUTHENTICATED USER
 
     [Test]
-    public void CompareProducts_WhenOpenProductFromSearchResults_NonAuthenticatedUser()
+    public void CompareProducts_When_OpenProductFromSearchResults_NonAuthenticatedUser()
     {
 
         var expectedProduct1 = new ProductDetails

@@ -21,23 +21,18 @@ public partial class CheckoutPages
         CollectionAssert.AreEqual(SuccessfullyConfirmOrderText.Text, expectedMessage, message);
     }
 
-    public void AssertProductNameIsCorrect(ProductDetails expectedProduct, int index)
+   public void AssertProductInfoIsCorrectCheckoutPage(ProductDetails expectedProduct, int index)
     {
-        var nameMessage = $"{ErrorMessageProduct} \n Actual Result:{ProductNameElement(index, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
-        CollectionAssert.AreEqual(ProductNameElement(index, expectedProduct.Name).Text, expectedProduct.Name, nameMessage);
+        var nameMessage = $"{ErrorMessageProduct} \n Actual Result:{ProductNameElementCheckoutPage(index,expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
+        CollectionAssert.AreEqual(ProductNameElementCheckoutPage(index, expectedProduct.Name).Text, expectedProduct.Name, nameMessage);
 
-        Driver.WaitForAjax();
+       var quantityMessage = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityElementCheckout(index, expectedProduct.Name).GetAttribute("value")} \n Expected Result:{expectedProduct.Quantity}";
+       CollectionAssert.AreEqual(ProductQuantityElementCheckout(index, expectedProduct.Name).GetAttribute("value"), expectedProduct.Quantity, quantityMessage);
+
+        var priceMessage = $"{ErrorMessageProduct} \n Actual Result:{ProductPriceElementCheckout("text-right",expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
+        CollectionAssert.AreEqual(ProductPriceElementCheckout("text-right", expectedProduct.UnitPrice).Text, expectedProduct.UnitPrice, priceMessage);
+
     }
-
-    public void AssertProductInformationIsCorrect(ProductDetails expectedProductInfo, int indexModel)
-    {
-        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductModelCheckoutPage(indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
-        CollectionAssert.AreEqual(ProductModelCheckoutPage(indexModel).Text, expectedProductInfo.Model, message);
-
-        var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityCheckoutPage("text-left").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
-        CollectionAssert.AreEqual(ProductQuantityCheckoutPage("text-left").GetAttribute("value"), expectedProductInfo.Quantity, messageQuantity);
-    }
-
 
     public void AssertProductInfoConfirmOrderIsCorrect(ProductDetails expectedProductInfo)
     {
@@ -47,8 +42,10 @@ public partial class CheckoutPages
         var modelMessage = $"{ErrorMessageProduct} \n Actual Result:{ConfirmOrderInformation("text-left", expectedProductInfo.Model).Text} \n Expected Result:{expectedProductInfo.Model}";
         CollectionAssert.AreEqual(ConfirmOrderProductName("text-left", expectedProductInfo.Model).Text, expectedProductInfo.Model, modelMessage);
 
-      //  var quantityMessage = $"{ErrorMessageProduct} \n Actual Result:{ConfirmOrderProductName("text-right", expectedProductInfo.Quantity).Text} \n Expected Result:{expectedProductInfo.Quantity}";
-      //  CollectionAssert.AreEqual(ConfirmOrderProductName("text-right", expectedProductInfo.Quantity).Text, expectedProductInfo.Quantity, quantityMessage);
+        var quantityMessage = $"{ErrorMessageProduct} \n Actual Result:{ConfirmOrderQuantityElement(expectedProductInfo.Model).Text} \n Expected Result:{expectedProductInfo.Quantity}";
+        CollectionAssert.AreEqual(ConfirmOrderQuantityElement(expectedProductInfo.Model).Text, expectedProductInfo.Quantity, quantityMessage);
 
+        var priceMessage = $"{ErrorMessageProduct} \n Actual Result:{ConfirmOrderPriceElement(expectedProductInfo.Quantity).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
+        CollectionAssert.AreEqual(ConfirmOrderPriceElement(expectedProductInfo.Quantity).Text, expectedProductInfo.UnitPrice, priceMessage);
     }
 }
