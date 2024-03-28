@@ -1,4 +1,5 @@
-﻿namespace EcommerceLambdaProject.Pages.CheckoutPage;
+﻿
+namespace EcommerceLambdaProject.Pages.CheckoutPage;
 public partial class CheckoutPages
 {
     public IComponent ApplyCoupon => Driver.FindComponent(By.XPath("//*[@id='button-coupon'][1]"));

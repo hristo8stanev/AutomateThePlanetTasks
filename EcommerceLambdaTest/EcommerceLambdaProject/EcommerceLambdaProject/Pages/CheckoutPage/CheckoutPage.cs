@@ -17,11 +17,13 @@ public partial class CheckoutPages : WebPage
         CityField.TypeText(billingInformation.City);
         PostCodeField.TypeText(billingInformation.PostCode);
 
-
+        
         CountryField.Click();
         SelectCountry(billingInformation.Country).Click();
+
         Driver.WaitForAjax();
 
+       
         Region.Click();
         SelectRegion(billingInformation.Region).Click();
 

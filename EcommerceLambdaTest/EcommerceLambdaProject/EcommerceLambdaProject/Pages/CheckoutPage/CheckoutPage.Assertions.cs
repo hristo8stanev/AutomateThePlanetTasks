@@ -4,9 +4,8 @@ using EcommerceLambdaProject.Pages.ProductPage;
 namespace EcommerceLambdaProject.Pages.CheckoutPage;
 public partial class CheckoutPages
 {
-
     private string ErrorMessageProduct => "This product is not exist";
-    public string ErrorMessageLogoutButton => "Your order hasn't been placed successfully";
+    private string ErrorMessageLogoutButton => "Your order hasn't been placed successfully";
 
     public void AssertConfirmButtonIsDisplayed()
     {
@@ -16,7 +15,6 @@ public partial class CheckoutPages
 
     public void AssertSuccessfullyCheckoutTheOrder(string expectedMessage)
     {
-
         var message = $"{ErrorMessageLogoutButton} \n Actual Result:{SuccessfullyConfirmOrderText.Text} \n Expected Result:{expectedMessage}";
         CollectionAssert.AreEqual(SuccessfullyConfirmOrderText.Text, expectedMessage, message);
     }

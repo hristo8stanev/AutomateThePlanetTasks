@@ -4,6 +4,7 @@ public class ProductDetails
 
     public string Name { get; set; }
     public int Id { get; set; }
+    public string CheckoutPrice { get; set; }
     public string UnitPrice { get; set; }
     public string Model { get; set; }
     public string Brand { get; set; }

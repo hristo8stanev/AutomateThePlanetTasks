@@ -36,13 +36,14 @@ public static class CustomerFactory
             .RuleFor(c => c.Address1, f => address1 ?? f.Address.StreetAddress())
             .RuleFor(c => c.Address2, f => address2 ?? f.Address.FullAddress())
             .RuleFor(c => c.City, f => City ?? f.Address.City())
-            .RuleFor(c => c.PostCode, f => "1998")
-            .RuleFor(c => c.Country, f => "Bulgaria")
-            .RuleFor(c => c.Region, f => "Blagoevgrad");
+            .RuleFor(c => c.PostCode, f => "90004")
+            .RuleFor(c => c.Country, f => "United State")
+            .RuleFor(c => c.Region, f => "Alabama");
 
         return faker.Generate();
+        
     }
-       
+
 
     public static LoginInformation LoginUser(string email, string password)
     {
