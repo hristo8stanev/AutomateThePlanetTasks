@@ -1,8 +1,6 @@
-﻿using System;
-using EcommerceLambdaProject.Pages.ProductPage;
+﻿using EcommerceLambdaProject.Pages.ProductPage;
 
 namespace EcommerceLambdaProject.Test.EcommerceTests;
-
 public class ProductPageTests : BaseTest
 {
    
@@ -10,7 +8,6 @@ public class ProductPageTests : BaseTest
     string password = "tester";
 
     //AUTHENTICATED USER
-    
     [Test]
     public void CompareProducts_WhenOpenProductFromSearchResults_AuthenticatedUser()
     {
@@ -123,9 +120,38 @@ public class ProductPageTests : BaseTest
 
     }
 
+    [Test]
+    public void SelectDifferentSizeOfProduct_When_AuthenticatedUserSelectSize()
+    {
+
+        var expectedProduct = new ProductDetails
+        {
+            Name = "Apple Cinema 30",
+            Id = 42,
+            UnitPrice = "$100.00",
+            Model = "Product 15",
+            Brand = "Apple",
+            Quantity = "4",
+            Availability = "In Stock",
+            Weight = "0.00kg",
+            Size = "Size: Medium"
+
+        };
+
+        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+
+        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.HomePage.SearchProductByName(expectedProduct.Name);
+        _webSite.ProductPage.SelectProductSize();
+        _driver.GoToUrl(Url.CART_PAGE);
+
+        _webSite.ProductPage.AssertUrlPage(Url.CART_PAGE);
+        _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct, 42);
+
+    }
 
     //NON-AUTHENTICATED USER
-
     [Test]
     public void CompareProducts_When_OpenProductFromSearchResults_NonAuthenticatedUser()
     {
@@ -181,5 +207,31 @@ public class ProductPageTests : BaseTest
 
     }
 
-   
+    [Test]
+    public void SelectDifferentSizeOfProduct_When_NonAuthenticatedUserSelectSize()
+    {
+
+        var expectedProduct = new ProductDetails
+        {
+            Name = "Apple Cinema 30",
+            Id = 42,
+            UnitPrice = "$100.00",
+            Model = "Product 15",
+            Brand = "Apple",
+            Quantity = "4",
+            Availability = "In Stock",
+            Weight = "0.00kg",
+            Size = "Size: Large"
+
+        };
+
+        _driver.GoToUrl(Url.COMPARISON_PAGE);
+        _webSite.HomePage.SearchProductByName(expectedProduct.Name);
+        _webSite.ProductPage.SelectProductSize();
+        _driver.GoToUrl(Url.CART_PAGE);
+
+        _webSite.ProductPage.AssertUrlPage(Url.CART_PAGE);
+        _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct,42);
+
+    }
 }

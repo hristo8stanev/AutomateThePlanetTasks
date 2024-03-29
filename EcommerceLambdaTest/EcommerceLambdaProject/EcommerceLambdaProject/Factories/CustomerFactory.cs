@@ -11,7 +11,7 @@ public static class CustomerFactory
 {
 
 
-    public static PersonalInformation UserDetails(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
+    public static PersonalInformation RegisterUser(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
 

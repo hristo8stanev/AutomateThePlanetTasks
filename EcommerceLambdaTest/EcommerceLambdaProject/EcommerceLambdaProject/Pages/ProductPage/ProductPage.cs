@@ -41,4 +41,37 @@ public partial class ProductPages : WebPage
 
         ProceedToCompare.Click();
     }
+
+    public void SelectSize(DifferentTypeSize sizeType)
+    {
+        switch (sizeType)
+        {
+            case DifferentTypeSize.Small:
+                SmallSize.Click();
+                break;
+            case DifferentTypeSize.Medium:
+                Medium.Click();
+                break;
+            case DifferentTypeSize.Large:
+                LargeSize.Click();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(sizeType), sizeType, "Unsupported account type");
+        }
+    }
+
+    public void SelectProductSize()
+    {
+        FindProduct.Click();
+        SizeField.Click();
+        SelectSize(DifferentTypeSize.Large);
+        Driver.WaitForAjax();
+        
+        AddToCartButton.Click();
+
+    }
+    public void ClickOnBuyNowButton()
+    {
+        BuyNowProduct.Click();
+    }
 }

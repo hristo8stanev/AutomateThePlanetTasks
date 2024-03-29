@@ -52,4 +52,10 @@ public partial class ProductPages
         
         RemoveFromWishlist.Click();
    }
+
+    public void AssertSizeOftheProductIsCorrect(ProductDetails expectedProduct, int index)
+    {
+        var nameMessage = $"{ErrorMessage} \n Actual Result:{ProductSize(index).Text} \n Expected Result:{expectedProduct.Size}";
+        CollectionAssert.AreEqual(ProductSize(index).Text, expectedProduct.Size, nameMessage);
+    }
 }

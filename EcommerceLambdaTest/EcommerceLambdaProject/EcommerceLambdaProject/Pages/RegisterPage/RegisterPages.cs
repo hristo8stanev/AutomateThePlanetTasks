@@ -1,6 +1,4 @@
-﻿
-
-namespace EcommerceLambdaProject.Pages.RegisterPage;
+﻿namespace EcommerceLambdaProject.Pages.RegisterPage;
 public partial class RegisterPages : WebPage
 {
     public RegisterPages(IDriver driver) : base(driver)

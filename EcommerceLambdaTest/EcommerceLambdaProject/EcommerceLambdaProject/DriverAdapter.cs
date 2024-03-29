@@ -90,11 +90,6 @@ public class DriverAdapter : IDriver
         }
     }
 
-    public void DeleteAllCookies()
-    {
-        _webDriver.Manage().Cookies.DeleteAllCookies();
-    }
-
     public void ExecuteScript(string script, params object[] args)
     {
         ((IJavaScriptExecutor)_webDriver).ExecuteScript(script, args);

@@ -101,7 +101,7 @@ public class CheckoutPageTests : BaseTest
         };
 
         var billingDetails = Factories.CustomerFactory.BillingAddress();
-        var personalInformation = Factories.CustomerFactory.UserDetails();
+        var personalInformation = Factories.CustomerFactory.RegisterUser();
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
@@ -159,7 +159,7 @@ public class CheckoutPageTests : BaseTest
 
 
         var billingDetails = Factories.CustomerFactory.BillingAddress();
-        var personalInformation = Factories.CustomerFactory.UserDetails();
+        var personalInformation = Factories.CustomerFactory.RegisterUser();
 
         _driver.GoToUrl(Url.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);

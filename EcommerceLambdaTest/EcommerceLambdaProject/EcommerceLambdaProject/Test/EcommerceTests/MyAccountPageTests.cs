@@ -10,7 +10,7 @@ public class MyAccountPageTests : BaseTest
     public void EditMyProfile_When_AutheticatedUserProvided()
     {
         var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
-        var myAccountInfomraiton = Factories.CustomerFactory.UserDetails();
+        var myAccountInfomraiton = Factories.CustomerFactory.RegisterUser();
 
         _driver.GoToUrl(Url.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
