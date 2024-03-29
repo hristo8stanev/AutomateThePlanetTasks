@@ -18,7 +18,6 @@ public partial class ProductPages
     public IComponent SmallSize => SizeField.FindComponent(By.XPath($".//option[contains(text(), 'Small')]"));
     public IComponent Medium => SizeField.FindComponent(By.XPath($".//option[contains(text(), 'Medium')]"));
     public IComponent LargeSize => SizeField.FindComponent(By.XPath($".//option[contains(text(), 'Large')]"));
-    //public IComponent SelectSize(string size) => SizeField.FindComponent(By.XPath($".//option[contains(text(), '{size}')]"));
     public IComponent ProductSize(int id) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}')]]//following-sibling::small"));
     public IComponent ProductNameElement(int id, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}') and normalize-space()='{productName}']]"));
     public IComponent ProductPriceWishlistElement(string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[@class='text-right' and normalize-space()='{price}']"));

@@ -1,11 +1,10 @@
-﻿
-
-using EcommerceLambdaProject.Pages.ProductPage;
+﻿using EcommerceLambdaProject.Pages.ProductPage;
 
 namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class SearchPageTests : BaseTest
 {
-
+    private string minPrice => "100";
+    private string maxPrice => "500";
 
     [Test]
     public void SearchExistingProductByName_When_NonAuthenticatedUserSearchedProduct()
@@ -68,4 +67,37 @@ public class SearchPageTests : BaseTest
         _webSite.SearchPage.SearchProductByName(expectedProduct1);
         _webSite.SearchPage.AssertErrorMessageWhenNonExistingProductIsSearched();
     }
+
+    [Test]
+    public void FilterProductByPrice()
+    {
+        _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+
+        _webSite.SearchPage.EnterRangePrices(minPrice, maxPrice);
+        
+        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(minPrice,maxPrice));
+    }
+
+    [Test]
+    public void FilterProductByManufacturer()
+    {
+
+    }
+    [Test]
+    public void FilterProductByColor()
+    {
+
+    }
+    [Test]
+    public void FilterProductByAvailability()
+    {
+
+    }
+    [Test]
+    public void FilterProductBySize()
+    {
+
+    }
+
 }

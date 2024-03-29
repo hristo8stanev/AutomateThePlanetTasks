@@ -21,6 +21,21 @@ public partial class SearchPages
         var errorMessageNonExistingProduct = $"{ErrorMessage} \n Actual Result:{ErrorMessageNonExistingProduct(ExpectedMessageNonExistingProduct).Text} \n Expected Result:{ExpectedMessageNonExistingProduct}";
         CollectionAssert.AreEqual(ErrorMessageNonExistingProduct(ExpectedMessageNonExistingProduct).Text, ExpectedMessageNonExistingProduct, errorMessageNonExistingProduct);
 
-       
+    }
+
+    public void AssertFirstElementIsVisible()
+    {
+
+        var message = $"{ErrorMessage} \n Actual Result:{!FirstProduct.Displayed} \n Expected Result:{FirstProduct.Displayed}";
+        Assert.That((bool)FirstProduct.Displayed, ErrorMessage, message);
+
+        Driver.WaitForAjax();
+    }
+    public void AssertDesktopIsVisible()
+    {
+
+
+        Driver.WaitForAjax();
+        Desktop.Hover();
     }
 }
