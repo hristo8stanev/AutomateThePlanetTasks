@@ -3,8 +3,8 @@
 namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class SearchPageTests : BaseTest
 {
-    private string minPrice => "100";
-    private string maxPrice => "500";
+    private string minPrice => "10";
+    private string maxPrice => "1000";
 
     [Test]
     public void SearchExistingProductByName_When_NonAuthenticatedUserSearchedProduct()
@@ -60,7 +60,6 @@ public class SearchPageTests : BaseTest
 
         };
 
-
         _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
 
@@ -69,35 +68,48 @@ public class SearchPageTests : BaseTest
     }
 
     [Test]
-    public void FilterProductByPrice()
+    public void FilterProductByPrice_When_NonAuthenticatedUserTryToFilterTheProductsByPrice()
     {
+
+        var expectedProduct1 = new ProductDetails
+        {
+            Name = "Nikon",
+            Id = 31,
+            UnitPrice = "$98.00",
+            Model = "Product 4",
+            Brand = "Nikon",
+            Quantity = "4",
+            Availability = "In Stock",
+            Weight = "0.00kg"
+        };
+
+        _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.EnterRangePrices(minPrice, maxPrice);
+
+        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(minPrice, maxPrice));
+
+    }
+
+    [Test]
+    public void FilterProductByName_When_NonAuthenticatedUserTryToFilterProductByName()
+    {
+        var expectedProduct2 = new ProductDetails
+        {
+            Name = "iPod Touch",
+            Id = 32,
+            UnitPrice = "$194.00",
+            Model = "Product 5",
+            Brand = "Apple",
+            Availability = "In Stock",
+            Weight = "5.00kg"
+        };
+
         _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
 
-        _webSite.SearchPage.EnterRangePrices(minPrice, maxPrice);
-        
-        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(minPrice,maxPrice));
+        _webSite.SearchPage.SearchProductByName(expectedProduct2);
+
+        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct2, 32);
     }
-
-    [Test]
-    public void FilterProductByManufacturer()
-    {
-
-    }
-    [Test]
-    public void FilterProductByColor()
-    {
-
-    }
-    [Test]
-    public void FilterProductByAvailability()
-    {
-
-    }
-    [Test]
-    public void FilterProductBySize()
-    {
-
-    }
-
 }

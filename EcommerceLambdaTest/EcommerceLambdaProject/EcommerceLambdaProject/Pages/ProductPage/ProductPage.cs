@@ -64,7 +64,7 @@ public partial class ProductPages : WebPage
     {
         FindProduct.Click();
         SizeField.Click();
-        SelectSize(DifferentTypeSize.Large);
+        SelectSize(DifferentTypeSize.Medium);
         Driver.WaitForAjax();
         
         AddToCartButton.Click();

@@ -91,4 +91,12 @@ public partial class MyAccountPages : WebPage
         ContinueButton.Click();
     }
 
+
+    public void TakeTheNames()
+    {
+
+
+
+    }
+
 }

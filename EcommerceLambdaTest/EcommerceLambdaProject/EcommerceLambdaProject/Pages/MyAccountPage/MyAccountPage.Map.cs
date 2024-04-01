@@ -12,6 +12,8 @@ public partial class MyAccountPages
     public IComponent CityField => Driver.FindComponent(By.Id("input-city"));
     public IComponent PostCodeField => Driver.FindComponent(By.Id("input-postcode"));
     public IComponent CountryField => Driver.FindComponent(By.Id("input-country"));
+    public IComponent firstName => Driver.FindComponent(By.XPath("//*[@id='input-payment-firstname']"));
+    public IComponent lastName => Driver.FindComponent(By.XPath("//*[@id='input-payment-lastname']"));
     public IComponent SelectCountry(string country) => CountryField.FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
     public IComponent Region => Driver.FindComponent(By.Id("input-zone"));
     public IComponent SelectRegion(string region) => Region.FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
@@ -34,5 +36,7 @@ public partial class MyAccountPages
     public IComponent AmountCertificate => Driver.WaitAndFindElementJS(By.Id("input-amount"));
     public IComponent MessageCertificate => Driver.WaitAndFindElementJS(By.Id("input-message"));
     public IComponent AgreeGiftCertificate => Driver.WaitAndFindElementJS(By.Name("agree"));
+    public IComponent DateTimeElement(string dateTime) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{dateTime}')]"));
+    public IComponent CustomerElement(string name) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{name}')]"));
 
 }

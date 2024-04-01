@@ -1,7 +1,7 @@
-﻿
-namespace EcommerceLambdaProject.Pages.MyAccountPage;
+﻿namespace EcommerceLambdaProject.Pages.MyAccountPage;
 public partial class MyAccountPages
 {
+    private string ErrorMessageDate => "The expected Date are not correct";
     private string ErrorMessageUrl => "The URL is not correct";
     private string ErrorMessagePassword => "Your password hasn't been successfully updated";
     private string ErrorMessageAddress => "Your address hasn't been successfully added";
@@ -40,5 +40,18 @@ public partial class MyAccountPages
         var message = $"{ErrorMessageAddress} \n Actual Result:{SuccessfullyAddedNewAddressMessage} \n Expected Result:{SuccessfullyMessage.Text}";
         CollectionAssert.AreEqual(SuccessfullyMessage.Text, SuccessfullyAddedNewAddressMessage, message);
     }
-  
+
+    public void AssertCustomerNameIsCorrect(string expectedFullname )
+    {
+        var nameMessage = $"{ErrorMessageAddress} \n Actual Result:{CustomerElement(expectedFullname).Text} \n Expected Result:{expectedFullname}";
+        CollectionAssert.AreEqual(CustomerElement(expectedFullname).Text, expectedFullname, nameMessage);
+
+    }
+
+    public void AssertThePurchaseDateIsToday()
+    {
+        var currentDate = DateTime.Now.ToString("dd/MM/yyyy");
+        var dateMessage = $"{ErrorMessageDate} \n Actual Result:{DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text} \n Expected Result:{currentDate}";
+        CollectionAssert.AreEquivalent(DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text, currentDate, dateMessage);
+    }
 }

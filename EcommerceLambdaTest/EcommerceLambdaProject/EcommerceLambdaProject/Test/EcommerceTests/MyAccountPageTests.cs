@@ -1,10 +1,13 @@
-﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿using System.Net.Mail;
+using EcommerceLambdaProject.Pages.ProductPage;
+
+namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class MyAccountPageTests : BaseTest
 {
     string validEmail = "alabala@gmail.com";
     string password = "tester";
-
+    string successfullyPurchaseMessage = "Your order has been placed!";
 
     [Test]
     public void EditMyProfile_When_AutheticatedUserProvided()
@@ -64,4 +67,37 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.AssertUrlPage(Url.ADDRESS_BOOK_PAGE);
     }
 
+    [Test]
+    public void CheckMyOrderHistory_When_AuthenticatedUserPurchaseProduct()
+    {
+        var expectedProduct1 = new ProductDetails
+        {
+            Name = "HTC Touch HD",
+            Id = 28,
+            UnitPrice = "$120.00",
+            Model = "Product 1",
+            Brand = "HTC",
+            Quantity = "3",
+        };
+
+        var billingDetails = Factories.CustomerFactory.BillingAddress();
+        var personalInformation = Factories.CustomerFactory.RegisterUser();
+
+        _driver.GoToUrl(Url.CHECKOUT_PAGE);
+        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
+        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
+        _driver.GoToUrl(Url.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
+        _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
+        _webSite.CheckoutPage.BillingDetailsWithoutName(billingDetails);
+        _webSite.CheckoutPage.ProceedToCheckout();
+        _webSite.CheckoutPage.ConfirmOrder();
+
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
+        
+        _driver.GoToUrl(Url.ORDER_HISTORY_PAGE);
+
+        _webSite.MyAccountPage.AssertCustomerNameIsCorrect(personalInformation.FirstName + " " + personalInformation.LastName);
+        _webSite.MyAccountPage.AssertThePurchaseDateIsToday();
+    }
 }

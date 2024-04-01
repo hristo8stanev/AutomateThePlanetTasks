@@ -15,5 +15,6 @@ public abstract class WebPage
         string actualUrl = Driver.Url;
         CollectionAssert.AreEqual(expectedUrl, actualUrl, ErrorMessageUrl);
         Driver.WaitForAjax();
+
     }
 }

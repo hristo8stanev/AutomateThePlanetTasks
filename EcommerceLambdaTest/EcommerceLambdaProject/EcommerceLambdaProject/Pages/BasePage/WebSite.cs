@@ -6,12 +6,13 @@ using EcommerceLambdaProject.Pages.RegisterPage;
 using EcommerceLambdaProject.Pages.SearchPage;
 using EcommerceLambdaProject.Pages.ShoppingCartPage;
 using EcommerceLambdaProject.Pages.MyAccountPage;
+using EcommerceLambdaProject.Factories;
 
 namespace EcommerceLambdaProject.Pages.BasePage;
 public class WebSite
 {
     private readonly IDriver _driver;
-
+    
     public WebSite(IDriver driver)
     {
         _driver = driver;
@@ -35,6 +36,5 @@ public class WebSite
     public SearchPages SearchPage { get; set; }
     public ShoppingCartPages ShoppingCartPage { get; set; }
     public MyAccountPages MyAccountPage { get; set; }
-
-
+    
 }

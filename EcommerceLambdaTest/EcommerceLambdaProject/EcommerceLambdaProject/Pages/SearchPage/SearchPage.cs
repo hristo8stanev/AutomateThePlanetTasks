@@ -18,7 +18,7 @@ public partial class SearchPages : WebPage
     {
         MinPriceField.TypeText(min);
         MaxPriceField.TypeText(max);
+        MaxPriceField.WrappedElement.SendKeys(Keys.Enter);
         Driver.WaitForAjax();
-        Thread.Sleep(900);
     }
 }

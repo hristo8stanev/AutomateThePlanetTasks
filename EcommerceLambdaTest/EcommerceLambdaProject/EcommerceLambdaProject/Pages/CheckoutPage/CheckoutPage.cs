@@ -27,8 +27,25 @@ public partial class CheckoutPages : WebPage
         Region.Click();
         SelectRegion(billingInformation.Region).Click();
 
+    }
+
+    public void BillingDetailsWithoutName(BillingInformation billingInformation)
+    {
+        ApplyCoupon.Hover();
+        CompanyField.TypeText(billingInformation.Company);
+        AddressField1.TypeText(billingInformation.Address1);
+        AddressField2.TypeText(billingInformation.Address2);
+        CityField.TypeText(billingInformation.City);
+        PostCodeField.TypeText(billingInformation.PostCode);
+        CountryField.Click();
+        SelectCountry(billingInformation.Country).Click();
+        Driver.WaitForAjax();
+        Region.Click();
+        SelectRegion(billingInformation.Region).Click();
 
     }
+
+
     public void CreateNewUserPayment(PersonalInformation user)
     {
         FirstNameField.TypeText(user.FirstName);
