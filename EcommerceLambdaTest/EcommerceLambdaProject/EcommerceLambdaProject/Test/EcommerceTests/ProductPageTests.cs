@@ -221,7 +221,7 @@ public class ProductPageTests : BaseTest
             Quantity = "4",
             Availability = "In Stock",
             Weight = "0.00kg",
-            Size = "Size: Large"
+            Size = "Size: Medium"
 
         };
 

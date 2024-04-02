@@ -3,6 +3,7 @@ public partial class ProductPages
 {
 
     public IComponent SearchField => Driver.FindComponent(By.Name("search"));
+    public IComponent RemoveButton => Driver.FindComponent(By.XPath("//button[contains(@onclick, 'cart.remove')]"));
     public IComponent RemoveFromWishlist => Driver.FindComponent(By.XPath("//*//tbody//td[contains(@class, 'text-right text-nowrap')]//a[contains(@href, 'account/wishlist&remove')]"));
     public IComponent RemoveFromComparelist(int id) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td//a[contains(@href, 'remove={id}') and normalize-space()='Remove']"));
     public IComponent QuantityField => Driver.FindComponents(By.XPath("//input[@name='quantity']")).Last();
