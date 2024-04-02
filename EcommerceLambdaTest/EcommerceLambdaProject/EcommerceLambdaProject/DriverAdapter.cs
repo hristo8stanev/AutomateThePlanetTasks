@@ -7,7 +7,7 @@ namespace EcommerceLambdaProject;
 
 public class DriverAdapter : IDriver
 {
-    private  int WAIT_FOR_ELEMENT => 30;
+    private int WAIT_FOR_ELEMENT => 30;
     private IWebDriver _webDriver;
     private WebDriverWait _webDriverWait;
     public string Url => _webDriver.Url;
@@ -51,7 +51,7 @@ public class DriverAdapter : IDriver
         IWebElement nativeWebElement = _webDriverWait.Until(ExpectedConditions.ElementExists(locator));
         IComponent element = new ComponentAdapter(_webDriver, nativeWebElement, locator);
         ScrollIntoView(element);
-  
+
         return element;
     }
 
@@ -70,7 +70,8 @@ public class DriverAdapter : IDriver
     }
 
    
-    public void Refresh()
+
+public void Refresh()
     {
         _webDriver.Navigate().Refresh();
     }
@@ -85,7 +86,7 @@ public class DriverAdapter : IDriver
         }
         catch
         {
-           
+
             return false;
         }
     }
@@ -97,9 +98,8 @@ public class DriverAdapter : IDriver
 
     public void WaitForAjax()
     {
-        _webDriverWait.Until(driver =>
-        {
-            var script = "return window.jQuery != undefined && jQuery.active == 0";
+
+        _webDriverWait.Until(driver => {var script = "return window.jQuery != undefined && jQuery.active == 0";
             return (bool)((IJavaScriptExecutor)driver).ExecuteScript(script);
         });
     }

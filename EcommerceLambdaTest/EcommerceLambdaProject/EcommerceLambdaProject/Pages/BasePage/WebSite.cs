@@ -6,7 +6,6 @@ using EcommerceLambdaProject.Pages.RegisterPage;
 using EcommerceLambdaProject.Pages.SearchPage;
 using EcommerceLambdaProject.Pages.ShoppingCartPage;
 using EcommerceLambdaProject.Pages.MyAccountPage;
-using EcommerceLambdaProject.Factories;
 
 namespace EcommerceLambdaProject.Pages.BasePage;
 public class WebSite
@@ -16,7 +15,6 @@ public class WebSite
     public WebSite(IDriver driver)
     {
         _driver = driver;
-
         HomePage = new HomePages(_driver);
         CheckoutPage = new CheckoutPages(_driver);
         LoginPage = new LoginPages(_driver);

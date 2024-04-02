@@ -1,5 +1,4 @@
-﻿
-namespace EcommerceLambdaProject;
+﻿namespace EcommerceLambdaProject;
 public interface IComponent
 {
     public By By { get; }

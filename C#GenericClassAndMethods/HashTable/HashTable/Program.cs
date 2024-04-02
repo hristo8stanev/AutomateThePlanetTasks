@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using HashTable;
 
 namespace hashTableExercises;
@@ -9,25 +7,23 @@ class Program
 {
     static void Main(string[] args)
     {
-        Hashtable<int, string> hashTable = new Hashtable<int, string>();
-        hashTable.Add(1, "Ivan");
-        hashTable.Add(2, "Petkan");
-        hashTable.Add(3, "Dragan");
-        hashTable.Add(4, "Gosho");
-        hashTable.Add(5, "Pesho");
-        hashTable.Clear(3);
-        int count4 = hashTable.Count(4);
-        int count5 = hashTable.Count(5);
-        hashTable.Remove(2);
+        Hashtable oddNumbersMap = new Hashtable();
 
-        Console.WriteLine($"Value for key 1: {hashTable.Find(1)}");
-        Console.WriteLine($"Value for key 5: {hashTable.Find(5)}");
-        Console.WriteLine($"Count for key 3: {count4}");
-        Console.WriteLine($"Count for key 5: {count5}");
-        Console.WriteLine($"Value for key 2: {hashTable.Find(2)}");
+        // Populate the hashmap with odd numbers from 0 to 50
+        for (int i = 1; i <= 50; i += 2)
+        {
+            oddNumbersMap[i] = i;
+        }
+
+        // Print all odd numbers with their key values
+        Console.WriteLine("Odd numbers from 0 to 50 with their key values:");
 
 
-        //how to loop through an array with a forEach loop?
-
+        foreach (DictionaryEntry entry in oddNumbersMap)
+        {
+            int key = (int)entry.Key;
+            int oddNumber = (int)entry.Value;
+            Console.WriteLine($"Key: {key}, Odd number: {oddNumber}");
+        }
     }
 }

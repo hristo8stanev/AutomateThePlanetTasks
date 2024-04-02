@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace EcommerceLambdaProject;
+﻿namespace EcommerceLambdaProject;
 public interface IDriver
 {
     public string Url { get; }

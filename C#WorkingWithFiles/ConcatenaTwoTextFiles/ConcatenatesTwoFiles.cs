@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-public class ConcatenatesTwoFiles
+﻿public class ConcatenatesTwoFiles
 {
     public static void Main()
     {
@@ -8,18 +6,21 @@ public class ConcatenatesTwoFiles
         var f1 = new FileInfo(@"C:\Users\UsernameT\test.txt");
 
         using (var fs = fi.Open(FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
+
         using (var sw = new StreamWriter(fs))
         {
             sw.WriteLine("My first text file");
         }
 
         using (var fs1 = f1.Open(FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
+
         using (var ww = new StreamWriter(fs1))
         {
             ww.WriteLine("Content from the second file.");
         }
 
         string outputFilePath = @"C:\Users\UsernameT\ConcatenateData.txt";
+
         using (var outputWriter = new StreamWriter(outputFilePath))
         {
             outputWriter.Write(File.ReadAllText(fi.FullName));
