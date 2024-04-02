@@ -69,9 +69,9 @@ public class DriverAdapter : IDriver
         return elements;
     }
 
-   
 
-public void Refresh()
+
+    public void Refresh()
     {
         _webDriver.Navigate().Refresh();
     }
@@ -99,7 +99,9 @@ public void Refresh()
     public void WaitForAjax()
     {
 
-        _webDriverWait.Until(driver => {var script = "return window.jQuery != undefined && jQuery.active == 0";
+        _webDriverWait.Until(driver =>
+        {
+            var script = "return window.jQuery != undefined && jQuery.active == 0";
             return (bool)((IJavaScriptExecutor)driver).ExecuteScript(script);
         });
     }
@@ -136,4 +138,8 @@ public void Refresh()
         return element;
     }
 
+    public void DeleteAllCookies()
+    {
+        _webDriver.Manage().Cookies.DeleteAllCookies();
+    }
 }
