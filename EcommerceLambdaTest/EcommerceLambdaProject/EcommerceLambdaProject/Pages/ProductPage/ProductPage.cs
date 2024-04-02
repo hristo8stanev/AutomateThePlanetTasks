@@ -1,9 +1,8 @@
-﻿using System.Diagnostics;
+﻿namespace EcommerceLambdaProject.Pages;
 
-namespace EcommerceLambdaProject.Pages.ProductPage;
-public partial class ProductPages : WebPage
+public partial class ProductPage : WebPage
 {
-    public ProductPages(IDriver driver) : base(driver)
+    public ProductPage(IDriver driver) : base(driver)
     {
     }
 
@@ -12,9 +11,8 @@ public partial class ProductPages : WebPage
         FindProduct.Click();
         QuantityField.TypeText(quantity);
         AddToCartButton.Click();
-
     }
-    
+
     public void ClickOnCompareButton()
     {
         FindProduct.Click();
@@ -29,16 +27,15 @@ public partial class ProductPages : WebPage
         WishlistButton.Click();
         Driver.WaitForAjax();
     }
-    
+
     public void GoToWishlist()
     {
         SearchField.Hover();
         WishlistPage.Click();
-       
     }
+
     public void GoToCompare()
     {
-
         ProceedToCompare.Click();
     }
 
@@ -49,12 +46,15 @@ public partial class ProductPages : WebPage
             case DifferentTypeSize.Small:
                 SmallSize.Click();
                 break;
+
             case DifferentTypeSize.Medium:
                 Medium.Click();
                 break;
+
             case DifferentTypeSize.Large:
                 LargeSize.Click();
                 break;
+
             default:
                 throw new ArgumentOutOfRangeException(nameof(sizeType), sizeType, "Unsupported account type");
         }
@@ -66,12 +66,7 @@ public partial class ProductPages : WebPage
         SizeField.Click();
         SelectSize(DifferentTypeSize.Medium);
         Driver.WaitForAjax();
-        
-        AddToCartButton.Click();
 
-    }
-    public void ClickOnBuyNowButton()
-    {
-        BuyNowProduct.Click();
+        AddToCartButton.Click();
     }
 }

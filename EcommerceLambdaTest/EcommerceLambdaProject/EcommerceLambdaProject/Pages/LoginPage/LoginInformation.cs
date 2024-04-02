@@ -1,7 +1,7 @@
-﻿namespace EcommerceLambdaProject.Pages.LoginPage;
+﻿namespace EcommerceLambdaProject.Pages;
+
 public class LoginInformation
 {
-   public string EmailAddress { get; set; }
-   public string PasswordField { get; set; }
-   
+    public string EmailAddress { get; set; }
+    public string PasswordField { get; set; }
 }

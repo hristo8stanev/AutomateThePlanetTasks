@@ -1,6 +1,5 @@
-﻿namespace EcommerceLambdaProject.Pages.HomePage;
+﻿namespace EcommerceLambdaProject.Pages;
+
 public partial class HomePage
 {
-
-
 }

@@ -1,7 +1,5 @@
-﻿
-namespace EcommerceLambdaProject.Urls
-{
-    public static class Url
+﻿namespace EcommerceLambdaProject.Urls;
+    public static class Urls
     {
         public static string BASE_URL => "https://ecommerce-playground.lambdatest.io/";
         public static string SEARCH_SHOP_PRODUCTS_PAGE => BASE_URL + "index.php?route=product%2Fsearch&search=&limit=100";
@@ -25,4 +23,3 @@ namespace EcommerceLambdaProject.Urls
         public static string NEW_ADDRESS_PAGE => BASE_URL + "index.php?route=account/address/add";
         public static string SUCCESSFUL_ORDER_PAGE => BASE_URL + "index.php?route=checkout/success";
     }
-}

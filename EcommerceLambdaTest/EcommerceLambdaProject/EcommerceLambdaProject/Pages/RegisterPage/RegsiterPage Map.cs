@@ -1,5 +1,6 @@
-﻿namespace EcommerceLambdaProject.Pages.RegisterPage;
-public partial class RegisterPages
+﻿namespace EcommerceLambdaProject.Pages;
+
+public partial class RegisterPage
 {
     public IComponent FirstNameInput => Driver.FindComponent(By.Id("input-firstname"));
     public IComponent LastaNameInput => Driver.FindComponent(By.Id("input-lastname"));
@@ -13,5 +14,4 @@ public partial class RegisterPages
     public IComponent ErrorMessageEmptyFistNameField => Driver.FindComponent(By.XPath("//*[@id='input-firstname']//following-sibling::div"));
     public IComponent ErrorMessageEmptyEmailAddressField => Driver.FindComponent(By.XPath("//*[@id='input-email']//following-sibling::div"));
     public IComponent ErrorMessageEmptyPasswordField => Driver.FindComponent(By.XPath("//*[@id='input-password']//following-sibling::div"));
-
 }

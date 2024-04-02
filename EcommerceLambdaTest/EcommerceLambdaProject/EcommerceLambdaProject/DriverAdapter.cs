@@ -1,13 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+using System.Collections.ObjectModel;
 
 namespace EcommerceLambdaProject;
 
 public class DriverAdapter : IDriver
 {
-    private int WAIT_FOR_ELEMENT => 30;
+    private const int WAIT_FOR_ELEMENT = 30;
     private IWebDriver _webDriver;
     private WebDriverWait _webDriverWait;
     public string Url => _webDriver.Url;
@@ -17,17 +17,17 @@ public class DriverAdapter : IDriver
         switch (browser)
         {
             case BrowserType.CHROME:
-                new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
                 _webDriver = new ChromeDriver();
                 break;
+
             case BrowserType.FIREFOX:
-                new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
                 _webDriver = new FirefoxDriver();
                 break;
+
             case BrowserType.EDGE:
-                new WebDriverManager.DriverManager().SetUpDriver(new EdgeConfig());
                 _webDriver = new EdgeDriver();
                 break;
+
             default:
                 throw new ArgumentOutOfRangeException(nameof(browser), browser, null);
         }
@@ -69,8 +69,6 @@ public class DriverAdapter : IDriver
         return elements;
     }
 
-
-
     public void Refresh()
     {
         _webDriver.Navigate().Refresh();
@@ -86,7 +84,6 @@ public class DriverAdapter : IDriver
         }
         catch
         {
-
             return false;
         }
     }
@@ -98,7 +95,6 @@ public class DriverAdapter : IDriver
 
     public void WaitForAjax()
     {
-
         _webDriverWait.Until(driver =>
         {
             var script = "return window.jQuery != undefined && jQuery.active == 0";
@@ -113,12 +109,10 @@ public class DriverAdapter : IDriver
         return element;
     }
 
-
     private void ScrollIntoView(IComponent element)
     {
         ExecuteScript("arguments[0].scrollIntoView(true);", element.WrappedElement);
     }
-
 
     public IComponent WaitAndFindElementJS(By locator)
     {
@@ -128,6 +122,7 @@ public class DriverAdapter : IDriver
 
         return element;
     }
+
     public IComponent WaitToBeClickable(By locator)
     {
         var nativeWebElement = _webDriverWait.Until(ExpectedConditions.ElementToBeClickable(locator));

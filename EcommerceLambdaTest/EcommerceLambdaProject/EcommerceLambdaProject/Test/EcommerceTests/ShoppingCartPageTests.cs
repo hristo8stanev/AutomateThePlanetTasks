@@ -1,17 +1,15 @@
-﻿using EcommerceLambdaProject.Pages.ProductPage;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
-namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class ShoppingCartPageTests : BaseTest
 {
-    string emailAddress = "alabala@gmail.com";
-    string password = "tester";
-    string updateQuantity = "5";
+    private string emailAddress = "alabala@gmail.com";
+    private string password = "tester";
+    private string updateQuantity = "5";
 
     //AUTHENTICATED USER
     [Test]
     public void AddProductToTheShopping_When_AuthenticatedUserTest()
     {
-
         var expectedProduct1 = new ProductDetails
         {
             Name = "Sony VAIO",
@@ -43,7 +41,7 @@ public class ShoppingCartPageTests : BaseTest
         };
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
@@ -52,23 +50,21 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct3.Quantity);
 
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _driver.GoToUrl(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, 46);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct2, 32);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct3, 31);
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct2, 32);
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct3, 31);
-
-        _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct3, 1);
-        _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct2, 1);
-        _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct1, 1);
-       
+        _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct3, 1);
+        _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct2, 1);
+        _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct1, 1);
     }
 
-   [Test]
-   public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUserTest()
-   {
+    [Test]
+    public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUserTest()
+    {
         var expectedProduct1 = new ProductDetails
         {
             Name = "Nikon D300",
@@ -80,20 +76,20 @@ public class ShoppingCartPageTests : BaseTest
         };
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
-       _driver.GoToUrl(Url.LOGIN_PAGE);
-       _webSite.LoginPage.LoginUser(loginUser);
-       _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-       _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-       _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
+        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 31);
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, 31);
 
         _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
 
-       _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(updateQuantity);
     }
-  
+
     [Test]
     public void RemoveProductFromTheShoppingCart_When_AuthenticatedUserTest()
     {
@@ -108,23 +104,21 @@ public class ShoppingCartPageTests : BaseTest
         };
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.ShoppingCartPage.RemoveProductFromTheCart();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductRemoveFromTheCart(expectedProduct1.Name);
-  
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductRemovedFromTheCart(expectedProduct1.Name);
     }
- 
+
     //NON-AUTHENTICATED USER
     [Test]
     public void AddProductToTheShopping_When_NonAuthenticatedUserTest()
     {
-
         var expectedProduct1 = new ProductDetails
         {
             Name = "Sony VAIO",
@@ -135,17 +129,17 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "3",
         };
 
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
- 
-        _webSite.ShoppingCartPage.AssertProductNameIsCorrect(expectedProduct1, 46);
-        _webSite.ShoppingCartPage.AssertProductInformationIsCorrect(expectedProduct1, 1);
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, 46);
+        _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct1, 1);
     }
-  
+
     [Test]
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserTest()
     {
@@ -159,17 +153,17 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "4",
         };
 
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
         _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
         _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(updateQuantity);
     }
- 
+
     [Test]
     public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserTest()
     {
@@ -183,17 +177,16 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "3",
         };
 
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
         _webSite.ShoppingCartPage.RemoveProductFromTheCart();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Url.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductRemoveFromTheCart(expectedProduct1.Name);
- 
+        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductRemovedFromTheCart(expectedProduct1.Name);
     }
 }

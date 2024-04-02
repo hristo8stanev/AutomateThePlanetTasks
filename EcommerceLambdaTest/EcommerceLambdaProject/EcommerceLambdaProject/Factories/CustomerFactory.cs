@@ -1,16 +1,7 @@
-﻿using Bogus;
-using EcommerceLambdaProject.Pages.CheckoutPage;
-using EcommerceLambdaProject.Pages.LoginPage;
-using EcommerceLambdaProject.Pages.MyAccountPage;
-using EcommerceLambdaProject.Pages.ProductPage;
-using EcommerceLambdaProject.Pages.RegisterPage;
+﻿namespace EcommerceLambdaProject.Factories;
 
-
-namespace EcommerceLambdaProject.Factories;
 public static class CustomerFactory
 {
-
-
     public static PersonalInformation RegisterUser(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
@@ -20,10 +11,10 @@ public static class CustomerFactory
             .RuleFor(c => c.Email, (f, c) => email ?? f.Internet.Email(c.FirstName, c.LastName))
             .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
             .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
-            .RuleFor(c => c.Telephone, f =>  "0728237123");
-
+            .RuleFor(c => c.Telephone, f => "0728237123");
         return faker.Generate();
     }
+
     public static PersonalInformation RegisterUserWithoutName(string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
@@ -32,9 +23,9 @@ public static class CustomerFactory
             .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
             .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
             .RuleFor(c => c.Telephone, f => "0728237123");
-
         return faker.Generate();
     }
+
     public static PersonalInformation RegisterUserWithoutEmailAddress(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
@@ -43,9 +34,9 @@ public static class CustomerFactory
             .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
             .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
             .RuleFor(c => c.Telephone, f => "0728237123");
-
         return faker.Generate();
     }
+
     public static PersonalInformation RegisterUserWithoutPassword(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
@@ -56,14 +47,12 @@ public static class CustomerFactory
              .RuleFor(c => c.Password, f => "")
              .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
              .RuleFor(c => c.Telephone, f => "0728237123");
-
         return faker.Generate();
     }
 
     public static BillingInformation BillingAddress(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string City = null,
         string PostCode = null, string Country = null, string Region = null)
     {
-
         var faker = new Faker<BillingInformation>()
             .RuleFor(c => c.FirstName, f => firstName ?? f.Name.FirstName())
             .RuleFor(c => c.LastName, f => lastName ?? f.Name.LastName())
@@ -74,21 +63,17 @@ public static class CustomerFactory
             .RuleFor(c => c.PostCode, f => "90004")
             .RuleFor(c => c.Country, f => "United State")
             .RuleFor(c => c.Region, f => "Alabama");
-
         return faker.Generate();
-        
     }
-
 
     public static LoginInformation LoginUser(string email, string password)
     {
         var loginDetails = new LoginInformation();
         loginDetails.EmailAddress = email;
         loginDetails.PasswordField = password;
-
         return loginDetails;
     }
-     
+
     public static ProductDetails Product(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string quantity = null)
     {
         var productDetails = new ProductDetails();
@@ -99,20 +84,17 @@ public static class CustomerFactory
         productDetails.UnitPrice = price;
         productDetails.Model = model;
         productDetails.Quantity = quantity;
-
         return productDetails;
     }
 
     public static PurchaseGiftCertificate GiftCertificate(string recipientName = null, string recipientEmail = null, string name = null, string email = null, string amount = null)
     {
-
         var faker = new Faker<PurchaseGiftCertificate>()
            .RuleFor(c => c.RecipientName, f => recipientName ?? f.Name.FirstName())
            .RuleFor(c => c.RecipientEmail, f => recipientEmail ?? f.Internet.Email())
            .RuleFor(c => c.YourName, f => name ?? f.Name.FirstName())
            .RuleFor(c => c.YourEmail, f => email ?? f.Internet.Email())
            .RuleFor(c => c.Amount, f => "2");
-
         return faker.Generate();
     }
 }

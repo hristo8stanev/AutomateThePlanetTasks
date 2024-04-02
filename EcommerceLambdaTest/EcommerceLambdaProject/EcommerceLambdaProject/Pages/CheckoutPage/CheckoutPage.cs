@@ -1,11 +1,12 @@
-﻿using EcommerceLambdaProject.Pages.RegisterPage;
+﻿namespace EcommerceLambdaProject.Pages;
 
-namespace EcommerceLambdaProject.Pages.CheckoutPage;
-public partial class CheckoutPages : WebPage
+public partial class CheckoutPage : WebPage
 {
-    public CheckoutPages(IDriver driver) : base(driver)
+    public CheckoutPage(IDriver driver)
+        : base(driver)
     {
     }
+
     public void BillingDetails(BillingInformation billingInformation)
     {
         ApplyCoupon.Hover();
@@ -16,17 +17,11 @@ public partial class CheckoutPages : WebPage
         AddressField2.TypeText(billingInformation.Address2);
         CityField.TypeText(billingInformation.City);
         PostCodeField.TypeText(billingInformation.PostCode);
-
-        
         CountryField.Click();
         SelectCountry(billingInformation.Country).Click();
-
         Driver.WaitForAjax();
-
-       
         Region.Click();
         SelectRegion(billingInformation.Region).Click();
-
     }
 
     public void BillingDetailsWithoutName(BillingInformation billingInformation)
@@ -42,9 +37,7 @@ public partial class CheckoutPages : WebPage
         Driver.WaitForAjax();
         Region.Click();
         SelectRegion(billingInformation.Region).Click();
-
     }
-
 
     public void CreateNewUserPayment(PersonalInformation user)
     {
@@ -65,24 +58,26 @@ public partial class CheckoutPages : WebPage
         TelephonePaymentField.TypeText(user.Telephone);
     }
 
-    public  void SelectAccountType(DifferentAccountType accountType)
+    public void SelectAccountType(DifferentAccountType accountType)
     {
         switch (accountType)
         {
             case DifferentAccountType.Login:
                 LoginAccType.Click();
                 break;
+
             case DifferentAccountType.Register:
                 RegisterAccType.Click();
                 break;
+
             case DifferentAccountType.Guest:
                 GuestAccType.Click();
                 break;
+
             default:
                 throw new ArgumentOutOfRangeException(nameof(accountType), accountType, "Unsupported account type");
         }
     }
-
 
     public void Continue()
     {
@@ -94,7 +89,6 @@ public partial class CheckoutPages : WebPage
         EmailField.TypeText(email);
         PasswordField.TypeText(password);
         LoginButton.Click();
-
     }
 
     public void ProceedToCheckout()
@@ -107,7 +101,6 @@ public partial class CheckoutPages : WebPage
 
     public void ConfirmOrder()
     {
-      
         ConfirmOrderButton.Click();
     }
 }

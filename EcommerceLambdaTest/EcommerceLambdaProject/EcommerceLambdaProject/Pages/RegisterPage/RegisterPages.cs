@@ -1,11 +1,12 @@
-﻿namespace EcommerceLambdaProject.Pages.RegisterPage;
-public partial class RegisterPages : WebPage
+﻿namespace EcommerceLambdaProject.Pages;
+
+public partial class RegisterPage : WebPage
 {
-    public RegisterPages(IDriver driver) : base(driver)
+    public RegisterPage(IDriver driver) : base(driver)
     {
     }
 
-    public void RegisterUer(PersonalInformation user)
+    public void RegisterUser(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
         LastaNameInput.TypeText(user.LastName);
@@ -16,9 +17,9 @@ public partial class RegisterPages : WebPage
         AgreePrivacy.Click();
         ContinueButton.Click();
     }
-    public void RegisterUerWithoutName(PersonalInformation user)
-    {
 
+    public void RegisterUserWithoutName(PersonalInformation user)
+    {
         LastaNameInput.TypeText(user.LastName);
         EmailAddressNameInput.TypeText(user.Email);
         TelephoneInput.TypeText(user.Telephone);
@@ -28,7 +29,7 @@ public partial class RegisterPages : WebPage
         ContinueButton.Click();
     }
 
-    public void RegisterUerWithoutEmailAddress(PersonalInformation user)
+    public void RegisterUserWithoutEmailAddress(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
         LastaNameInput.TypeText(user.LastName);
@@ -39,8 +40,7 @@ public partial class RegisterPages : WebPage
         ContinueButton.Click();
     }
 
-
-    public void RegisterUerWithoutPassword(PersonalInformation user)
+    public void RegisterUserWithoutPassword(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
         LastaNameInput.TypeText(user.LastName);

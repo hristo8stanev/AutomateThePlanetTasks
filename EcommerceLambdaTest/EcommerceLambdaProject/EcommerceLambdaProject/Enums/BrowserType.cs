@@ -1,4 +1,5 @@
 ﻿namespace EcommerceLambdaProject.Enums;
+
 public enum BrowserType
 {
     CHROME,

@@ -1,10 +1,8 @@
-﻿
-using EcommerceLambdaProject.Pages.ProductPage;
+﻿namespace EcommerceLambdaProject.Pages;
 
-namespace EcommerceLambdaProject.Pages.SearchPage;
-public partial class SearchPages : WebPage
+public partial class SearchPage : WebPage
 {
-    public SearchPages(IDriver driver) : base(driver)
+    public SearchPage(IDriver driver) : base(driver)
     {
     }
 

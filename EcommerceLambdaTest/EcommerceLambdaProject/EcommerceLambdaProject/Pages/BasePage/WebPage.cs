@@ -1,7 +1,8 @@
 ﻿namespace EcommerceLambdaProject.Pages.BasePage;
+
 public abstract class WebPage
 {
-    private string ErrorMessageUrl => "Expected page was not navigated.";
+    private const string ErrorMessageUrl = "Expected page was not navigated.";
     protected readonly IDriver Driver;
 
     public WebPage(IDriver driver)
@@ -14,6 +15,5 @@ public abstract class WebPage
         string actualUrl = Driver.Url;
         CollectionAssert.AreEqual(expectedUrl, actualUrl, ErrorMessageUrl);
         Driver.WaitForAjax();
-
     }
 }

@@ -1,11 +1,12 @@
-﻿namespace EcommerceLambdaProject.Pages.LoginPage;
-public partial class LoginPages : WebPage
+﻿namespace EcommerceLambdaProject.Pages;
+
+public partial class LoginPage : WebPage
 {
-    public LoginPages(IDriver driver) : base(driver)
+    public LoginPage(IDriver driver) : base(driver)
     {
     }
 
-   public void LoginUser(LoginInformation login)
+    public void LoginUser(LoginInformation login)
     {
         EmailAddressLogin.TypeText(login.EmailAddress);
         PasswordLogin.TypeText(login.PasswordField);
@@ -16,6 +17,7 @@ public partial class LoginPages : WebPage
     {
         LogoutButton.Click();
     }
+
     public void GoToForgottenPassword()
     {
         ForgotPasswordButton.Click();

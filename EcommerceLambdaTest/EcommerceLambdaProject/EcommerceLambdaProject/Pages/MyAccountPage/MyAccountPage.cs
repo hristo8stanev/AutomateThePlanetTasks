@@ -1,11 +1,8 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-using EcommerceLambdaProject.Pages.CheckoutPage;
-using EcommerceLambdaProject.Pages.RegisterPage;
+﻿namespace EcommerceLambdaProject.Pages;
 
-namespace EcommerceLambdaProject.Pages.MyAccountPage;
-public partial class MyAccountPages : WebPage
+public partial class MyAccountPage : WebPage
 {
-    public MyAccountPages(IDriver driver) : base(driver)
+    public MyAccountPage(IDriver driver) : base(driver)
     {
     }
 
@@ -16,14 +13,17 @@ public partial class MyAccountPages : WebPage
             case GiftCertificateType.General:
                 GeneralCertificate.Click();
                 break;
+
             case GiftCertificateType.Birthday:
                 BirthdayCertificate.Click();
                 break;
+
             case GiftCertificateType.Christmas:
                 ChristmasCertificate.Click();
                 break;
+
             default:
-                throw new ArgumentOutOfRangeException(nameof(giftCertificateType), giftCertificateType, "Unsupported gitft certificate type");
+                throw new ArgumentOutOfRangeException(nameof(giftCertificateType), giftCertificateType, "Unsupported gift certificate type");
         }
     }
 
@@ -37,6 +37,7 @@ public partial class MyAccountPages : WebPage
         AddressBookSection.Click();
         NewAddressButton.Click();
     }
+
     public void AddNewAddress(BillingInformation billingInformation)
     {
         FirstNameInput.TypeText(billingInformation.FirstName);
@@ -56,12 +57,8 @@ public partial class MyAccountPages : WebPage
         ContinueButton.Click();
     }
 
-
-
-
     public void ChangeMyAccountInfrmation(PersonalInformation user)
     {
-      
         FirstNameInput.TypeText(user.FirstName);
         LastaNameInput.TypeText(user.LastName);
         EmailAddressNameInput.TypeText("alabala@gmail.com");
@@ -75,7 +72,6 @@ public partial class MyAccountPages : WebPage
         PasswordField.TypeText("tester");
         ConfirmPasswordField.TypeText("tester");
         ContinueButton.Click();
-
     }
 
     public void PuchaseGiftCertificate(PurchaseGiftCertificate gift)
@@ -90,13 +86,4 @@ public partial class MyAccountPages : WebPage
         AgreeGiftCertificate.Click();
         ContinueButton.Click();
     }
-
-
-    public void TakeTheNames()
-    {
-
-
-
-    }
-
 }

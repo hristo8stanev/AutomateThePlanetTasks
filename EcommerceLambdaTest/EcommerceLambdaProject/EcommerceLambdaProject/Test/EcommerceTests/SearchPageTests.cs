@@ -1,6 +1,5 @@
-﻿using EcommerceLambdaProject.Pages.ProductPage;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
-namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class SearchPageTests : BaseTest
 {
     private string minPrice => "10";
@@ -19,7 +18,6 @@ public class SearchPageTests : BaseTest
             Quantity = "4",
             Availability = "In Stock",
             Weight = "0.00kg"
-
         };
 
         var expectedProduct2 = new ProductDetails
@@ -33,15 +31,14 @@ public class SearchPageTests : BaseTest
             Weight = "5.00kg"
         };
 
-        _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
-        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(expectedProduct1);
         _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct1, 31);
 
         _webSite.SearchPage.SearchProductByName(expectedProduct2);
         _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct2, 32);
-
     }
 
     [Test]
@@ -57,11 +54,10 @@ public class SearchPageTests : BaseTest
             Quantity = "4",
             Availability = "In Stock",
             Weight = "0.00kg"
-
         };
 
-        _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
-        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(expectedProduct1);
         _webSite.SearchPage.AssertErrorMessageWhenNonExistingProductIsSearched();
@@ -70,7 +66,6 @@ public class SearchPageTests : BaseTest
     [Test]
     public void FilterProductByPrice_When_NonAuthenticatedUserTryToFilterTheProductsByPrice()
     {
-
         var expectedProduct1 = new ProductDetails
         {
             Name = "Nikon",
@@ -83,12 +78,11 @@ public class SearchPageTests : BaseTest
             Weight = "0.00kg"
         };
 
-        _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
-        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.EnterRangePrices(minPrice, maxPrice);
 
-        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(minPrice, maxPrice));
-
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(minPrice, maxPrice));
     }
 
     [Test]
@@ -105,8 +99,8 @@ public class SearchPageTests : BaseTest
             Weight = "5.00kg"
         };
 
-        _driver.GoToUrl(Url.SEARCH_SHOP_PRODUCTS_PAGE);
-        _webSite.SearchPage.AssertUrlPage(Url.SEARCH_SHOP_PRODUCTS_PAGE);
+        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(expectedProduct2);
 

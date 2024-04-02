@@ -1,38 +1,28 @@
-﻿using EcommerceLambdaProject.Pages.CheckoutPage;
-using EcommerceLambdaProject.Pages.ProductPage;
-using EcommerceLambdaProject.Pages.HomePage;
-using EcommerceLambdaProject.Pages.LoginPage;
-using EcommerceLambdaProject.Pages.RegisterPage;
-using EcommerceLambdaProject.Pages.SearchPage;
-using EcommerceLambdaProject.Pages.ShoppingCartPage;
-using EcommerceLambdaProject.Pages.MyAccountPage;
+﻿namespace EcommerceLambdaProject.Pages.BasePage;
 
-namespace EcommerceLambdaProject.Pages.BasePage;
 public class WebSite
 {
     private readonly IDriver _driver;
-    
+
     public WebSite(IDriver driver)
     {
         _driver = driver;
-        HomePage = new HomePages(_driver);
-        CheckoutPage = new CheckoutPages(_driver);
-        LoginPage = new LoginPages(_driver);
-        ProductPage = new ProductPages(_driver);
-        RegisterPage = new RegisterPages(_driver);
-        SearchPage = new SearchPages(_driver);
-        ShoppingCartPage = new ShoppingCartPages(_driver);
-        MyAccountPage = new MyAccountPages(_driver);
-
+        HomePage = new HomePage(_driver);
+        CheckoutPage = new CheckoutPage(_driver);
+        LoginPage = new LoginPage(_driver);
+        ProductPage = new ProductPage(_driver);
+        RegisterPage = new RegisterPage(_driver);
+        SearchPage = new SearchPage(_driver);
+        ShoppingCartPage = new ShoppingCartPage(_driver);
+        MyAccountPage = new MyAccountPage(_driver);
     }
 
-    public HomePages HomePage { get; set; }
-    public CheckoutPages CheckoutPage { get; private set; }
-    public LoginPages LoginPage { get; private set; }
-    public ProductPages ProductPage { get; set; }
-    public RegisterPages RegisterPage { get; set; }
-    public SearchPages SearchPage { get; set; }
-    public ShoppingCartPages ShoppingCartPage { get; set; }
-    public MyAccountPages MyAccountPage { get; set; }
-    
+    public HomePage HomePage { get; set; }
+    public CheckoutPage CheckoutPage { get; private set; }
+    public LoginPage LoginPage { get; private set; }
+    public ProductPage ProductPage { get; set; }
+    public RegisterPage RegisterPage { get; set; }
+    public SearchPage SearchPage { get; set; }
+    public ShoppingCartPage ShoppingCartPage { get; set; }
+    public MyAccountPage MyAccountPage { get; set; }
 }

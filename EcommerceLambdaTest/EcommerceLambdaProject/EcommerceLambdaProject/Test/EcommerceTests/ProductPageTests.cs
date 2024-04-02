@@ -1,17 +1,14 @@
-﻿using EcommerceLambdaProject.Pages.ProductPage;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
-namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class ProductPageTests : BaseTest
 {
-   
-    string emailAddress = "alabala@gmail.com";
-    string password = "tester";
+    private string emailAddress = "alabala@gmail.com";
+    private string password = "tester";
 
     //AUTHENTICATED USER
     [Test]
     public void CompareProducts_WhenOpenProductFromSearchResults_AuthenticatedUser()
     {
-
         var expectedProduct1 = new ProductDetails
         {
             Name = "Nikon D300",
@@ -22,7 +19,6 @@ public class ProductPageTests : BaseTest
             Quantity = "4",
             Availability = "In Stock",
             Weight = "0.00kg"
-
         };
 
         var expectedProduct2 = new ProductDetails
@@ -48,7 +44,7 @@ public class ProductPageTests : BaseTest
         };
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
 
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.ClickOnCompareButton();
@@ -56,17 +52,16 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.ClickOnCompareButton();
         _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
         _webSite.ProductPage.ClickOnCompareButton();
-        _driver.GoToUrl(Url.COMPARISON_PAGE);
+        _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
 
-        _webSite.ProductPage.AssertUrlPage(Url.COMPARISON_PAGE);
+        _webSite.ProductPage.AssertUrlPage(Urls.Urls.COMPARISON_PAGE);
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct3, 46);
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct2, 32);
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct1, 31);
-        
     }
 
     [Test]
-    public void AddProductToTheWishlist_When_AuthenticatedUser()
+    public void AddProductToTheWishList_When_AuthenticatedUser()
     {
         var expectedProduct1 = new ProductDetails
         {
@@ -103,7 +98,7 @@ public class ProductPageTests : BaseTest
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
 
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.AddProductToWishlist();
@@ -113,17 +108,15 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.AddProductToWishlist();
         _webSite.ProductPage.GoToWishlist();
 
-        _webSite.ProductPage.AssertUrlPage(Url.WISHLIST_PAGE);
+        _webSite.ProductPage.AssertUrlPage(Urls.Urls.WISHLIST_PAGE);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct1, 28);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct2, 32);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct3, 46);
-
     }
 
     [Test]
     public void SelectDifferentSizeOfProduct_When_AuthenticatedUserSelectSize()
     {
-
         var expectedProduct = new ProductDetails
         {
             Name = "Apple Cinema 30",
@@ -135,27 +128,24 @@ public class ProductPageTests : BaseTest
             Availability = "In Stock",
             Weight = "0.00kg",
             Size = "Size: Medium"
-
         };
 
         var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
 
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct.Name);
         _webSite.ProductPage.SelectProductSize();
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _webSite.ProductPage.AssertUrlPage(Url.CART_PAGE);
+        _webSite.ProductPage.AssertUrlPage(Urls.Urls.CART_PAGE);
         _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct, 42);
-
     }
 
     //NON-AUTHENTICATED USER
     [Test]
     public void CompareProducts_When_OpenProductFromSearchResults_NonAuthenticatedUser()
     {
-
         var expectedProduct1 = new ProductDetails
         {
             Name = "Nikon D300",
@@ -166,7 +156,6 @@ public class ProductPageTests : BaseTest
             Quantity = "4",
             Availability = "In Stock",
             Weight = "0.00kg"
-
         };
 
         var expectedProduct2 = new ProductDetails
@@ -190,27 +179,25 @@ public class ProductPageTests : BaseTest
             Availability = "In Stock",
             Weight = "0.00kg"
         };
-        
-        _driver.GoToUrl(Url.COMPARISON_PAGE);
+
+        _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
         _webSite.ProductPage.ClickOnCompareButton();
         _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
         _webSite.ProductPage.ClickOnCompareButton();
         _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
         _webSite.ProductPage.ClickOnCompareButton();
-        _driver.GoToUrl(Url.COMPARISON_PAGE);
+        _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
 
-        _webSite.ProductPage.AssertUrlPage(Url.COMPARISON_PAGE);
+        _webSite.ProductPage.AssertUrlPage(Urls.Urls.COMPARISON_PAGE);
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct3, 46);
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct2, 32);
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct1, 31);
-
     }
 
     [Test]
     public void SelectDifferentSizeOfProduct_When_NonAuthenticatedUserSelectSize()
     {
-
         var expectedProduct = new ProductDetails
         {
             Name = "Apple Cinema 30",
@@ -222,16 +209,14 @@ public class ProductPageTests : BaseTest
             Availability = "In Stock",
             Weight = "0.00kg",
             Size = "Size: Medium"
-
         };
 
-        _driver.GoToUrl(Url.COMPARISON_PAGE);
+        _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct.Name);
         _webSite.ProductPage.SelectProductSize();
-        _driver.GoToUrl(Url.CART_PAGE);
+        _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
-        _webSite.ProductPage.AssertUrlPage(Url.CART_PAGE);
-        _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct,42);
-
+        _webSite.ProductPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct, 42);
     }
 }

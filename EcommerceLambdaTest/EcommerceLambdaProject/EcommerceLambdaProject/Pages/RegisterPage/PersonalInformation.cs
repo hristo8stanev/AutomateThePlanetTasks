@@ -1,4 +1,5 @@
-﻿namespace EcommerceLambdaProject.Pages.RegisterPage;
+﻿namespace EcommerceLambdaProject.Pages;
+
 public class PersonalInformation
 {
     public string FirstName { get; set; }

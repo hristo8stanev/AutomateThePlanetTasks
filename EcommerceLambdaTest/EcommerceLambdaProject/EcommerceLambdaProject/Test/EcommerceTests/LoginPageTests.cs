@@ -1,19 +1,20 @@
 ﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
+
 public class LoginPageTests : BaseTest
 {
-    string validEmail = "alabala@gmail.com";
-    string invalidEmail = "testtest@gmail.com";
-    string password = "tester";
+    private string validEmail = "alabala@gmail.com";
+    private string invalidEmail = "testtest@gmail.com";
+    private string password = "tester";
 
     [Test]
     public void LoginIntoTheSystem_When_ValidCredentialsAreProvided()
     {
         var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
 
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(Url.ACCOUNT_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
         _webSite.LoginPage.AssertLogoutButtonIsDisplayed();
     }
 
@@ -22,11 +23,11 @@ public class LoginPageTests : BaseTest
     {
         var loginUser = Factories.CustomerFactory.LoginUser(invalidEmail, password);
 
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(Url.LOGIN_PAGE);
-        _webSite.LoginPage.AssertErrorMessageWithWrongCreedntials();
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.AssertErrorMessageWithWrongCredentials();
     }
 
     [Test]
@@ -34,40 +35,39 @@ public class LoginPageTests : BaseTest
     {
         var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
 
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(Url.ACCOUNT_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
 
         _webSite.LoginPage.LogoutUser();
-        _webSite.LoginPage.AssertUrlPage(Url.LOGOUT_USER_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.LOGOUT_USER_PAGE);
         _webSite.LoginPage.AssertAccountSuccessfullyLogout();
     }
 
     [Test]
     public void TryToForgottenPasswordFunctionality_When_ValidEmailProvided()
     {
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.GoToForgottenPassword();
-        _webSite.LoginPage.AssertUrlPage(Url.FORGOTTEN_PASSWORD_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(validEmail);
 
         _webSite.LoginPage.AssertSuccessfullySentEmail();
-        _webSite.LoginPage.AssertUrlPage(Url.LOGIN_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.LOGIN_PAGE);
     }
 
     [Test]
     public void TryToForgottenPasswordFunctionality_When_InvalidEmailProvided()
     {
-        _driver.GoToUrl(Url.LOGIN_PAGE);
+        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.GoToForgottenPassword();
-        _webSite.LoginPage.AssertUrlPage(Url.FORGOTTEN_PASSWORD_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(invalidEmail);
 
         _webSite.LoginPage.AssertWarningMessageInvalidEmail();
-        _webSite.LoginPage.AssertUrlPage(Url.FORGOTTEN_PASSWORD_PAGE);
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
     }
-
 }

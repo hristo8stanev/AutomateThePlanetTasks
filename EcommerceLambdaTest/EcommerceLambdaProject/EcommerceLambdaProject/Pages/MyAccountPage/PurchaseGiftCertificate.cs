@@ -1,4 +1,5 @@
-﻿namespace EcommerceLambdaProject.Pages.MyAccountPage;
+﻿namespace EcommerceLambdaProject.Pages;
+
 public class PurchaseGiftCertificate
 {
     public string RecipientName { get; set; }

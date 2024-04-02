@@ -1,14 +1,13 @@
-﻿
-namespace EcommerceLambdaProject;
+﻿namespace EcommerceLambdaProject;
 
 public class ComponentAdapter : IComponent
 {
-    private int WAIT_FOR_ELEMENT => 30;
+    private const int WAIT_FOR_ELEMENT = 30;
     private readonly IWebDriver _webDriver;
     private readonly Actions _actions;
     private readonly IWebElement _webElement;
     private readonly By _by;
-    protected WebDriverWait _webDriverWait { get; set; }
+
     public ComponentAdapter(IWebDriver webDriver, IWebElement webElement, By by)
     {
         _webDriver = webDriver;
@@ -32,7 +31,7 @@ public class ComponentAdapter : IComponent
     {
         if (waitToBeClickable)
         {
-           WaitToBeClickable(_by);
+            WaitToBeClickable(_by);
         }
 
         _webElement?.Click();
@@ -53,7 +52,6 @@ public class ComponentAdapter : IComponent
     {
         _actions.MoveToElement(_webElement).Perform();
     }
-
 
     public IWebElement MoveToElement(IWebElement element)
     {

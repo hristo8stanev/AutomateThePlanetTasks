@@ -1,7 +1,7 @@
-﻿namespace EcommerceLambdaProject.Pages.MyAccountPage;
-public partial class MyAccountPages
-{
+﻿namespace EcommerceLambdaProject.Pages;
 
+public partial class MyAccountPage
+{
     public IComponent EditMyAccountButton => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/edit')]")).Last();
     public IComponent ChangeMyPasswordButton => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/password')]")).Last();
     public IComponent AddressBookSection => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/address')]")).Last();
@@ -14,9 +14,13 @@ public partial class MyAccountPages
     public IComponent CountryField => Driver.FindComponent(By.Id("input-country"));
     public IComponent firstName => Driver.FindComponent(By.XPath("//*[@id='input-payment-firstname']"));
     public IComponent lastName => Driver.FindComponent(By.XPath("//*[@id='input-payment-lastname']"));
+
     public IComponent SelectCountry(string country) => CountryField.FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
+
     public IComponent Region => Driver.FindComponent(By.Id("input-zone"));
+
     public IComponent SelectRegion(string region) => Region.FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
+
     public IComponent PasswordField => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordField => Driver.FindComponent(By.Id("input-confirm"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//*[@value='Continue']"));
@@ -36,7 +40,8 @@ public partial class MyAccountPages
     public IComponent AmountCertificate => Driver.WaitAndFindElementJS(By.Id("input-amount"));
     public IComponent MessageCertificate => Driver.WaitAndFindElementJS(By.Id("input-message"));
     public IComponent AgreeGiftCertificate => Driver.WaitAndFindElementJS(By.Name("agree"));
-    public IComponent DateTimeElement(string dateTime) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{dateTime}')]"));
-    public IComponent CustomerElement(string name) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{name}')]"));
 
+    public IComponent DateTimeElement(string dateTime) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{dateTime}')]"));
+
+    public IComponent CustomerElement(string name) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{name}')]"));
 }

@@ -1,7 +1,5 @@
-﻿
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
-namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class HomePageTests : BaseTest
 {
-
 }

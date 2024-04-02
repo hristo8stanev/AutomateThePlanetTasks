@@ -1,9 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿namespace EcommerceLambdaProject.Pages;
 
-namespace EcommerceLambdaProject.Pages.ShoppingCartPage;
-public partial class ShoppingCartPages : WebPage
+public partial class ShoppingCartPage : WebPage
 {
-    public ShoppingCartPages(IDriver driver) : base(driver)
+    public ShoppingCartPage(IDriver driver) : base(driver)
     {
     }
 
@@ -12,7 +11,6 @@ public partial class ShoppingCartPages : WebPage
         UpdateQuantityTextField.TypeText(product);
         UpdateQuantityButton.Click();
     }
-
 
     public void RemoveProductFromTheCart()
     {

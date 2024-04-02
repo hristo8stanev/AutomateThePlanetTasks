@@ -1,7 +1,7 @@
-﻿namespace EcommerceLambdaProject.Pages.ProductPage;
+﻿namespace EcommerceLambdaProject.Pages;
+
 public class ProductDetails
 {
-
     public string Name { get; set; }
     public int Id { get; set; }
     public string CheckoutPrice { get; set; }
@@ -12,5 +12,5 @@ public class ProductDetails
     public string Weight { get; set; }
     public string Quantity { get; set; }
     public string Size { get; set; }
-    public int Total {  get; set; }
+    public int Total { get; set; }
 }
