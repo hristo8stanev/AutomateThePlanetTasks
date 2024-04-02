@@ -115,8 +115,8 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
         _webSite.CheckoutPage.BillingDetails(billingDetails);
 
-      // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 46);
-      // This assertion failed because on this step have bug.On checkout/checkout page and checkout/confirm page the price is different
+        // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 46);
+        // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
 
         _webSite.CheckoutPage.ProceedToCheckout();
 
@@ -173,7 +173,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.BillingDetails(billingDetails);
 
         // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 32);
-        // This assertion failed because on this step have bug.On checkout/checkout page and checkout/confirm page the price is different
+        // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
 
         _webSite.CheckoutPage.ProceedToCheckout();
 
