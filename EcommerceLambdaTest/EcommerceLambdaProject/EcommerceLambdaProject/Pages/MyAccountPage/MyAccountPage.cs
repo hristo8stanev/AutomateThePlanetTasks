@@ -27,7 +27,7 @@ public partial class MyAccountPage : WebPage
         }
     }
 
-    public void GoToAddressBookSection()
+    public void ProceedToAddressBookSection()
     {
         AddressBookSection.Click();
         NewAddressButton.Click();

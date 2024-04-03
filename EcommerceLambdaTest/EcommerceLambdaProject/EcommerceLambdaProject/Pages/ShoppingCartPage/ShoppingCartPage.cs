@@ -14,6 +14,7 @@ public partial class ShoppingCartPage : WebPage
 
     public void RemoveProductFromTheCart()
     {
+        Driver.WaitForAjax();
         RemoveButton.Click();
     }
 }

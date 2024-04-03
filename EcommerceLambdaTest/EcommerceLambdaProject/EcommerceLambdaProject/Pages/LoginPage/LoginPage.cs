@@ -2,7 +2,8 @@
 
 public partial class LoginPage : WebPage
 {
-    public LoginPage(IDriver driver) : base(driver)
+    public LoginPage(IDriver driver)
+        : base(driver)
     {
     }
 
@@ -18,7 +19,7 @@ public partial class LoginPage : WebPage
         LogoutButton.Click();
     }
 
-    public void GoToForgottenPassword()
+    public void ProceedToForgottenPasswordSection()
     {
         ForgotPasswordButton.Click();
     }

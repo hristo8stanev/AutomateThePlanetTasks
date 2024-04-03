@@ -31,5 +31,5 @@ public static class Constants
     public const string ErrorMessageEmptyEmailAddress = "E-Mail Address does not appear to be valid!";
     public const string ErrorMessageEmptyPassword = "Password must be between 4 and 20 characters!";
     public const string ExpectedMessageNonExistingProduct = "There is no product that matches the search criteria.";
-
+    public const string ErrorMessageUrl = "Expected page was not navigated.";
 }

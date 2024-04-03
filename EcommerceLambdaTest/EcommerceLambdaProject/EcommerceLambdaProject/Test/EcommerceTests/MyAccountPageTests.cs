@@ -2,8 +2,6 @@
 
 public class MyAccountPageTests : BaseTest
 {
-  
-
     [Test]
     public void EditMyProfile_When_AuthenticatedUserProvided()
     {
@@ -48,9 +46,10 @@ public class MyAccountPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var newAddress = CustomerFactory.BillingAddress();
+
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.MyAccountPage.GoToAddressBookSection();
+        _webSite.MyAccountPage.ProceedToAddressBookSection();
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.NEW_ADDRESS_PAGE);
 
@@ -63,22 +62,14 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void CheckMyOrderHistory_When_AuthenticatedUserPurchaseProduct()
     {
-        var expectedProduct1 = new ProductDetails
-        {
-            Name = "HTC Touch HD",
-            Id = 28,
-            UnitPrice = "$120.00",
-            Model = "Product 1",
-            Brand = "HTC",
-            Quantity = "3",
-        };
-
         var billingDetails = CustomerFactory.BillingAddress();
         var personalInformation = CustomerFactory.RegisterUser();
+        var firstProduct = CustomerFactory.Product();
+        _webSite.ProductPage.SonyProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
+        _webSite.HomePage.SearchProductByName(firstProduct.Name);
+        _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);

@@ -15,41 +15,6 @@ public static class CustomerFactory
         return faker.Generate();
     }
 
-    public static PersonalInformation RegisterUserWithoutName(string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
-    {
-        var faker = new Faker<PersonalInformation>()
-            .RuleFor(c => c.LastName, f => lastName ?? f.Name.LastName())
-            .RuleFor(c => c.Email, (f, c) => email ?? f.Internet.Email(c.FirstName, c.LastName))
-            .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
-            .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
-            .RuleFor(c => c.Telephone, f => "0728237123");
-        return faker.Generate();
-    }
-
-    public static PersonalInformation RegisterUserWithoutEmailAddress(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
-    {
-        var faker = new Faker<PersonalInformation>()
-              .RuleFor(c => c.FirstName, f => firstName ?? f.Name.FirstName())
-            .RuleFor(c => c.LastName, f => lastName ?? f.Name.LastName())
-            .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
-            .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
-            .RuleFor(c => c.Telephone, f => "0728237123");
-        return faker.Generate();
-    }
-
-    public static PersonalInformation RegisterUserWithoutPassword(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
-    {
-        var faker = new Faker<PersonalInformation>()
-
-             .RuleFor(c => c.FirstName, f => firstName ?? f.Name.FirstName())
-             .RuleFor(c => c.LastName, f => lastName ?? f.Name.LastName())
-             .RuleFor(c => c.Email, (f, c) => email ?? f.Internet.Email(c.FirstName, c.LastName))
-             .RuleFor(c => c.Password, f => "")
-             .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
-             .RuleFor(c => c.Telephone, f => "0728237123");
-        return faker.Generate();
-    }
-
     public static BillingInformation BillingAddress(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string City = null,
         string PostCode = null, string Country = null, string Region = null)
     {
@@ -74,15 +39,18 @@ public static class CustomerFactory
         return loginDetails;
     }
 
-    public static ProductDetails Product(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string quantity = null)
+    public static ProductDetails Product(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
     {
         var productDetails = new ProductDetails();
+
         productDetails.Name = name;
         productDetails.Brand = brand;
         productDetails.Weight = weight;
-        productDetails.Id = id;
+        productDetails.Id = 31;
+        productDetails.Availability = Availability;
         productDetails.UnitPrice = price;
         productDetails.Model = model;
+        productDetails.Size = size;
         productDetails.Quantity = quantity;
         return productDetails;
     }

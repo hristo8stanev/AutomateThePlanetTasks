@@ -79,11 +79,7 @@ public partial class CheckoutPage : WebPage
         }
     }
 
-    public void Continue()
-    {
-        ContinueButton.Click();
-    }
-
+   
     public void LoginUser(string email, string password)
     {
         EmailField.TypeText(email);

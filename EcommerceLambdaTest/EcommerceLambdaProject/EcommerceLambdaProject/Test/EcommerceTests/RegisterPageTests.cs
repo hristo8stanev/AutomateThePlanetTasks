@@ -19,8 +19,8 @@ public class RegisterPageTests : BaseTest
     {
         _driver.GoToUrl(Urls.Urls.REGISTER_PAGE);
 
-        var registerUser = CustomerFactory.RegisterUserWithoutName();
-        _webSite.RegisterPage.RegisterUserWithoutName(registerUser);
+        var registerUser = CustomerFactory.RegisterUser(firstName: string.Empty);
+        _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessageFirstName();
@@ -31,8 +31,8 @@ public class RegisterPageTests : BaseTest
     {
         _driver.GoToUrl(Urls.Urls.REGISTER_PAGE);
 
-        var registerUser = CustomerFactory.RegisterUserWithoutEmailAddress();
-        _webSite.RegisterPage.RegisterUserWithoutEmailAddress(registerUser);
+        var registerUser = CustomerFactory.RegisterUser(email: string.Empty);
+        _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessageEmailAddress();
@@ -43,8 +43,8 @@ public class RegisterPageTests : BaseTest
     {
         _driver.GoToUrl(Urls.Urls.REGISTER_PAGE);
 
-        var registerUser = CustomerFactory.RegisterUserWithoutPassword();
-        _webSite.RegisterPage.RegisterUserWithoutPassword(registerUser);
+        var registerUser = CustomerFactory.RegisterUser(password: string.Empty);
+        _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessagePassword();

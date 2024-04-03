@@ -1,4 +1,6 @@
-﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿using EcommerceLambdaProject.Pages.BasePage;
+
+namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class CheckoutPageTests : BaseTest
 {
@@ -6,59 +8,37 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_LoginUserTypeSelectedTest()
     {
-        var expectedProduct1 = new ProductDetails
-        {
-            Name = "HTC Touch HD",
-            Id = 28,
-            UnitPrice = "$120.00",
-            Model = "Product 1",
-            Brand = "HTC",
-            Quantity = "3",
-        };
-
-        var expectedProduct2 = new ProductDetails
-        {
-            Name = "Sony VAIO",
-            Id = 46,
-            UnitPrice = "$1,000.00",
-            Model = "Product 19",
-            Brand = "Sony",
-            Quantity = "2",
-        };
-
-        var expectedProduct3 = new ProductDetails
-        {
-            Name = "iPod Touch",
-            Id = 32,
-            UnitPrice = "$160.00",
-            Model = "Product 5",
-            Brand = "Apple",
-            Quantity = "1",
-        };
         var billingDetails = CustomerFactory.BillingAddress();
+        var firstProduct = CustomerFactory.Product();
+        var secondProduct = CustomerFactory.Product();
+        var thirdProduct = CustomerFactory.Product();
+        _webSite.ProductPage.NikonProduct(firstProduct);
+        _webSite.ProductPage.IpodProduct(secondProduct);
+        _webSite.ProductPage.SonyProduct(thirdProduct);
+
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct2.Quantity);
-        _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct3.Quantity);
+        _webSite.HomePage.SearchProductByName(firstProduct.Name);
+        _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
+        _webSite.HomePage.SearchProductByName(secondProduct.Name);
+        _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
+        _webSite.HomePage.SearchProductByName(thirdProduct.Name);
+        _webSite.ProductPage.AddProductToCart(thirdProduct.Quantity);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Login);
         _webSite.CheckoutPage.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _webSite.CheckoutPage.AssertUrlPage(Urls.Urls.CHECKOUT_PAGE);
-        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct3, expectedProduct3.Id);
-        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct2, expectedProduct2.Id);
-        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, expectedProduct1.Id);
+        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(thirdProduct, thirdProduct.Id);
+        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(secondProduct, secondProduct.Id);
+        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(firstProduct, firstProduct.Id);
 
         _webSite.CheckoutPage.FillBillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct3);
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct2);
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct1);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(thirdProduct);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(secondProduct);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(firstProduct);
 
         _webSite.CheckoutPage.ConfirmOrder();
 
@@ -69,46 +49,31 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_RegisterTypeSelectedTest()
     {
-        var expectedProduct1 = new ProductDetails
-        {
-            Name = "Sony VAIO",
-            Id = 46,
-            UnitPrice = "$1,000.00",
-            Model = "Product 19",
-            Brand = "Sony",
-            Quantity = "2",
-        };
-        var expectedProduct2 = new ProductDetails
-        {
-            Name = "iPod Touch",
-            Id = 32,
-            UnitPrice = "$160.00",
-            Model = "Product 5",
-            Brand = "Apple",
-            Quantity = "1",
-        };
+     
         var billingDetails = CustomerFactory.BillingAddress();
         var personalInformation = CustomerFactory.RegisterUser();
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct2.Quantity);
+        var firstProduct = CustomerFactory.Product();
+        var secondProduct = CustomerFactory.Product();
 
+        _webSite.ProductPage.IpodProduct(firstProduct);
+        _webSite.ProductPage.SonyProduct(secondProduct);
+        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.HomePage.SearchProductByName(firstProduct.Name);
+        _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
+        _webSite.HomePage.SearchProductByName(secondProduct.Name);
+        _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
-
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
       
         // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 46);
         // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
-
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct1);
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct2);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(firstProduct);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(secondProduct);
 
         _webSite.CheckoutPage.ConfirmOrder();
 
@@ -119,33 +84,18 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_GuestTypeSelectedTest()
     {
-        var expectedProduct1 = new ProductDetails
-        {
-            Name = "iPod Touch",
-            Id = 32,
-            CheckoutPrice = "194.00",
-            UnitPrice = "$160.00",
-            Model = "Product 5",
-            Brand = "Apple",
-            Quantity = "1",
-        };
-
-        var expectedProduct2 = new ProductDetails
-        {
-            Name = "Nikon D300",
-            Id = 31,
-            UnitPrice = "$80.00",
-            Model = "Product 4",
-            Brand = "Nikon",
-            Quantity = "4",
-        };
         var billingDetails = CustomerFactory.BillingAddress();
         var personalInformation = CustomerFactory.RegisterUser();
+        var firstProduct = CustomerFactory.Product();
+        var secondProduct = CustomerFactory.Product();
+
+        _webSite.ProductPage.IpodProduct(firstProduct);
+        _webSite.ProductPage.SonyProduct(secondProduct);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
-        _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
-        _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
-        _webSite.ProductPage.AddProductToCart(expectedProduct2.Quantity);
+        _webSite.HomePage.SearchProductByName(firstProduct.Name);
+        _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
+        _webSite.HomePage.SearchProductByName(secondProduct.Name);
+        _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
 
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);
@@ -158,8 +108,8 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct2);
-        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct1);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(secondProduct);
+        _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(firstProduct);
         _webSite.CheckoutPage.ConfirmOrder();
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(Constants.Constants.SuccessfullyPurchaseMessage);

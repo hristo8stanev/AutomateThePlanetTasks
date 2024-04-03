@@ -2,7 +2,7 @@
 
 public interface IDriver
 {
-    public string Url { get; }
+    public abstract string Url { get; }
 
     public void Start(BrowserType browser);
 

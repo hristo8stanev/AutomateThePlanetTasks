@@ -2,18 +2,18 @@
 
 public abstract class WebPage
 {
-    private const string ErrorMessageUrl = "Expected page was not navigated.";
     protected readonly IDriver Driver;
+
 
     public WebPage(IDriver driver)
     {
         Driver = driver;
     }
-
+ 
     public void AssertUrlPage(string expectedUrl)
     {
         string actualUrl = Driver.Url;
-        CollectionAssert.AreEqual(expectedUrl, actualUrl, ErrorMessageUrl);
+        CollectionAssert.AreEqual(expectedUrl, actualUrl, Constants.Constants.ErrorMessageUrl);
         Driver.WaitForAjax();
     }
 }

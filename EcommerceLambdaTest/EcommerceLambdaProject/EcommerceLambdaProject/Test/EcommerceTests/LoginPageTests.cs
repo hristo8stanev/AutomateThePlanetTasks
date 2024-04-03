@@ -46,7 +46,7 @@ public class LoginPageTests : BaseTest
     public void TryToForgottenPasswordFunctionality_When_ValidEmailProvided()
     {
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
-        _webSite.LoginPage.GoToForgottenPassword();
+        _webSite.LoginPage.ProceedToForgottenPasswordSection();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(Constants.Constants.EmailAddress);
@@ -59,7 +59,7 @@ public class LoginPageTests : BaseTest
     public void TryToForgottenPasswordFunctionality_When_InvalidEmailProvided()
     {
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
-        _webSite.LoginPage.GoToForgottenPassword();
+        _webSite.LoginPage.ProceedToForgottenPasswordSection();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(Constants.Constants.InvalidEmail);

@@ -62,7 +62,7 @@ public class ComponentAdapter : IComponent
     public void WaitToBeClickable(By by)
     {
         var webDriverWait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(WAIT_FOR_ELEMENT));
-        webDriverWait.Until(ExpectedConditions.ElementToBeClickable(by));
+           webDriverWait.Until(ExpectedConditions.ElementToBeClickable(by));
     }
 
     public IComponent FindComponent(By locator)
