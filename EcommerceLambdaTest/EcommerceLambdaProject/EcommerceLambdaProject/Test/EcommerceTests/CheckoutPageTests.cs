@@ -2,9 +2,8 @@
 
 public class CheckoutPageTests : BaseTest
 {
-   
     [Test]
-    public void Checkout_When_LoginUserTypeSelectedTest()
+    public void Checkout_When_LoginUserTypeSelected_And_3ProductsPurchased_And_PaymentConfirmed()
     {
         var billingDetails = CustomerFactory.BillingAddress();
         var firstProduct = CustomerFactory.Product();
@@ -45,9 +44,8 @@ public class CheckoutPageTests : BaseTest
     }
 
     [Test]
-    public void Checkout_When_RegisterTypeSelectedTest()
+    public void Checkout_When_RegisterUserTypeSelected_And_2ProductsArePurchased_And_PaymentCompleted()
     {
-     
         var billingDetails = CustomerFactory.BillingAddress();
         var personalInformation = CustomerFactory.RegisterUser();
         var firstProduct = CustomerFactory.Product();
@@ -64,7 +62,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
-      
+
         // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 46);
         // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
         _webSite.CheckoutPage.ProceedToCheckout();
@@ -80,7 +78,7 @@ public class CheckoutPageTests : BaseTest
     }
 
     [Test]
-    public void Checkout_When_GuestTypeSelectedTest()
+    public void Checkout_When_GuestUserTypeSelected_And_2ProductsArePurchased_And_PaymentCompleted()
     {
         var billingDetails = CustomerFactory.BillingAddress();
         var personalInformation = CustomerFactory.RegisterUser();

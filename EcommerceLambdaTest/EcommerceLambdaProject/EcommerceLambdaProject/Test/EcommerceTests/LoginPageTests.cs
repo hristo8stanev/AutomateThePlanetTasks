@@ -4,7 +4,7 @@ public class LoginPageTests : BaseTest
 {
    
     [Test]
-    public void LoginIntoSystem_When_ValidCredentialsAreProvided()
+    public void LoginIntoSystem_When_ValidEmailAddressAndPasswordAreProvided_And_LoginButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
@@ -16,7 +16,7 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void LoginIntoSystem_When_InvalidCredentialsAreProvided()
+    public void LoginIntoSystem_When_InvalidEmailAddress_And_LoginButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.InvalidEmail, Constants.Constants.Password);
 
@@ -28,7 +28,7 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void LoginIntoSystem_When_EmptyCredentialsAreProvided()
+    public void LoginIntoSystem_When_EmptyCredentials_And_LoginButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(email:string.Empty, password:string.Empty);
 
@@ -40,7 +40,7 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void LogoutFromTheSystem_When_ValidCredentialsAreProvided()
+    public void LogoutFromTheSystem_When_LogoutButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
@@ -55,7 +55,7 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void ForgottenPasswordFunctionality_When_ValidEmailProvided()
+    public void ForgotPassword_When_ValidEmailAddressProvided_And_ContinueButtonClicked()
     {
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
@@ -68,7 +68,7 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void ForgottenPasswordFunctionality_When_InvalidEmailProvided()
+    public void ForgotPassword_When_InvalidEmailAddressProvided_And_ContinueButtonIsClicked()
     {
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();

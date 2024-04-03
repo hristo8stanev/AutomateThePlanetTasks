@@ -3,7 +3,7 @@
 public class MyAccountPageTests : BaseTest
 {
     [Test]
-    public void EditMyProfile_When_AuthenticatedUserProvided()
+    public void EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var myAccountInfomraiton = CustomerFactory.RegisterUser();
@@ -17,7 +17,7 @@ public class MyAccountPageTests : BaseTest
     }
 
     [Test]
-    public void ChangeMyPassword_When_AuthenticatedUserProvided()
+    public void ChangeMyPassword_When_NewPasswordSet_And_ContinueButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 

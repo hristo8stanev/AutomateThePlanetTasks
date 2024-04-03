@@ -5,7 +5,7 @@ namespace EcommerceLambdaProject.Test.EcommerceTests;
 public class RegisterPageTests : BaseTest
 {
     [Test]
-    public void RegisterUser_When_ValidCredentialsAreProvided()
+    public void RegisterUser_When_ValidCredentialsProvided_And_ContinueButtonClicked()
     {
         _webSite.RegisterPage.Navigate();
 
@@ -17,7 +17,7 @@ public class RegisterPageTests : BaseTest
     }
 
     [Test]
-    public void RegisterUser_When_FirstNameIsEmptyField()
+    public void RegisterUser_When_EmptyFirstNameField_And_ContinueButtonIsClicked()
     {
         _webSite.RegisterPage.Navigate();
 
@@ -29,7 +29,7 @@ public class RegisterPageTests : BaseTest
     }
 
     [Test]
-    public void RegisterUser_When_EmailAddressIsEmptyField()
+    public void RegisterUser_When_EmptyEmailAddressField_And_ContinueButtonClicked()
     {
         _webSite.RegisterPage.Navigate();
 
@@ -41,7 +41,7 @@ public class RegisterPageTests : BaseTest
     }
 
     [Test]
-    public void RegisterUser_When_PasswordIsEmptyField()
+    public void RegisterUser_When_EmptyPasswordField_And_ContinueButtonClicked()
     {
         _webSite.RegisterPage.Navigate();
 

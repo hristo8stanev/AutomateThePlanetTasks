@@ -3,7 +3,7 @@
 public class ProductPageTests : BaseTest
 {
     [Test]
-    public void CompareProducts_WhenOpenProductFromSearchResults_AuthenticatedUser()
+    public void CompareProducts_When_ThreeProductSelected_And_ProductInformationCompared()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
@@ -29,8 +29,10 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.AssertTheProductIsAddedToComparePage(firstProduct, firstProduct.Id);
     }
 
+
+    //3 products
     [Test]
-    public void AddProductToTheWishList_When_AuthenticatedUser()
+    public void AddProductToWishList_When_ProductAddedToWishlist_And_ProductSuccessfullyAddedToWishlist()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
@@ -57,7 +59,7 @@ public class ProductPageTests : BaseTest
     }
 
     [Test]
-    public void SelectDifferentSizeOfProduct_When_AuthenticatedUserSelectSize()
+    public void SelectDifferentSizeOfProduct_When_DifferentSizeOfProductIsSelected()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
@@ -74,7 +76,7 @@ public class ProductPageTests : BaseTest
     }
 
     [Test]
-    public void CompareProducts_When_OpenProductFromSearchResults_NonAuthenticatedUser()
+    public void CompareProducts_When_CompareProductsAsNonAuthenticatedUser()
     {
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
@@ -100,7 +102,7 @@ public class ProductPageTests : BaseTest
     }
 
     [Test]
-    public void SelectDifferentSizeOfProduct_When_NonAuthenticatedUserSelectSize()
+    public void SelectDifferentSizeProduct_When_DifferentSizeProductSelectedAsNonAuthenticatedUser()
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.AppleProduct(firstProduct);
