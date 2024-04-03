@@ -9,9 +9,9 @@ public class ProductPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         var thirdProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
-        _webSite.ProductPage.IpodProduct(secondProduct);
-        _webSite.ProductPage.SonyProduct(thirdProduct);
+        Products.Products.NikonProduct(firstProduct);
+        Products.Products.IpodProduct(secondProduct);
+        Products.Products.SonyProduct(thirdProduct);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -36,9 +36,9 @@ public class ProductPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         var thirdProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
-        _webSite.ProductPage.IpodProduct(secondProduct);
-        _webSite.ProductPage.SonyProduct(thirdProduct);
+        Products.Products.NikonProduct(firstProduct);
+        Products.Products.IpodProduct(secondProduct);
+        Products.Products.SonyProduct(thirdProduct);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -61,7 +61,7 @@ public class ProductPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.AppleProduct(firstProduct);
+        Products.Products.AppleProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -79,9 +79,9 @@ public class ProductPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         var thirdProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
-        _webSite.ProductPage.IpodProduct(secondProduct);
-        _webSite.ProductPage.SonyProduct(thirdProduct);
+        Products.Products.NikonProduct(firstProduct);
+        Products.Products.IpodProduct(secondProduct);
+        Products.Products.SonyProduct(thirdProduct);
 
 
         _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
@@ -103,7 +103,7 @@ public class ProductPageTests : BaseTest
     public void SelectDifferentSizeOfProduct_When_NonAuthenticatedUserSelectSize()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.AppleProduct(firstProduct);
+        Products.Products.AppleProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);

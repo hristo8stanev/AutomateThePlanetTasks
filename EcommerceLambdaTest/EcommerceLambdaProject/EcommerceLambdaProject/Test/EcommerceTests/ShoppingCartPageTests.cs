@@ -9,9 +9,9 @@ public class ShoppingCartPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         var thirdProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
-        _webSite.ProductPage.IpodProduct(secondProduct);
-        _webSite.ProductPage.SonyProduct(thirdProduct);
+        Products.Products.NikonProduct(firstProduct);
+        Products.Products.IpodProduct(secondProduct);
+        Products.Products.SonyProduct(thirdProduct);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -39,7 +39,7 @@ public class ShoppingCartPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
+        Products.Products.NikonProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -59,7 +59,7 @@ public class ShoppingCartPageTests : BaseTest
     public void RemoveProductFromTheShoppingCart_When_AuthenticatedUser()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
+        Products.Products.NikonProduct(firstProduct);
 
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
@@ -77,7 +77,7 @@ public class ShoppingCartPageTests : BaseTest
     public void AddProductToTheShopping_When_NonAuthenticatedUser()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.iPodShuffleProduct(firstProduct);
+        Products.Products.iPodShuffleProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -93,7 +93,7 @@ public class ShoppingCartPageTests : BaseTest
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUser()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.iPodShuffleProduct(firstProduct);
+        Products.Products.SonyProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -110,7 +110,7 @@ public class ShoppingCartPageTests : BaseTest
     public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserTest()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.iPodShuffleProduct(firstProduct);
+        Products.Products.NikonProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);

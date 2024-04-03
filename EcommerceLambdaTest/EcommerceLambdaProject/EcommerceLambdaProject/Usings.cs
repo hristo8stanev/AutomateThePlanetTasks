@@ -11,3 +11,4 @@ global using OpenQA.Selenium.Interactions;
 global using OpenQA.Selenium.Support.UI;
 global using SeleniumExtras.WaitHelpers;
 global using EcommerceLambdaProject.Pages;
+global using EcommerceLambdaProject.Products;

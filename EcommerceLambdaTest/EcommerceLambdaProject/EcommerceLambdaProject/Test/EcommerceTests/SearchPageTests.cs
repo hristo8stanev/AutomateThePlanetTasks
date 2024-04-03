@@ -10,8 +10,8 @@ public class SearchPageTests : BaseTest
     {
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
-        _webSite.ProductPage.IpodProduct(secondProduct);
+        Products.Products.NikonProduct(firstProduct);
+        Products.Products.IpodProduct(secondProduct);
 
         _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -27,7 +27,7 @@ public class SearchPageTests : BaseTest
     public void SearchNonExistingProductByName_When_NonAuthenticatedUserSearchedProduct()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.BoschProduct(firstProduct);
+        Products.Products.BoschProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -40,7 +40,7 @@ public class SearchPageTests : BaseTest
     public void FilterProductByPrice_When_NonAuthenticatedUserTryToFilterTheProductsByPrice()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
+        Products.Products.NikonProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -53,7 +53,7 @@ public class SearchPageTests : BaseTest
     public void FilterProductByName_When_NonAuthenticatedUserTryToFilterProductByName()
     {
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.iPodShuffleProduct(firstProduct);
+        Products.Products.SonyProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);

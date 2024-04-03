@@ -12,9 +12,9 @@ public class CheckoutPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         var thirdProduct = CustomerFactory.Product();
-        _webSite.ProductPage.NikonProduct(firstProduct);
-        _webSite.ProductPage.IpodProduct(secondProduct);
-        _webSite.ProductPage.SonyProduct(thirdProduct);
+        Products.Products.NikonProduct(firstProduct);
+        Products.Products.IpodProduct(secondProduct);
+        Products.Products.SonyProduct(thirdProduct);
 
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -55,8 +55,8 @@ public class CheckoutPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
 
-        _webSite.ProductPage.IpodProduct(firstProduct);
-        _webSite.ProductPage.SonyProduct(secondProduct);
+        Products.Products.IpodProduct(firstProduct);
+        Products.Products.SonyProduct(secondProduct);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
@@ -89,8 +89,8 @@ public class CheckoutPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
 
-        _webSite.ProductPage.IpodProduct(firstProduct);
-        _webSite.ProductPage.SonyProduct(secondProduct);
+        Products.Products.IpodProduct(firstProduct);
+        Products.Products.SonyProduct(secondProduct);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);

@@ -49,7 +49,7 @@ public class MyAccountPageTests : BaseTest
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.MyAccountPage.ProceedToAddressBookSection();
+        _webSite.MyAccountPage.GoToAddressBookSection();
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.NEW_ADDRESS_PAGE);
 
@@ -65,7 +65,7 @@ public class MyAccountPageTests : BaseTest
         var billingDetails = CustomerFactory.BillingAddress();
         var personalInformation = CustomerFactory.RegisterUser();
         var firstProduct = CustomerFactory.Product();
-        _webSite.ProductPage.SonyProduct(firstProduct);
+        Products.Products.SonyProduct(firstProduct);
 
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
