@@ -102,25 +102,9 @@ public class DriverAdapter : IDriver
         });
     }
 
-    public IComponent ScrollToTheElement(IComponent element)
-    {
-        IJavaScriptExecutor js = (IJavaScriptExecutor)_webDriver;
-        js.ExecuteScript("arguments[0].scrollIntoView();", element);
-        return element;
-    }
-
     private void ScrollIntoView(IComponent element)
     {
         ExecuteScript("arguments[0].scrollIntoView(true);", element.WrappedElement);
-    }
-
-    public IComponent WaitAndFindElementJS(By locator)
-    {
-        IWebElement nativeWebElement = _webDriverWait.Until(ExpectedConditions.ElementExists(locator));
-        IComponent element = new ComponentAdapter(_webDriver, nativeWebElement, locator);
-        ScrollIntoView(element);
-
-        return element;
     }
 
     public IComponent WaitToBeClickable(By locator)

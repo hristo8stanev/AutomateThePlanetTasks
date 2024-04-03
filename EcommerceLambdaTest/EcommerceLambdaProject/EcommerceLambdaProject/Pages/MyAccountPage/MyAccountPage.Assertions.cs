@@ -2,48 +2,41 @@
 
 public partial class MyAccountPage
 {
-    private const string ErrorMessageDate = "The expected Date are not correct";
-    private const string ErrorMessagePassword = "Your password hasn't been successfully updated";
-    private const string ErrorMessageAddress = "Your address hasn't been successfully added";
-    private const string SuccessfullyPurchaseVaucherMessage = "Purchase a Gift Certificate";
-    private const string SuccessfullyPassowrdMessage = "Success: Your password has been successfully updated.";
-    private const string SuccessfullyAccountInformationUpdatedMessage = "Success: Your account has been successfully updated.";
-    private const string SuccessfullyAddedNewAddressMessage = "Your address has been successfully added";
-
+   
     public void AssertAccountInformationIsSuccessfullyUpdated()
     {
-        var message = $"{ErrorMessagePassword} \n Actual Result:{SuccessfullyAccountInformationUpdatedMessage} \n Expected Result:{SuccessfullyMessage.Text}";
-        Assert.That(SuccessfullyMessage.Text, Is.EqualTo(SuccessfullyAccountInformationUpdatedMessage), message);
+        var message = $"{Constants.Constants.ErrorMessagePassword} \n Actual Result:{Constants.Constants.SuccessfullyAccountInformationUpdatedMessage} \n Expected Result:{SuccessfullyMessage.Text}";
+        Assert.That(SuccessfullyMessage.Text, Is.EqualTo(Constants.Constants.SuccessfullyAccountInformationUpdatedMessage), message);
     }
 
-    public void AssertPasswordIsSuccessfullyChanged()
+    public void AssertPasswordSuccessfullyChanged()
     {
-        var message = $"{ErrorMessagePassword} \n Actual Result:{SuccessfullyPassowrdMessage} \n Expected Result:{SuccessfullyMessage.Text}";
-        Assert.That(SuccessfullyMessage.Text, Is.EqualTo(SuccessfullyPassowrdMessage), message);
+        var message = $"{Constants.Constants.ErrorMessagePassword} \n Actual Result:{Constants.Constants.SuccessfullyPasswordMessage} \n Expected Result:{SuccessfullyMessage.Text.Trim()}";
+        Assert.That(SuccessfullyMessage.Text.Trim(), Is.EqualTo(Constants.Constants.SuccessfullyPasswordMessage), message);
     }
 
     public void AssertSuccessfullyPurchaseGiftCertificate()
     {
-        var message = $"{ErrorMessagePassword} \n Actual Result:{SuccessfullyPurchaseVaucherMessage} \n Expected Result:{SuccessfullyPurchaseCertificate.Text}";
-        Assert.That(SuccessfullyPurchaseCertificate.Text, Is.EqualTo(SuccessfullyPurchaseVaucherMessage), message);
+        var message = $"{Constants.Constants.ErrorMessagePassword} \n Actual Result:{Constants.Constants.SuccessfullyPurchaseVoucherMessage} \n Expected Result:{SuccessfullyPurchaseCertificate.Text}";
+        Assert.That(SuccessfullyPurchaseCertificate.Text, Is.EqualTo(Constants.Constants.SuccessfullyPurchaseVoucherMessage), message);
     }
 
     public void AssertSuccessfullyAddedNewAddress()
     {
-        var message = $"{ErrorMessageAddress} \n Actual Result:{SuccessfullyAddedNewAddressMessage} \n Expected Result:{SuccessfullyMessage.Text}";
-        Assert.That(SuccessfullyMessage.Text, Is.EqualTo(SuccessfullyAddedNewAddressMessage), message);
+        var message = $"{Constants.Constants.ErrorMessageAddress} \n Actual Result:{Constants.Constants.SuccessfullyAddedNewAddressMessage} \n Expected Result:{SuccessfullyMessage.Text.Trim()}";
+        Assert.That(SuccessfullyMessage.Text.Trim(), Is.EqualTo(Constants.Constants.SuccessfullyAddedNewAddressMessage), message);
     }
 
-    public void AssertCustomerNameIsCorrect(string expectedFullName)
+    public void AssertCustomerNameCorrect(string expectedFullName)
     {
-        var nameMessage = $"{ErrorMessageAddress} \n Actual Result:{CustomerElement(expectedFullName).Text} \n Expected Result:{expectedFullName}";
+        var nameMessage = $"{Constants.Constants.ErrorMessageAddress} \n Actual Result:{CustomerElement(expectedFullName).Text} \n Expected Result:{expectedFullName}";
         Assert.That(CustomerElement(expectedFullName).Text, Is.EqualTo(expectedFullName), nameMessage);
     }
 
-    public void AssertThePurchaseDateIsToday()
+    public void AssertThePurchaseDateToday()
     {
-        var currentDate = DateTime.Now.ToString("DD/MM/Livvyy");
-        var dateMessage = $"{ErrorMessageDate} \n Actual Result:{DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text} \n Expected Result:{currentDate}";
-        Assert.That(DateTimeElement(DateTime.Now.ToString("DD/MM/Livvyy")).Text, Is.EqualTo(currentDate), dateMessage);
+        var currentDate = DateTime.Now.ToString("dd/MM/yyyy");
+        var dateMessage = $"{Constants.Constants.ErrorMessageDate} \n Actual Result:{DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text} \n Expected Result:{currentDate}";
+        Assert.That(DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text, Is.EqualTo(currentDate), dateMessage);
     }
 }

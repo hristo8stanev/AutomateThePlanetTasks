@@ -10,7 +10,7 @@ public partial class ShoppingCartPage
 
     public IComponent ProductPriceElement(string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[@class='text-right' and contains(text(), '{price}')]"));
 
-    public IComponent ProductElementInformation(string cell, int index) => Driver.FindComponent(By.XPath($"//*//tbody//tr//td[@class='{cell}']//following-sibling::td[{index}]"));
+    public IComponent ProductElementInformation(string cell, int productIndex) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[@class='{cell}']//following-sibling::td[{productIndex}]"));
 
     public IComponent ProductQuantityInformation(string cell) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//input[@class='{cell}']]//following-sibling::input"));
 

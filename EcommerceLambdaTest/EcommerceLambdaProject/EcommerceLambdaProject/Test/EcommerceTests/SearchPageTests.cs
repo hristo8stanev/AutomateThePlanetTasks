@@ -2,8 +2,6 @@
 
 public class SearchPageTests : BaseTest
 {
-    private string minPrice => "10";
-    private string maxPrice => "1000";
 
     [Test]
     public void SearchExistingProductByName_When_NonAuthenticatedUserSearchedProduct()
@@ -35,10 +33,10 @@ public class SearchPageTests : BaseTest
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(expectedProduct1);
-        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct1, 31);
+        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct1, expectedProduct1.Id);
 
         _webSite.SearchPage.SearchProductByName(expectedProduct2);
-        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct2, 32);
+        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct2, expectedProduct2.Id);
     }
 
     [Test]
@@ -80,9 +78,9 @@ public class SearchPageTests : BaseTest
 
         _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
-        _webSite.SearchPage.EnterRangePrices(minPrice, maxPrice);
+        _webSite.SearchPage.EnterRangePrices(Constants.Constants.MinPrice, Constants.Constants.MaxPrice);
 
-        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(minPrice, maxPrice));
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(Constants.Constants.MinPrice, Constants.Constants.MaxPrice));
     }
 
     [Test]
@@ -104,6 +102,6 @@ public class SearchPageTests : BaseTest
 
         _webSite.SearchPage.SearchProductByName(expectedProduct2);
 
-        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct2, 32);
+        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(expectedProduct2, expectedProduct2.Id);
     }
 }

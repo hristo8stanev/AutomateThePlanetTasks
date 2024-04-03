@@ -2,10 +2,6 @@
 
 public class ProductPageTests : BaseTest
 {
-    private string emailAddress = "alabala@gmail.com";
-    private string password = "tester";
-
-    //AUTHENTICATED USER
     [Test]
     public void CompareProducts_WhenOpenProductFromSearchResults_AuthenticatedUser()
     {
@@ -42,22 +38,22 @@ public class ProductPageTests : BaseTest
             Availability = "In Stock",
             Weight = "0.00kg"
         };
-        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-        _webSite.ProductPage.ClickOnCompareButton();
+        _webSite.ProductPage.CompareProduct();
         _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
-        _webSite.ProductPage.ClickOnCompareButton();
+        _webSite.ProductPage.CompareProduct();
         _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
-        _webSite.ProductPage.ClickOnCompareButton();
+        _webSite.ProductPage.CompareProduct();
         _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
 
         _webSite.ProductPage.AssertUrlPage(Urls.Urls.COMPARISON_PAGE);
-        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct3, 46);
-        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct2, 32);
-        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct1, 31);
+        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct3, expectedProduct3.Id);
+        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct2, expectedProduct2.Id);
+        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct1, expectedProduct1.Id);
     }
 
     [Test]
@@ -96,7 +92,7 @@ public class ProductPageTests : BaseTest
             Weight = "0.00kg"
         };
 
-        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -106,7 +102,7 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.AddProductToWishlist();
         _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
         _webSite.ProductPage.AddProductToWishlist();
-        _webSite.ProductPage.GoToWishlist();
+        _webSite.ProductPage.ProceedToWishlist();
 
         _webSite.ProductPage.AssertUrlPage(Urls.Urls.WISHLIST_PAGE);
         _webSite.ProductPage.AssertProductIsAddedToWishlist(expectedProduct1, 28);
@@ -130,7 +126,7 @@ public class ProductPageTests : BaseTest
             Size = "Size: Medium"
         };
 
-        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -139,10 +135,9 @@ public class ProductPageTests : BaseTest
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
         _webSite.ProductPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct, 42);
+        _webSite.ProductPage.AssertSizeProductIsCorrect(expectedProduct, expectedProduct.Id);
     }
 
-    //NON-AUTHENTICATED USER
     [Test]
     public void CompareProducts_When_OpenProductFromSearchResults_NonAuthenticatedUser()
     {
@@ -182,17 +177,17 @@ public class ProductPageTests : BaseTest
 
         _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
-        _webSite.ProductPage.ClickOnCompareButton();
+        _webSite.ProductPage.CompareProduct();
         _webSite.HomePage.SearchProductByName(expectedProduct2.Name);
-        _webSite.ProductPage.ClickOnCompareButton();
+        _webSite.ProductPage.CompareProduct();
         _webSite.HomePage.SearchProductByName(expectedProduct3.Name);
-        _webSite.ProductPage.ClickOnCompareButton();
+        _webSite.ProductPage.CompareProduct();
         _driver.GoToUrl(Urls.Urls.COMPARISON_PAGE);
 
         _webSite.ProductPage.AssertUrlPage(Urls.Urls.COMPARISON_PAGE);
-        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct3, 46);
-        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct2, 32);
-        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct1, 31);
+        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct3, expectedProduct3.Id);
+        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct2, expectedProduct2.Id);
+        _webSite.ProductPage.AssertTheProductIsAddedToComparePage(expectedProduct1, expectedProduct1.Id);
     }
 
     [Test]
@@ -217,6 +212,6 @@ public class ProductPageTests : BaseTest
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
         _webSite.ProductPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ProductPage.AssertSizeOftheProductIsCorrect(expectedProduct, 42);
+        _webSite.ProductPage.AssertSizeProductIsCorrect(expectedProduct, expectedProduct.Id);
     }
 }

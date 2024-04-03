@@ -2,25 +2,22 @@
 
 public partial class ShoppingCartPage
 {
-    private const string ErrorMessageProduct = "This product is not exist";
-    private const string ErrorMessageQuantity = "The expected and actual quantity of the product is not equal!";
-
-    public void AssertProductName(ProductDetails expectedProductName, int indexName)
+    public void AssertProductName(ProductDetails expectedProductName, int productName)
     {
-        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductNameElement(indexName, expectedProductName.Name).Text} \n Expected Result:{expectedProductName.Name}";
-        Assert.That(ProductNameElement(indexName, expectedProductName.Name).Text, Is.EqualTo(expectedProductName.Name), message);
+        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductNameElement(productName, expectedProductName.Name).Text} \n Expected Result:{expectedProductName.Name}";
+        Assert.That(ProductNameElement(productName, expectedProductName.Name).Text, Is.EqualTo(expectedProductName.Name), message);
         Driver.WaitForAjax();
     }
 
     public void AssertProductInformation(ProductDetails expectedProductInfo, int indexModel)
     {
-        var message = $"{ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
+        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
         Assert.That(ProductElementInformation("text-left", indexModel).Text, Is.EqualTo(expectedProductInfo.Model), message);
 
-        var messageQuantity = $"{ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
+        var messageQuantity = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
         Assert.That(ProductQuantityInformation("form-control").GetAttribute("value"), Is.EqualTo(expectedProductInfo.Quantity), messageQuantity);
 
-        var messagePrice = $"{ErrorMessageProduct} \n Actual Result:{ProductPriceElement(expectedProductInfo.UnitPrice).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
+        var messagePrice = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductPriceElement(expectedProductInfo.UnitPrice).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
         Assert.That(ProductPriceElement(expectedProductInfo.UnitPrice).Text, Is.EqualTo(expectedProductInfo.UnitPrice), messagePrice);
         RemoveButton.Click();
         Driver.WaitForAjax();
@@ -36,7 +33,7 @@ public partial class ShoppingCartPage
 
     public void AssertSuccessfullyUpdatedQuantityOfProduct(string expectedQuantity)
     {
-        var message = $"{ErrorMessageQuantity} \n Actual Result:{UpdateQuantityTextField.GetAttribute("value")} \n Expected Result:{expectedQuantity}";
+        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{UpdateQuantityTextField.GetAttribute("value")} \n Expected Result:{expectedQuantity}";
         Assert.That(expectedQuantity, Is.EqualTo(UpdateQuantityTextField.GetAttribute("value")), message);
         RemoveButton.Click();
         Driver.WaitForAjax();

@@ -2,10 +2,7 @@
 
 public class CheckoutPageTests : BaseTest
 {
-    private string emailAddress = "alabala@gmail.com";
-    private string password = "tester";
-    private string successfullyPurchaseMessage = "Your order has been placed!";
-
+   
     [Test]
     public void Checkout_When_LoginUserTypeSelectedTest()
     {
@@ -48,14 +45,14 @@ public class CheckoutPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(expectedProduct3.Quantity);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Login);
-        _webSite.CheckoutPage.LoginUser(emailAddress, password);
+        _webSite.CheckoutPage.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _webSite.CheckoutPage.AssertUrlPage(Urls.Urls.CHECKOUT_PAGE);
-        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct3, 32);
-        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct2, 46);
-        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 28);
+        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct3, expectedProduct3.Id);
+        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct2, expectedProduct2.Id);
+        _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, expectedProduct1.Id);
 
-        _webSite.CheckoutPage.BillingDetails(billingDetails);
+        _webSite.CheckoutPage.FillBillingDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonIsDisplayed();
@@ -65,7 +62,7 @@ public class CheckoutPageTests : BaseTest
 
         _webSite.CheckoutPage.ConfirmOrder();
 
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(Constants.Constants.SuccessfullyPurchaseMessage);
         _webSite.CheckoutPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_ORDER_PAGE);
     }
 
@@ -101,9 +98,9 @@ public class CheckoutPageTests : BaseTest
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
 
-        _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
-        _webSite.CheckoutPage.BillingDetails(billingDetails);
-
+        _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
+        _webSite.CheckoutPage.FillBillingAddress(billingDetails);
+      
         // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 46);
         // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
 
@@ -115,7 +112,7 @@ public class CheckoutPageTests : BaseTest
 
         _webSite.CheckoutPage.ConfirmOrder();
 
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(Constants.Constants.SuccessfullyPurchaseMessage);
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_ORDER_PAGE);
     }
 
@@ -152,8 +149,8 @@ public class CheckoutPageTests : BaseTest
 
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);
-        _webSite.CheckoutPage.GuesUserPayment(personalInformation);
-        _webSite.CheckoutPage.BillingDetails(billingDetails);
+        _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
+        _webSite.CheckoutPage.FillBillingAddress(billingDetails);
 
         // _webSite.CheckoutPage.AssertProductInfoIsCorrectCheckoutPage(expectedProduct1, 32);
         // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
@@ -165,7 +162,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.AssertProductInfoConfirmOrderIsCorrect(expectedProduct1);
         _webSite.CheckoutPage.ConfirmOrder();
 
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(Constants.Constants.SuccessfullyPurchaseMessage);
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_ORDER_PAGE);
     }
 }

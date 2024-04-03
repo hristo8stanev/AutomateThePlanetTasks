@@ -27,11 +27,6 @@ public partial class MyAccountPage : WebPage
         }
     }
 
-    public void GoToEditMyAccount()
-    {
-        EditMyAccountButton.Click();
-    }
-
     public void GoToAddressBookSection()
     {
         AddressBookSection.Click();
@@ -47,18 +42,15 @@ public partial class MyAccountPage : WebPage
         AddressField2.TypeText(billingInformation.Address2);
         CityField.TypeText(billingInformation.City);
         PostCodeField.TypeText(billingInformation.PostCode);
-
-        CountryField.Click();
         SelectCountry(billingInformation.Country).Click();
         Driver.WaitForAjax();
-
-        Region.Click();
         SelectRegion(billingInformation.Region).Click();
         ContinueButton.Click();
     }
 
-    public void ChangeMyAccountInfrmation(PersonalInformation user)
+    public void ChangeMyAccountInformation(PersonalInformation user)
     {
+        EditMyAccountButton.Click();
         FirstNameInput.TypeText(user.FirstName);
         LastaNameInput.TypeText(user.LastName);
         EmailAddressNameInput.TypeText("alabala@gmail.com");
@@ -74,14 +66,13 @@ public partial class MyAccountPage : WebPage
         ContinueButton.Click();
     }
 
-    public void PuchaseGiftCertificate(PurchaseGiftCertificate gift)
+    public void PurchaseGiftCertificate(PurchaseGiftCertificate gift)
     {
         RecipientName.TypeText(gift.RecipientName);
         RecipientEmail.TypeText(gift.RecipientEmail);
         YourName.TypeText(gift.YourName);
         YourEmail.TypeText(gift.YourEmail);
         SelectGiftType(GiftCertificateType.Birthday);
-
         AmountCertificate.TypeText(gift.Amount);
         AgreeGiftCertificate.Click();
         ContinueButton.Click();

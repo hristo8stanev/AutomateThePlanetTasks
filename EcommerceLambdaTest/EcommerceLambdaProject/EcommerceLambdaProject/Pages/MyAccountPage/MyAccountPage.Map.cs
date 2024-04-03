@@ -11,15 +11,12 @@ public partial class MyAccountPage
     public IComponent AddressField2 => Driver.FindComponent(By.Id("input-address-2"));
     public IComponent CityField => Driver.FindComponent(By.Id("input-city"));
     public IComponent PostCodeField => Driver.FindComponent(By.Id("input-postcode"));
-    public IComponent CountryField => Driver.FindComponent(By.Id("input-country"));
     public IComponent firstName => Driver.FindComponent(By.XPath("//*[@id='input-payment-firstname']"));
     public IComponent lastName => Driver.FindComponent(By.XPath("//*[@id='input-payment-lastname']"));
 
-    public IComponent SelectCountry(string country) => CountryField.FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
+    public IComponent SelectCountry(string country) => Driver.FindComponent(By.Id("input-country")).FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
 
-    public IComponent Region => Driver.FindComponent(By.Id("input-zone"));
-
-    public IComponent SelectRegion(string region) => Region.FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
+    public IComponent SelectRegion(string region) => Driver.FindComponent(By.Id("input-zone")).FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
 
     public IComponent PasswordField => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordField => Driver.FindComponent(By.Id("input-confirm"));
@@ -30,16 +27,16 @@ public partial class MyAccountPage
     public IComponent LastaNameInput => Driver.FindComponent(By.Id("input-lastname"));
     public IComponent EmailAddressNameInput => Driver.FindComponent(By.Id("input-email"));
     public IComponent TelephoneInput => Driver.FindComponent(By.Id("input-telephone"));
-    public IComponent RecipientName => Driver.WaitAndFindElementJS(By.XPath("//*[@id='input-to-name']"));
-    public IComponent RecipientEmail => Driver.WaitAndFindElementJS(By.XPath("//*[@id='input-to-email']"));
-    public IComponent YourName => Driver.WaitAndFindElementJS(By.Id("input-from-name"));
-    public IComponent YourEmail => Driver.WaitAndFindElementJS(By.Id("input-from-email"));
-    public IComponent BirthdayCertificate => Driver.WaitAndFindElementJS(By.XPath("//*[contains(text(), 'Birthday')]"));
-    public IComponent ChristmasCertificate => Driver.WaitAndFindElementJS(By.XPath("//*[contains(text(), ' Christmas')]"));
-    public IComponent GeneralCertificate => Driver.WaitAndFindElementJS(By.XPath("//*[contains(text(), ' General')]"));
-    public IComponent AmountCertificate => Driver.WaitAndFindElementJS(By.Id("input-amount"));
-    public IComponent MessageCertificate => Driver.WaitAndFindElementJS(By.Id("input-message"));
-    public IComponent AgreeGiftCertificate => Driver.WaitAndFindElementJS(By.Name("agree"));
+    public IComponent RecipientName => Driver.FindComponent(By.XPath("//*[@id='input-to-name']"));
+    public IComponent RecipientEmail => Driver.FindComponent(By.XPath("//*[@id='input-to-email']"));
+    public IComponent YourName => Driver.FindComponent(By.Id("input-from-name"));
+    public IComponent YourEmail => Driver.FindComponent(By.Id("input-from-email"));
+    public IComponent BirthdayCertificate => Driver.FindComponent(By.XPath("//*[contains(text(), 'Birthday')]"));
+    public IComponent ChristmasCertificate => Driver.FindComponent(By.XPath("//*[contains(text(), ' Christmas')]"));
+    public IComponent GeneralCertificate => Driver.FindComponent(By.XPath("//*[contains(text(), ' General')]"));
+    public IComponent AmountCertificate => Driver.FindComponent(By.Id("input-amount"));
+    public IComponent MessageCertificate => Driver.FindComponent(By.Id("input-message"));
+    public IComponent AgreeGiftCertificate => Driver.FindComponent(By.Name("agree"));
 
     public IComponent DateTimeElement(string dateTime) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{dateTime}')]"));
 

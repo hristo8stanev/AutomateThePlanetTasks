@@ -29,5 +29,5 @@ public partial class ProductPage
 
     public IComponent ProductElementInformation(string expectedElement) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[contains(text(),'{expectedElement}')]"));
 
-    public IComponent ProductWeightElement(string weight) => Driver.WaitAndFindElementJS(By.XPath($"//div[@id='content']//tr//td[contains(text(),'{weight}')]"));
+    public IComponent ProductWeightElement(string weight) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[contains(text(),'{weight}')]"));
 }

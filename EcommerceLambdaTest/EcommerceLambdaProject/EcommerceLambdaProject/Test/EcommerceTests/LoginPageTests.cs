@@ -2,14 +2,11 @@
 
 public class LoginPageTests : BaseTest
 {
-    private string validEmail = "alabala@gmail.com";
-    private string invalidEmail = "testtest@gmail.com";
-    private string password = "tester";
-
+   
     [Test]
     public void LoginIntoTheSystem_When_ValidCredentialsAreProvided()
     {
-        var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -21,7 +18,7 @@ public class LoginPageTests : BaseTest
     [Test]
     public void TryLoginIntoTheSystem_When_InvalidCredentialsAreProvided()
     {
-        var loginUser = Factories.CustomerFactory.LoginUser(invalidEmail, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.InvalidEmail, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -33,7 +30,7 @@ public class LoginPageTests : BaseTest
     [Test]
     public void LogoutFromTheSystem_When_ValidCredentialsAreProvided()
     {
-        var loginUser = Factories.CustomerFactory.LoginUser(validEmail, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -52,7 +49,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.GoToForgottenPassword();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
-        _webSite.LoginPage.SentEmail(validEmail);
+        _webSite.LoginPage.SentEmail(Constants.Constants.EmailAddress);
 
         _webSite.LoginPage.AssertSuccessfullySentEmail();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.LOGIN_PAGE);
@@ -65,7 +62,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.GoToForgottenPassword();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
-        _webSite.LoginPage.SentEmail(invalidEmail);
+        _webSite.LoginPage.SentEmail(Constants.Constants.InvalidEmail);
 
         _webSite.LoginPage.AssertWarningMessageInvalidEmail();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);

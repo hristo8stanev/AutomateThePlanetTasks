@@ -3,7 +3,6 @@ global using EcommerceLambdaProject.Enums;
 global using EcommerceLambdaProject.Factories;
 global using EcommerceLambdaProject.Pages.BasePage;
 global using EcommerceLambdaProject.Test.Core;
-global using EcommerceLambdaProject.Urls;
 global using NUnit.Allure.Core;
 global using NUnit.Framework;
 global using NUnit.Framework.Legacy;

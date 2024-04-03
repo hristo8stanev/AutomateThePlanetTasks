@@ -2,54 +2,51 @@
 
 public class MyAccountPageTests : BaseTest
 {
-    private string validEmail = "alabala@gmail.com";
-    private string password = "tester";
-    private string successfullyPurchaseMessage = "Your order has been placed!";
+  
 
     [Test]
     public void EditMyProfile_When_AuthenticatedUserProvided()
     {
-        var loginUser = CustomerFactory.LoginUser(validEmail, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var myAccountInfomraiton = CustomerFactory.RegisterUser();
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.MyAccountPage.GoToEditMyAccount();
-        _webSite.MyAccountPage.ChangeMyAccountInfrmation(myAccountInfomraiton);
+        _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
 
         _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
     }
 
     [Test]
-    public void ChangeMyPssword_When_AutheticatedUserProvided()
+    public void ChangeMyPassword_When_AuthenticatedUserProvided()
     {
-        var loginUser = CustomerFactory.LoginUser(validEmail, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ChangeMyPassword();
 
-        _webSite.MyAccountPage.AssertPasswordIsSuccessfullyChanged();
+        _webSite.MyAccountPage.AssertPasswordSuccessfullyChanged();
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
     }
 
     [Test]
-    public void PurchaseGiftCerticate_When_AutheticatedUserProvided()
+    public void PurchaseGiftCertificate_When_AuthenticatedUserProvided()
     {
         var gift = CustomerFactory.GiftCertificate();
 
         _driver.GoToUrl(Urls.Urls.VOUCHER_PAGE);
-        _webSite.MyAccountPage.PuchaseGiftCertificate(gift);
+        _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VAUCHER_PAGE);
     }
 
     [Test]
-    public void AddNewAddress_When_AddressAddFromAddressBookAutheticatedUserProvided()
+    public void AddNewAddress_When_AddressAddFromAddressBookAuthenticatedUserProvided()
     {
-        var loginUser = CustomerFactory.LoginUser(validEmail, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var newAddress = CustomerFactory.BillingAddress();
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
@@ -84,16 +81,16 @@ public class MyAccountPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(expectedProduct1.Quantity);
         _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
-        _webSite.CheckoutPage.CreateNewUserPayment(personalInformation);
-        _webSite.CheckoutPage.BillingDetailsWithoutName(billingDetails);
+        _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
+        _webSite.CheckoutPage.FillBillingAddress(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
         _webSite.CheckoutPage.ConfirmOrder();
 
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(successfullyPurchaseMessage);
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(Constants.Constants.SuccessfullyPurchaseMessage);
 
         _driver.GoToUrl(Urls.Urls.ORDER_HISTORY_PAGE);
 
-        _webSite.MyAccountPage.AssertCustomerNameIsCorrect(personalInformation.FirstName + " " + personalInformation.LastName);
-        _webSite.MyAccountPage.AssertThePurchaseDateIsToday();
+        _webSite.MyAccountPage.AssertCustomerNameCorrect(personalInformation.FirstName + " " + personalInformation.LastName);
+        _webSite.MyAccountPage.AssertThePurchaseDateToday();
     }
 }

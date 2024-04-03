@@ -14,8 +14,6 @@ public interface IDriver
 
     public IComponent FindComponent(By locator);
 
-    public IComponent WaitAndFindElementJS(By locator);
-
     public List<IComponent> FindComponents(By locator);
 
     public bool ComponentExists(IComponent component);

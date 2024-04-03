@@ -13,7 +13,7 @@ public partial class ProductPage : WebPage
         AddToCartButton.Click();
     }
 
-    public void ClickOnCompareButton()
+    public void CompareProduct()
     {
         FindProduct.Click();
         CompareProductButton.Hover();
@@ -28,7 +28,7 @@ public partial class ProductPage : WebPage
         Driver.WaitForAjax();
     }
 
-    public void GoToWishlist()
+    public void ProceedToWishlist()
     {
         SearchField.Hover();
         WishlistPage.Click();
@@ -66,7 +66,6 @@ public partial class ProductPage : WebPage
         SizeField.Click();
         SelectSize(DifferentTypeSize.Medium);
         Driver.WaitForAjax();
-
         AddToCartButton.Click();
     }
 }

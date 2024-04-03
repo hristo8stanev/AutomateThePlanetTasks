@@ -7,55 +7,55 @@ public partial class CheckoutPage : WebPage
     {
     }
 
-    public void BillingDetails(BillingInformation billingInformation)
+    public void FillBillingDetails(BillingInformation billingInformation)
     {
         ApplyCoupon.Hover();
         FirstNameField.TypeText(billingInformation.FirstName);
-        LastNameField.TypeText(billingInformation.LastName);
+        LastNameField.TypeText(billingInformation.FirstName);
         CompanyField.TypeText(billingInformation.Company);
         AddressField1.TypeText(billingInformation.Address1);
         AddressField2.TypeText(billingInformation.Address2);
         CityField.TypeText(billingInformation.City);
         PostCodeField.TypeText(billingInformation.PostCode);
-        CountryField.Click();
-        SelectCountry(billingInformation.Country).Click();
+        Country(billingInformation.Country).Click();
         Driver.WaitForAjax();
-        Region.Click();
-        SelectRegion(billingInformation.Region).Click();
+        Region(billingInformation.Region).Click();
     }
 
-    public void BillingDetailsWithoutName(BillingInformation billingInformation)
+    public void FillBillingAddress(BillingInformation billingInformation)
     {
-        ApplyCoupon.Hover();
         CompanyField.TypeText(billingInformation.Company);
         AddressField1.TypeText(billingInformation.Address1);
         AddressField2.TypeText(billingInformation.Address2);
         CityField.TypeText(billingInformation.City);
         PostCodeField.TypeText(billingInformation.PostCode);
-        CountryField.Click();
-        SelectCountry(billingInformation.Country).Click();
+        Country(billingInformation.Country).Click();
         Driver.WaitForAjax();
-        Region.Click();
-        SelectRegion(billingInformation.Region).Click();
+        Region(billingInformation.Region).Click();
     }
 
-    public void CreateNewUserPayment(PersonalInformation user)
+    public void FillBillingNewUserDetails(PersonalInformation user)
     {
         FirstNameField.TypeText(user.FirstName);
         LastNameField.TypeText(user.LastName);
         EmailPaymentField.TypeText(user.Email);
         TelephonePaymentField.TypeText(user.Telephone);
-        PasswordPaymentField.TypeText(user.Password);
-        ConfirmPasswordPaymentField.TypeText(user.ConfirmPassword);
-        AgreePrivacy.Click();
-    }
 
-    public void GuesUserPayment(PersonalInformation user)
-    {
-        FirstNameField.TypeText(user.FirstName);
-        LastNameField.TypeText(user.LastName);
-        EmailPaymentField.TypeText(user.Email);
-        TelephonePaymentField.TypeText(user.Telephone);
+        if (PasswordPaymentField.Displayed == true)
+        {
+            PasswordPaymentField.TypeText(user.Password);
+        }
+
+        if (PasswordPaymentField.Displayed == true)
+        {
+            ConfirmPasswordPaymentField.TypeText(user.ConfirmPassword);
+        }
+
+        if (AgreePrivacy.Displayed == true)
+        {
+            AgreePrivacy.Click();
+        }
+
     }
 
     public void SelectAccountType(DifferentAccountType accountType)

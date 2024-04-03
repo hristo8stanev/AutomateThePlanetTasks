@@ -2,11 +2,7 @@
 
 public class ShoppingCartPageTests : BaseTest
 {
-    private string emailAddress = "alabala@gmail.com";
-    private string password = "tester";
-    private string updateQuantity = "5";
 
-    //AUTHENTICATED USER
     [Test]
     public void AddProductToTheShopping_When_AuthenticatedUserTest()
     {
@@ -40,7 +36,7 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "4",
         };
 
-        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
@@ -53,9 +49,9 @@ public class ShoppingCartPageTests : BaseTest
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, 46);
-        _webSite.ShoppingCartPage.AssertProductName(expectedProduct2, 32);
-        _webSite.ShoppingCartPage.AssertProductName(expectedProduct3, 31);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, expectedProduct1.Id);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct2, expectedProduct2.Id);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct3, expectedProduct3.Id);
 
         _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct3, 1);
         _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct2, 1);
@@ -75,7 +71,7 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "4",
         };
 
-        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
@@ -83,11 +79,11 @@ public class ShoppingCartPageTests : BaseTest
         _driver.GoToUrl(Urls.Urls.CART_PAGE);
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, 31);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, expectedProduct1.Id);
 
-        _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
+        _webSite.ShoppingCartPage.UpdateQuantity(Constants.Constants.updateQuantity);
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(Constants.Constants.updateQuantity);
     }
 
     [Test]
@@ -103,7 +99,7 @@ public class ShoppingCartPageTests : BaseTest
             Quantity = "4",
         };
 
-        var loginUser = Factories.CustomerFactory.LoginUser(emailAddress, password);
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(expectedProduct1.Name);
@@ -136,7 +132,7 @@ public class ShoppingCartPageTests : BaseTest
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, 46);
+        _webSite.ShoppingCartPage.AssertProductName(expectedProduct1, expectedProduct1.Id);
         _webSite.ShoppingCartPage.AssertProductInformation(expectedProduct1, 1);
     }
 
@@ -160,8 +156,8 @@ public class ShoppingCartPageTests : BaseTest
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
-        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(updateQuantity);
+        _webSite.ShoppingCartPage.UpdateQuantity(Constants.Constants.updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(Constants.Constants.updateQuantity);
     }
 
     [Test]

@@ -9,7 +9,7 @@ public partial class RegisterPage : WebPage
     public void RegisterUser(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
-        LastaNameInput.TypeText(user.LastName);
+        LastNameInput.TypeText(user.LastName);
         EmailAddressNameInput.TypeText(user.Email);
         TelephoneInput.TypeText(user.Telephone);
         PasswordInput.TypeText(user.Password);
@@ -20,7 +20,7 @@ public partial class RegisterPage : WebPage
 
     public void RegisterUserWithoutName(PersonalInformation user)
     {
-        LastaNameInput.TypeText(user.LastName);
+        LastNameInput.TypeText(user.LastName);
         EmailAddressNameInput.TypeText(user.Email);
         TelephoneInput.TypeText(user.Telephone);
         PasswordInput.TypeText(user.Password);
@@ -32,7 +32,7 @@ public partial class RegisterPage : WebPage
     public void RegisterUserWithoutEmailAddress(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
-        LastaNameInput.TypeText(user.LastName);
+        LastNameInput.TypeText(user.LastName);
         TelephoneInput.TypeText(user.Telephone);
         PasswordInput.TypeText(user.Password);
         ConfirmPasswordInput.TypeText(user.ConfirmPassword);
@@ -43,7 +43,7 @@ public partial class RegisterPage : WebPage
     public void RegisterUserWithoutPassword(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
-        LastaNameInput.TypeText(user.LastName);
+        LastNameInput.TypeText(user.LastName);
         EmailAddressNameInput.TypeText(user.Email);
         TelephoneInput.TypeText(user.Telephone);
         ConfirmPasswordInput.TypeText(user.ConfirmPassword);
