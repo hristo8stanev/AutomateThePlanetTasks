@@ -6,6 +6,7 @@ public partial class ProductPage : WebPage
     {
     }
 
+    public override string Url => Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE;
     public void AddProductToCart(string quantity)
     {
         FindProduct.Click();

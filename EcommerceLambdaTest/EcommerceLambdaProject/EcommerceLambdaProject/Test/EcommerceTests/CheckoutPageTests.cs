@@ -1,6 +1,4 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-
-namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class CheckoutPageTests : BaseTest
 {
@@ -16,14 +14,14 @@ public class CheckoutPageTests : BaseTest
         Products.Products.IpodProduct(secondProduct);
         Products.Products.SonyProduct(thirdProduct);
 
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
         _webSite.HomePage.SearchProductByName(secondProduct.Name);
         _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
         _webSite.HomePage.SearchProductByName(thirdProduct.Name);
         _webSite.ProductPage.AddProductToCart(thirdProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Login);
         _webSite.CheckoutPage.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
@@ -57,12 +55,12 @@ public class CheckoutPageTests : BaseTest
 
         Products.Products.IpodProduct(firstProduct);
         Products.Products.SonyProduct(secondProduct);
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
         _webSite.HomePage.SearchProductByName(secondProduct.Name);
         _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
@@ -91,13 +89,13 @@ public class CheckoutPageTests : BaseTest
 
         Products.Products.IpodProduct(firstProduct);
         Products.Products.SonyProduct(secondProduct);
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
         _webSite.HomePage.SearchProductByName(secondProduct.Name);
         _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
 
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);

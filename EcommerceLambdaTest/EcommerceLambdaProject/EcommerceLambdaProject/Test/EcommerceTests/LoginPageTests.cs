@@ -4,11 +4,11 @@ public class LoginPageTests : BaseTest
 {
    
     [Test]
-    public void LoginIntoTheSystem_When_ValidCredentialsAreProvided()
+    public void LoginIntoSystem_When_ValidCredentialsAreProvided()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
@@ -16,11 +16,23 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void TryLoginIntoTheSystem_When_InvalidCredentialsAreProvided()
+    public void LoginIntoSystem_When_InvalidCredentialsAreProvided()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.InvalidEmail, Constants.Constants.Password);
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+
+        _webSite.LoginPage.AssertUrlPage(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.AssertErrorMessageWithWrongCredentials();
+    }
+
+    [Test]
+    public void LoginIntoSystem_When_EmptyCredentialsAreProvided()
+    {
+        var loginUser = CustomerFactory.LoginUser(email:string.Empty, password:string.Empty);
+
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.LOGIN_PAGE);
@@ -32,7 +44,7 @@ public class LoginPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
@@ -43,9 +55,9 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void TryToForgottenPasswordFunctionality_When_ValidEmailProvided()
+    public void ForgottenPasswordFunctionality_When_ValidEmailProvided()
     {
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
@@ -56,9 +68,9 @@ public class LoginPageTests : BaseTest
     }
 
     [Test]
-    public void TryToForgottenPasswordFunctionality_When_InvalidEmailProvided()
+    public void ForgottenPasswordFunctionality_When_InvalidEmailProvided()
     {
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 

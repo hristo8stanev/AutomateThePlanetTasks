@@ -7,6 +7,8 @@ public partial class CheckoutPage : WebPage
     {
     }
 
+    public override string Url => Urls.Urls.CHECKOUT_PAGE;
+
     public void FillBillingDetails(BillingInformation billingInformation)
     {
         ApplyCoupon.Hover();

@@ -9,7 +9,15 @@ public abstract class WebPage
     {
         Driver = driver;
     }
- 
+
+
+    public abstract string Url { get; }
+
+    public void Navigate()
+    {
+        Driver.GoToUrl(Url);
+    }
+
     public void AssertUrlPage(string expectedUrl)
     {
         string actualUrl = Driver.Url;

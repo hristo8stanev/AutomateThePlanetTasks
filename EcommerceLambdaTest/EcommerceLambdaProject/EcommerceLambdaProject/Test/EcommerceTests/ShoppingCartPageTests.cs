@@ -13,7 +13,7 @@ public class ShoppingCartPageTests : BaseTest
         Products.Products.IpodProduct(secondProduct);
         Products.Products.SonyProduct(thirdProduct);
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
@@ -22,7 +22,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.HomePage.SearchProductByName(thirdProduct.Name);
         _webSite.ProductPage.AddProductToCart(thirdProduct.Quantity);
 
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductName(firstProduct, firstProduct.Id);
@@ -41,11 +41,11 @@ public class ShoppingCartPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductName(firstProduct, firstProduct.Id);
@@ -60,13 +60,13 @@ public class ShoppingCartPageTests : BaseTest
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
-
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
         _webSite.ShoppingCartPage.RemoveProductFromTheCart();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
@@ -79,10 +79,10 @@ public class ShoppingCartPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         Products.Products.iPodShuffleProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductName(firstProduct, firstProduct.Id);
@@ -95,10 +95,10 @@ public class ShoppingCartPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         Products.Products.SonyProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
@@ -112,10 +112,10 @@ public class ShoppingCartPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.Navigate();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 

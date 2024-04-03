@@ -6,6 +6,8 @@ public partial class SearchPage : WebPage
     {
     }
 
+    public override string Url => Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE;
+
     public void SearchProductByName(ProductDetails product)
     {
         SearchInputSearchPage.TypeText(product.Name);
