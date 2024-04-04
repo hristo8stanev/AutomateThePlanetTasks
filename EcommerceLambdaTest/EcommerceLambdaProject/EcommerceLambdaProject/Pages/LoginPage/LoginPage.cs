@@ -10,7 +10,7 @@ public partial class LoginPage : WebPage
     public override string Url => Urls.Urls.LOGIN_PAGE;
     public void LoginUser(LoginInformation login)
     {
-        EmailAddressLogin.TypeText(login.EmailAddress);
+        EmailAddressInput.TypeText(login.EmailAddress);
         PasswordInput.TypeText(login.PasswordField);
         LoginButton.Click();
     }

@@ -39,4 +39,19 @@ public partial class MyAccountPage
         var dateMessage = $"{Constants.Constants.ErrorMessageDate} \n Actual Result:{DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text} \n Expected Result:{currentDate}";
         Assert.That(DateTimeElement(DateTime.Now.ToString("dd/MM/yyyy")).Text, Is.EqualTo(currentDate), dateMessage);
     }
+
+    public void AssertGiftCertificateAddedToShoppingCart(PurchaseGiftCertificate purchaseGiftCertificate)
+    {
+        var actualResult = GiftPriceNameElement(purchaseGiftCertificate.Amount, purchaseGiftCertificate.RecipientName).Text;
+        var nameMessage = $"{Constants.Constants.ErrorMessageAddress} \n Actual Result: {actualResult} \n Expected Result: ${purchaseGiftCertificate.Amount}.00 Gift Certificate for {purchaseGiftCertificate.RecipientName}";
+        Assert.That(GiftPriceNameElement(purchaseGiftCertificate.Amount, purchaseGiftCertificate.RecipientName).Text, Is.EqualTo($"${purchaseGiftCertificate.Amount}.00 Gift Certificate for {purchaseGiftCertificate.RecipientName}"), nameMessage);
+    }
+
+    public void AssertGiftCertificateRemoved(PurchaseGiftCertificate giftName)
+    {
+        var errorMessageRemovedProduct = $"The gift for'{giftName.RecipientName}' is still present in the Shopping Cart.";
+        var expectedMessage = "Your shopping cart is empty!";
+        var message = $"{errorMessageRemovedProduct} \n Actual Result:{RemovedProduct(expectedMessage).Text} \n Expected Result:{expectedMessage}";
+        Assert.That(RemovedProduct(expectedMessage).Text.Contains(expectedMessage), message);
+    }
 }

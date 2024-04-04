@@ -30,7 +30,7 @@ public class MyAccountPageTests : BaseTest
     }
 
     [Test]
-    public void PurchaseGiftCertificate_When_AuthenticatedUserProvided()
+    public void PurchaseGiftCertificate_When_AuthenticatedUser_VerifyGiftInShoppingCart()
     {
         var gift = CustomerFactory.GenerateGiftCertificate();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
@@ -42,6 +42,29 @@ public class MyAccountPageTests : BaseTest
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VOUCHER_PAGE);
+
+        _webSite.ShoppingCartPage.Navigate();
+        _webSite.MyAccountPage.AssertGiftCertificateAddedToShoppingCart(gift);
+    }
+
+    [Test]
+    public void RemoveGiftCertificate_When_AuthenticatedUser_And_RemovedGiftFromShoppingCart()
+    {
+        var gift = CustomerFactory.GenerateGiftCertificate();
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.ProceedToMyVoucherSection();
+        _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
+
+        _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VOUCHER_PAGE);
+
+        _webSite.ShoppingCartPage.Navigate();
+        _webSite.MyAccountPage.AssertGiftCertificateAddedToShoppingCart(gift);
+        _webSite.MyAccountPage.RemoveProductFromCart();
+        _webSite.MyAccountPage.AssertGiftCertificateRemoved(gift);
     }
 
     [Test]

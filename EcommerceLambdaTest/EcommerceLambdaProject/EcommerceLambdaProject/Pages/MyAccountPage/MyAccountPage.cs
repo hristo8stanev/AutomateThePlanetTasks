@@ -49,6 +49,12 @@ public partial class MyAccountPage : WebPage
         Driver.WaitForAjax();
     }
 
+    public void RemoveProductFromCart()
+    {
+        Driver.WaitForAjax();
+        RemoveButton.Click();
+    }
+
     public void AddNewAddress(BillingInformation billingInformation)
     {
         FirstNameInput.TypeText(billingInformation.FirstName);

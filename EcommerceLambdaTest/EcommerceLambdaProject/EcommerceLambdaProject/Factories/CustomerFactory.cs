@@ -62,7 +62,7 @@ public static class CustomerFactory
            .RuleFor(c => c.RecipientEmail, f => recipientEmail ?? f.Internet.Email())
            .RuleFor(c => c.YourName, f => name ?? f.Name.FirstName())
            .RuleFor(c => c.YourEmail, f => email ?? f.Internet.Email())
-           .RuleFor(c => c.Amount, f => "2");
+           .RuleFor(c => c.Amount, f => "100");
         return faker.Generate();
     }
 }

@@ -42,7 +42,11 @@ public partial class MyAccountPage
 
     public IComponent CustomerElement(string name) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{name}')]"));
 
+    public IComponent GiftPriceNameElement(string amount, string name) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '${amount}.00 Gift Certificate for {name}')]"));
+
     public IComponent MyAccountMenuSection => Driver.FindComponent(By.XPath("//ul[@class='navbar-nav horizontal']//li[.//a[contains(@href, 'account/account')]]"));
     public IComponent MyOrderHistoryButton => Driver.FindComponent(By.XPath("//div[@id='content']//div[.//a[contains(@href, 'account/order')]]//a[contains(text(), ' View your order history')]"));
     public IComponent MyVoucherButton => MyAccountMenuSection.FindComponents(By.XPath("//li[.//a[contains(@href, 'account/voucher') and normalize-space()='My voucher']]")).Last();
+    public IComponent RemoveButton => Driver.FindComponent(By.XPath("//button[contains(@onclick, 'voucher.remove')]"));
+    public IComponent RemovedProduct(string value) => Driver.FindComponent(By.XPath($"//div[@id='content']//p[contains(text(), '{value}')]"));
 }
