@@ -31,7 +31,7 @@ public partial class MyAccountPage : WebPage
 
     public void ProceedToAddressBookSection()
     {
-        AddressBookSection.Click();
+        AddressBookButton.Click();
         NewAddressButton.Click();
         Driver.WaitForAjax();
     }
@@ -53,11 +53,11 @@ public partial class MyAccountPage : WebPage
     {
         FirstNameInput.TypeText(billingInformation.FirstName);
         LastNameInput.TypeText(billingInformation.LastName);
-        CompanyField.TypeText(billingInformation.Company);
-        AddressField1.TypeText(billingInformation.Address1);
-        AddressField2.TypeText(billingInformation.Address2);
-        CityField.TypeText(billingInformation.City);
-        PostCodeField.TypeText(billingInformation.PostCode);
+        CompanyInput.TypeText(billingInformation.Company);
+        AddressInput1.TypeText(billingInformation.Address1);
+        AddressInput2.TypeText(billingInformation.Address2);
+        CityInput.TypeText(billingInformation.City);
+        PostCodeInput.TypeText(billingInformation.PostCode);
         Country(billingInformation.Country).Click();
         Driver.WaitForAjax();
         Region(billingInformation.Region).Click();
@@ -77,19 +77,19 @@ public partial class MyAccountPage : WebPage
     public void ChangeMyPassword()
     {
         ChangeMyPasswordButton.Click();
-        PasswordField.TypeText(Constants.Constants.Password);
-        ConfirmPasswordField.TypeText(Constants.Constants.Password);
+        PasswordInput.TypeText(Constants.Constants.Password);
+        ConfirmPasswordInput.TypeText(Constants.Constants.Password);
         ContinueButton.Click();
     }
 
     public void PurchaseGiftCertificate(PurchaseGiftCertificate gift)
     {
-        RecipientName.TypeText(gift.RecipientName);
-        RecipientEmail.TypeText(gift.RecipientEmail);
-        YourName.TypeText(gift.YourName);
-        YourEmail.TypeText(gift.YourEmail);
+        RecipientNameInput.TypeText(gift.RecipientName);
+        RecipientEmailInput.TypeText(gift.RecipientEmail);
+        YourNameInput.TypeText(gift.YourName);
+        YourEmailInput.TypeText(gift.YourEmail);
         SelectGiftType(GiftCertificateType.Birthday);
-        AmountCertificate.TypeText(gift.Amount);
+        AmountCertificateInput.TypeText(gift.Amount);
         AgreeGiftCertificate.Click();
         ContinueButton.Click();
     }

@@ -9,16 +9,16 @@ public partial class CheckoutPage : WebPage
 
     public override string Url => Urls.Urls.CHECKOUT_PAGE;
 
-    public void FillBillingDetails(BillingInformation billingInformation)
+    public void FillUserDetails(BillingInformation billingInformation)
     {
         ApplyCoupon.Hover();
-        FirstNameField.TypeText(billingInformation.FirstName);
-        LastNameField.TypeText(billingInformation.FirstName);
-        CompanyField.TypeText(billingInformation.Company);
+        FirstNameInput.TypeText(billingInformation.FirstName);
+        LastNameInput.TypeText(billingInformation.FirstName);
+        CompanyInput.TypeText(billingInformation.Company);
         AddressField1.TypeText(billingInformation.Address1);
         AddressField2.TypeText(billingInformation.Address2);
-        CityField.TypeText(billingInformation.City);
-        PostCodeField.TypeText(billingInformation.PostCode);
+        CityInput.TypeText(billingInformation.City);
+        PostCodeInput.TypeText(billingInformation.PostCode);
         Country(billingInformation.Country).Click();
         Driver.WaitForAjax();
         Region(billingInformation.Region).Click();
@@ -26,11 +26,11 @@ public partial class CheckoutPage : WebPage
 
     public void FillBillingAddress(BillingInformation billingInformation)
     {
-        CompanyField.TypeText(billingInformation.Company);
+        CompanyInput.TypeText(billingInformation.Company);
         AddressField1.TypeText(billingInformation.Address1);
         AddressField2.TypeText(billingInformation.Address2);
-        CityField.TypeText(billingInformation.City);
-        PostCodeField.TypeText(billingInformation.PostCode);
+        CityInput.TypeText(billingInformation.City);
+        PostCodeInput.TypeText(billingInformation.PostCode);
         Country(billingInformation.Country).Click();
         Driver.WaitForAjax();
         Region(billingInformation.Region).Click();
@@ -38,19 +38,19 @@ public partial class CheckoutPage : WebPage
 
     public void FillBillingNewUserDetails(PersonalInformation user)
     {
-        FirstNameField.TypeText(user.FirstName);
-        LastNameField.TypeText(user.LastName);
-        EmailPaymentField.TypeText(user.Email);
-        TelephonePaymentField.TypeText(user.Telephone);
+        FirstNameInput.TypeText(user.FirstName);
+        LastNameInput.TypeText(user.LastName);
+        EmailPaymentInput.TypeText(user.Email);
+        TelephonePaymentInput.TypeText(user.Telephone);
 
-        if (PasswordPaymentField.Displayed == true)
+        if (PasswordPaymentInput.Displayed == true)
         {
-            PasswordPaymentField.TypeText(user.Password);
+            PasswordPaymentInput.TypeText(user.Password);
         }
 
-        if (PasswordPaymentField.Displayed == true)
+        if (PasswordPaymentInput.Displayed == true)
         {
-            ConfirmPasswordPaymentField.TypeText(user.ConfirmPassword);
+            ConfirmPasswordPaymentInput.TypeText(user.ConfirmPassword);
         }
 
         if (AgreePrivacy.Displayed == true)
@@ -65,15 +65,15 @@ public partial class CheckoutPage : WebPage
         switch (accountType)
         {
             case DifferentAccountType.Login:
-                LoginAccType.Click();
+                LoginInput.Click();
                 break;
 
             case DifferentAccountType.Register:
-                RegisterAccType.Click();
+                RegisterAccountType.Click();
                 break;
 
             case DifferentAccountType.Guest:
-                GuestAccType.Click();
+                GuestAccountType.Click();
                 break;
 
             default:
@@ -83,8 +83,8 @@ public partial class CheckoutPage : WebPage
 
     public void LoginUser(string email, string password)
     {
-        EmailField.TypeText(email);
-        PasswordField.TypeText(password);
+        EmailInput.TypeText(email);
+        PasswordInput.TypeText(password);
         LoginButton.Click();
     }
 

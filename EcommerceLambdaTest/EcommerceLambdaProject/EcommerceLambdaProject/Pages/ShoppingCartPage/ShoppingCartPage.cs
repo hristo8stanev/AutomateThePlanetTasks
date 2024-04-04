@@ -11,11 +11,11 @@ public partial class ShoppingCartPage : WebPage
 
     public void UpdateQuantity(string product)
     {
-        UpdateQuantityTextField.TypeText(product);
+        UpdateQuantityField.TypeText(product);
         UpdateQuantityButton.Click();
     }
 
-    public void RemoveProductFromTheCart()
+    public void RemoveProductFromCart()
     {
         Driver.WaitForAjax();
         RemoveButton.Click();

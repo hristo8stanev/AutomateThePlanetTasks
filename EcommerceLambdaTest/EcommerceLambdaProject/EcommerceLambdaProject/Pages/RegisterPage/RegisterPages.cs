@@ -9,7 +9,7 @@ public partial class RegisterPage : WebPage
 
     public override string Url => Urls.Urls.REGISTER_PAGE;
 
-    public void RegisterUser(PersonalInformation user)
+    public void CreateUser(PersonalInformation user)
     {
         FirstNameInput.TypeText(user.FirstName);
         LastNameInput.TypeText(user.LastName);

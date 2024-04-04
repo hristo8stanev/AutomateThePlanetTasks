@@ -2,7 +2,7 @@
 
 public partial class SearchPage
 {
-    public void AssertTheProductNameAndPriceIsCorrect(ProductDetails expectedProduct, int productId)
+    public void AssertTheProductNameAndPrice(ProductDetails expectedProduct, int productId)
     {
         var nameMessage = $"{Constants.Constants.ErrorMessage} \n Actual Result:{GetProductName(productId, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
         Assert.That(GetProductName(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);

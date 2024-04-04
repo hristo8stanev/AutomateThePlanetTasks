@@ -6,9 +6,9 @@ public class ShoppingCartPageTests : BaseTest
     public void AddProductToTheShopping_When_AuthenticatedUserAddsProductsToCart_And_ProductDetailsCorrect()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.Product();
-        var secondProduct = CustomerFactory.Product();
-        var thirdProduct = CustomerFactory.Product();
+        var firstProduct = CustomerFactory.GenerateProduct();
+        var secondProduct = CustomerFactory.GenerateProduct();
+        var thirdProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
         Products.Products.IPodProduct(secondProduct);
         Products.Products.SonyProduct(thirdProduct);
@@ -38,7 +38,7 @@ public class ShoppingCartPageTests : BaseTest
     public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.Product();
+        var firstProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();
@@ -52,13 +52,13 @@ public class ShoppingCartPageTests : BaseTest
 
         _webSite.ShoppingCartPage.UpdateQuantity(Constants.Constants.updateQuantity);
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(Constants.Constants.updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(Constants.Constants.updateQuantity);
     }
 
     [Test]
     public void RemoveProductFromTheShoppingCart_When_AuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
-        var firstProduct = CustomerFactory.Product();
+        var firstProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
@@ -67,16 +67,16 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
         _webSite.ShoppingCartPage.Navigate();
-        _webSite.ShoppingCartPage.RemoveProductFromTheCart();
+        _webSite.ShoppingCartPage.RemoveProductFromCart();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductRemovedFromTheCart(firstProduct.Name);
+        _webSite.ShoppingCartPage.AssertProductRemoved(firstProduct.Name);
     }
 
     [Test]
     public void AddProductToTheShopping_NonAuthenticatedUserAddsProductToCart_And_ProductIsAddedSuccessfully()
     {
-        var firstProduct = CustomerFactory.Product();
+        var firstProduct = CustomerFactory.GenerateProduct();
         Products.Products.IPodShuffleProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
@@ -92,7 +92,7 @@ public class ShoppingCartPageTests : BaseTest
     [Test]
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
-        var firstProduct = CustomerFactory.Product();
+        var firstProduct = CustomerFactory.GenerateProduct();
         Products.Products.SonyProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
@@ -103,13 +103,13 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
         _webSite.ShoppingCartPage.UpdateQuantity(Constants.Constants.updateQuantity);
-        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantityOfProduct(Constants.Constants.updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(Constants.Constants.updateQuantity);
     }
 
     [Test]
     public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
-        var firstProduct = CustomerFactory.Product();
+        var firstProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
@@ -119,9 +119,9 @@ public class ShoppingCartPageTests : BaseTest
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
 
-        _webSite.ShoppingCartPage.RemoveProductFromTheCart();
+        _webSite.ShoppingCartPage.RemoveProductFromCart();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductRemovedFromTheCart(firstProduct.Name);
+        _webSite.ShoppingCartPage.AssertProductRemoved(firstProduct.Name);
     }
 }

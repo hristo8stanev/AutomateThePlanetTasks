@@ -5,10 +5,10 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_LoginUserTypeSelected_And_3ProductsPurchased_And_PaymentConfirmed()
     {
-        var billingDetails = CustomerFactory.FillBillingAddress();
-        var firstProduct = CustomerFactory.Product();
-        var secondProduct = CustomerFactory.Product();
-        var thirdProduct = CustomerFactory.Product();
+        var billingDetails = CustomerFactory.GenerateBillingAddress();
+        var firstProduct = CustomerFactory.GenerateProduct();
+        var secondProduct = CustomerFactory.GenerateProduct();
+        var thirdProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
         Products.Products.IPodProduct(secondProduct);
         Products.Products.SonyProduct(thirdProduct);
@@ -29,7 +29,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.AssertProductInformationCorrect(secondProduct, secondProduct.Id);
         _webSite.CheckoutPage.AssertProductInformationCorrect(firstProduct, firstProduct.Id);
 
-        _webSite.CheckoutPage.FillBillingDetails(billingDetails);
+        _webSite.CheckoutPage.FillUserDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonDisplayed();
@@ -46,10 +46,10 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_RegisterUserTypeSelected_And_2ProductsArePurchased_And_PaymentCompleted()
     {
-        var billingDetails = CustomerFactory.FillBillingAddress();
-        var personalInformation = CustomerFactory.FillUserPersonalInformation();
-        var firstProduct = CustomerFactory.Product();
-        var secondProduct = CustomerFactory.Product();
+        var billingDetails = CustomerFactory.GenerateBillingAddress();
+        var personalInformation = CustomerFactory.GenerateUserDetails();
+        var firstProduct = CustomerFactory.GenerateProduct();
+        var secondProduct = CustomerFactory.GenerateProduct();
 
         Products.Products.IPodProduct(firstProduct);
         Products.Products.SonyProduct(secondProduct);
@@ -80,10 +80,10 @@ public class CheckoutPageTests : BaseTest
     [Test]
     public void Checkout_When_GuestUserTypeSelected_And_2ProductsArePurchased_And_PaymentCompleted()
     {
-        var billingDetails = CustomerFactory.FillBillingAddress();
-        var personalInformation = CustomerFactory.FillUserPersonalInformation();
-        var firstProduct = CustomerFactory.Product();
-        var secondProduct = CustomerFactory.Product();
+        var billingDetails = CustomerFactory.GenerateBillingAddress();
+        var personalInformation = CustomerFactory.GenerateUserDetails();
+        var firstProduct = CustomerFactory.GenerateProduct();
+        var secondProduct = CustomerFactory.GenerateProduct();
 
         Products.Products.IPodProduct(firstProduct);
         Products.Products.SonyProduct(secondProduct);

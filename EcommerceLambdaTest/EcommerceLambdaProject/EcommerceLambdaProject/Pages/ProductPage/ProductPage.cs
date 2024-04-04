@@ -11,7 +11,7 @@ public partial class ProductPage : WebPage
     public void AddProductToCart(string quantity)
     {
         FindProduct.Click();
-        QuantityField.TypeText(quantity);
+        QuantityInput.TypeText(quantity);
         AddToCartButton.Click();
     }
 
@@ -24,17 +24,17 @@ public partial class ProductPage : WebPage
         CompareButton.Click();
     }
 
-    public void AddProductToWishlist()
+    public void AddProductToWishList()
     {
         FindProduct.Click();
         WishListButton.Click();
         Driver.WaitForAjax();
     }
 
-    public void ProceedToWishlist()
+    public void ProceedToWishList()
     {
         SearchField.Hover();
-        WishListPage.Click();
+        WishListSection.Click();
     }
 
     public void SelectSize(DifferentTypeSize sizeType)

@@ -6,7 +6,7 @@ public class MyAccountPageTests : BaseTest
     public void EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var myAccountInfomraiton = CustomerFactory.FillUserPersonalInformation();
+        var myAccountInfomraiton = CustomerFactory.GenerateUserDetails();
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -32,7 +32,7 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void PurchaseGiftCertificate_When_AuthenticatedUserProvided()
     {
-        var gift = CustomerFactory.GiftCertificate();
+        var gift = CustomerFactory.GenerateGiftCertificate();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _webSite.LoginPage.Navigate();
@@ -48,7 +48,7 @@ public class MyAccountPageTests : BaseTest
     public void AddNewAddress_AddressAddedFromAddressBook_And_AuthenticatedUserProvidesDetails()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var newAddress = CustomerFactory.FillBillingAddress();
+        var newAddress = CustomerFactory.GenerateBillingAddress();
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -65,9 +65,9 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void CheckMyOrderHistory_When_AuthenticatedUserPurchasesProduct()
     {
-        var billingDetails = CustomerFactory.FillBillingAddress();
-        var personalInformation = CustomerFactory.FillUserPersonalInformation();
-        var firstProduct = CustomerFactory.Product();
+        var billingDetails = CustomerFactory.GenerateBillingAddress();
+        var personalInformation = CustomerFactory.GenerateUserDetails();
+        var firstProduct = CustomerFactory.GenerateProduct();
         Products.Products.SonyProduct(firstProduct);
 
         _webSite.CheckoutPage.Navigate();

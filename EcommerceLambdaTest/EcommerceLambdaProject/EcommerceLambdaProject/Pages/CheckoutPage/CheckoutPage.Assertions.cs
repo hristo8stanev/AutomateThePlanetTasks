@@ -16,14 +16,14 @@ public partial class CheckoutPage
 
     public void AssertProductInformationCorrect(ProductDetails expectedProduct, int productId)
     {
-        var nameMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductNameElementCheckoutPage(productId, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
-        Assert.That(ProductNameElementCheckoutPage(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);
+        var nameMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductNameElement(productId, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
+        Assert.That(ProductNameElement(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);
 
-        var quantityMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantityElementCheckout(productId, expectedProduct.Name).GetAttribute("value")} \n Expected Result:{expectedProduct.Quantity}";
-        Assert.That(ProductQuantityElementCheckout(productId, expectedProduct.Name).GetAttribute("value"), Is.EqualTo(expectedProduct.Quantity), quantityMessage);
+        var quantityMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantityElement(productId, expectedProduct.Name).GetAttribute("value")} \n Expected Result:{expectedProduct.Quantity}";
+        Assert.That(ProductQuantityElement(productId, expectedProduct.Name).GetAttribute("value"), Is.EqualTo(expectedProduct.Quantity), quantityMessage);
 
-        var priceMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductPriceElementCheckout("text-right", expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
-        Assert.That(ProductPriceElementCheckout("text-right", expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.UnitPrice), priceMessage);
+        var priceMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductPriceElement("text-right", expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
+        Assert.That(ProductPriceElement("text-right", expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.UnitPrice), priceMessage);
     }
 
     public void AssertProductInformationConfirmOrder(ProductDetails expectedProductInfo)

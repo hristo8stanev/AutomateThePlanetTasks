@@ -14,8 +14,8 @@ public partial class ShoppingCartPage
         var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", modelId).Text} \n Expected Result:{expectedProductInfo.Model}";
         Assert.That(ProductElementInformation("text-left", modelId).Text, Is.EqualTo(expectedProductInfo.Model), message);
 
-        var messageQuantity = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
-        Assert.That(ProductQuantityInformation("form-control").GetAttribute("value"), Is.EqualTo(expectedProductInfo.Quantity), messageQuantity);
+        var messageQuantity = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantity("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
+        Assert.That(ProductQuantity("form-control").GetAttribute("value"), Is.EqualTo(expectedProductInfo.Quantity), messageQuantity);
 
         var messagePrice = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductPriceElement(expectedProductInfo.UnitPrice).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
         Assert.That(ProductPriceElement(expectedProductInfo.UnitPrice).Text, Is.EqualTo(expectedProductInfo.UnitPrice), messagePrice);
@@ -23,7 +23,7 @@ public partial class ShoppingCartPage
         Driver.WaitForAjax();
     }
 
-    public void AssertProductRemovedFromTheCart(string expectedProductInfo)
+    public void AssertProductRemoved(string expectedProductInfo)
     {
         var errorMessageRemovedProduct = $"The product '{expectedProductInfo}' is still present in the Shopping Cart.";
         var expectedMessage = "Your shopping cart is empty!";
@@ -31,10 +31,10 @@ public partial class ShoppingCartPage
         Assert.That(RemovedProduct(expectedMessage).Text.Contains(expectedMessage), message);
     }
 
-    public void AssertSuccessfullyUpdatedQuantityOfProduct(string expectedQuantity)
+    public void AssertSuccessfullyUpdatedQuantity(string expectedQuantity)
     {
-        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{UpdateQuantityTextField.GetAttribute("value")} \n Expected Result:{expectedQuantity}";
-        Assert.That(expectedQuantity, Is.EqualTo(UpdateQuantityTextField.GetAttribute("value")), message);
+        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{UpdateQuantityField.GetAttribute("value")} \n Expected Result:{expectedQuantity}";
+        Assert.That(expectedQuantity, Is.EqualTo(UpdateQuantityField.GetAttribute("value")), message);
         RemoveButton.Click();
         Driver.WaitForAjax();
     }

@@ -11,7 +11,7 @@ public partial class LoginPage : WebPage
     public void LoginUser(LoginInformation login)
     {
         EmailAddressLogin.TypeText(login.EmailAddress);
-        PasswordLogin.TypeText(login.PasswordField);
+        PasswordInput.TypeText(login.PasswordField);
         LoginButton.Click();
     }
 
@@ -27,7 +27,7 @@ public partial class LoginPage : WebPage
 
     public void SentEmail(string validEmail)
     {
-        EmailAddressFieldForgotPassword.TypeText(validEmail);
+        EmailAddress.TypeText(validEmail);
         ContinueButton.Click();
     }
 }

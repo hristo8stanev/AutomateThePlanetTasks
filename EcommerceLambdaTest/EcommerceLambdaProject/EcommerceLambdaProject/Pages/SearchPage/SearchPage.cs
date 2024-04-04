@@ -15,7 +15,7 @@ public partial class SearchPage : WebPage
         SearchButton.Click();
     }
 
-    public void EnterRangePrices(string min, string max)
+    public void TypeRangePrices(string min, string max)
     {
         MinPriceField.TypeText(min);
         MaxPriceField.TypeText(max);

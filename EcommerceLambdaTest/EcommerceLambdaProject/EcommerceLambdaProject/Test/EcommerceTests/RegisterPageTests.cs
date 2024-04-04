@@ -7,8 +7,8 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.FillUserPersonalInformation();
-        _webSite.RegisterPage.RegisterUser(registerUser);
+        var registerUser = CustomerFactory.GenerateUserDetails();
+        _webSite.RegisterPage.CreateUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_REGISTRATION_PAGE);
         _webSite.RegisterPage.AssertLogoutButtonIsDisplayed();
@@ -19,8 +19,8 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.FillUserPersonalInformation(firstName: string.Empty);
-        _webSite.RegisterPage.RegisterUser(registerUser);
+        var registerUser = CustomerFactory.GenerateUserDetails(firstName: string.Empty);
+        _webSite.RegisterPage.CreateUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessageFirstName();
@@ -31,8 +31,8 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.FillUserPersonalInformation(email: string.Empty);
-        _webSite.RegisterPage.RegisterUser(registerUser);
+        var registerUser = CustomerFactory.GenerateUserDetails(email: string.Empty);
+        _webSite.RegisterPage.CreateUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessageEmailAddress();
@@ -43,8 +43,8 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.FillUserPersonalInformation(password: string.Empty);
-        _webSite.RegisterPage.RegisterUser(registerUser);
+        var registerUser = CustomerFactory.GenerateUserDetails(password: string.Empty);
+        _webSite.RegisterPage.CreateUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessagePassword();

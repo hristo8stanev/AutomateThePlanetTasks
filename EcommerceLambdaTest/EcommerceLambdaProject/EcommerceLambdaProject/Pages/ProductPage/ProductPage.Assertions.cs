@@ -8,7 +8,7 @@ public partial class ProductPage
         Assert.That(ProductNameElement(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);
     }
 
-    public void AssertTheProductIsAddedToComparePage(ProductDetails expectedProduct, int productId)
+    public void AssertTheProductAddedToComparePage(ProductDetails expectedProduct, int productId)
     {
         var nameMessage = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductNameElement(productId, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
         Assert.That(ProductNameElement(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);
@@ -30,7 +30,7 @@ public partial class ProductPage
         RemoveFromCompareList(expectedProduct.Id).Click();
     }
 
-    public void AssertProductIsAddedToWishlist(ProductDetails expectedProduct, int productId)
+    public void AssertProductAddedToWishList(ProductDetails expectedProduct, int productId)
     {
         var nameMessage = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductNameElement(productId, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
         Assert.That(ProductNameElement(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);
@@ -41,8 +41,8 @@ public partial class ProductPage
         var messageAvailability = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductElementInformation(expectedProduct.Availability).Text} \n Expected Result:{expectedProduct.Availability}";
         Assert.That(ProductElementInformation(expectedProduct.Availability).Text, Is.EqualTo(expectedProduct.Availability), messageAvailability);
 
-        var messagePrice = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductPriceWishlistElement(expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
-        Assert.That(ProductPriceWishlistElement(expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.UnitPrice), messagePrice);
+        var messagePrice = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductPriceWishListElement(expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
+        Assert.That(ProductPriceWishListElement(expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.UnitPrice), messagePrice);
         RemoveFromWishList.Click();
     }
 

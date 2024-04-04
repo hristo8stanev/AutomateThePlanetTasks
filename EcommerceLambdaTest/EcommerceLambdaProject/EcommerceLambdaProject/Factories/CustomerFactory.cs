@@ -2,7 +2,7 @@
 
 public static class CustomerFactory
 {
-    public static PersonalInformation FillUserPersonalInformation(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
+    public static PersonalInformation GenerateUserDetails(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
 
@@ -15,7 +15,7 @@ public static class CustomerFactory
         return faker.Generate();
     }
 
-    public static BillingInformation FillBillingAddress(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string City = null,
+    public static BillingInformation GenerateBillingAddress(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string City = null,
         string PostCode = null, string Country = null, string Region = null)
     {
         var faker = new Faker<BillingInformation>()
@@ -39,7 +39,7 @@ public static class CustomerFactory
         return loginDetails;
     }
 
-    public static ProductDetails Product(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
+    public static ProductDetails GenerateProduct(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
     {
         var productDetails = new ProductDetails();
 
@@ -55,7 +55,7 @@ public static class CustomerFactory
         return productDetails;
     }
 
-    public static PurchaseGiftCertificate GiftCertificate(string recipientName = null, string recipientEmail = null, string name = null, string email = null, string amount = null)
+    public static PurchaseGiftCertificate GenerateGiftCertificate(string recipientName = null, string recipientEmail = null, string name = null, string email = null, string amount = null)
     {
         var faker = new Faker<PurchaseGiftCertificate>()
            .RuleFor(c => c.RecipientName, f => recipientName ?? f.Name.FirstName())
