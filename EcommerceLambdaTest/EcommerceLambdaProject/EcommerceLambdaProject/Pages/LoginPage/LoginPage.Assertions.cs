@@ -3,7 +3,7 @@
 public partial class LoginPage
 {
     
-    public void AssertLogoutButtonIsDisplayed()
+    public void AssertLogoutButtonDisplayed()
     {
         var message = $"{Constants.Constants.ErrorMessageLogoutButton} \n Actual Result:{!LogoutButton.Displayed} \n Expected Result:{LogoutButton.Displayed}";
         Assert.That(LogoutButton.Displayed, Is.True, Constants.Constants.ErrorMessageLogoutButton, message);

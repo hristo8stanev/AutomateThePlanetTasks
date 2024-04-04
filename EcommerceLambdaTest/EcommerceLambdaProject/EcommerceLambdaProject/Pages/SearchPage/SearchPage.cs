@@ -2,7 +2,8 @@
 
 public partial class SearchPage : WebPage
 {
-    public SearchPage(IDriver driver) : base(driver)
+    public SearchPage(IDriver driver)
+        : base(driver)
     {
     }
 
@@ -10,8 +11,8 @@ public partial class SearchPage : WebPage
 
     public void SearchProductByName(ProductDetails product)
     {
-        SearchInputSearchPage.TypeText(product.Name);
-        SearchButtonSearchPage.Click();
+        SearchInput.TypeText(product.Name);
+        SearchButton.Click();
     }
 
     public void EnterRangePrices(string min, string max)

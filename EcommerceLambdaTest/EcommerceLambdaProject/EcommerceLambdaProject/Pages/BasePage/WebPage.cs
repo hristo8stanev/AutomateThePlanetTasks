@@ -4,12 +4,10 @@ public abstract class WebPage
 {
     protected readonly IDriver Driver;
 
-
     public WebPage(IDriver driver)
     {
         Driver = driver;
     }
-
 
     public abstract string Url { get; }
 

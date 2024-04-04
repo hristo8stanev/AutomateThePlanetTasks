@@ -2,7 +2,8 @@
 
 public partial class ProductPage : WebPage
 {
-    public ProductPage(IDriver driver) : base(driver)
+    public ProductPage(IDriver driver)
+        : base(driver)
     {
     }
 
@@ -20,19 +21,20 @@ public partial class ProductPage : WebPage
         CompareProductButton.Hover();
         CompareProductButton.Click();
         Driver.WaitForAjax();
+        CompareButton.Click();
     }
 
     public void AddProductToWishlist()
     {
         FindProduct.Click();
-        WishlistButton.Click();
+        WishListButton.Click();
         Driver.WaitForAjax();
     }
 
     public void ProceedToWishlist()
     {
         SearchField.Hover();
-        WishlistPage.Click();
+        WishListPage.Click();
     }
 
     public void SelectSize(DifferentTypeSize sizeType)
@@ -44,7 +46,7 @@ public partial class ProductPage : WebPage
                 break;
 
             case DifferentTypeSize.Medium:
-                Medium.Click();
+                MediumSize.Click();
                 break;
 
             case DifferentTypeSize.Large:

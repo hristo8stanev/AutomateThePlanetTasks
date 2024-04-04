@@ -6,9 +6,9 @@ public class MyAccountPageTests : BaseTest
     public void EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var myAccountInfomraiton = CustomerFactory.RegisterUser();
+        var myAccountInfomraiton = CustomerFactory.FillUserPersonalInformation();
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
 
@@ -21,7 +21,7 @@ public class MyAccountPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ChangeMyPassword();
 
@@ -33,23 +33,26 @@ public class MyAccountPageTests : BaseTest
     public void PurchaseGiftCertificate_When_AuthenticatedUserProvided()
     {
         var gift = CustomerFactory.GiftCertificate();
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
-        _driver.GoToUrl(Urls.Urls.VOUCHER_PAGE);
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.ProceedToMyVoucherSection();
         _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VAUCHER_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VOUCHER_PAGE);
     }
 
     [Test]
-    public void AddNewAddress_When_AddressAddFromAddressBookAuthenticatedUserProvided()
+    public void AddNewAddress_AddressAddedFromAddressBook_And_AuthenticatedUserProvidesDetails()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var newAddress = CustomerFactory.BillingAddress();
+        var newAddress = CustomerFactory.FillBillingAddress();
 
-        _driver.GoToUrl(Urls.Urls.LOGIN_PAGE);
+        _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.MyAccountPage.GoToAddressBookSection();
+        _webSite.MyAccountPage.ProceedToAddressBookSection();
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.NEW_ADDRESS_PAGE);
 
@@ -60,26 +63,26 @@ public class MyAccountPageTests : BaseTest
     }
 
     [Test]
-    public void CheckMyOrderHistory_When_AuthenticatedUserPurchaseProduct()
+    public void CheckMyOrderHistory_When_AuthenticatedUserPurchasesProduct()
     {
-        var billingDetails = CustomerFactory.BillingAddress();
-        var personalInformation = CustomerFactory.RegisterUser();
+        var billingDetails = CustomerFactory.FillBillingAddress();
+        var personalInformation = CustomerFactory.FillUserPersonalInformation();
         var firstProduct = CustomerFactory.Product();
         Products.Products.SonyProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
-        _driver.GoToUrl(Urls.Urls.CHECKOUT_PAGE);
+        _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
         _webSite.CheckoutPage.ConfirmOrder();
 
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutTheOrder(Constants.Constants.SuccessfullyPurchaseMessage);
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutOrder(Constants.Constants.SuccessfullyPurchaseMessage);
 
-        _driver.GoToUrl(Urls.Urls.ORDER_HISTORY_PAGE);
+        _webSite.MyAccountPage.ProceedToOrderHistorySection();
 
         _webSite.MyAccountPage.AssertCustomerNameCorrect(personalInformation.FirstName + " " + personalInformation.LastName);
         _webSite.MyAccountPage.AssertThePurchaseDateToday();

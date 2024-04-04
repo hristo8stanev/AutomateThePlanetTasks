@@ -14,7 +14,7 @@ public static class Products
         productDetails.Quantity = "4";
     }
 
-    public static void IpodProduct(ProductDetails productDetails)
+    public static void IPodProduct(ProductDetails productDetails)
     {
         productDetails.Name = "iPod Touch";
         productDetails.Brand = "Apple";
@@ -48,10 +48,10 @@ public static class Products
         productDetails.UnitPrice = "$76.00";
         productDetails.Model = "Product 15";
         productDetails.Quantity = "6";
-        productDetails.Size = "Size: Medium";
+        productDetails.Size = "Size: MediumSize";
     }
 
-    public static void iPodShuffleProduct(ProductDetails productDetails)
+    public static void IPodShuffleProduct(ProductDetails productDetails)
     {
         productDetails.Name = "iPod Shuffle";
         productDetails.Brand = "HTC";
@@ -68,10 +68,10 @@ public static class Products
         productDetails.Name = "Bosch";
         productDetails.Brand = "Bosch";
         productDetails.Weight = "0.00kg";
-        productDetails.Id = 99;
+        productDetails.Id = 929;
         productDetails.Availability = "In Stock";
-        productDetails.UnitPrice = "$298.00";
-        productDetails.Model = "Product 15";
-        productDetails.Quantity = "6";
+        productDetails.UnitPrice = "$2983.00";
+        productDetails.Model = "Product 151";
+        productDetails.Quantity = "16";
     }
 }

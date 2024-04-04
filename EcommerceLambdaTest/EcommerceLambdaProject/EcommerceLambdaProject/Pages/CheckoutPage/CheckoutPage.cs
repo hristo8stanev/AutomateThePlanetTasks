@@ -81,7 +81,6 @@ public partial class CheckoutPage : WebPage
         }
     }
 
-   
     public void LoginUser(string email, string password)
     {
         EmailField.TypeText(email);

@@ -9,10 +9,10 @@ public partial class ShoppingCartPage
         Driver.WaitForAjax();
     }
 
-    public void AssertProductInformation(ProductDetails expectedProductInfo, int indexModel)
+    public void AssertProductInformation(ProductDetails expectedProductInfo, int modelId)
     {
-        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", indexModel).Text} \n Expected Result:{expectedProductInfo.Model}";
-        Assert.That(ProductElementInformation("text-left", indexModel).Text, Is.EqualTo(expectedProductInfo.Model), message);
+        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", modelId).Text} \n Expected Result:{expectedProductInfo.Model}";
+        Assert.That(ProductElementInformation("text-left", modelId).Text, Is.EqualTo(expectedProductInfo.Model), message);
 
         var messageQuantity = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantityInformation("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
         Assert.That(ProductQuantityInformation("form-control").GetAttribute("value"), Is.EqualTo(expectedProductInfo.Quantity), messageQuantity);

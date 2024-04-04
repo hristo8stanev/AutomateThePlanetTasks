@@ -1,19 +1,17 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-
-namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class SearchPageTests : BaseTest
 {
 
     [Test]
-    public void SearchExistingProductByName_When_NonAuthenticatedUserSearchedProduct()
+    public void SearchExistingProductByName_When_NonAuthenticatedUserSearchesProducts()
     {
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IpodProduct(secondProduct);
+        Products.Products.IPodProduct(secondProduct);
 
-        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(firstProduct);
@@ -29,7 +27,7 @@ public class SearchPageTests : BaseTest
         var firstProduct = CustomerFactory.Product();
         Products.Products.BoschProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(firstProduct);
@@ -37,12 +35,12 @@ public class SearchPageTests : BaseTest
     }
 
     [Test]
-    public void FilterProductByPrice_When_NonAuthenticatedUserTryToFilterTheProductsByPrice()
+    public void FilterProductByPrice_When_NonAuthenticatedUserFiltersProductsByPrice_And_ProductsAreFilteredCorrectly()
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
         _webSite.SearchPage.EnterRangePrices(Constants.Constants.MinPrice, Constants.Constants.MaxPrice);
 
@@ -50,12 +48,30 @@ public class SearchPageTests : BaseTest
     }
 
     [Test]
-    public void FilterProductByName_When_NonAuthenticatedUserTryToFilterProductByName()
+    public void FilterProductByName_When_AuthenticatedUserFiltersProductsByName_And_ProductsAreSortedCorrectly()
+    {
+        var firstProduct = CustomerFactory.Product();
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        Products.Products.SonyProduct(firstProduct);
+
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+
+        _webSite.SearchPage.Navigate();
+        _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+
+        _webSite.SearchPage.SearchProductByName(firstProduct);
+
+        _webSite.SearchPage.AssertTheProductNameAndPriceIsCorrect(firstProduct, firstProduct.Id);
+    }
+
+    [Test]
+    public void FilterProductByName_When_NonAuthenticatedUserFiltersProductsByName_And_ProductsAreSortedCorrectly()
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.SonyProduct(firstProduct);
 
-        _driver.GoToUrl(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
+        _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
 
         _webSite.SearchPage.SearchProductByName(firstProduct);

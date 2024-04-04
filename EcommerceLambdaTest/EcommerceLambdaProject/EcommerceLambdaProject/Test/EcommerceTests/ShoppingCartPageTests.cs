@@ -3,14 +3,14 @@
 public class ShoppingCartPageTests : BaseTest
 {
     [Test]
-    public void AddProductToTheShopping_When_AuthenticatedUser()
+    public void AddProductToTheShopping_When_AuthenticatedUserAddsProductsToCart_And_ProductDetailsCorrect()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
         var secondProduct = CustomerFactory.Product();
         var thirdProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IpodProduct(secondProduct);
+        Products.Products.IPodProduct(secondProduct);
         Products.Products.SonyProduct(thirdProduct);
 
         _webSite.LoginPage.Navigate();
@@ -35,7 +35,7 @@ public class ShoppingCartPageTests : BaseTest
     }
 
     [Test]
-    public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUser()
+    public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.Product();
@@ -56,7 +56,7 @@ public class ShoppingCartPageTests : BaseTest
     }
 
     [Test]
-    public void RemoveProductFromTheShoppingCart_When_AuthenticatedUser()
+    public void RemoveProductFromTheShoppingCart_When_AuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);
@@ -74,10 +74,10 @@ public class ShoppingCartPageTests : BaseTest
     }
 
     [Test]
-    public void AddProductToTheShopping_When_NonAuthenticatedUser()
+    public void AddProductToTheShopping_NonAuthenticatedUserAddsProductToCart_And_ProductIsAddedSuccessfully()
     {
         var firstProduct = CustomerFactory.Product();
-        Products.Products.iPodShuffleProduct(firstProduct);
+        Products.Products.IPodShuffleProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -90,7 +90,7 @@ public class ShoppingCartPageTests : BaseTest
     }
 
     [Test]
-    public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUser()
+    public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.SonyProduct(firstProduct);
@@ -107,7 +107,7 @@ public class ShoppingCartPageTests : BaseTest
     }
 
     [Test]
-    public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserTest()
+    public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
         var firstProduct = CustomerFactory.Product();
         Products.Products.NikonProduct(firstProduct);

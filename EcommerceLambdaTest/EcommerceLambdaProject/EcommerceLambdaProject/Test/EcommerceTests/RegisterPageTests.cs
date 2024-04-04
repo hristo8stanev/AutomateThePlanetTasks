@@ -1,6 +1,4 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-
-namespace EcommerceLambdaProject.Test.EcommerceTests;
+﻿namespace EcommerceLambdaProject.Test.EcommerceTests;
 
 public class RegisterPageTests : BaseTest
 {
@@ -9,7 +7,7 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-         var registerUser = CustomerFactory.RegisterUser();
+        var registerUser = CustomerFactory.FillUserPersonalInformation();
         _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_REGISTRATION_PAGE);
@@ -21,7 +19,7 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.RegisterUser(firstName: string.Empty);
+        var registerUser = CustomerFactory.FillUserPersonalInformation(firstName: string.Empty);
         _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
@@ -33,7 +31,7 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.RegisterUser(email: string.Empty);
+        var registerUser = CustomerFactory.FillUserPersonalInformation(email: string.Empty);
         _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
@@ -45,7 +43,7 @@ public class RegisterPageTests : BaseTest
     {
         _webSite.RegisterPage.Navigate();
 
-        var registerUser = CustomerFactory.RegisterUser(password: string.Empty);
+        var registerUser = CustomerFactory.FillUserPersonalInformation(password: string.Empty);
         _webSite.RegisterPage.RegisterUser(registerUser);
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);

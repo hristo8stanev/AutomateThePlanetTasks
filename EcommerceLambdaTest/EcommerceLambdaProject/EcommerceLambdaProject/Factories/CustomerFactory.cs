@@ -2,7 +2,7 @@
 
 public static class CustomerFactory
 {
-    public static PersonalInformation RegisterUser(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
+    public static PersonalInformation FillUserPersonalInformation(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
     {
         var faker = new Faker<PersonalInformation>()
 
@@ -15,7 +15,7 @@ public static class CustomerFactory
         return faker.Generate();
     }
 
-    public static BillingInformation BillingAddress(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string City = null,
+    public static BillingInformation FillBillingAddress(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string City = null,
         string PostCode = null, string Country = null, string Region = null)
     {
         var faker = new Faker<BillingInformation>()

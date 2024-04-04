@@ -4,7 +4,7 @@ public class LoginPageTests : BaseTest
 {
    
     [Test]
-    public void LoginIntoSystem_When_ValidEmailAddressAndPasswordAreProvided_And_LoginButtonClicked()
+    public void LoginIntoSystem_When_ValidEmailAddressAndPasswordProvided_And_LoginButtonClicked()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
@@ -12,7 +12,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.LoginUser(loginUser);
 
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
-        _webSite.LoginPage.AssertLogoutButtonIsDisplayed();
+        _webSite.LoginPage.AssertLogoutButtonDisplayed();
     }
 
     [Test]

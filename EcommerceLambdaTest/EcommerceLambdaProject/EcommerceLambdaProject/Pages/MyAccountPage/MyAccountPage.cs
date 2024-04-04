@@ -2,7 +2,8 @@
 
 public partial class MyAccountPage : WebPage
 {
-    public MyAccountPage(IDriver driver) : base(driver)
+    public MyAccountPage(IDriver driver)
+        : base(driver)
     {
     }
 
@@ -28,24 +29,38 @@ public partial class MyAccountPage : WebPage
         }
     }
 
-    public void GoToAddressBookSection()
+    public void ProceedToAddressBookSection()
     {
         AddressBookSection.Click();
         NewAddressButton.Click();
+        Driver.WaitForAjax();
+    }
+    public void ProceedToMyVoucherSection()
+    {
+        MyAccountMenuSection.Hover();
+        MyVoucherButton.Click();
+        Driver.WaitForAjax();
+    }
+
+    public void ProceedToOrderHistorySection()
+    {
+        MyAccountMenuSection.Click();
+        MyOrderHistoryButton.Click();
+        Driver.WaitForAjax();
     }
 
     public void AddNewAddress(BillingInformation billingInformation)
     {
         FirstNameInput.TypeText(billingInformation.FirstName);
-        LastaNameInput.TypeText(billingInformation.LastName);
+        LastNameInput.TypeText(billingInformation.LastName);
         CompanyField.TypeText(billingInformation.Company);
         AddressField1.TypeText(billingInformation.Address1);
         AddressField2.TypeText(billingInformation.Address2);
         CityField.TypeText(billingInformation.City);
         PostCodeField.TypeText(billingInformation.PostCode);
-        SelectCountry(billingInformation.Country).Click();
+        Country(billingInformation.Country).Click();
         Driver.WaitForAjax();
-        SelectRegion(billingInformation.Region).Click();
+        Region(billingInformation.Region).Click();
         ContinueButton.Click();
     }
 
@@ -53,8 +68,8 @@ public partial class MyAccountPage : WebPage
     {
         EditMyAccountButton.Click();
         FirstNameInput.TypeText(user.FirstName);
-        LastaNameInput.TypeText(user.LastName);
-        EmailAddressNameInput.TypeText("alabala@gmail.com");
+        LastNameInput.TypeText(user.LastName);
+        EmailAddressNameInput.TypeText(Constants.Constants.EmailAddress);
         TelephoneInput.TypeText(user.Telephone);
         ContinueButton.Click();
     }
@@ -62,8 +77,8 @@ public partial class MyAccountPage : WebPage
     public void ChangeMyPassword()
     {
         ChangeMyPasswordButton.Click();
-        PasswordField.TypeText("tester");
-        ConfirmPasswordField.TypeText("tester");
+        PasswordField.TypeText(Constants.Constants.Password);
+        ConfirmPasswordField.TypeText(Constants.Constants.Password);
         ContinueButton.Click();
     }
 

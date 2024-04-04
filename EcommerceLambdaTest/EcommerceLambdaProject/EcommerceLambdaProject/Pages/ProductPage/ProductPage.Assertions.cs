@@ -27,7 +27,7 @@ public partial class ProductPage
 
         var weightMessage = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductWeightElement(expectedProduct.Weight).Text} \n Expected Result:{expectedProduct.Weight}";
         Assert.That(ProductWeightElement(expectedProduct.Weight).Text, Is.EqualTo(expectedProduct.Weight), weightMessage);
-        RemoveFromComparelist(expectedProduct.Id).Click();
+        RemoveFromCompareList(expectedProduct.Id).Click();
     }
 
     public void AssertProductIsAddedToWishlist(ProductDetails expectedProduct, int productId)
@@ -43,7 +43,7 @@ public partial class ProductPage
 
         var messagePrice = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductPriceWishlistElement(expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.UnitPrice}";
         Assert.That(ProductPriceWishlistElement(expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.UnitPrice), messagePrice);
-        RemoveFromWishlist.Click();
+        RemoveFromWishList.Click();
     }
 
     public void AssertSizeProductIsCorrect(ProductDetails expectedProduct, int productId)

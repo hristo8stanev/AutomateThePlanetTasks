@@ -11,12 +11,12 @@ public partial class MyAccountPage
     public IComponent AddressField2 => Driver.FindComponent(By.Id("input-address-2"));
     public IComponent CityField => Driver.FindComponent(By.Id("input-city"));
     public IComponent PostCodeField => Driver.FindComponent(By.Id("input-postcode"));
-    public IComponent firstName => Driver.FindComponent(By.XPath("//*[@id='input-payment-firstname']"));
-    public IComponent lastName => Driver.FindComponent(By.XPath("//*[@id='input-payment-lastname']"));
+    public IComponent FirstNameInputPayment => Driver.FindComponent(By.XPath("//*[@id='input-payment-firstname']"));
+    public IComponent LastNameInputPayment => Driver.FindComponent(By.XPath("//*[@id='input-payment-lastname']"));
 
-    public IComponent SelectCountry(string country) => Driver.FindComponent(By.Id("input-country")).FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
+    public IComponent Country(string country) => Driver.FindComponent(By.Id("input-country")).FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
 
-    public IComponent SelectRegion(string region) => Driver.FindComponent(By.Id("input-zone")).FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
+    public IComponent Region(string region) => Driver.FindComponent(By.Id("input-zone")).FindComponent(By.XPath($".//option[contains(text(), '{region}')]"));
 
     public IComponent PasswordField => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordField => Driver.FindComponent(By.Id("input-confirm"));
@@ -24,7 +24,7 @@ public partial class MyAccountPage
     public IComponent SuccessfullyMessage => Driver.FindComponent(By.XPath("//*[@class='alert alert-success alert-dismissible']"));
     public IComponent SuccessfullyPurchaseCertificate => Driver.FindComponent(By.XPath("//h1[@class='page-title my-3']"));
     public IComponent FirstNameInput => Driver.FindComponent(By.Id("input-firstname"));
-    public IComponent LastaNameInput => Driver.FindComponent(By.Id("input-lastname"));
+    public IComponent LastNameInput => Driver.FindComponent(By.Id("input-lastname"));
     public IComponent EmailAddressNameInput => Driver.FindComponent(By.Id("input-email"));
     public IComponent TelephoneInput => Driver.FindComponent(By.Id("input-telephone"));
     public IComponent RecipientName => Driver.FindComponent(By.XPath("//*[@id='input-to-name']"));
@@ -41,4 +41,8 @@ public partial class MyAccountPage
     public IComponent DateTimeElement(string dateTime) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{dateTime}')]"));
 
     public IComponent CustomerElement(string name) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='text-left' and contains(text(), '{name}')]"));
+
+    public IComponent MyAccountMenuSection => Driver.FindComponent(By.XPath("//ul[@class='navbar-nav horizontal']//li[.//a[contains(@href, 'account/account')]]"));
+    public IComponent MyOrderHistoryButton => Driver.FindComponent(By.XPath("//div[@id='content']//div[.//a[contains(@href, 'account/order')]]//a[contains(text(), ' View your order history')]"));
+    public IComponent MyVoucherButton => MyAccountMenuSection.FindComponents(By.XPath("//li[.//a[contains(@href, 'account/voucher') and normalize-space()='My voucher']]")).Last();
 }

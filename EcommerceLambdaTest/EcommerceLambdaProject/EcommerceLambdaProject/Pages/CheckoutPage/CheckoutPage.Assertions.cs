@@ -2,19 +2,19 @@
 
 public partial class CheckoutPage
 {
-    public void AssertConfirmButtonIsDisplayed()
+    public void AssertConfirmButtonDisplayed()
     {
         var message = $"{Constants.Constants.ErrorMessageLogoutButton} \n Actual Result:{!ConfirmOrderButton.Displayed} \n Expected Result:{ConfirmOrderButton.Displayed}";
         Assert.That(ConfirmOrderButton.Displayed, Is.True, Constants.Constants.ErrorMessageLogoutButton, message);
     }
 
-    public void AssertSuccessfullyCheckoutTheOrder(string expectedMessage)
+    public void AssertSuccessfullyCheckoutOrder(string expectedMessage)
     {
         var message = $"{Constants.Constants.ErrorMessageLogoutButton} \n Actual Result:{SuccessfullyConfirmOrderText.Text} \n Expected Result:{expectedMessage}";
         Assert.That(SuccessfullyConfirmOrderText.Text, Is.EqualTo(expectedMessage), message);
     }
 
-    public void AssertProductInfoIsCorrectCheckoutPage(ProductDetails expectedProduct, int productId)
+    public void AssertProductInformationCorrect(ProductDetails expectedProduct, int productId)
     {
         var nameMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductNameElementCheckoutPage(productId, expectedProduct.Name).Text} \n Expected Result:{expectedProduct.Name}";
         Assert.That(ProductNameElementCheckoutPage(productId, expectedProduct.Name).Text, Is.EqualTo(expectedProduct.Name), nameMessage);
@@ -26,7 +26,7 @@ public partial class CheckoutPage
         Assert.That(ProductPriceElementCheckout("text-right", expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.UnitPrice), priceMessage);
     }
 
-    public void AssertProductInfoConfirmOrderIsCorrect(ProductDetails expectedProductInfo)
+    public void AssertProductInformationConfirmOrder(ProductDetails expectedProductInfo)
     {
         var nameMessage = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ConfirmOrderProductName("text-left", expectedProductInfo.Name).Text} \n Expected Result:{expectedProductInfo.Name}";
         Assert.That(ConfirmOrderProductName("text-left", expectedProductInfo.Name).Text, Is.EqualTo(expectedProductInfo.Name), nameMessage);

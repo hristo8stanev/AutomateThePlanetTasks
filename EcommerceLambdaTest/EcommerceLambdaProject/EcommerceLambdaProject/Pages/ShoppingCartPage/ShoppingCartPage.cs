@@ -2,7 +2,8 @@
 
 public partial class ShoppingCartPage : WebPage
 {
-    public ShoppingCartPage(IDriver driver) : base(driver)
+    public ShoppingCartPage(IDriver driver)
+        : base(driver)
     {
     }
 
