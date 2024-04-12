@@ -25,21 +25,16 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-        
-    - name: Setup Go environment
-      uses: actions/setup-go@v5.0.0 
    
-    - name: Setup MSBuild.exe
+    - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
       
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v2.0.0 
-    - name: Build the Solution
-      run: msbuild EcommerceLambdaProject.sln
+      uses: NuGet/setup-nuget@v2.0.0
       
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.3.1
-
-    - name: Run Tests
-      run: msbuild test 
-
+    - name: npm install, build and test
+      run: |
+        npm install
+        npm run build --if-present
+        npm test
+     
