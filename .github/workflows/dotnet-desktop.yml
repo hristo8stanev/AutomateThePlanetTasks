@@ -25,16 +25,11 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
+    - name: Install dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
    
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v2
-      
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v2.0.0
-      
-    - name: npm install, build and test
-      run: |
-        npm install
-        npm run build --if-present
-        npm test
-     
+    
