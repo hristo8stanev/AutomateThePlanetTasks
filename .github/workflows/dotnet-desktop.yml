@@ -34,10 +34,10 @@ jobs:
       uses: NuGet/setup-nuget@v2.0.0 
 
     - name: Build the Solution
-      run: dotnet build EcommerceLambdaProject.sln
+      run: msbuild build EcommerceLambdaProject.sln
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
 
     - name: Run Tests
-      run: dotnet test 
+      run: msbuild test 
