@@ -34,7 +34,10 @@ jobs:
       uses: NuGet/setup-nuget@v2.0.0 
 
     - name: Restore NuGet packages
-      run: nuget restore EcommerceLambdaProject.MVC.sln
+      run: nuget restore EcommerceLambdaProject.sln
   
     - name: Build the Solution
-      run: dotnet build EcommerceLambdaProject.MVC.sln
+      run: dotnet build EcommerceLambdaProject.sln
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.1
