@@ -33,11 +33,11 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2.0.0 
 
-    - name: Restore NuGet packages
-      run: nuget restore EcommerceLambdaProject.sln
-  
     - name: Build the Solution
       run: dotnet build EcommerceLambdaProject.sln
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
+
+    - name: Run Tests
+      run: dotnet test 
