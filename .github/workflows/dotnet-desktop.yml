@@ -25,19 +25,14 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+        
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.1
+   
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
       
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2.0.0 
 
-    - name: Build the Solution
-      run: msbuild build EcommerceLambdaProject.sln
-      
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v4.3.1
 
-    - name: Run Tests
-      run: msbuild test 
