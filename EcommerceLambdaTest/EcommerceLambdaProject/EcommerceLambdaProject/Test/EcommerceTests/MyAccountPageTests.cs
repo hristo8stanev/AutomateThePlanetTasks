@@ -143,5 +143,25 @@ public class MyAccountPageTests : BaseTest
 
     }
 
+    [Test]
+    public void _11pass()
+    {
+
+    }
+
+
+    [Test]
+    public void _6pass()
+    {
+
+    }
+
+
+    [Test]
+    public void _4pass()
+    {
+
+    }
+
 
 }
