@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace EcommerceLambdaProject.Constants;
+﻿namespace EcommerceLambdaProject.Constants;
 
 public static class Constants
 {
