@@ -129,25 +129,4 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_RETURN_PRODUCT_PAGE);
         _webSite.MyAccountPage.AssertProductReturnsMessage(Constants.Constants.ProductReturnsMessage);
     }
-
-    ////TEST THIRD BRANCH
-    [Test]
-    public void pass()
-    {
-
-    }
-
-    [Test]
-    public void _1pass()
-    {
-
-    }
-
-    [Test]
-    public void _2pass()
-    {
-
-    }
-
-
 }
