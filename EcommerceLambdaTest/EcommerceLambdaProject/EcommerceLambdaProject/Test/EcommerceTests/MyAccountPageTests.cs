@@ -130,4 +130,54 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.AssertProductReturnsMessage(Constants.Constants.ProductReturnsMessage);
         //comment
     }
+
+    /// <summary>
+    /// //////////////////////TEST////////////////////////////////////
+    /// </summary>
+    [Test]
+    public void _1EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
+    {
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var myAccountInfomraiton = CustomerFactory.GenerateUserDetails();
+
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
+
+        _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
+    }
+
+
+    [Test]
+    public void _2EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
+    {
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var myAccountInfomraiton = CustomerFactory.GenerateUserDetails();
+
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
+
+        _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
+    }
+
+
+    [Test]
+    public void _3EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
+    {
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var myAccountInfomraiton = CustomerFactory.GenerateUserDetails();
+
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
+
+        _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
+    }
+
+
+
 }
