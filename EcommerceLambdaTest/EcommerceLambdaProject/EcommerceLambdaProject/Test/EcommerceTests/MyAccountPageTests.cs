@@ -128,6 +128,6 @@ public class MyAccountPageTests : BaseTest
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_RETURN_PRODUCT_PAGE);
         _webSite.MyAccountPage.AssertProductReturnsMessage(Constants.Constants.ProductReturnsMessage);
-        //comment
+        
     }
 }
