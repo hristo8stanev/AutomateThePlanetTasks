@@ -1,4 +1,6 @@
-﻿namespace EcommerceLambdaProject.Constants;
+﻿using System.Data;
+
+namespace EcommerceLambdaProject.Constants;
 
 public static class Constants
 {
@@ -32,4 +34,6 @@ public static class Constants
     public const string ErrorMessageEmptyPassword = "Password must be between 4 and 20 characters!";
     public const string ExpectedMessageNonExistingProduct = "There is no product that matches the search criteria.";
     public const string ErrorMessageUrl = "Expected page was not navigated.";
+    public const string ErrorMessageReturns = "Your return request are not submitting.Try Again";
+    public const string ProductReturnsMessage = "Thank you for submitting your return request. Your request has been sent to the relevant department for processing.";
 }

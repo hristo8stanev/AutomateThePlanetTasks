@@ -54,4 +54,10 @@ public partial class MyAccountPage
         var message = $"{errorMessageRemovedProduct} \n Actual Result:{RemovedProduct(expectedMessage).Text} \n Expected Result:{expectedMessage}";
         Assert.That(RemovedProduct(expectedMessage).Text.Contains(expectedMessage), message);
     }
+
+    public void AssertProductReturnsMessage(string expectedMessage)
+    {
+        var message = $"{Constants.Constants.ErrorMessageReturns} \n Actual Result:{Constants.Constants.ProductReturnsMessage} \n Expected Result:{SuccessfullyProductReturn(expectedMessage).Text}";
+        Assert.That(SuccessfullyProductReturn(expectedMessage).Text, Is.EqualTo(Constants.Constants.ProductReturnsMessage), message);
+    }
 }

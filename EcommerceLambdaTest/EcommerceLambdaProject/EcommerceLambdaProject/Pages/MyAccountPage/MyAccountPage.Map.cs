@@ -13,6 +13,15 @@ public partial class MyAccountPage
     public IComponent PostCodeInput => Driver.FindComponent(By.Id("input-postcode"));
     public IComponent FirstNameInputPayment => Driver.FindComponent(By.XPath("//*[@id='input-payment-firstname']"));
     public IComponent LastNameInputPayment => Driver.FindComponent(By.XPath("//*[@id='input-payment-lastname']"));
+    public IComponent OrderIdInput => Driver.FindComponent(By.Id("input-order-id"));
+    public IComponent ProductNameInput => Driver.FindComponent(By.Id("input-product"));
+    public IComponent ProductCodeInput => Driver.FindComponent(By.Id("input-model"));
+    public IComponent OrderDateInput => Driver.FindComponent(By.Id("input-date-ordered"));
+    public IComponent ProductQuantityInput => Driver.FindComponent(By.Id("input-quantity"));
+
+    public IComponent ReturnReasonInput(int reasonId) => Driver.FindComponent(By.XPath($"//div[@id='content']//input[@name='return_reason_id' and @value='{reasonId}']"));
+
+    public IComponent ProductOpenedInput(int reasonId) => Driver.FindComponent(By.XPath($"//div[@id='content']//input[@name='opened' and @value='{reasonId}']"));
 
     public IComponent Country(string country) => Driver.FindComponent(By.Id("input-country")).FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
 
@@ -20,8 +29,13 @@ public partial class MyAccountPage
 
     public IComponent PasswordInput => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordInput => Driver.FindComponent(By.Id("input-confirm"));
+
+    public IComponent SubmitButton => Driver.FindComponent(By.XPath("//*[@value='Submit']"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//*[@value='Continue']"));
     public IComponent SuccessfullyMessage => Driver.FindComponent(By.XPath("//*[@class='alert alert-success alert-dismissible']"));
+
+    public IComponent SuccessfullyProductReturn(string expectedMessage) => Driver.FindComponent(By.XPath($"//div[@id='content']//p[contains(text(),'{expectedMessage}')]"));
+
     public IComponent SuccessfullyPurchaseCertificate => Driver.FindComponent(By.XPath("//h1[@class='page-title my-3']"));
     public IComponent FirstNameInput => Driver.FindComponent(By.Id("input-firstname"));
     public IComponent LastNameInput => Driver.FindComponent(By.Id("input-lastname"));
@@ -47,6 +61,7 @@ public partial class MyAccountPage
     public IComponent MyAccountMenuSection => Driver.FindComponent(By.XPath("//ul[@class='navbar-nav horizontal']//li[.//a[contains(@href, 'account/account')]]"));
     public IComponent MyOrderHistoryButton => Driver.FindComponent(By.XPath("//div[@id='content']//div[.//a[contains(@href, 'account/order')]]//a[contains(text(), ' View your order history')]"));
     public IComponent MyVoucherButton => MyAccountMenuSection.FindComponents(By.XPath("//li[.//a[contains(@href, 'account/voucher') and normalize-space()='My voucher']]")).Last();
+    public IComponent ReturnOrderButton => MyAccountMenuSection.FindComponents(By.XPath("//li[.//a[contains(@href, 'account') and normalize-space()='Return']]")).Last();
     public IComponent RemoveButton => Driver.FindComponent(By.XPath("//button[contains(@onclick, 'voucher.remove')]"));
     public IComponent RemovedProduct(string value) => Driver.FindComponent(By.XPath($"//div[@id='content']//p[contains(text(), '{value}')]"));
 }

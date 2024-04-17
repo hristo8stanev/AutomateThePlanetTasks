@@ -1,0 +1,2 @@
+cd C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject
+dotnet build

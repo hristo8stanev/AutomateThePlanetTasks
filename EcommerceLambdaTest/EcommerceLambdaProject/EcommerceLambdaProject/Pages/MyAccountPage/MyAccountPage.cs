@@ -1,4 +1,6 @@
-﻿namespace EcommerceLambdaProject.Pages;
+﻿using EcommerceLambdaProject.Pages.BasePage;
+
+namespace EcommerceLambdaProject.Pages;
 
 public partial class MyAccountPage : WebPage
 {
@@ -29,6 +31,52 @@ public partial class MyAccountPage : WebPage
         }
     }
 
+    public void SelectReasonType(ReasonType reasonType)
+    {
+        switch (reasonType)
+        {
+            case ReasonType.DeadOnArrival:
+                ReturnReasonInput(1).Click();
+                break;
+
+            case ReasonType.FaultyPleaseSupplyDetails:
+                ReturnReasonInput(2).Click();
+                break;
+
+            case ReasonType.OrderError:
+                ReturnReasonInput(3).Click();
+                break;
+
+            case ReasonType.OtherPleaseSupplyDetails:
+                ReturnReasonInput(4).Click();
+                break;
+
+            case ReasonType.ReceivedWrongItem:
+                ReturnReasonInput(5).Click();
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(reasonType), reasonType, "Unsupported gift certificate type");
+        }
+    }
+
+    public void SelectIsProductOpened(ProductOpened productOpened)
+    {
+        switch (productOpened)
+        {
+            case ProductOpened.Yes:
+                ProductOpenedInput(1).Click();
+                break;
+
+            case ProductOpened.No:
+                ProductOpenedInput(0).Click();
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(productOpened), productOpened, "Unsupported gift certificate type");
+        }
+    }
+
     public void ProceedToAddressBookSection()
     {
         AddressBookButton.Click();
@@ -46,6 +94,13 @@ public partial class MyAccountPage : WebPage
     {
         MyAccountMenuSection.Click();
         MyOrderHistoryButton.Click();
+        Driver.WaitForAjax();
+    }
+
+    public void ProceedToReturnOrderSection()
+    {
+        MyAccountMenuSection.Hover();
+        ReturnOrderButton.Click();
         Driver.WaitForAjax();
     }
 
@@ -98,5 +153,17 @@ public partial class MyAccountPage : WebPage
         AmountCertificateInput.TypeText(gift.Amount);
         AgreeGiftCertificate.Click();
         ContinueButton.Click();
+    }
+
+    public void FillReturnProductForm(ProductDetails product)
+    {
+        SelectReasonType(ReasonType.DeadOnArrival);
+        OrderIdInput.TypeText(product.Id.ToString());
+        OrderDateInput.TypeText(DateTime.Now.ToString("dd/MM/yyyy"));
+        ProductNameInput.TypeText(product.Name);
+        ProductCodeInput.TypeText(product.Model);
+        ProductQuantityInput.TypeText(product.Quantity);
+        SelectIsProductOpened(ProductOpened.Yes);
+        SubmitButton.Click();
     }
 }

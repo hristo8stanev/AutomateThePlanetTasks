@@ -10,7 +10,7 @@ public static class Products
         productDetails.Id = 31;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$80.00";
-        productDetails.Model = "GenerateProduct 4";
+        productDetails.Model = "Product 4";
         productDetails.Quantity = "4";
     }
 
@@ -22,7 +22,7 @@ public static class Products
         productDetails.Id = 32;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$160.00";
-        productDetails.Model = "GenerateProduct 5";
+        productDetails.Model = "Product 5";
         productDetails.Quantity = "2";
     }
 
@@ -34,7 +34,7 @@ public static class Products
         productDetails.Id = 46;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$1,000.00";
-        productDetails.Model = "GenerateProduct 19";
+        productDetails.Model = "Product 19";
         productDetails.Quantity = "5";
     }
 
@@ -46,7 +46,7 @@ public static class Products
         productDetails.Id = 42;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$76.00";
-        productDetails.Model = "GenerateProduct 15";
+        productDetails.Model = "Product 15";
         productDetails.Quantity = "6";
         productDetails.Size = "Size: MediumSize";
     }
@@ -59,7 +59,7 @@ public static class Products
         productDetails.Id = 34;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$182.00";
-        productDetails.Model = "GenerateProduct 7";
+        productDetails.Model = "Product 7";
         productDetails.Quantity = "5";
     }
 
@@ -71,7 +71,7 @@ public static class Products
         productDetails.Id = 929;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$2983.00";
-        productDetails.Model = "GenerateProduct 151";
+        productDetails.Model = "Product 151";
         productDetails.Quantity = "16";
     }
 }

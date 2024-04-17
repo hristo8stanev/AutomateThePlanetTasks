@@ -110,4 +110,23 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.AssertCustomerNameCorrect(personalInformation.FirstName + " " + personalInformation.LastName);
         _webSite.MyAccountPage.AssertThePurchaseDateToday();
     }
+
+    [Test]
+    public void ReturnProduct_When_AuthenticatedUser_FillsReturnForm()
+    {
+        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var firstProduct = CustomerFactory.GenerateProduct();
+        Products.Products.SonyProduct(firstProduct);
+
+        _webSite.LoginPage.Navigate();
+        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.MyAccountPage.ProceedToReturnOrderSection();
+
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.RETURN_PRODUCT_PAGE);
+
+        _webSite.MyAccountPage.FillReturnProductForm(firstProduct);
+
+        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_RETURN_PRODUCT_PAGE);
+        _webSite.MyAccountPage.AssertProductReturnsMessage(Constants.Constants.ProductReturnsMessage);
+    }
 }
