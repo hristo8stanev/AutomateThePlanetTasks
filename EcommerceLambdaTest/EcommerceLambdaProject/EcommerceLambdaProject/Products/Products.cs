@@ -48,7 +48,7 @@ public static class Products
         productDetails.UnitPrice = "$76.00";
         productDetails.Model = "Product 15";
         productDetails.Quantity = "6";
-        productDetails.Size = "Size: MediumSize";
+        productDetails.Size = "Size: Medium";
     }
 
     public static void IPodShuffleProduct(ProductDetails productDetails)
