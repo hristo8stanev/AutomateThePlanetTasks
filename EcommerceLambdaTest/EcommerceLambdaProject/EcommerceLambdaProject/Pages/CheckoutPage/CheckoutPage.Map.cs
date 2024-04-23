@@ -24,6 +24,8 @@ public partial class CheckoutPage
     public IComponent AddressField2 => Driver.FindComponent(By.Name("address_2"));
     public IComponent CityInput => Driver.FindComponent(By.Id("input-payment-city"));
     public IComponent PostCodeInput => Driver.FindComponent(By.Name("postcode"));
+    public IComponent SubTotal => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//td[contains(text(),'Sub-Total:')]//following-sibling::td"));
+    public IComponent Total => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//preceding-sibling::td[text()=\"Total:\"]//following-sibling::td"));
 
     public IComponent Country(string country) => Driver.FindComponent(By.Id("input-payment-country")).FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
 

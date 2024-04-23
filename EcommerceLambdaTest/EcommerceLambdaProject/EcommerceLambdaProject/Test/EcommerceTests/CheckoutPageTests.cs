@@ -11,7 +11,7 @@ public class CheckoutPageTests : BaseTest
         var thirdProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
         Products.Products.IPodProduct(secondProduct);
-        Products.Products.SonyProduct(thirdProduct);
+        Products.Products.IPodShuffleProduct(thirdProduct);
 
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -28,6 +28,9 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.AssertProductInformationCorrect(thirdProduct, thirdProduct.Id);
         _webSite.CheckoutPage.AssertProductInformationCorrect(secondProduct, secondProduct.Id);
         _webSite.CheckoutPage.AssertProductInformationCorrect(firstProduct, firstProduct.Id);
+
+        var combinedTotal = (firstProduct.Total + secondProduct.Total + thirdProduct.Total).ToString("C");
+        Assert.That(combinedTotal, Is.EqualTo(_webSite.CheckoutPage.SubTotal.Text));
 
         _webSite.CheckoutPage.FillUserDetails(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
@@ -52,7 +55,7 @@ public class CheckoutPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
 
         Products.Products.IPodProduct(firstProduct);
-        Products.Products.SonyProduct(secondProduct);
+        Products.Products.IPodShuffleProduct(secondProduct);
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
@@ -62,6 +65,9 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
+
+        var combinedTotal = (firstProduct.Total + secondProduct.Total).ToString("C");
+        Assert.That(combinedTotal, Is.EqualTo(_webSite.CheckoutPage.SubTotal.Text));
 
         // _webSite.CheckoutPage.AssertProductInformationCorrect(expectedProduct1, 46);
         // The assertions failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
@@ -86,7 +92,7 @@ public class CheckoutPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
 
         Products.Products.IPodProduct(firstProduct);
-        Products.Products.SonyProduct(secondProduct);
+        Products.Products.NikonProduct(secondProduct);
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
         _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
@@ -97,6 +103,12 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
+
+        var combinedSubTotal = (firstProduct.Total + secondProduct.Total).ToString("C");
+        Assert.That(combinedSubTotal, Is.EqualTo(_webSite.CheckoutPage.SubTotal.Text));
+
+        var combinedTotal = (firstProduct.Total + secondProduct.Total + 5 + 14 + ).ToString("C");
+        Assert.That(combinedTotal, Is.EqualTo(_webSite.CheckoutPage.Total.Text));
 
         // _webSite.CheckoutPage.AssertProductInformationCorrect(expectedProduct1, 32);
         // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.

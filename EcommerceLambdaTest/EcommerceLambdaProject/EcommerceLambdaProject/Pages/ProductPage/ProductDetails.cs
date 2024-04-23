@@ -12,6 +12,7 @@ public class ProductDetails
     public string Weight { get; set; }
     public string Quantity { get; set; }
     public string Size { get; set; }
+    public double VatTax {  get; set; }
 
-    public int Total { get; set; }
+    public double Total { get; set; }
 }

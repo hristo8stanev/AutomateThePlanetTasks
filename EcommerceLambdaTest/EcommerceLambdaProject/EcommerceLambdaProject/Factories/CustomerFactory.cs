@@ -39,7 +39,7 @@ public static class CustomerFactory
         return loginDetails;
     }
 
-    public static ProductDetails GenerateProduct(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
+    public static ProductDetails GenerateProduct(string name = null, int id = 0, string price = null , string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
     {
         var productDetails = new ProductDetails();
 

@@ -12,6 +12,13 @@ public static class Products
         productDetails.UnitPrice = "$80.00";
         productDetails.Model = "Product 4";
         productDetails.Quantity = "4";
+
+  
+        double parsedQuantity;
+        bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+        double parsedUnitPrice;
+        bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
     }
 
     public static void IPodProduct(ProductDetails productDetails)
@@ -24,6 +31,12 @@ public static class Products
         productDetails.UnitPrice = "$160.00";
         productDetails.Model = "Product 5";
         productDetails.Quantity = "2";
+
+        double parsedQuantity;
+        bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+        double parsedUnitPrice;
+        bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
     }
 
     public static void SonyProduct(ProductDetails productDetails)
@@ -35,7 +48,13 @@ public static class Products
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$1,000.00";
         productDetails.Model = "Product 19";
-        productDetails.Quantity = "5";
+        productDetails.Quantity = "3";
+
+        double parsedQuantity;
+        bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+        double parsedUnitPrice;
+        bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
     }
 
     public static void AppleProduct(ProductDetails productDetails)
@@ -49,6 +68,12 @@ public static class Products
         productDetails.Model = "Product 15";
         productDetails.Quantity = "6";
         productDetails.Size = "Size: Medium";
+
+        double parsedQuantity;
+        bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+        double parsedUnitPrice;
+        bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
     }
 
     public static void IPodShuffleProduct(ProductDetails productDetails)
@@ -58,9 +83,16 @@ public static class Products
         productDetails.Weight = "0.00kg";
         productDetails.Id = 34;
         productDetails.Availability = "In Stock";
-        productDetails.UnitPrice = "$182.00";
+        productDetails.UnitPrice = "$150.00";
         productDetails.Model = "Product 7";
         productDetails.Quantity = "5";
+
+        double parsedQuantity;
+        bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+        double parsedUnitPrice;
+        bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
+       
     }
 
     public static void BoschProduct(ProductDetails productDetails)
@@ -73,5 +105,11 @@ public static class Products
         productDetails.UnitPrice = "$2983.00";
         productDetails.Model = "Product 151";
         productDetails.Quantity = "16";
+
+        double parsedQuantity;
+        bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+        double parsedUnitPrice;
+        bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
     }
 }
