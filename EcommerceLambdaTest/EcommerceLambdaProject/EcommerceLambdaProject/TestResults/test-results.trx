@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="6f96cbbf-554e-4d21-957e-65cd59384a3b" name="HRISTOVHRISTO$@HRISTOVHRISTO 2024-04-22 16:24:56" runUser="NT AUTHORITY\SYSTEM" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-04-22T16:24:56.1192932+03:00" queuing="2024-04-22T16:24:56.1192935+03:00" start="2024-04-22T16:24:50.2253532+03:00" finish="2024-04-22T16:25:26.8326758+03:00" />
+  <TestSettings name="default" id="26da0a44-4175-41c7-a933-a1ad8a528407">
+    <Deployment runDeploymentRoot="HRISTOVHRISTO$_HRISTOVHRISTO_2024-04-22_16_24_56" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a2326e99-9232-4de1-b934-fe59f86ed90a" testId="d20ab37a-1887-dd90-5b76-7044e6819ca0" testName="LoginIntoSystem_When_ValidEmailAddressAndPasswordProvided_And_LoginButtonClicked" computerName="HRISTOVHRISTO" duration="00:00:07.4207730" startTime="2024-04-22T16:25:12.4760419+03:00" endTime="2024-04-22T16:25:19.8968143+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a2326e99-9232-4de1-b934-fe59f86ed90a" />
+    <UnitTestResult executionId="64110959-cabb-4b1f-b83a-da7f74681816" testId="4833b4c0-7169-4c59-fea9-82a5b0286e43" testName="LoginIntoSystem_When_InvalidEmailAddress_And_LoginButtonClicked" computerName="HRISTOVHRISTO" duration="00:00:04.9430880" startTime="2024-04-22T16:25:07.5329172+03:00" endTime="2024-04-22T16:25:12.4760040+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64110959-cabb-4b1f-b83a-da7f74681816" />
+    <UnitTestResult executionId="964ff621-ad07-4e56-bf50-0579a1bea3d3" testId="fa0a7a37-91ab-557c-e81f-be6d1dd895f8" testName="ForgotPassword_When_InvalidEmailAddressProvided_And_ContinueButtonIsClicked" computerName="HRISTOVHRISTO" duration="00:00:05.1847730" startTime="2024-04-22T16:24:50.9030897+03:00" endTime="2024-04-22T16:24:56.0878045+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="964ff621-ad07-4e56-bf50-0579a1bea3d3" />
+    <UnitTestResult executionId="de032f44-18b3-4267-ba7f-105ac84bdfc7" testId="0b12a04b-acc5-af9b-13c2-2ee2822d4c48" testName="LoginIntoSystem_When_EmptyCredentials_And_LoginButtonClicked" computerName="HRISTOVHRISTO" duration="00:00:04.9872990" startTime="2024-04-22T16:25:02.5455826+03:00" endTime="2024-04-22T16:25:07.5328810+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="de032f44-18b3-4267-ba7f-105ac84bdfc7" />
+    <UnitTestResult executionId="d7c49057-a703-4f91-817a-567baa00356e" testId="6ab6c85d-76cc-5e49-54f9-2b61de1a0e4f" testName="LogoutFromTheSystem_When_LogoutButtonClicked" computerName="HRISTOVHRISTO" duration="00:00:06.8775670" startTime="2024-04-22T16:25:19.8968501+03:00" endTime="2024-04-22T16:25:26.7744169+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d7c49057-a703-4f91-817a-567baa00356e" />
+    <UnitTestResult executionId="0563d914-abf0-4fd1-ac3b-00774246bdd7" testId="7be075cf-988c-01eb-9e03-89aa1c249963" testName="ForgotPassword_When_ValidEmailAddressProvided_And_ContinueButtonClicked" computerName="HRISTOVHRISTO" duration="00:00:06.4563119" startTime="2024-04-22T16:24:56.0891756+03:00" endTime="2024-04-22T16:25:02.5454873+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0563d914-abf0-4fd1-ac3b-00774246bdd7" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="LogoutFromTheSystem_When_LogoutButtonClicked" storage="c:\users\usernamet\documents\github\automatetheplanettasks\ecommercelambdatest\ecommercelambdaproject\ecommercelambdaproject\bin\debug\net7.0\ecommercelambdaproject.dll" id="6ab6c85d-76cc-5e49-54f9-2b61de1a0e4f">
+      <Execution id="d7c49057-a703-4f91-817a-567baa00356e" />
+      <TestMethod codeBase="C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll" adapterTypeName="executor://nunit3testexecutor/" className="EcommerceLambdaProject.Test.EcommerceTests.LoginPageTests" name="LogoutFromTheSystem_When_LogoutButtonClicked" />
+    </UnitTest>
+    <UnitTest name="LoginIntoSystem_When_EmptyCredentials_And_LoginButtonClicked" storage="c:\users\usernamet\documents\github\automatetheplanettasks\ecommercelambdatest\ecommercelambdaproject\ecommercelambdaproject\bin\debug\net7.0\ecommercelambdaproject.dll" id="0b12a04b-acc5-af9b-13c2-2ee2822d4c48">
+      <Execution id="de032f44-18b3-4267-ba7f-105ac84bdfc7" />
+      <TestMethod codeBase="C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll" adapterTypeName="executor://nunit3testexecutor/" className="EcommerceLambdaProject.Test.EcommerceTests.LoginPageTests" name="LoginIntoSystem_When_EmptyCredentials_And_LoginButtonClicked" />
+    </UnitTest>
+    <UnitTest name="LoginIntoSystem_When_InvalidEmailAddress_And_LoginButtonClicked" storage="c:\users\usernamet\documents\github\automatetheplanettasks\ecommercelambdatest\ecommercelambdaproject\ecommercelambdaproject\bin\debug\net7.0\ecommercelambdaproject.dll" id="4833b4c0-7169-4c59-fea9-82a5b0286e43">
+      <Execution id="64110959-cabb-4b1f-b83a-da7f74681816" />
+      <TestMethod codeBase="C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll" adapterTypeName="executor://nunit3testexecutor/" className="EcommerceLambdaProject.Test.EcommerceTests.LoginPageTests" name="LoginIntoSystem_When_InvalidEmailAddress_And_LoginButtonClicked" />
+    </UnitTest>
+    <UnitTest name="LoginIntoSystem_When_ValidEmailAddressAndPasswordProvided_And_LoginButtonClicked" storage="c:\users\usernamet\documents\github\automatetheplanettasks\ecommercelambdatest\ecommercelambdaproject\ecommercelambdaproject\bin\debug\net7.0\ecommercelambdaproject.dll" id="d20ab37a-1887-dd90-5b76-7044e6819ca0">
+      <Execution id="a2326e99-9232-4de1-b934-fe59f86ed90a" />
+      <TestMethod codeBase="C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll" adapterTypeName="executor://nunit3testexecutor/" className="EcommerceLambdaProject.Test.EcommerceTests.LoginPageTests" name="LoginIntoSystem_When_ValidEmailAddressAndPasswordProvided_And_LoginButtonClicked" />
+    </UnitTest>
+    <UnitTest name="ForgotPassword_When_InvalidEmailAddressProvided_And_ContinueButtonIsClicked" storage="c:\users\usernamet\documents\github\automatetheplanettasks\ecommercelambdatest\ecommercelambdaproject\ecommercelambdaproject\bin\debug\net7.0\ecommercelambdaproject.dll" id="fa0a7a37-91ab-557c-e81f-be6d1dd895f8">
+      <Execution id="964ff621-ad07-4e56-bf50-0579a1bea3d3" />
+      <TestMethod codeBase="C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll" adapterTypeName="executor://nunit3testexecutor/" className="EcommerceLambdaProject.Test.EcommerceTests.LoginPageTests" name="ForgotPassword_When_InvalidEmailAddressProvided_And_ContinueButtonIsClicked" />
+    </UnitTest>
+    <UnitTest name="ForgotPassword_When_ValidEmailAddressProvided_And_ContinueButtonClicked" storage="c:\users\usernamet\documents\github\automatetheplanettasks\ecommercelambdatest\ecommercelambdaproject\ecommercelambdaproject\bin\debug\net7.0\ecommercelambdaproject.dll" id="7be075cf-988c-01eb-9e03-89aa1c249963">
+      <Execution id="0563d914-abf0-4fd1-ac3b-00774246bdd7" />
+      <TestMethod codeBase="C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll" adapterTypeName="executor://nunit3testexecutor/" className="EcommerceLambdaProject.Test.EcommerceTests.LoginPageTests" name="ForgotPassword_When_ValidEmailAddressProvided_And_ContinueButtonClicked" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d20ab37a-1887-dd90-5b76-7044e6819ca0" executionId="a2326e99-9232-4de1-b934-fe59f86ed90a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4833b4c0-7169-4c59-fea9-82a5b0286e43" executionId="64110959-cabb-4b1f-b83a-da7f74681816" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa0a7a37-91ab-557c-e81f-be6d1dd895f8" executionId="964ff621-ad07-4e56-bf50-0579a1bea3d3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0b12a04b-acc5-af9b-13c2-2ee2822d4c48" executionId="de032f44-18b3-4267-ba7f-105ac84bdfc7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6ab6c85d-76cc-5e49-54f9-2b61de1a0e4f" executionId="d7c49057-a703-4f91-817a-567baa00356e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7be075cf-988c-01eb-9e03-89aa1c249963" executionId="0563d914-abf0-4fd1-ac3b-00774246bdd7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.5.0.0: Test execution started&#xD;
+Running selected tests in C:\Users\UsernameT\Documents\GitHub\AutomateThePlanetTasks\EcommerceLambdaTest\EcommerceLambdaProject\EcommerceLambdaProject\bin\Debug\net7.0\EcommerceLambdaProject.dll&#xD;
+   NUnit3TestExecutor discovered 6 of 6 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+NUnit Adapter 4.5.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
