@@ -102,7 +102,7 @@ public class DriverAdapter : IDriver
         });
     }
 
-    private void ScrollIntoView(IComponent element)
+    public void ScrollIntoView(IComponent element)
     {
         ExecuteScript("arguments[0].scrollIntoView(true);", element.WrappedElement);
     }

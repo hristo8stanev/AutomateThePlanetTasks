@@ -24,8 +24,12 @@ public partial class CheckoutPage
     public IComponent AddressField2 => Driver.FindComponent(By.Name("address_2"));
     public IComponent CityInput => Driver.FindComponent(By.Id("input-payment-city"));
     public IComponent PostCodeInput => Driver.FindComponent(By.Name("postcode"));
+    public IComponent QuantityField => Driver.FindComponent(By.XPath("//table[@class='table']//tbody//input"));
+    public IComponent UpdateButton => Driver.FindComponent(By.XPath("//table[@class='table']//tbody//td//div//button[@class='btn btn-primary']"));
     public IComponent SubTotal => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//td[contains(text(),'Sub-Total:')]//following-sibling::td"));
     public IComponent Total => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//preceding-sibling::td[text()=\"Total:\"]//following-sibling::td"));
+    public IComponent EcoTaxElement => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//td[contains(text(),'Eco')]//following-sibling::td"));
+    public IComponent VatTaxElement => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//td[contains(text(),'VAT')]//following-sibling::td"));
 
     public IComponent Country(string country) => Driver.FindComponent(By.Id("input-payment-country")).FindComponent(By.XPath($".//option[contains(text(), '{country}')]"));
 
@@ -46,4 +50,6 @@ public partial class CheckoutPage
     public IComponent ProductQuantityElement(int id, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}') and normalize-space()='{productName}']]//following-sibling::td//input"));
 
     public IComponent ProductPriceElement(string cell, string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[@class='{cell}' and contains(text(), '{price}')]"));
+
+    public IComponent ProductTotalPriceElement(string cell, string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[@class='{cell}' and contains(text(), '{price}')]//following-sibling::td"));
 }

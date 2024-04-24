@@ -10,8 +10,8 @@ public class ShoppingCartPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IPodProduct(secondProduct);
-        Products.Products.SonyProduct(thirdProduct);
+        Products.Products.SamsungSyncMaster(secondProduct);
+        Products.Products.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -93,7 +93,7 @@ public class ShoppingCartPageTests : BaseTest
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.SonyProduct(firstProduct);
+        Products.Products.iPodNano(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);

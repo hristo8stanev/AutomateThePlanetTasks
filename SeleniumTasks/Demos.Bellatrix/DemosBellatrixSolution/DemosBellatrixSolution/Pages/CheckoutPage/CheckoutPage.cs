@@ -27,7 +27,7 @@ public partial class CheckoutPage : WebPage
         BillingPhone.SendKeys(purchaseInfo.Phone);
         BillingEmail.SendKeys(purchaseInfo.Email);
 
-        if (purchaseInfo.ShouldCreateAccout == false)
+        if (purchaseInfo.ShouldCreateAccount == false)
         {
             CreateAccountButtonBox.Click();
 

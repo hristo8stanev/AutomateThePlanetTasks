@@ -9,7 +9,7 @@ public class SearchPageTests : BaseTest
         var firstProduct = CustomerFactory.GenerateProduct();
         var secondProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IPodProduct(secondProduct);
+        Products.Products.SamsungSyncMaster(secondProduct);
 
         _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -52,7 +52,7 @@ public class SearchPageTests : BaseTest
     {
         var firstProduct = CustomerFactory.GenerateProduct();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        Products.Products.SonyProduct(firstProduct);
+        Products.Products.iPodNano(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -69,7 +69,7 @@ public class SearchPageTests : BaseTest
     public void FilterProductByName_When_NonAuthenticatedUserFiltersProductsByName_And_ProductsAreSortedCorrectly()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.SonyProduct(firstProduct);
+        Products.Products.iPodNano(firstProduct);
 
         _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);

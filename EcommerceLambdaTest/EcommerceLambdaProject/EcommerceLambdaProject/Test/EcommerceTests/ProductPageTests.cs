@@ -10,8 +10,8 @@ public class ProductPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IPodProduct(secondProduct);
-        Products.Products.SonyProduct(thirdProduct);
+        Products.Products.SamsungSyncMaster(secondProduct);
+        Products.Products.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -37,8 +37,8 @@ public class ProductPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IPodProduct(secondProduct);
-        Products.Products.SonyProduct(thirdProduct);
+        Products.Products.SamsungSyncMaster(secondProduct);
+        Products.Products.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -81,8 +81,8 @@ public class ProductPageTests : BaseTest
         var thirdProduct = CustomerFactory.GenerateProduct();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IPodProduct(secondProduct);
-        Products.Products.SonyProduct(thirdProduct);
+        Products.Products.SamsungSyncMaster(secondProduct);
+        Products.Products.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -107,8 +107,8 @@ public class ProductPageTests : BaseTest
         var thirdProduct = CustomerFactory.GenerateProduct();
 
         Products.Products.NikonProduct(firstProduct);
-        Products.Products.IPodProduct(secondProduct);
-        Products.Products.SonyProduct(thirdProduct);
+        Products.Products.SamsungSyncMaster(secondProduct);
+        Products.Products.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
