@@ -8,8 +8,8 @@ public class SearchPageTests : BaseTest
     {
         var firstProduct = CustomerFactory.GenerateProduct();
         var secondProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
-        Products.Products.SamsungSyncMaster(secondProduct);
+        ProductsFactory.NikonProduct(firstProduct);
+        ProductsFactory.SamsungSyncMaster(secondProduct);
 
         _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -25,7 +25,7 @@ public class SearchPageTests : BaseTest
     public void SearchNonExistingProductByName_When_NonAuthenticatedUserSearchedProduct()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.BoschProduct(firstProduct);
+        ProductsFactory.BoschProduct(firstProduct);
 
         _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -38,7 +38,7 @@ public class SearchPageTests : BaseTest
     public void FilterProductByPrice_When_NonAuthenticatedUserFiltersProductsByPrice_And_ProductsAreFilteredCorrectly()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
+        ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);
@@ -52,7 +52,7 @@ public class SearchPageTests : BaseTest
     {
         var firstProduct = CustomerFactory.GenerateProduct();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        Products.Products.iPodNano(firstProduct);
+        ProductsFactory.iPodNano(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -69,7 +69,7 @@ public class SearchPageTests : BaseTest
     public void FilterProductByName_When_NonAuthenticatedUserFiltersProductsByName_And_ProductsAreSortedCorrectly()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.iPodNano(firstProduct);
+        ProductsFactory.iPodNano(firstProduct);
 
         _webSite.SearchPage.Navigate();
         _webSite.SearchPage.AssertUrlPage(Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE);

@@ -12,9 +12,5 @@ public class ProductDetails
     public string Weight { get; set; }
     public string Quantity { get; set; }
     public string Size { get; set; }
-    public double FlatShippingRate { get; set; }
-    public double EcoTax { get; set; }
-
-    public bool VatTax = true;
     public double Total { get; set; }
 }

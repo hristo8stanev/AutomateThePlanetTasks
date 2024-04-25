@@ -9,9 +9,9 @@ public class ProductPageTests : BaseTest
         var firstProduct = CustomerFactory.GenerateProduct();
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
-        Products.Products.SamsungSyncMaster(secondProduct);
-        Products.Products.iPodNano(thirdProduct);
+        ProductsFactory.NikonProduct(firstProduct);
+        ProductsFactory.SamsungSyncMaster(secondProduct);
+        ProductsFactory.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -36,9 +36,9 @@ public class ProductPageTests : BaseTest
         var firstProduct = CustomerFactory.GenerateProduct();
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
-        Products.Products.SamsungSyncMaster(secondProduct);
-        Products.Products.iPodNano(thirdProduct);
+        ProductsFactory.NikonProduct(firstProduct);
+        ProductsFactory.SamsungSyncMaster(secondProduct);
+        ProductsFactory.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -61,7 +61,7 @@ public class ProductPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.AppleProduct(firstProduct);
+        ProductsFactory.AppleProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -80,9 +80,9 @@ public class ProductPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        Products.Products.NikonProduct(firstProduct);
-        Products.Products.SamsungSyncMaster(secondProduct);
-        Products.Products.iPodNano(thirdProduct);
+        ProductsFactory.NikonProduct(firstProduct);
+        ProductsFactory.SamsungSyncMaster(secondProduct);
+        ProductsFactory.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -106,9 +106,9 @@ public class ProductPageTests : BaseTest
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
 
-        Products.Products.NikonProduct(firstProduct);
-        Products.Products.SamsungSyncMaster(secondProduct);
-        Products.Products.iPodNano(thirdProduct);
+        ProductsFactory.NikonProduct(firstProduct);
+        ProductsFactory.SamsungSyncMaster(secondProduct);
+        ProductsFactory.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -130,7 +130,7 @@ public class ProductPageTests : BaseTest
     public void SelectDifferentSizeProduct_When_DifferentSizeProductSelectedAsNonAuthenticatedUser()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.AppleProduct(firstProduct);
+        ProductsFactory.AppleProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);

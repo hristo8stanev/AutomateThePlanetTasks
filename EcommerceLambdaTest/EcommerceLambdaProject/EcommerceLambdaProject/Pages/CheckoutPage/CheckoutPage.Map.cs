@@ -24,8 +24,9 @@ public partial class CheckoutPage
     public IComponent AddressField2 => Driver.FindComponent(By.Name("address_2"));
     public IComponent CityInput => Driver.FindComponent(By.Id("input-payment-city"));
     public IComponent PostCodeInput => Driver.FindComponent(By.Name("postcode"));
+    public IComponent SearchButton => Driver.FindComponent(By.XPath("//div[@id='search']//button[contains(normalize-space(@type),'submit')]"));
     public IComponent QuantityField => Driver.FindComponent(By.XPath("//table[@class='table']//tbody//input"));
-    public IComponent UpdateButton => Driver.FindComponent(By.XPath("//table[@class='table']//tbody//td//div//button[@class='btn btn-primary']"));
+    public IComponent UpdateButton => Driver.FindComponent(By.XPath("//table[@class='table']//tbody//button[contains(normalize-space(@class),'btn-primary')]"));
     public IComponent SubTotal => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//td[contains(text(),'Sub-Total:')]//following-sibling::td"));
     public IComponent Total => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//preceding-sibling::td[text()=\"Total:\"]//following-sibling::td"));
     public IComponent EcoTaxElement => Driver.FindComponent(By.XPath("//table[@id='checkout-total']//tbody//td[contains(text(),'Eco')]//following-sibling::td"));

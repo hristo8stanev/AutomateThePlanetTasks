@@ -48,50 +48,52 @@ public partial class CheckoutPage
         Assert.That(ConfirmOrderPriceElement(expectedProductInfo.Quantity).Text, Is.EqualTo(expectedProductInfo.UnitPrice), priceMessage);
     }
 
-    public void AssertProductSubTotalPrice(params ProductDetails[] expectedProduct)
+    public void AssertProductSubTotalPrice(params CheckoutInformation[] expectedProduct)
     {
+        Driver.WaitForAjax();
+        SearchButton.Hover();
         UpdateButton.WrappedElement.Click();
-        var expectedSubTotal = expectedProduct.Select(x => x.Total).ToList().Sum();
+        var expectedSubTotal = expectedProduct.Select(x => x.SubTotal).ToList().Sum();
         Assert.That(expectedSubTotal.ToString("C"), Is.EqualTo(SubTotal.Text));
     }
 
-    public void AssertProductTotalPrice(params ProductDetails[] products)
+    public void AssertProductTotalPrice(params CheckoutInformation[] checkoutInformation)
     {
+        CheckoutInformation checkoutTaxInformation = new CheckoutInformation();
+        Driver.WaitForAjax();
+        var subTotalSum = checkoutInformation.Sum(p => p.SubTotal);
+        var flatShippingRate = checkoutInformation.Sum(p => p.FlatShippingRate);
 
-        var subTotalSum = products.Sum(p => p.Total);
-        var flatShippingRate = 5.00;
-
-        foreach (var product in products)
+        foreach (var product in checkoutInformation)
         {
 
-            if (product.VatTax == true)
+            if (checkoutTaxInformation.isVatApplied)
             {
-                CalculateTax(products);
+                CalculateTotalTax(checkoutInformation);
             }
             else
             {
                 var expectedTotal = subTotalSum + flatShippingRate;
                 var totalMessage = $"Expected Result: {expectedTotal.ToString("C")} \n Actual Result: {Total.Text}";
-                Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text));
+                Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text), totalMessage);
             }
-
         }
     }
 
-
-    public void CalculateTax(params ProductDetails[] products)
+    public void CalculateTotalTax(params CheckoutInformation[] products)
     {
-        UpdateButton.WrappedElement.Click();
-        var subTotalSum = products.Sum(p => p.Total);
+        var productDetails = new ProductDetails();
+        Driver.WaitForAjax();
+        var subTotalSum = products.Select(p => p.SubTotal);
         int totalQuantity = 0;
 
         foreach (var product in products)
         {
-            int.TryParse(product.Quantity, out int quantity);
+            int.TryParse(productDetails.Quantity, out int quantity);
             totalQuantity += quantity;
         }
 
-        var flatShippingRate = 5.00;
+
         var ecoTax = 4.00;
         int remainingQuantity = totalQuantity - 1;
 
@@ -101,11 +103,30 @@ public partial class CheckoutPage
             remainingQuantity--;
         }
 
-        var vat = Math.Ceiling(0.20 * subTotalSum + 1);
-        var expectedTotal = subTotalSum + flatShippingRate + ecoTax + vat;
+        var vat = products.Select(p => p.VatTax);
+        var expectedTotal = products.Select(p => p.Total);
+        var totalMessage = $"Expected Result: {expectedTotal} \n Actual Result: {Total.Text}";
 
-        var totalMessage = $"Expected Result: {expectedTotal.ToString("C")} \n Actual Result: {Total.Text}";
-        Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text));
+        Assert.That(expectedTotal, Is.EqualTo(Total.Text), totalMessage);
 
+    }
+
+
+    public void AssertCheckoutInformation(CheckoutInformation checkoutInformation)
+    {
+
+        AssertProductSubTotalPrice(checkoutInformation);
+        AssertProductTotalPrice(checkoutInformation);
+
+        // AssertEcoTax(checkoutInformation);
+    }
+
+    private void AssertEcoTax(CheckoutInformation exepctedCheckoutInformation)
+    {
+        if (exepctedCheckoutInformation.VatTax != 0)
+        {
+            var actualVatTax = VatTaxElement.Text;
+            var expectedVatTax = exepctedCheckoutInformation.VatTax;
+        }
     }
 }

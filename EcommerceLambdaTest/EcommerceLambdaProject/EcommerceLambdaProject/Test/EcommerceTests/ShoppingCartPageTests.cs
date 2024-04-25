@@ -9,9 +9,9 @@ public class ShoppingCartPageTests : BaseTest
         var firstProduct = CustomerFactory.GenerateProduct();
         var secondProduct = CustomerFactory.GenerateProduct();
         var thirdProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
-        Products.Products.SamsungSyncMaster(secondProduct);
-        Products.Products.iPodNano(thirdProduct);
+        ProductsFactory.NikonProduct(firstProduct);
+        ProductsFactory.SamsungSyncMaster(secondProduct);
+        ProductsFactory.iPodNano(thirdProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -39,7 +39,7 @@ public class ShoppingCartPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
+        ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -59,7 +59,7 @@ public class ShoppingCartPageTests : BaseTest
     public void RemoveProductFromTheShoppingCart_When_AuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
+        ProductsFactory.NikonProduct(firstProduct);
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _webSite.LoginPage.Navigate();
@@ -77,7 +77,7 @@ public class ShoppingCartPageTests : BaseTest
     public void AddProductToTheShopping_NonAuthenticatedUserAddsProductToCart_And_ProductIsAddedSuccessfully()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.IPodShuffleProduct(firstProduct);
+        ProductsFactory.IPodShuffleProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -93,7 +93,7 @@ public class ShoppingCartPageTests : BaseTest
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.iPodNano(firstProduct);
+        ProductsFactory.iPodNano(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -110,7 +110,7 @@ public class ShoppingCartPageTests : BaseTest
     public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.NikonProduct(firstProduct);
+        ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);

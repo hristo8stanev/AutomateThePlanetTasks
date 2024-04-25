@@ -91,7 +91,7 @@ public class MyAccountPageTests : BaseTest
         var billingDetails = CustomerFactory.GenerateBillingAddress();
         var personalInformation = CustomerFactory.GenerateUserDetails();
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.iPodNano(firstProduct);
+        ProductsFactory.iPodNano(firstProduct);
 
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -116,7 +116,7 @@ public class MyAccountPageTests : BaseTest
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         var firstProduct = CustomerFactory.GenerateProduct();
-        Products.Products.iPodNano(firstProduct);
+        ProductsFactory.iPodNano(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
