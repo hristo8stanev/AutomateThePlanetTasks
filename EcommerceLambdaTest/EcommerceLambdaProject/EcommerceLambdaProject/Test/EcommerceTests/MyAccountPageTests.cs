@@ -51,10 +51,11 @@ public class MyAccountPageTests : BaseTest
     public void RemoveGiftCertificate_When_AuthenticatedUser_And_RemovedGiftFromShoppingCart()
     {
         var gift = CustomerFactory.GenerateGiftCertificate();
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var registerUser = CustomerFactory.GenerateUserDetails();
+        
 
-        _webSite.LoginPage.Navigate();
-        _webSite.LoginPage.LoginUser(loginUser);
+        _webSite.RegisterPage.Navigate();
+        _webSite.RegisterPage.CreateUser(registerUser);
         _webSite.MyAccountPage.ProceedToMyVoucherSection();
         _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
@@ -90,8 +91,8 @@ public class MyAccountPageTests : BaseTest
     {
         var billingDetails = CustomerFactory.GenerateBillingAddress();
         var personalInformation = CustomerFactory.GenerateUserDetails();
-        var firstProduct = CustomerFactory.GenerateProduct();
-        ProductsFactory.iPodNano(firstProduct);
+        var firstProduct = ProductsFactory.GenerateProduct();
+        ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(firstProduct.Name);
@@ -115,7 +116,7 @@ public class MyAccountPageTests : BaseTest
     public void ReturnProduct_When_AuthenticatedUser_FillsReturnForm()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.iPodNano(firstProduct);
 
         _webSite.LoginPage.Navigate();

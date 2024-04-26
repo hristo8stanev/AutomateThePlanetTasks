@@ -11,7 +11,7 @@ public static class CustomerFactory
             .RuleFor(c => c.Email, (f, c) => email ?? f.Internet.Email(c.FirstName, c.LastName))
             .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
             .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
-            .RuleFor(c => c.Telephone, f => "0728237123");
+            .RuleFor(c => c.Telephone, f => "08899772233");
         return faker.Generate();
     }
 
@@ -26,8 +26,8 @@ public static class CustomerFactory
             .RuleFor(c => c.Address2, f => address2 ?? f.Address.FullAddress())
             .RuleFor(c => c.City, f => City ?? f.Address.City())
             .RuleFor(c => c.PostCode, f => "90004")
-            .RuleFor(c => c.Country, f => "United State")
-            .RuleFor(c => c.Region, f => "Alabama");
+            .RuleFor(c => c.Country, f => "United Kingdom")
+            .RuleFor(c => c.Region, f => "London");
         return faker.Generate();
     }
 
@@ -39,22 +39,7 @@ public static class CustomerFactory
         return loginDetails;
     }
 
-    public static ProductDetails GenerateProduct(string name = null, int id = 0, string price = null , string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
-    {
-        var productDetails = new ProductDetails();
-
-        productDetails.Name = name;
-        productDetails.Brand = brand;
-        productDetails.Weight = weight;
-        productDetails.Id = id;
-        productDetails.Availability = Availability;
-        productDetails.UnitPrice = price;
-        productDetails.Model = model;
-        productDetails.Size = size;
-        productDetails.Quantity = quantity;
-        return productDetails;
-    }
-
+   
     public static PurchaseGiftCertificate GenerateGiftCertificate(string recipientName = null, string recipientEmail = null, string name = null, string email = null, string amount = null)
     {
         var faker = new Faker<PurchaseGiftCertificate>()
@@ -62,7 +47,7 @@ public static class CustomerFactory
            .RuleFor(c => c.RecipientEmail, f => recipientEmail ?? f.Internet.Email())
            .RuleFor(c => c.YourName, f => name ?? f.Name.FirstName())
            .RuleFor(c => c.YourEmail, f => email ?? f.Internet.Email())
-           .RuleFor(c => c.Amount, f => "100");
+           .RuleFor(c => c.Amount, f => "300");
         return faker.Generate();
     }
 }

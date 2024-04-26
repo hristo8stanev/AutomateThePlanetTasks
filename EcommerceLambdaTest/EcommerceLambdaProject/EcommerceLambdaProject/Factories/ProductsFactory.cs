@@ -2,6 +2,26 @@
 
 public static class ProductsFactory
 {
+
+    public static ProductDetails GenerateProduct(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
+    {
+        var productDetails = new ProductDetails();
+
+        productDetails.Name = name;
+        productDetails.Brand = brand;
+        productDetails.Weight = weight;
+        productDetails.Id = id;
+        productDetails.Availability = Availability;
+        productDetails.UnitPrice = price;
+        productDetails.Model = model;
+        productDetails.Size = size;
+        productDetails.Quantity = quantity;
+
+        return productDetails;
+    }
+
+
+
     public static void NikonProduct(ProductDetails productDetails)
     {
         productDetails.Name = "Nikon D300";

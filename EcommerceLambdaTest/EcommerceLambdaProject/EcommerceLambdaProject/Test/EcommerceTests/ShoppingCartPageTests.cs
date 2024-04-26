@@ -6,9 +6,9 @@ public class ShoppingCartPageTests : BaseTest
     public void AddProductToTheShopping_When_AuthenticatedUserAddsProductsToCart_And_ProductDetailsCorrect()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.GenerateProduct();
-        var secondProduct = CustomerFactory.GenerateProduct();
-        var thirdProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
+        var secondProduct = ProductsFactory.GenerateProduct();
+        var thirdProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.NikonProduct(firstProduct);
         ProductsFactory.SamsungSyncMaster(secondProduct);
         ProductsFactory.iPodNano(thirdProduct);
@@ -21,7 +21,6 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ProductPage.AddProductToCart(secondProduct.Quantity);
         _webSite.HomePage.SearchProductByName(thirdProduct.Name);
         _webSite.ProductPage.AddProductToCart(thirdProduct.Quantity);
-
         _webSite.ShoppingCartPage.Navigate();
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
@@ -29,16 +28,16 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ShoppingCartPage.AssertProductName(secondProduct, secondProduct.Id);
         _webSite.ShoppingCartPage.AssertProductName(thirdProduct, thirdProduct.Id);
 
-        _webSite.ShoppingCartPage.AssertProductInformation(firstProduct, 1);
-        _webSite.ShoppingCartPage.AssertProductInformation(secondProduct, 1);
-        _webSite.ShoppingCartPage.AssertProductInformation(thirdProduct, 1);
+        _webSite.ShoppingCartPage.AssertProductInformation(firstProduct);
+        _webSite.ShoppingCartPage.AssertProductInformation(secondProduct);
+        _webSite.ShoppingCartPage.AssertProductInformation(thirdProduct);
     }
 
     [Test]
     public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();
@@ -58,7 +57,7 @@ public class ShoppingCartPageTests : BaseTest
     [Test]
     public void RemoveProductFromTheShoppingCart_When_AuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.NikonProduct(firstProduct);
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
@@ -76,7 +75,7 @@ public class ShoppingCartPageTests : BaseTest
     [Test]
     public void AddProductToTheShopping_NonAuthenticatedUserAddsProductToCart_And_ProductIsAddedSuccessfully()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.IPodShuffleProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
@@ -86,13 +85,16 @@ public class ShoppingCartPageTests : BaseTest
 
         _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
         _webSite.ShoppingCartPage.AssertProductName(firstProduct, firstProduct.Id);
-        _webSite.ShoppingCartPage.AssertProductInformation(firstProduct, 1);
+        _webSite.ShoppingCartPage.AssertProductInformation(firstProduct);
+        // The assertion failed because there is a bug in this step. On the product/page page and checkout/cart page, the prices are different.
+        // Expected: "$150.00"
+        // But was:  "$182.00"
     }
 
     [Test]
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.iPodNano(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();
@@ -109,7 +111,7 @@ public class ShoppingCartPageTests : BaseTest
     [Test]
     public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.ShoppingCartPage.Navigate();

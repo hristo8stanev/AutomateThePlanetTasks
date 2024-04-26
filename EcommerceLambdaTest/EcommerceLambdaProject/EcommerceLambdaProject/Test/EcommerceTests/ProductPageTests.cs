@@ -6,9 +6,9 @@ public class ProductPageTests : BaseTest
     public void When_ThreeProductsSelected_And_ProductInformationCompared()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.GenerateProduct();
-        var secondProduct = CustomerFactory.GenerateProduct();
-        var thirdProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
+        var secondProduct = ProductsFactory.GenerateProduct();
+        var thirdProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.NikonProduct(firstProduct);
         ProductsFactory.SamsungSyncMaster(secondProduct);
         ProductsFactory.iPodNano(thirdProduct);
@@ -33,9 +33,9 @@ public class ProductPageTests : BaseTest
     public void AddProductToWishList_When_ProductAddedToWishlist_And_ProductSuccessfullyAddedToWishlist()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.GenerateProduct();
-        var secondProduct = CustomerFactory.GenerateProduct();
-        var thirdProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
+        var secondProduct = ProductsFactory.GenerateProduct();
+        var thirdProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.NikonProduct(firstProduct);
         ProductsFactory.SamsungSyncMaster(secondProduct);
         ProductsFactory.iPodNano(thirdProduct);
@@ -60,7 +60,7 @@ public class ProductPageTests : BaseTest
     public void SelectDifferentSizeOfProduct_When_DifferentSizeOfProductsSelected()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.AppleProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();
@@ -76,9 +76,9 @@ public class ProductPageTests : BaseTest
     [Test]
     public void CompareProducts_When_CompareProductsAsAuthenticatedUser()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
-        var secondProduct = CustomerFactory.GenerateProduct();
-        var thirdProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
+        var secondProduct = ProductsFactory.GenerateProduct();
+        var thirdProduct = ProductsFactory.GenerateProduct();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
         ProductsFactory.NikonProduct(firstProduct);
         ProductsFactory.SamsungSyncMaster(secondProduct);
@@ -102,9 +102,9 @@ public class ProductPageTests : BaseTest
     [Test]
     public void CompareProducts_When_CompareProductsAsNonAuthenticatedUser()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
-        var secondProduct = CustomerFactory.GenerateProduct();
-        var thirdProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
+        var secondProduct = ProductsFactory.GenerateProduct();
+        var thirdProduct = ProductsFactory.GenerateProduct();
 
         ProductsFactory.NikonProduct(firstProduct);
         ProductsFactory.SamsungSyncMaster(secondProduct);
@@ -120,7 +120,9 @@ public class ProductPageTests : BaseTest
 
         _webSite.ProductPage.AssertUrlPage(Urls.Urls.COMPARISON_PAGE);
 
-        // The assertions failed because there is a bug in this step, because the prices for Authenticated and Non Authenticated user are different.
+        //The assertions failed because there is a bug in this step, because the prices on product/compare page and  default price of the products are different.
+        //Expected: "$100.00"
+        //But was: "$122.00"
         _webSite.ProductPage.AssertTheProductAddedToComparePage(thirdProduct, thirdProduct.Id);
         _webSite.ProductPage.AssertTheProductAddedToComparePage(secondProduct, secondProduct.Id);
         _webSite.ProductPage.AssertTheProductAddedToComparePage(firstProduct, firstProduct.Id);
@@ -129,7 +131,7 @@ public class ProductPageTests : BaseTest
     [Test]
     public void SelectDifferentSizeProduct_When_DifferentSizeProductSelectedAsNonAuthenticatedUser()
     {
-        var firstProduct = CustomerFactory.GenerateProduct();
+        var firstProduct = ProductsFactory.GenerateProduct();
         ProductsFactory.AppleProduct(firstProduct);
 
         _webSite.LoginPage.Navigate();

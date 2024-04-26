@@ -29,8 +29,6 @@ public partial class CheckoutPage
 
         var totalPriceMessage = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductTotalPriceElement("text-right", expectedProduct.UnitPrice).Text} \n Expected Result:{expectedProduct.Total}";
         Assert.That(ProductTotalPriceElement("text-right", expectedProduct.UnitPrice).Text, Is.EqualTo(expectedProduct.Total.ToString("C")), totalPriceMessage);
-
-
     }
 
     public void AssertProductInformationConfirmOrder(ProductDetails expectedProductInfo)
@@ -48,7 +46,7 @@ public partial class CheckoutPage
         Assert.That(ConfirmOrderPriceElement(expectedProductInfo.Quantity).Text, Is.EqualTo(expectedProductInfo.UnitPrice), priceMessage);
     }
 
-    public void AssertProductSubTotalPrice(params CheckoutInformation[] expectedProduct)
+    private void AssertProductSubTotalPrice(params CheckoutInformation[] expectedProduct)
     {
         Driver.WaitForAjax();
         SearchButton.Hover();
@@ -57,76 +55,47 @@ public partial class CheckoutPage
         Assert.That(expectedSubTotal.ToString("C"), Is.EqualTo(SubTotal.Text));
     }
 
-    public void AssertProductTotalPrice(params CheckoutInformation[] checkoutInformation)
+    private void AssertProductTotalPrice(params CheckoutInformation[] checkoutInformation)
     {
-        CheckoutInformation checkoutTaxInformation = new CheckoutInformation();
         Driver.WaitForAjax();
-        var subTotalSum = checkoutInformation.Sum(p => p.SubTotal);
-        var flatShippingRate = checkoutInformation.Sum(p => p.FlatShippingRate);
+        var billingDetails = CustomerFactory.GenerateBillingAddress();
 
         foreach (var product in checkoutInformation)
         {
-
-            if (checkoutTaxInformation.isVatApplied)
+            if (billingDetails.Country == "United Kingdom")
             {
-                CalculateTotalTax(checkoutInformation);
+                var expectedTotal = checkoutInformation.Sum(p => p.Total);
+                var totalMessage = $"Expected Result: {expectedTotal.ToString("C")} \n Actual Result: {Total.Text}";
+                Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text), totalMessage);
             }
             else
             {
-                var expectedTotal = subTotalSum + flatShippingRate;
+                var expectedTotal = checkoutInformation.Sum(p => p.SubTotal) + checkoutInformation.Sum(p => p.FlatShippingRate);
                 var totalMessage = $"Expected Result: {expectedTotal.ToString("C")} \n Actual Result: {Total.Text}";
                 Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text), totalMessage);
             }
         }
     }
-
-    public void CalculateTotalTax(params CheckoutInformation[] products)
+    private void AssertEcoTax(params CheckoutInformation[] products)
     {
-        var productDetails = new ProductDetails();
-        Driver.WaitForAjax();
-        var subTotalSum = products.Select(p => p.SubTotal);
-        int totalQuantity = 0;
+        var billingDetails = CustomerFactory.GenerateBillingAddress();
 
-        foreach (var product in products)
+        if (billingDetails.Country == "United Kingdom")
         {
-            int.TryParse(productDetails.Quantity, out int quantity);
-            totalQuantity += quantity;
+            var actualEcoTax = products.Select(p => p.EcoTax).Sum();
+            var ecoTaxMessage = $"Expected Result: {EcoTaxElement.Text} \n Actual Result: {actualEcoTax.ToString("C")}";
+            Assert.That(actualEcoTax.ToString("C"), Is.EqualTo(EcoTaxElement.Text), ecoTaxMessage);
         }
-
-
-        var ecoTax = 4.00;
-        int remainingQuantity = totalQuantity - 1;
-
-        while (remainingQuantity > 0)
+        else
         {
-            ecoTax += 2.00;
-            remainingQuantity--;
+            return;
         }
-
-        var vat = products.Select(p => p.VatTax);
-        var expectedTotal = products.Select(p => p.Total);
-        var totalMessage = $"Expected Result: {expectedTotal} \n Actual Result: {Total.Text}";
-
-        Assert.That(expectedTotal, Is.EqualTo(Total.Text), totalMessage);
-
     }
-
 
     public void AssertCheckoutInformation(CheckoutInformation checkoutInformation)
     {
-
         AssertProductSubTotalPrice(checkoutInformation);
+        AssertEcoTax(checkoutInformation);
         AssertProductTotalPrice(checkoutInformation);
-
-        // AssertEcoTax(checkoutInformation);
-    }
-
-    private void AssertEcoTax(CheckoutInformation exepctedCheckoutInformation)
-    {
-        if (exepctedCheckoutInformation.VatTax != 0)
-        {
-            var actualVatTax = VatTaxElement.Text;
-            var expectedVatTax = exepctedCheckoutInformation.VatTax;
-        }
     }
 }

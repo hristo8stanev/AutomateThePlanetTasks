@@ -16,7 +16,15 @@ public static class CheckoutInformationFactory
     {
         var checkoutInformation = Build(products);
 
-        checkoutInformation.GiftCertificate = "birthday";
+        checkoutInformation.Coupon = "birthday";
+
+        return checkoutInformation;
+    }
+    public static CheckoutInformation BuildWithGiftCertificate(params ProductDetails[] products)
+    {
+        var checkoutInformation = Build(products);
+
+        checkoutInformation.GiftCertificate = "giftCertificate";
 
         return checkoutInformation;
     }

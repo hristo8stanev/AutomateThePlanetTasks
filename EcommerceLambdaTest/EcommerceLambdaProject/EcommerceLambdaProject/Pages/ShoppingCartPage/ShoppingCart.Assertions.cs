@@ -4,15 +4,15 @@ public partial class ShoppingCartPage
 {
     public void AssertProductName(ProductDetails expectedProductName, int productName)
     {
-        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductNameElement(productName, expectedProductName.Name).Text} \n Expected Result:{expectedProductName.Name}";
-        Assert.That(ProductNameElement(productName, expectedProductName.Name).Text, Is.EqualTo(expectedProductName.Name), message);
+        var messageName = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductNameElement(productName, expectedProductName.Name).Text} \n Expected Result:{expectedProductName.Name}";
+        Assert.That(ProductNameElement(productName, expectedProductName.Name).Text, Is.EqualTo(expectedProductName.Name), messageName);
         Driver.WaitForAjax();
     }
 
-    public void AssertProductInformation(ProductDetails expectedProductInfo, int modelId)
+    public void AssertProductInformation(ProductDetails expectedProductInfo)
     {
-        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductElementInformation("text-left", modelId).Text} \n Expected Result:{expectedProductInfo.Model}";
-        Assert.That(ProductElementInformation("text-left", modelId).Text, Is.EqualTo(expectedProductInfo.Model), message);
+        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductModel(expectedProductInfo.Model).Text} \n Expected Result:{expectedProductInfo.Model}";
+        Assert.That(ProductModel(expectedProductInfo.Model).Text, Is.EqualTo(expectedProductInfo.Model), message);
 
         var messageQuantity = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantity("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
         Assert.That(ProductQuantity("form-control").GetAttribute("value"), Is.EqualTo(expectedProductInfo.Quantity), messageQuantity);
