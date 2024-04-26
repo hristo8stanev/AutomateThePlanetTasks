@@ -59,6 +59,7 @@ public class LoginPageTests : BaseTest
     {
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
+
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(Constants.Constants.EmailAddress);
@@ -72,6 +73,7 @@ public class LoginPageTests : BaseTest
     {
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
+
         _webSite.LoginPage.AssertUrlPage(Urls.Urls.FORGOTTEN_PASSWORD_PAGE);
 
         _webSite.LoginPage.SentEmail(Constants.Constants.InvalidEmail);

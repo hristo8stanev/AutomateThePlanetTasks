@@ -3,6 +3,7 @@ public static class Urls
 {
     public static string BASE_URL => "https://ecommerce-playground.lambdatest.io/";
     public static string SEARCH_SHOP_PRODUCTS_PAGE => BASE_URL + "index.php?route=product%2Fsearch&search=&limit=100";
+
     public static string SEARCH_SHOP_PRODUCTS_PAGE_PRICE_RANGE(string minPrice, string maxPrice) => BASE_URL + $"index.php?route=product%2Fsearch&limit=100&mz_fp={minPrice}p{maxPrice}";
 
     public static string RETURN_PRODUCT_PAGE => BASE_URL + "index.php?route=account/return/add";

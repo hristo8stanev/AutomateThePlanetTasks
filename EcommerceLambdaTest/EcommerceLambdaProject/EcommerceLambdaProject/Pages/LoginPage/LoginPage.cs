@@ -8,6 +8,7 @@ public partial class LoginPage : WebPage
     }
 
     public override string Url => Urls.Urls.LOGIN_PAGE;
+
     public void LoginUser(LoginInformation login)
     {
         EmailAddressInput.TypeText(login.EmailAddress);
@@ -17,6 +18,7 @@ public partial class LoginPage : WebPage
 
     public void LogoutUser()
     {
+        MyAccountNavigationBarElement.Hover();
         LogoutButton.Click();
     }
 

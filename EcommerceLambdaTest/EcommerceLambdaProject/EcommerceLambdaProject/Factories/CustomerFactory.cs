@@ -12,6 +12,7 @@ public static class CustomerFactory
             .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
             .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
             .RuleFor(c => c.Telephone, f => "08899772233");
+
         return faker.Generate();
     }
 
@@ -26,8 +27,9 @@ public static class CustomerFactory
             .RuleFor(c => c.Address2, f => address2 ?? f.Address.FullAddress())
             .RuleFor(c => c.City, f => City ?? f.Address.City())
             .RuleFor(c => c.PostCode, f => "90004")
-            .RuleFor(c => c.Country, f => "United Kingdom")
-            .RuleFor(c => c.Region, f => "London");
+            .RuleFor(c => c.Country, f => "Spain")
+            .RuleFor(c => c.Region, f => "Barcelona");
+
         return faker.Generate();
     }
 
@@ -36,6 +38,7 @@ public static class CustomerFactory
         var loginDetails = new LoginInformation();
         loginDetails.EmailAddress = email;
         loginDetails.PasswordField = password;
+
         return loginDetails;
     }
 }

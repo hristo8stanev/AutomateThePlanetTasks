@@ -11,6 +11,7 @@ public partial class ShoppingCartPage
     public IComponent ProductPriceElement(string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[@class='text-right' and contains(text(), '{price}')]"));
 
     public IComponent ProductModel(string modelProduct) => Driver.FindComponent(By.XPath($"//div[@id='content']//tbody//td[contains(text(), '{modelProduct}')]"));
+
     public IComponent ProductTotalPriceElement(string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tbody//td[contains(text(), '{price}')]"));
 
     public IComponent ProductQuantity(string cell) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//input[@class='{cell}']]//following-sibling::input"));

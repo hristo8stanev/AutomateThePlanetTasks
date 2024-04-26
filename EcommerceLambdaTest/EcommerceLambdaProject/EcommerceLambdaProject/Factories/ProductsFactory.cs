@@ -3,27 +3,9 @@
 public static class ProductsFactory
 {
 
-    public static ProductDetails GenerateProduct(string name = null, int id = 0, string price = null, string model = null, string brand = null, string weight = null, string Availability = null, string size = null, string quantity = null)
+    public static ProductDetails NikonProduct()
     {
         var productDetails = new ProductDetails();
-
-        productDetails.Name = name;
-        productDetails.Brand = brand;
-        productDetails.Weight = weight;
-        productDetails.Id = id;
-        productDetails.Availability = Availability;
-        productDetails.UnitPrice = price;
-        productDetails.Model = model;
-        productDetails.Size = size;
-        productDetails.Quantity = quantity;
-
-        return productDetails;
-    }
-
-
-
-    public static void NikonProduct(ProductDetails productDetails)
-    {
         productDetails.Name = "Nikon D300";
         productDetails.Brand = "Nikon";
         productDetails.Weight = "0.00kg";
@@ -35,10 +17,13 @@ public static class ProductsFactory
         var parsedQuantity = ParseQuantity(productDetails);
         var parsedUnitPrice = ParseUnitPrice(productDetails);
         productDetails.Total = parsedQuantity * parsedUnitPrice;
+
+        return productDetails;
     }
 
-    public static void SamsungSyncMaster(ProductDetails productDetails)
+    public static ProductDetails SamsungSyncMaster()
     {
+        var productDetails = new ProductDetails();
         productDetails.Name = "Samsung SyncMaster 941BW";
         productDetails.Brand = "Canon";
         productDetails.Weight = "5.00kg";
@@ -50,10 +35,13 @@ public static class ProductsFactory
         var parsedQuantity = ParseQuantity(productDetails);
         var parsedUnitPrice = ParseUnitPrice(productDetails);
         productDetails.Total = parsedQuantity * parsedUnitPrice;
+
+        return productDetails;
     }
 
-    public static void iPodNano(ProductDetails productDetails)
+    public static ProductDetails iPodNano()
     {
+        var productDetails = new ProductDetails();
         productDetails.Name = "iPod Nano";
         productDetails.Brand = "Apple";
         productDetails.Weight = "0.00kg";
@@ -65,10 +53,13 @@ public static class ProductsFactory
         double parsedQuantity = ParseQuantity(productDetails);
         double parsedUnitPrice = ParseUnitPrice(productDetails);
         productDetails.Total = parsedQuantity * parsedUnitPrice;
+
+        return productDetails;
     }
 
-    public static void AppleProduct(ProductDetails productDetails)
+    public static ProductDetails AppleProduct()
     {
+        var productDetails = new ProductDetails();
         productDetails.Name = "Apple Cinema 30";
         productDetails.Brand = "Apple";
         productDetails.Weight = "0.00kg";
@@ -81,10 +72,13 @@ public static class ProductsFactory
         var parsedQuantity = ParseQuantity(productDetails);
         var parsedUnitPrice = ParseUnitPrice(productDetails);
         productDetails.Total = parsedQuantity * parsedUnitPrice;
+
+        return productDetails;
     }
 
-    public static void IPodShuffleProduct(ProductDetails productDetails)
+    public static ProductDetails IPodShuffleProduct()
     {
+        var productDetails = new ProductDetails();
         productDetails.Name = "iPod Shuffle";
         productDetails.Brand = "HTC";
         productDetails.Weight = "0.00kg";
@@ -97,10 +91,12 @@ public static class ProductsFactory
         var parsedUnitPrice = ParseUnitPrice(productDetails);
         productDetails.Total = parsedQuantity * parsedUnitPrice;
 
+        return productDetails;
     }
 
-    public static void BoschProduct(ProductDetails productDetails)
+    public static ProductDetails BoschProduct()
     {
+        var productDetails = new ProductDetails();
         productDetails.Name = "Bosch";
         productDetails.Brand = "Bosch";
         productDetails.Weight = "0.00kg";
@@ -112,12 +108,15 @@ public static class ProductsFactory
         var parsedQuantity = ParseQuantity(productDetails);
         var parsedUnitPrice = ParseUnitPrice(productDetails);
         productDetails.Total = parsedQuantity * parsedUnitPrice;
+
+        return productDetails;
     }
 
     private static double ParseUnitPrice(ProductDetails productDetails)
     {
         double parsedUnitPrice;
         bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
+
         return parsedUnitPrice;
     }
 
@@ -125,6 +124,7 @@ public static class ProductsFactory
     {
         double parsedQuantity;
         bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
+
         return parsedQuantity;
     }
 }

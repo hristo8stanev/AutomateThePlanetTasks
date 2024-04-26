@@ -90,12 +90,10 @@ public class MyAccountPageTests : BaseTest
     {
         var billingDetails = CustomerFactory.GenerateBillingAddress();
         var personalInformation = CustomerFactory.GenerateUserDetails();
-        var firstProduct = ProductsFactory.GenerateProduct();
-        ProductsFactory.NikonProduct(firstProduct);
 
         _webSite.CheckoutPage.Navigate();
-        _webSite.HomePage.SearchProductByName(firstProduct.Name);
-        _webSite.ProductPage.AddProductToCart(firstProduct.Quantity);
+        _webSite.HomePage.SearchProductByName(ProductsFactory.NikonProduct().Name);
+        _webSite.ProductPage.AddProductToCart(ProductsFactory.NikonProduct().Quantity);
         _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
@@ -115,8 +113,6 @@ public class MyAccountPageTests : BaseTest
     public void ReturnProduct_When_AuthenticatedUser_FillsReturnForm()
     {
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
-        var firstProduct = ProductsFactory.GenerateProduct();
-        ProductsFactory.iPodNano(firstProduct);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -124,7 +120,7 @@ public class MyAccountPageTests : BaseTest
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.RETURN_PRODUCT_PAGE);
 
-        _webSite.MyAccountPage.FillReturnProductForm(firstProduct);
+        _webSite.MyAccountPage.FillReturnProductForm(ProductsFactory.iPodNano());
 
         _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_RETURN_PRODUCT_PAGE);
         _webSite.MyAccountPage.AssertProductReturnsMessage(Constants.Constants.ProductReturnsMessage);

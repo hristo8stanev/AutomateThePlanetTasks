@@ -1,6 +1,4 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-
-namespace EcommerceLambdaProject.Pages;
+﻿namespace EcommerceLambdaProject.Pages;
 
 public partial class CheckoutPage : WebPage
 {

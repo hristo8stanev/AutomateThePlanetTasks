@@ -1,6 +1,4 @@
-﻿using EcommerceLambdaProject.Pages.BasePage;
-
-namespace EcommerceLambdaProject.Pages;
+﻿namespace EcommerceLambdaProject.Pages;
 
 public partial class CheckoutPage
 {
@@ -62,20 +60,22 @@ public partial class CheckoutPage
 
         foreach (var product in checkoutInformation)
         {
+
             if (billingDetails.Country == "United Kingdom")
             {
-                var expectedTotal = checkoutInformation.Sum(p => p.Total);
-                var totalMessage = $"Expected Result: {expectedTotal.ToString("C")} \n Actual Result: {Total.Text}";
-                Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text), totalMessage);
+                var totalMessage = $"Expected Result: {checkoutInformation.Sum(p => p.Total).ToString("C")} \n Actual Result: {Total.Text}";
+                Assert.That(checkoutInformation.Sum(p => p.Total).ToString("C"), Is.EqualTo(Total.Text), totalMessage);
             }
             else
             {
                 var expectedTotal = checkoutInformation.Sum(p => p.SubTotal) + checkoutInformation.Sum(p => p.FlatShippingRate);
-                var totalMessage = $"Expected Result: {expectedTotal.ToString("C")} \n Actual Result: {Total.Text}";
+                var totalMessage = $"Expected Result: {checkoutInformation.Sum(p => p.SubTotal).ToString("C")} \n Actual Result: {Total.Text}";
                 Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text), totalMessage);
             }
+
         }
     }
+
     private void AssertEcoTax(params CheckoutInformation[] products)
     {
         var billingDetails = CustomerFactory.GenerateBillingAddress();
@@ -88,6 +88,7 @@ public partial class CheckoutPage
         }
         else
         {
+
             return;
         }
     }

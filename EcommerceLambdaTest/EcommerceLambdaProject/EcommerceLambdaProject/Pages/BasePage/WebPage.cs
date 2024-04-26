@@ -18,8 +18,7 @@ public abstract class WebPage
 
     public void AssertUrlPage(string expectedUrl)
     {
-        string actualUrl = Driver.Url;
-        CollectionAssert.AreEqual(expectedUrl, actualUrl, Constants.Constants.ErrorMessageUrl);
+        Assert.That(expectedUrl, Is.EqualTo(Driver.Url),Constants.Constants.ErrorMessageUrl);
         Driver.WaitForAjax();
     }
 }
