@@ -16,15 +16,15 @@ public class DriverAdapter : IDriver
     {
         switch (browser)
         {
-            case BrowserType.CHROME:
+            case BrowserType.Chrome:
                 _webDriver = new ChromeDriver();
                 break;
 
-            case BrowserType.FIREFOX:
+            case BrowserType.Firefox:
                 _webDriver = new FirefoxDriver();
                 break;
 
-            case BrowserType.EDGE:
+            case BrowserType.Edge:
                 _webDriver = new EdgeDriver();
                 break;
 

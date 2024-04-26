@@ -2,15 +2,14 @@
 
 public enum BrowserType
 {
-    CHROME,
-    CHROME_INCOGNITO,
-    CHROME_PRIVATE,
-    CHROME_HEADLESS,
-    FIREFOX,
-    FIREFOX_PRIVATE,
-    FIREFOX_HEADLESS,
-    EDGE,
-    EDGE_PRIVATE,
-    EDGE_HEADLESS,
-    SAFARI
+    Chrome,
+    ChromeIncognito,
+    ChromePrivate,
+    ChromeHeadless,
+    Firefox,
+    FirefoxPrivate,
+    FirefoxHeadless,
+    Edge,
+    EdgePrivate,
+    EdgeHeadless,
 }

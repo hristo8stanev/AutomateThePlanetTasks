@@ -11,7 +11,7 @@ public class BaseTest
     public void TestInit()
     {
         _driver = new DriverAdapter();
-        _driver.Start(BrowserType.CHROME);
+        _driver.Start(BrowserType.Chrome);
         _driver.DeleteAllCookies();
         _webSite = new WebSite(_driver);
     }
