@@ -11,14 +11,18 @@ public partial class ShoppingCartPage
 
     public void AssertProductInformation(ProductDetails expectedProductInfo)
     {
-        var message = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductModel(expectedProductInfo.Model).Text} \n Expected Result:{expectedProductInfo.Model}";
-        Assert.That(ProductModel(expectedProductInfo.Model).Text, Is.EqualTo(expectedProductInfo.Model), message);
+        var messageModel = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductModel(expectedProductInfo.Model).Text} \n Expected Result:{expectedProductInfo.Model}";
+        Assert.That(ProductModel(expectedProductInfo.Model).Text, Is.EqualTo(expectedProductInfo.Model), messageModel);
 
         var messageQuantity = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductQuantity("form-control").GetAttribute("value")} \n Expected Result:{expectedProductInfo.Quantity}";
         Assert.That(ProductQuantity("form-control").GetAttribute("value"), Is.EqualTo(expectedProductInfo.Quantity), messageQuantity);
 
         var messagePrice = $"{Constants.Constants.ErrorMessageProduct} \n Actual Result:{ProductPriceElement(expectedProductInfo.UnitPrice).Text} \n Expected Result:{expectedProductInfo.UnitPrice}";
         Assert.That(ProductPriceElement(expectedProductInfo.UnitPrice).Text, Is.EqualTo(expectedProductInfo.UnitPrice), messagePrice);
+
+        var totalPriceMessage = $"{Constants.Constants.ErrorMessage} \n Actual Result:{ProductTotalPriceElement(expectedProductInfo.Total.ToString()).Text} \n Expected Result:{expectedProductInfo.Total}";
+        Assert.That(ProductTotalPriceElement(expectedProductInfo.Total.ToString()).Text, Is.EqualTo(expectedProductInfo.Total.ToString("C")), totalPriceMessage);
+
         RemoveButton.Click();
         Driver.WaitForAjax();
     }

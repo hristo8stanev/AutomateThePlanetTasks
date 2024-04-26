@@ -23,8 +23,6 @@ public class SearchPageTests : BaseTest
 
         _webSite.SearchPage.SearchProductByName(secondProduct);
         _webSite.SearchPage.AssertTheProductNameAndPrice(secondProduct, secondProduct.Id);
-
-
     }
 
     [Test]

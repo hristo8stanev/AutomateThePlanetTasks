@@ -32,7 +32,7 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void PurchaseGiftCertificate_When_AuthenticatedUser_VerifyGiftInShoppingCart()
     {
-        var gift = CustomerFactory.GenerateGiftCertificate();
+        var gift = GiftCertificateFactory.GenerateGiftCertificate();
         var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
 
         _webSite.LoginPage.Navigate();
@@ -50,9 +50,8 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void RemoveGiftCertificate_When_AuthenticatedUser_And_RemovedGiftFromShoppingCart()
     {
-        var gift = CustomerFactory.GenerateGiftCertificate();
+        var gift = GiftCertificateFactory.GenerateGiftCertificate();
         var registerUser = CustomerFactory.GenerateUserDetails();
-        
 
         _webSite.RegisterPage.Navigate();
         _webSite.RegisterPage.CreateUser(registerUser);
