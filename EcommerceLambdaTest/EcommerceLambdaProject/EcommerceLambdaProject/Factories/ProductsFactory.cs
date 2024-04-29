@@ -21,6 +21,24 @@ public static class ProductsFactory
         return productDetails;
     }
 
+    public static ProductDetails HtcTouch()
+    {
+        var productDetails = new ProductDetails();
+        productDetails.Name = "HTC Touch HD";
+        productDetails.Brand = "HTC";
+        productDetails.Weight = "146.40g";
+        productDetails.Id = 28;
+        productDetails.Availability = "In Stock";
+        productDetails.UnitPrice = "$120.00";
+        productDetails.Model = "Product 1";
+        productDetails.Quantity = "3";
+        var parsedQuantity = ParseQuantity(productDetails);
+        var parsedUnitPrice = ParseUnitPrice(productDetails);
+        productDetails.Total = parsedQuantity * parsedUnitPrice;
+
+        return productDetails;
+    }
+
     public static ProductDetails SamsungSyncMaster()
     {
         var productDetails = new ProductDetails();
@@ -44,7 +62,7 @@ public static class ProductsFactory
         var productDetails = new ProductDetails();
         productDetails.Name = "iPod Nano";
         productDetails.Brand = "Apple";
-        productDetails.Weight = "0.00kg";
+        productDetails.Weight = "5.00kg";
         productDetails.Id = 36;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$100.00";
@@ -80,8 +98,8 @@ public static class ProductsFactory
     {
         var productDetails = new ProductDetails();
         productDetails.Name = "iPod Shuffle";
-        productDetails.Brand = "HTC";
-        productDetails.Weight = "0.00kg";
+        productDetails.Brand = "Apple";
+        productDetails.Weight = "5.00kg";
         productDetails.Id = 34;
         productDetails.Availability = "In Stock";
         productDetails.UnitPrice = "$150.00";

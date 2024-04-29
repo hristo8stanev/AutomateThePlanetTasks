@@ -34,6 +34,7 @@ public partial class ProductPage : WebPage
     public void ProceedToWishList()
     {
         SearchField.Hover();
+        Driver.WaitForAjax();
         WishListSection.Click();
     }
 

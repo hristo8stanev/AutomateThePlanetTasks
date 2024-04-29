@@ -2,8 +2,8 @@
 
 public partial class ShoppingCartPage
 {
-    public IComponent UpdateQuantityButton => Driver.FindComponent(By.XPath("//*[@class='table table-bordered']//td[@class='text-left']//div//button[1]"));
-    public IComponent UpdateQuantityField => Driver.FindComponent(By.XPath("//*[contains(@type, 'text') and contains(@name, 'quantity')]"));
+    public IComponent UpdateQuantityButton => Driver.FindComponent(By.XPath("//div[@id='content']//button[contains(normalize-space(@type),'submit')]"));
+    public IComponent UpdateQuantityField => Driver.FindComponent(By.XPath("//div[@id='content']//input[contains(normalize-space(@name),'quantity')]"));
     public IComponent RemoveButton => Driver.FindComponent(By.XPath("//button[contains(@onclick, 'cart.remove')]"));
 
     public IComponent ProductNameElement(int id, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}') and normalize-space()='{productName}']]"));

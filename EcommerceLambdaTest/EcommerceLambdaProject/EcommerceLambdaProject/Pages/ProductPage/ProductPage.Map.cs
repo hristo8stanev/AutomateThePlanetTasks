@@ -11,12 +11,12 @@ public partial class ProductPage
 
     public IComponent QuantityInput => Driver.FindComponents(By.XPath("//input[@name='quantity']")).Last();
     public IComponent AddToCartButton => Driver.FindComponent(By.XPath("//div[@class='content']//button[contains(text(),'Add to Cart')]"));
-    public IComponent CompareProductButton => Driver.FindComponents(By.XPath("//*[@title='Compare this Product']")).Last();
+    public IComponent CompareProductButton => Driver.FindComponent(By.XPath("//div[@id='product-product']//button[contains(normalize-space(@class), 'btn-compare')]"));
     public IComponent ProceedToCompare => Driver.FindComponent(By.XPath("//*[@data-original-title='Compare']"));
     public IComponent FindProduct => Driver.FindComponent(By.XPath("//h4/a"));
-    public IComponent WishListSection => Driver.FindComponents(By.XPath("//a[contains(@href, 'account/wishlist')]")).Last();
-    public IComponent WishListButton => Driver.FindComponent(By.XPath("//*[@title='Add to Wish List' and @onclick]"));
-    public IComponent SizeField => Driver.FindComponent(By.XPath("//*[@class='custom-select'][1]"));
+    public IComponent WishListSection => Driver.FindComponent(By.XPath("//div[@class='toast-body']//a[contains(normalize-space(@href),'account/wishlist')]"));
+    public IComponent WishListButton => Driver.FindComponent(By.XPath("//div[@id='product-product']//button[contains(normalize-space(@title),'Add to Wish List')]"));
+    public IComponent SizeField => Driver.FindComponent(By.XPath("//div[@id='product-product']//select[contains(normalize-space(@id),'input-option')]"));
     public IComponent SmallSize => SizeField.FindComponent(By.XPath($".//option[contains(text(), 'Small')]"));
     public IComponent MediumSize => SizeField.FindComponent(By.XPath($".//option[contains(text(), 'Medium')]"));
     public IComponent LargeSize => SizeField.FindComponent(By.XPath($".//option[contains(text(), 'Large')]"));

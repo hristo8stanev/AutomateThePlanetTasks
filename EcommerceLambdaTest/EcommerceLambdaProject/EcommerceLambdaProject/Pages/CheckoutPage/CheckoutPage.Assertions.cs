@@ -49,14 +49,13 @@ public partial class CheckoutPage
         Driver.WaitForAjax();
         SearchButton.Hover();
         UpdateButton.WrappedElement.Click();
-        var expectedSubTotal = expectedProduct.Select(x => x.SubTotal).ToList().Sum();
-        Assert.That(expectedSubTotal.ToString("C"), Is.EqualTo(SubTotal.Text));
+        Assert.That(expectedProduct.Select(x => x.SubTotal).ToList().Sum().ToString("C"), Is.EqualTo(SubTotal.Text));
     }
 
     private void AssertProductTotalPrice(params CheckoutInformation[] checkoutInformation)
     {
         Driver.WaitForAjax();
-        var billingDetails = CustomerFactory.GenerateBillingAddress();
+        var billingDetails = new BillingInformation();
 
         foreach (var product in checkoutInformation)
         {
@@ -81,9 +80,8 @@ public partial class CheckoutPage
 
         if (billingDetails.Country == "United Kingdom")
         {
-            var actualEcoTax = products.Select(p => p.EcoTax).Sum();
-            var ecoTaxMessage = $"Expected Result: {EcoTaxElement.Text} \n Actual Result: {actualEcoTax.ToString("C")}";
-            Assert.That(actualEcoTax.ToString("C"), Is.EqualTo(EcoTaxElement.Text), ecoTaxMessage);
+            var ecoTaxMessage = $"Expected Result: {EcoTaxElement.Text} \n Actual Result: {products.Select(p => p.EcoTax).Sum().ToString("C")}";
+            Assert.That(products.Select(p => p.EcoTax).Sum().ToString("C"), Is.EqualTo(EcoTaxElement.Text), ecoTaxMessage);
         }
         else
         {

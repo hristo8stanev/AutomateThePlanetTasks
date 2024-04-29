@@ -8,10 +8,10 @@ public partial class RegisterPage
     public IComponent TelephoneInput => Driver.FindComponent(By.Id("input-telephone"));
     public IComponent PasswordInput => Driver.FindComponent(By.Id("input-password"));
     public IComponent ConfirmPasswordInput => Driver.FindComponent(By.Id("input-confirm"));
-    public IComponent AgreePrivacy => Driver.FindComponent(By.XPath("//*[@for='input-agree']"));
-    public IComponent ContinueButton => Driver.FindComponent(By.XPath("//*[@value='Continue']"));
-    public IComponent LogoutButton => Driver.FindComponent(By.XPath("(//a[contains(@href, 'logout')])[2]"));
-    public IComponent ErrorMessageEmptyFistNameField => Driver.FindComponent(By.XPath("//*[@id='input-firstname']//following-sibling::div"));
-    public IComponent ErrorMessageEmptyEmailAddressField => Driver.FindComponent(By.XPath("//*[@id='input-email']//following-sibling::div"));
-    public IComponent ErrorMessageEmptyPasswordField => Driver.FindComponent(By.XPath("//*[@id='input-password']//following-sibling::div"));
+    public IComponent AgreePrivacy => Driver.FindComponent(By.XPath("//div[@id='content']//label[contains(normalize-space(@for),'input-agree')]"));
+    public IComponent ContinueButton => Driver.FindComponent(By.XPath("//div[@id='content']//input[contains(normalize-space(@type),'submit')]"));
+    public IComponent LogoutButton => Driver.FindComponent(By.XPath("//aside[@id='column-right']//a[contains(normalize-space(@href),'account/logout')]"));
+    public IComponent ErrorMessageEmptyFistNameField => Driver.FindComponent(By.XPath("//div[@id='content']//div[contains(normalize-space(@class),'text-danger')]"));
+    public IComponent ErrorMessageEmptyEmailAddressField => Driver.FindComponent(By.XPath("//div[@id='content']//div[contains(normalize-space(@class),'text-danger')]"));
+    public IComponent ErrorMessageEmptyPasswordField => Driver.FindComponent(By.XPath("//div[@id='content']//div[contains(normalize-space(@class),'text-danger')]"));
 }

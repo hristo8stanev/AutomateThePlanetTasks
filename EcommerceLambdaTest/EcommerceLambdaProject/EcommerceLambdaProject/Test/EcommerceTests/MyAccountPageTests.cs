@@ -92,8 +92,8 @@ public class MyAccountPageTests : BaseTest
         var personalInformation = CustomerFactory.GenerateUserDetails();
 
         _webSite.CheckoutPage.Navigate();
-        _webSite.HomePage.SearchProductByName(ProductsFactory.NikonProduct().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.NikonProduct().Quantity);
+        _webSite.HomePage.SearchProductByName(ProductsFactory.IPodShuffleProduct().Name);
+        _webSite.ProductPage.AddProductToCart(ProductsFactory.IPodShuffleProduct().Quantity);
         _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);

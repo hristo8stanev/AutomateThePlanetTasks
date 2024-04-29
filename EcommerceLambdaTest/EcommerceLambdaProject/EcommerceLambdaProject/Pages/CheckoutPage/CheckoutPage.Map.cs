@@ -2,7 +2,7 @@
 
 public partial class CheckoutPage
 {
-    public IComponent ApplyCoupon => Driver.FindComponent(By.XPath("//*[@id='button-coupon'][1]"));
+    public IComponent ApplyCoupon => Driver.FindComponent(By.XPath("//div[@id='content']//button[@id='button-coupon']"));
     public IComponent LoginInput => Driver.FindComponent(By.XPath("//*[@for='input-account-login']"));
     public IComponent EmailInput => Driver.FindComponent(By.Id("input-login-email"));
     public IComponent PasswordInput => Driver.FindComponent(By.XPath("//input[@id='input-login-password']"));
@@ -38,9 +38,9 @@ public partial class CheckoutPage
 
     public IComponent AgreePrivacy => Driver.FindComponent(By.XPath("//*[@for='input-account-agree']"));
 
-    public IComponent ConfirmOrderProductName(string cell, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr/td[@class='{cell}' and normalize-space()='{productName}']"));
+    public IComponent ConfirmOrderProductName(string cell, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[contains(normalize-space(@class),'{cell}') and contains(text(),'{productName}')]"));
 
-    public IComponent ConfirmOrderInformation(string cell, string productInfo) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[@class='{cell}' and contains(text(), '{productInfo}')]"));
+    public IComponent ConfirmOrderInformation(string cell, string productInfo) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[contains(normalize-space(@class),'{cell}') and contains(text(),'{productInfo}')]"));
 
     public IComponent ConfirmOrderQuantityElement(string productModel) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//preceding-sibling::td[normalize-space()='{productModel}']]"));
 
@@ -50,7 +50,7 @@ public partial class CheckoutPage
 
     public IComponent ProductQuantityElement(int id, string productName) => Driver.FindComponent(By.XPath($"//div[@id='content']//td[.//a[contains(@href, 'product_id={id}') and normalize-space()='{productName}']]//following-sibling::td//input"));
 
-    public IComponent ProductPriceElement(string cell, string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[@class='{cell}' and contains(text(), '{price}')]"));
+    public IComponent ProductPriceElement(string cell, string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[contains(normalize-space(@class),'{cell}') and contains(text(), '{price}')]"));
 
-    public IComponent ProductTotalPriceElement(string cell, string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[@class='{cell}' and contains(text(), '{price}')]//following-sibling::td"));
+    public IComponent ProductTotalPriceElement(string cell, string price) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td[contains(normalize-space(@class),'{cell}') and contains(text(), '{price}')]//following-sibling::td"));
 }
