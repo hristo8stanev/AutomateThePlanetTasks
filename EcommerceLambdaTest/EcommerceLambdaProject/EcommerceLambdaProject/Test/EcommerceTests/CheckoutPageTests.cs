@@ -45,13 +45,13 @@ public class CheckoutPageTests : BaseTest
     {
         var billingDetails = CustomerFactory.GenerateBillingAddress();
         var personalInformation = CustomerFactory.GenerateUserDetails();
-        var checkoutInformation = CheckoutInformationFactory.Build(ProductsFactory.SamsungSyncMaster(), ProductsFactory.NikonProduct());
+        var checkoutInformation = CheckoutInformationFactory.Build(ProductsFactory.SamsungSyncMaster(), ProductsFactory.IPodShuffleProduct());
 
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(ProductsFactory.SamsungSyncMaster().Name);
         _webSite.ProductPage.AddProductToCart(ProductsFactory.SamsungSyncMaster().Quantity);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.NikonProduct().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.NikonProduct().Quantity);
+        _webSite.HomePage.SearchProductByName(ProductsFactory.IPodShuffleProduct().Name);
+        _webSite.ProductPage.AddProductToCart(ProductsFactory.IPodShuffleProduct().Quantity);
         _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
@@ -63,7 +63,7 @@ public class CheckoutPageTests : BaseTest
 
         _webSite.CheckoutPage.AssertConfirmButtonDisplayed();
         _webSite.CheckoutPage.AssertProductInformationConfirmOrder(ProductsFactory.SamsungSyncMaster());
-        _webSite.CheckoutPage.AssertProductInformationConfirmOrder(ProductsFactory.NikonProduct());
+        _webSite.CheckoutPage.AssertProductInformationConfirmOrder(ProductsFactory.IPodShuffleProduct());
         // The assertion failed because there is a bug in this step. On the checkout/checkout page and checkout/confirm page, the prices are different.
         // Expected: "$200.00"
         // But was:  "$242.00"
@@ -79,13 +79,13 @@ public class CheckoutPageTests : BaseTest
     {
         var billingDetails = CustomerFactory.GenerateBillingAddress();
         var personalInformation = CustomerFactory.GenerateUserDetails();
-        var checkoutInformation = CheckoutInformationFactory.Build(ProductsFactory.SamsungSyncMaster(), ProductsFactory.NikonProduct());
+        var checkoutInformation = CheckoutInformationFactory.Build(ProductsFactory.SamsungSyncMaster(), ProductsFactory.IPodShuffleProduct());
 
         _webSite.CheckoutPage.Navigate();
         _webSite.HomePage.SearchProductByName(ProductsFactory.SamsungSyncMaster().Name);
         _webSite.ProductPage.AddProductToCart(ProductsFactory.SamsungSyncMaster().Quantity);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.NikonProduct().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.NikonProduct().Quantity);
+        _webSite.HomePage.SearchProductByName(ProductsFactory.IPodShuffleProduct().Name);
+        _webSite.ProductPage.AddProductToCart(ProductsFactory.IPodShuffleProduct().Quantity);
         _webSite.CheckoutPage.Navigate();
         _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Guest);
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
@@ -100,7 +100,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.ProceedToCheckout();
 
         _webSite.CheckoutPage.AssertConfirmButtonDisplayed();
-        _webSite.CheckoutPage.AssertProductInformationConfirmOrder(ProductsFactory.NikonProduct());
+        _webSite.CheckoutPage.AssertProductInformationConfirmOrder(ProductsFactory.IPodShuffleProduct());
         _webSite.CheckoutPage.AssertProductInformationConfirmOrder(ProductsFactory.SamsungSyncMaster());
         _webSite.CheckoutPage.ConfirmOrder();
 

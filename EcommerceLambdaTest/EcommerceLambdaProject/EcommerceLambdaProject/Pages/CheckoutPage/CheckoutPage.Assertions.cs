@@ -68,9 +68,8 @@ public partial class CheckoutPage
             }
             else
             {
-                var expectedTotal = checkoutInformation.Sum(p => p.SubTotal) + checkoutInformation.Sum(p => p.FlatShippingRate);
-                var totalMessage = $"Expected Result: {checkoutInformation.Sum(p => p.SubTotal).ToString("C")} \n Actual Result: {Total.Text}";
-                Assert.That(expectedTotal.ToString("C"), Is.EqualTo(Total.Text), totalMessage);
+                var totalMessage = $"Expected Result: {checkoutInformation.Sum(p => p.SubTotal) + checkoutInformation.Sum(p => p.FlatShippingRate).ToString("C")} \n Actual Result: {Total.Text}";
+                Assert.That((checkoutInformation.Sum(p => p.SubTotal) + checkoutInformation.Sum(p => p.FlatShippingRate)).ToString("C"), Is.EqualTo(Total.Text), totalMessage);
             }
 
         }
