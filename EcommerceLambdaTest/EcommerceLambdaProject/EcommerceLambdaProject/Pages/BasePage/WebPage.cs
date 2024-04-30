@@ -21,4 +21,10 @@ public abstract class WebPage
         Assert.That(expectedUrl, Is.EqualTo(Driver.Url),Constants.Constants.ErrorMessageUrl);
         Driver.WaitForAjax();
     }
+
+    public void AssertUrlPage()
+    {
+        Assert.That(Url, Is.EqualTo(Driver.Url), Constants.Constants.ErrorMessageUrl);
+        Driver.WaitForAjax();
+    }
 }

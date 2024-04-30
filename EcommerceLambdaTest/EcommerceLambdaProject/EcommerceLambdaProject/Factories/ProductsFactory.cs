@@ -133,6 +133,7 @@ public static class ProductsFactory
     private static double ParseUnitPrice(ProductDetails productDetails)
     {
         double parsedUnitPrice;
+        //ToDo Check why it is unused
         bool isUnitPriceParsed = double.TryParse(productDetails.UnitPrice.Replace("$", ""), out parsedUnitPrice);
 
         return parsedUnitPrice;

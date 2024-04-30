@@ -15,6 +15,9 @@ public class WebSite
         SearchPage = new SearchPage(_driver);
         ShoppingCartPage = new ShoppingCartPage(_driver);
         MyAccountPage = new MyAccountPage(_driver);
+        SuccessfulPage = new SuccessfulPage(_driver);
+        MainHeader = new MainHeader(_driver);
+
     }
 
     public HomePage HomePage { get; set; }
@@ -25,4 +28,7 @@ public class WebSite
     public SearchPage SearchPage { get; set; }
     public ShoppingCartPage ShoppingCartPage { get; set; }
     public MyAccountPage MyAccountPage { get; set; }
+    public SuccessfulPage SuccessfulPage { get; set; }
+    public MainHeader MainHeader { get; set; }
+
 }

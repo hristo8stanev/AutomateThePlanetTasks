@@ -8,16 +8,9 @@ public partial class ProductPage : WebPage
     }
 
     public override string Url => Urls.Urls.SEARCH_SHOP_PRODUCTS_PAGE;
-    public void AddProductToCart(string quantity)
-    {
-        FindProduct.Click();
-        QuantityInput.TypeText(quantity);
-        AddToCartButton.Click();
-    }
 
     public void CompareProduct()
     {
-        FindProduct.Click();
         CompareProductButton.Hover();
         CompareProductButton.Click();
         Driver.WaitForAjax();
@@ -26,7 +19,6 @@ public partial class ProductPage : WebPage
 
     public void AddProductToWishList()
     {
-        FindProduct.Click();
         WishListButton.Click();
         Driver.WaitForAjax();
     }
@@ -61,7 +53,6 @@ public partial class ProductPage : WebPage
 
     public void SelectProductSize()
     {
-        FindProduct.Click();
         SizeField.Click();
         SelectSize(DifferentTypeSize.Medium);
         Driver.WaitForAjax();

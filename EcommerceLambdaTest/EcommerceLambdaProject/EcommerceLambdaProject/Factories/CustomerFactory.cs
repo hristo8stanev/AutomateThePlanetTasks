@@ -2,7 +2,7 @@
 
 public static class CustomerFactory
 {
-    public static PersonalInformation GenerateUserDetails(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null, string confirmPass = null)
+    public static PersonalInformation GenerateUserDetails(string firstName = null, string lastName = null, string email = null, int? telephone = null, string password = null)
     {
         var faker = new Faker<PersonalInformation>()
 
@@ -10,7 +10,7 @@ public static class CustomerFactory
             .RuleFor(c => c.LastName, f => lastName ?? f.Name.LastName())
             .RuleFor(c => c.Email, (f, c) => email ?? f.Internet.Email(c.FirstName, c.LastName))
             .RuleFor(c => c.Password, f => password ?? f.Internet.Password())
-            .RuleFor(c => c.ConfirmPassword, (f, c) => confirmPass ?? c.Password)
+            .RuleFor(c => c.ConfirmPassword, (f, c) =>  c.Password)
             .RuleFor(c => c.Telephone, f => "08899772233");
 
         return faker.Generate();
@@ -38,6 +38,22 @@ public static class CustomerFactory
         var loginDetails = new LoginInformation();
         loginDetails.EmailAddress = email;
         loginDetails.PasswordField = password;
+
+        return loginDetails;
+    }
+
+    public static LoginInformation BuildExistingCustomer()
+    {
+        //ToDo Implement
+        var loginDetails = new LoginInformation();
+
+        return loginDetails;
+    }
+
+    public static LoginInformation BuildNewCustomer()
+    {
+        //ToDo Implement
+        var loginDetails = new LoginInformation();
 
         return loginDetails;
     }

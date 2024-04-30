@@ -10,7 +10,7 @@ public class RegisterPageTests : BaseTest
         var registerUser = CustomerFactory.GenerateUserDetails();
         _webSite.RegisterPage.CreateUser(registerUser);
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_REGISTRATION_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_REGISTRATION_PAGE);
         _webSite.RegisterPage.AssertLogoutButtonIsDisplayed();
     }
 
@@ -22,7 +22,7 @@ public class RegisterPageTests : BaseTest
         var registerUser = CustomerFactory.GenerateUserDetails(firstName: string.Empty);
         _webSite.RegisterPage.CreateUser(registerUser);
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessageFirstName();
     }
 
@@ -34,7 +34,7 @@ public class RegisterPageTests : BaseTest
         var registerUser = CustomerFactory.GenerateUserDetails(email: string.Empty);
         _webSite.RegisterPage.CreateUser(registerUser);
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessageEmailAddress();
     }
 
@@ -46,7 +46,7 @@ public class RegisterPageTests : BaseTest
         var registerUser = CustomerFactory.GenerateUserDetails(password: string.Empty);
         _webSite.RegisterPage.CreateUser(registerUser);
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.REGISTER_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(REGISTER_PAGE);
         _webSite.RegisterPage.AssertErrorMessageForErrorMessagePassword();
     }
 }

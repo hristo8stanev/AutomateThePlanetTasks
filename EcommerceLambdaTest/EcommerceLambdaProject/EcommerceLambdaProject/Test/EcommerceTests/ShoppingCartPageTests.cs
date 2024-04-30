@@ -5,74 +5,68 @@ public class ShoppingCartPageTests : BaseTest
     [Test]
     public void AddProductToTheShopping_When_AuthenticatedUserAddsProductsToCart_And_ProductDetailsCorrect()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.IPodShuffleProduct().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.IPodShuffleProduct().Quantity);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.SamsungSyncMaster().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.SamsungSyncMaster().Quantity);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.iPodNano().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.iPodNano().Quantity);
+        _webSite.MainHeader.AddProductToCart(IPodShuffleProduct());
+        _webSite.MainHeader.AddProductToCart(SamsungSyncMaster());
+        _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductName(ProductsFactory.IPodShuffleProduct(), ProductsFactory.IPodShuffleProduct().Id);
-        _webSite.ShoppingCartPage.AssertProductName(ProductsFactory.SamsungSyncMaster(), ProductsFactory.SamsungSyncMaster().Id);
-        _webSite.ShoppingCartPage.AssertProductName(ProductsFactory.iPodNano(), ProductsFactory.iPodNano().Id);
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductName(IPodShuffleProduct());
+        _webSite.ShoppingCartPage.AssertProductName(SamsungSyncMaster());
+        _webSite.ShoppingCartPage.AssertProductName(iPodNano());
 
-        _webSite.ShoppingCartPage.AssertProductInformation(ProductsFactory.SamsungSyncMaster());
-        _webSite.ShoppingCartPage.AssertProductInformation(ProductsFactory.IPodShuffleProduct());
-        _webSite.ShoppingCartPage.AssertProductInformation(ProductsFactory.iPodNano());
+        _webSite.ShoppingCartPage.AssertProductInformation(SamsungSyncMaster());
+        _webSite.ShoppingCartPage.AssertProductInformation(IPodShuffleProduct());
+        _webSite.ShoppingCartPage.AssertProductInformation(iPodNano());
     }
 
     [Test]
     public void UpdateTheQuantityOfTheProducts_When_AuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);   
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);   
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.iPodNano().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.iPodNano().Quantity);
+        _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductName(ProductsFactory.iPodNano(), ProductsFactory.iPodNano().Id);
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductName(iPodNano());
 
-        _webSite.ShoppingCartPage.UpdateQuantity(Constants.Constants.updateQuantity);
+        _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
 
-        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(Constants.Constants.updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(updateQuantity);
     }
 
     [Test]
     public void RemoveProductFromTheShoppingCart_When_AuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
-        _webSite.HomePage.SearchProductByName(ProductsFactory.HtcTouch().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.HtcTouch().Quantity);
+        _webSite.MainHeader.AddProductToCart(HtcTouch());
         _webSite.ShoppingCartPage.Navigate();
         _webSite.ShoppingCartPage.RemoveProductFromCart();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductRemoved(ProductsFactory.HtcTouch().Name);
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductRemoved();
     }
 
     [Test]
     public void AddProductToTheShopping_NonAuthenticatedUserAddsProductToCart_And_ProductIsAddedSuccessfully()
     {
         _webSite.ShoppingCartPage.Navigate();
-        _webSite.HomePage.SearchProductByName(ProductsFactory.SamsungSyncMaster().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.SamsungSyncMaster().Quantity);
+        _webSite.MainHeader.AddProductToCart(SamsungSyncMaster());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductName(ProductsFactory.SamsungSyncMaster(), ProductsFactory.SamsungSyncMaster().Id);
-        _webSite.ShoppingCartPage.AssertProductInformation(ProductsFactory.SamsungSyncMaster());
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductName(SamsungSyncMaster());
+        _webSite.ShoppingCartPage.AssertProductInformation(SamsungSyncMaster());
         // The assertion failed because there is a bug in this step. On the product/page page and checkout/cart page, the prices are different.
         // Expected: "$200.00"
         // But was:  "$242.00"
@@ -82,29 +76,27 @@ public class ShoppingCartPageTests : BaseTest
     public void UpdateTheQuantityOfTheProducts_When_NonAuthenticatedUserUpdatesProductQuantityInCart_And_QuantityIsUpdatedCorrectly()
     {
         _webSite.ShoppingCartPage.Navigate();
-        _webSite.HomePage.SearchProductByName(ProductsFactory.iPodNano().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.IPodShuffleProduct().Quantity);
+        _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
 
-        _webSite.ShoppingCartPage.UpdateQuantity(Constants.Constants.updateQuantity);
-        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(Constants.Constants.updateQuantity);
+        _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
+        _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(updateQuantity);
     }
 
     [Test]
     public void RemoveProductTheShoppingCart_When_NonAuthenticatedUserRemovesProductFromCart_And_ProductIsSuccessfullyRemoved()
     {
         _webSite.ShoppingCartPage.Navigate();
-        _webSite.HomePage.SearchProductByName(ProductsFactory.HtcTouch().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.HtcTouch().Quantity);
+        _webSite.MainHeader.AddProductToCart(HtcTouch());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
 
         _webSite.ShoppingCartPage.RemoveProductFromCart();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(Urls.Urls.CART_PAGE);
-        _webSite.ShoppingCartPage.AssertProductRemoved(ProductsFactory.HtcTouch().Name);
+        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertProductRemoved();
     }
 }

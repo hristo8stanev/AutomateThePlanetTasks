@@ -16,7 +16,7 @@ public partial class RegisterPage : WebPage
         EmailAddressNameInput.TypeText(user.Email);
         TelephoneInput.TypeText(user.Telephone);
         PasswordInput.TypeText(user.Password);
-        ConfirmPasswordInput.TypeText(user.ConfirmPassword);
+        ConfirmPasswordInput.TypeText(user.Password);
         AgreePrivacy.Click();
         ContinueButton.Click();
     }

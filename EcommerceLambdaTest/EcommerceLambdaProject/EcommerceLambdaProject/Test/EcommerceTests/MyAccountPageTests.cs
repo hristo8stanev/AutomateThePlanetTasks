@@ -5,7 +5,7 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void EditMyProfile_When_FirstNameLastNameEmailAddressAndTelephoneEdited_And_ContinueButtonClicked()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
         var myAccountInfomraiton = CustomerFactory.GenerateUserDetails();
 
         _webSite.LoginPage.Navigate();
@@ -13,27 +13,27 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
 
         _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(ACCOUNT_PAGE);
     }
 
     [Test]
     public void ChangeMyPassword_When_NewPasswordSet_And_ContinueButtonClicked()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ChangeMyPassword();
 
         _webSite.MyAccountPage.AssertPasswordSuccessfullyChanged();
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ACCOUNT_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(ACCOUNT_PAGE);
     }
 
     [Test]
     public void PurchaseGiftCertificate_When_AuthenticatedUser_VerifyGiftInShoppingCart()
     {
         var gift = GiftCertificateFactory.GenerateGiftCertificate();
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
@@ -41,7 +41,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VOUCHER_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_VOUCHER_PAGE);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.MyAccountPage.AssertGiftCertificateAddedToShoppingCart(gift);
@@ -59,7 +59,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_VOUCHER_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_VOUCHER_PAGE);
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.MyAccountPage.AssertGiftCertificateAddedToShoppingCart(gift);
@@ -70,19 +70,19 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void AddNewAddress_AddressAddedFromAddressBook_And_AuthenticatedUserProvidesDetails()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
         var newAddress = CustomerFactory.GenerateBillingAddress();
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ProceedToAddressBookSection();
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.NEW_ADDRESS_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(NEW_ADDRESS_PAGE);
 
         _webSite.MyAccountPage.AddNewAddress(newAddress);
 
         _webSite.MyAccountPage.AssertSuccessfullyAddedNewAddress();
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.ADDRESS_BOOK_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(ADDRESS_BOOK_PAGE);
     }
 
     [Test]
@@ -92,16 +92,15 @@ public class MyAccountPageTests : BaseTest
         var personalInformation = CustomerFactory.GenerateUserDetails();
 
         _webSite.CheckoutPage.Navigate();
-        _webSite.HomePage.SearchProductByName(ProductsFactory.IPodShuffleProduct().Name);
-        _webSite.ProductPage.AddProductToCart(ProductsFactory.IPodShuffleProduct().Quantity);
+        _webSite.MainHeader.AddProductToCart(IPodShuffleProduct());
         _webSite.CheckoutPage.Navigate();
-        _webSite.CheckoutPage.SelectAccountType(DifferentAccountType.Register);
+        _webSite.CheckoutPage.SelectRegisterAccountType();
         _webSite.CheckoutPage.FillBillingNewUserDetails(personalInformation);
         _webSite.CheckoutPage.FillBillingAddress(billingDetails);
         _webSite.CheckoutPage.ProceedToCheckout();
         _webSite.CheckoutPage.ConfirmOrder();
 
-        _webSite.CheckoutPage.AssertSuccessfullyCheckoutOrder(Constants.Constants.SuccessfullyPurchaseMessage);
+        _webSite.CheckoutPage.AssertSuccessfullyCheckoutOrder();
 
         _webSite.MyAccountPage.ProceedToOrderHistorySection();
 
@@ -112,17 +111,17 @@ public class MyAccountPageTests : BaseTest
     [Test]
     public void ReturnProduct_When_AuthenticatedUser_FillsReturnForm()
     {
-        var loginUser = CustomerFactory.LoginUser(Constants.Constants.EmailAddress, Constants.Constants.Password);
+        var loginUser = CustomerFactory.LoginUser(EmailAddress, Password);
 
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ProceedToReturnOrderSection();
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.RETURN_PRODUCT_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage(RETURN_PRODUCT_PAGE);
 
-        _webSite.MyAccountPage.FillReturnProductForm(ProductsFactory.iPodNano());
+        _webSite.MyAccountPage.FillReturnProductForm(iPodNano());
 
-        _webSite.MyAccountPage.AssertUrlPage(Urls.Urls.SUCCESSFUL_RETURN_PRODUCT_PAGE);
-        _webSite.MyAccountPage.AssertProductReturnsMessage(Constants.Constants.ProductReturnsMessage);
+        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_RETURN_PRODUCT_PAGE);
+        _webSite.MyAccountPage.AssertProductReturnsMessage(ProductReturnsMessage);
     }
 }

@@ -9,7 +9,7 @@ public partial class ProductPage
 
     public IComponent RemoveFromCompareList(int id) => Driver.FindComponent(By.XPath($"//div[@id='content']//tr//td//a[contains(@href, 'remove={id}') and normalize-space()='Remove']"));
 
-    public IComponent QuantityInput => Driver.FindComponents(By.XPath("//input[@name='quantity']")).Last();
+    public IComponent QuantityInput => Driver.FindComponent(By.XPath("//div[@id='product-product']//input[contains(normalize-space(@name), 'quantity')]"));
     public IComponent AddToCartButton => Driver.FindComponent(By.XPath("//div[@class='content']//button[contains(text(),'Add to Cart')]"));
     public IComponent CompareProductButton => Driver.FindComponent(By.XPath("//div[@id='product-product']//button[contains(normalize-space(@class), 'btn-compare')]"));
     public IComponent ProceedToCompare => Driver.FindComponent(By.XPath("//*[@data-original-title='Compare']"));

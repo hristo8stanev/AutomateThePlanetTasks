@@ -12,6 +12,7 @@ public partial class CheckoutPage : WebPage
     public void FillUserDetails(BillingInformation billingInformation)
     {
         ApplyCoupon.Hover();
+
         FirstNameInput.TypeText(billingInformation.FirstName);
         LastNameInput.TypeText(billingInformation.FirstName);
         CompanyInput.TypeText(billingInformation.Company);
@@ -57,10 +58,9 @@ public partial class CheckoutPage : WebPage
         {
             AgreePrivacy.Click();
         }
-
     }
 
-    public void SelectAccountType(DifferentAccountType accountType)
+    private void SelectAccountType(DifferentAccountType accountType)
     {
         switch (accountType)
         {
@@ -79,6 +79,19 @@ public partial class CheckoutPage : WebPage
             default:
                 throw new ArgumentOutOfRangeException(nameof(accountType), accountType, "Unsupported account type");
         }
+    }
+
+    public void SelectLoginAccountType()
+    {
+        SelectAccountType(DifferentAccountType.Login);
+    }
+    public void SelectRegisterAccountType()
+    {
+        SelectAccountType(DifferentAccountType.Register);
+    }
+    public void SelectGuestAccountType()
+    {
+        SelectAccountType(DifferentAccountType.Guest);
     }
 
     public void LoginUser(string email, string password)
