@@ -15,7 +15,16 @@ public class WebSite
         SearchPage = new SearchPage(_driver);
         ShoppingCartPage = new ShoppingCartPage(_driver);
         MyAccountPage = new MyAccountPage(_driver);
-        SuccessfulPage = new SuccessfulPage(_driver);
+        SuccessfulPage = new SuccessfulOrderPage(_driver);
+        ForgotPasswordPage = new ForgotPasswordPage(driver);
+        LogoutPage = new LogoutPage(_driver);
+        ReturnProductPage = new ReturnProductPage(_driver);
+        SuccessfulOrderPage = new SuccessfulOrderPage(driver);
+        NewAddressBookPage = new NewAddressBookPage(_driver);
+        NewAddressPage = new NewAddressPage(_driver);
+        SuccessfulReturnProductPage = new SuccessfulReturnProductPage(_driver);
+        SuccessfulVoucherPage = new SuccessfulVoucherPage(_driver);
+
         MainHeader = new MainHeader(_driver);
 
     }
@@ -28,7 +37,15 @@ public class WebSite
     public SearchPage SearchPage { get; set; }
     public ShoppingCartPage ShoppingCartPage { get; set; }
     public MyAccountPage MyAccountPage { get; set; }
-    public SuccessfulPage SuccessfulPage { get; set; }
+    public ForgotPasswordPage ForgotPasswordPage { get; set; }
+    public SuccessfulOrderPage SuccessfulPage { get; set; }
+    public LogoutPage LogoutPage { get; set; }
+    public ReturnProductPage ReturnProductPage { get; set; }
+    public SuccessfulOrderPage SuccessfulOrderPage { get; set; }
+    public NewAddressBookPage NewAddressBookPage { get; set; }
+    public NewAddressPage NewAddressPage { get; set; }
+    public SuccessfulReturnProductPage SuccessfulReturnProductPage { get; set; }
+    public SuccessfulVoucherPage SuccessfulVoucherPage { get; set; }
     public MainHeader MainHeader { get; set; }
 
 }

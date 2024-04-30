@@ -15,7 +15,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.SelectLoginAccountType();
         _webSite.CheckoutPage.LoginUser(EmailAddress, Password);
 
-        _webSite.CheckoutPage.AssertUrlPage(CHECKOUT_PAGE);
+        _webSite.CheckoutPage.AssertUrlPage();
         _webSite.CheckoutPage.AssertProductInformationCorrect(IPodShuffleProduct());
         _webSite.CheckoutPage.AssertProductInformationCorrect(iPodNano());
         _webSite.CheckoutPage.FillUserDetails(billingDetails);
@@ -66,7 +66,7 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.ConfirmOrder();
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutOrder();
-        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_ORDER_PAGE);
+        _webSite.SuccessfulPage.AssertUrlPage();
     }
 
     [Test]
@@ -98,6 +98,6 @@ public class CheckoutPageTests : BaseTest
         _webSite.CheckoutPage.ConfirmOrder();
 
         _webSite.CheckoutPage.AssertSuccessfullyCheckoutOrder();
-        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_ORDER_PAGE);
+        _webSite.SuccessfulPage.AssertUrlPage();
     }
 }

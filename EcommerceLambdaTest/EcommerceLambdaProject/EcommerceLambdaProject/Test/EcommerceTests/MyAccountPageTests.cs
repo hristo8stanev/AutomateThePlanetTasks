@@ -13,7 +13,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.ChangeMyAccountInformation(myAccountInfomraiton);
 
         _webSite.MyAccountPage.AssertAccountInformationIsSuccessfullyUpdated();
-        _webSite.MyAccountPage.AssertUrlPage(ACCOUNT_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage();
     }
 
     [Test]
@@ -26,7 +26,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.ChangeMyPassword();
 
         _webSite.MyAccountPage.AssertPasswordSuccessfullyChanged();
-        _webSite.MyAccountPage.AssertUrlPage(ACCOUNT_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage();
     }
 
     [Test]
@@ -41,7 +41,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
-        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_VOUCHER_PAGE);
+        _webSite.SuccessfulVoucherPage.AssertUrlPage();
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.MyAccountPage.AssertGiftCertificateAddedToShoppingCart(gift);
@@ -59,7 +59,7 @@ public class MyAccountPageTests : BaseTest
         _webSite.MyAccountPage.PurchaseGiftCertificate(gift);
 
         _webSite.MyAccountPage.AssertSuccessfullyPurchaseGiftCertificate();
-        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_VOUCHER_PAGE);
+        _webSite.SuccessfulVoucherPage.AssertUrlPage();
 
         _webSite.ShoppingCartPage.Navigate();
         _webSite.MyAccountPage.AssertGiftCertificateAddedToShoppingCart(gift);
@@ -77,12 +77,12 @@ public class MyAccountPageTests : BaseTest
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ProceedToAddressBookSection();
 
-        _webSite.MyAccountPage.AssertUrlPage(NEW_ADDRESS_PAGE);
+        _webSite.NewAddressPage.AssertUrlPage();
 
         _webSite.MyAccountPage.AddNewAddress(newAddress);
 
         _webSite.MyAccountPage.AssertSuccessfullyAddedNewAddress();
-        _webSite.MyAccountPage.AssertUrlPage(ADDRESS_BOOK_PAGE);
+        _webSite.NewAddressBookPage.AssertUrlPage();
     }
 
     [Test]
@@ -117,11 +117,11 @@ public class MyAccountPageTests : BaseTest
         _webSite.LoginPage.LoginUser(loginUser);
         _webSite.MyAccountPage.ProceedToReturnOrderSection();
 
-        _webSite.MyAccountPage.AssertUrlPage(RETURN_PRODUCT_PAGE);
+        _webSite.ReturnProductPage.AssertUrlPage();
 
         _webSite.MyAccountPage.FillReturnProductForm(iPodNano());
 
-        _webSite.MyAccountPage.AssertUrlPage(SUCCESSFUL_RETURN_PRODUCT_PAGE);
+        _webSite.SuccessfulReturnProductPage.AssertUrlPage();
         _webSite.MyAccountPage.AssertProductReturnsMessage(ProductReturnsMessage);
     }
 }

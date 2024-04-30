@@ -7,7 +7,7 @@ public partial class MyAccountPage : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.ACCOUNT_PAGE;
+    public override string Url => ACCOUNT_PAGE;
 
     public void SelectGiftType(GiftCertificateType giftCertificateType)
     {

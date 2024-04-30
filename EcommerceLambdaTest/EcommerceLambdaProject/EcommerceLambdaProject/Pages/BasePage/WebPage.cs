@@ -15,16 +15,16 @@ public abstract class WebPage
     {
         Driver.GoToUrl(Url);
     }
-
-    public void AssertUrlPage(string expectedUrl)
-    {
-        Assert.That(expectedUrl, Is.EqualTo(Driver.Url),Constants.Constants.ErrorMessageUrl);
-        Driver.WaitForAjax();
-    }
+   
+   // public void AssertUrlPage(string expectedUrl)
+   // {
+   //     Assert.That(expectedUrl, Is.EqualTo(Driver.Url),ErrorMessageUrl);
+   //     Driver.WaitForAjax();
+   // }
 
     public void AssertUrlPage()
     {
-        Assert.That(Url, Is.EqualTo(Driver.Url), Constants.Constants.ErrorMessageUrl);
+        Assert.That(Url, Is.EqualTo(Driver.Url), ErrorMessageUrl);
         Driver.WaitForAjax();
     }
 }

@@ -11,7 +11,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(ACCOUNT_PAGE);
+        _webSite.LoginPage.AssertUrlPage();
         _webSite.LoginPage.AssertLogoutButtonDisplayed();
     }
 
@@ -23,7 +23,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(LOGIN_PAGE);
+        _webSite.LoginPage.AssertUrlPage();
         _webSite.LoginPage.AssertErrorMessageWithWrongCredentials();
     }
 
@@ -35,7 +35,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(LOGIN_PAGE);
+        _webSite.LoginPage.AssertUrlPage();
         _webSite.LoginPage.AssertErrorMessageWithWrongCredentials();
     }
 
@@ -47,10 +47,10 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage(ACCOUNT_PAGE);
+        _webSite.MyAccountPage.AssertUrlPage();
 
         _webSite.LoginPage.LogoutUser();
-        _webSite.LoginPage.AssertUrlPage(LOGOUT_USER_PAGE);
+        _webSite.LogoutPage.AssertUrlPage();
         _webSite.LoginPage.AssertAccountSuccessfullyLogout();
     }
 
@@ -60,12 +60,12 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
 
-        _webSite.LoginPage.AssertUrlPage(FORGOTTEN_PASSWORD_PAGE);
+        _webSite.ForgotPasswordPage.AssertUrlPage();
 
         _webSite.LoginPage.SentEmail(EmailAddress);
 
         _webSite.LoginPage.AssertSuccessfullySentEmail();
-        _webSite.LoginPage.AssertUrlPage(LOGIN_PAGE);
+        _webSite.LoginPage.AssertUrlPage();
     }
 
     [Test]
@@ -74,11 +74,11 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.ProceedToForgottenPasswordSection();
 
-        _webSite.LoginPage.AssertUrlPage(FORGOTTEN_PASSWORD_PAGE);
+        _webSite.ForgotPasswordPage.AssertUrlPage();
 
         _webSite.LoginPage.SentEmail(InvalidEmail);
 
         _webSite.LoginPage.AssertWarningMessageInvalidEmail();
-        _webSite.LoginPage.AssertUrlPage(FORGOTTEN_PASSWORD_PAGE);
+        _webSite.ForgotPasswordPage.AssertUrlPage();
     }
 }

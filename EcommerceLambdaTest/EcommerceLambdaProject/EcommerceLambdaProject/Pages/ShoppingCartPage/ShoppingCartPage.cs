@@ -7,7 +7,7 @@ public partial class ShoppingCartPage : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.CART_PAGE;
+    public override string Url => CART_PAGE;
 
     public void UpdateQuantity(string product)
     {
