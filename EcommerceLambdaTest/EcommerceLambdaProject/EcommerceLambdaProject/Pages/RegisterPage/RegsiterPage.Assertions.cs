@@ -4,25 +4,25 @@ public partial class RegisterPage
 {
     public void AssertLogoutButtonIsDisplayed()
     {
-        var message = $"{Constants.Constants.ErrorMessageLogoutButton} \n Actual Result:{!LogoutButton.Displayed} \n Expected Result:{LogoutButton.Displayed}";
-        Assert.That(LogoutButton.Displayed, Is.True, Constants.Constants.ErrorMessageLogoutButton, message);
+        var message = $"{ErrorMessageLogoutButton} \n Actual Result:{!LogoutButton.Displayed} \n Expected Result:{LogoutButton.Displayed}";
+        Assert.That(LogoutButton.Displayed, Is.True, ErrorMessageLogoutButton, message);
     }
 
     public void AssertErrorMessageForErrorMessageFirstName()
     {
-        var message = $"{Constants.Constants.SuccessfullyLogin} \n Actual Result:{ErrorMessageEmptyFistNameField.Text} \n Expected Result:{Constants.Constants.ErrorMessageEmptyFirstName}";
-        Assert.That(ErrorMessageEmptyFistNameField.Text, Is.EqualTo(Constants.Constants.ErrorMessageEmptyFirstName), message);
+        var message = $"{SuccessfullyLogin} \n Actual Result:{ErrorMessageEmptyFistNameField.Text} \n Expected Result:{ErrorMessageEmptyFirstName}";
+        Assert.That(ErrorMessageEmptyFistNameField.Text, Is.EqualTo(ErrorMessageEmptyFirstName), message);
     }
 
     public void AssertErrorMessageForErrorMessageEmailAddress()
     {
-        var message = $"{Constants.Constants.SuccessfullyLogin} \n Actual Result:{ErrorMessageEmptyEmailAddressField.Text} \n Expected Result:{Constants.Constants.ErrorMessageEmptyEmailAddress}";
-        Assert.That(ErrorMessageEmptyEmailAddressField.Text, Is.EqualTo(Constants.Constants.ErrorMessageEmptyEmailAddress), message);
+        var message = $"{SuccessfullyLogin} \n Actual Result:{ErrorMessageEmptyEmailAddressField.Text} \n Expected Result:{ErrorMessageEmptyEmailAddress}";
+        Assert.That(ErrorMessageEmptyEmailAddressField.Text, Is.EqualTo(ErrorMessageEmptyEmailAddress), message);
     }
 
     public void AssertErrorMessageForErrorMessagePassword()
     {
-        var message = $"{Constants.Constants.SuccessfullyLogin} \n Actual Result:{ErrorMessageEmptyPasswordField.Text} \n Expected Result:{Constants.Constants.ErrorMessageEmptyPassword}";
-        Assert.That(ErrorMessageEmptyPasswordField.Text, Is.EqualTo(Constants.Constants.ErrorMessageEmptyPassword), message);
+        var message = $"{SuccessfullyLogin} \n Actual Result:{ErrorMessageEmptyPasswordField.Text} \n Expected Result:{ErrorMessageEmptyPassword}";
+        Assert.That(ErrorMessageEmptyPasswordField.Text, Is.EqualTo(ErrorMessageEmptyPassword), message);
     }
 }

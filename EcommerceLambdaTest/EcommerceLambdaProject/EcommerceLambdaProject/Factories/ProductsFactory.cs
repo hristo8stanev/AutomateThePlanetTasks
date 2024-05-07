@@ -142,6 +142,7 @@ public static class ProductsFactory
     private static double ParseQuantity(ProductDetails productDetails)
     {
         double parsedQuantity;
+        //ToDo Check why it is unused
         bool isQuantityParsed = double.TryParse(productDetails.Quantity, out parsedQuantity);
 
         return parsedQuantity;

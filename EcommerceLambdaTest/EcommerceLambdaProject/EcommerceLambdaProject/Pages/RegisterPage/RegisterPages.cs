@@ -7,7 +7,7 @@ public partial class RegisterPage : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.REGISTER_PAGE;
+    public override string Url => REGISTER_PAGE;
 
     public void CreateUser(PersonalInformation user)
     {

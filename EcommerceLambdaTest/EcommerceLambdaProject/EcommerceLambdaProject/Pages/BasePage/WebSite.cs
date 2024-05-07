@@ -24,7 +24,10 @@ public class WebSite
         NewAddressPage = new NewAddressPage(_driver);
         SuccessfulReturnProductPage = new SuccessfulReturnProductPage(_driver);
         SuccessfulVoucherPage = new SuccessfulVoucherPage(_driver);
-
+        ComparisonPage = new ComparisonPage(_driver);
+        WishListPage = new WishListPage(_driver);
+        SuccessfulRegisterPage = new SuccessfulRegisterPage(_driver);
+        SearchProductPriceRangePrice = new SearchProductPriceRangePrice(_driver);
         MainHeader = new MainHeader(_driver);
 
     }
@@ -47,5 +50,9 @@ public class WebSite
     public SuccessfulReturnProductPage SuccessfulReturnProductPage { get; set; }
     public SuccessfulVoucherPage SuccessfulVoucherPage { get; set; }
     public MainHeader MainHeader { get; set; }
-
+    public ComparisonPage ComparisonPage { get; set; }
+    public WishListPage WishListPage { get;set; }
+    public SuccessfulRegisterPage SuccessfulRegisterPage { get; set; }
+    public SearchProductPriceRangePrice SearchProductPriceRangePrice { get; set; }
+   
 }

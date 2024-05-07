@@ -17,7 +17,7 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.CompareProduct();
         _driver.GoToUrl(COMPARISON_PAGE);
 
-        _webSite.ProductPage.AssertUrlPage(COMPARISON_PAGE);
+        _webSite.ComparisonPage.AssertUrlPage();
         _webSite.ProductPage.AssertTheProductAddedToComparePage(iPodNano());
         _webSite.ProductPage.AssertTheProductAddedToComparePage(SamsungSyncMaster());
         _webSite.ProductPage.AssertTheProductAddedToComparePage(IPodShuffleProduct());
@@ -38,7 +38,7 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.AddProductToWishList();
         _webSite.ProductPage.ProceedToWishList();
 
-        _webSite.ProductPage.AssertUrlPage(WISHLIST_PAGE);
+        _webSite.WishListPage.AssertUrlPage();
         _webSite.ProductPage.AssertProductAddedToWishList(HtcTouch());
         _webSite.ProductPage.AssertProductAddedToWishList(SamsungSyncMaster());
         _webSite.ProductPage.AssertProductAddedToWishList(iPodNano());
@@ -55,7 +55,7 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.SelectProductSize();
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ProductPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ProductPage.AssertSizeProductIsCorrect(AppleProduct());
     }
 
@@ -73,7 +73,7 @@ public class ProductPageTests : BaseTest
         _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ProductPage.CompareProduct();
 
-        _webSite.ProductPage.AssertUrlPage(COMPARISON_PAGE);
+        _webSite.ComparisonPage.AssertUrlPage();
         _webSite.ProductPage.AssertTheProductAddedToComparePage(iPodNano());
         _webSite.ProductPage.AssertTheProductAddedToComparePage(SamsungSyncMaster());
         _webSite.ProductPage.AssertTheProductAddedToComparePage(IPodShuffleProduct());
@@ -83,21 +83,21 @@ public class ProductPageTests : BaseTest
     public void CompareProducts_When_CompareProductsAsNonAuthenticatedUser()
     {
         _webSite.LoginPage.Navigate();
-        _webSite.MainHeader.AddProductToCart(NikonProduct());
+        _webSite.MainHeader.AddProductToCart(IPodShuffleProduct());
         _webSite.ProductPage.CompareProduct();
         _webSite.MainHeader.AddProductToCart(SamsungSyncMaster());
         _webSite.ProductPage.CompareProduct();
         _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ProductPage.CompareProduct();
 
-        _webSite.ProductPage.AssertUrlPage(COMPARISON_PAGE);
+        _webSite.ComparisonPage.AssertUrlPage();
 
         //The assertions failed because there is a bug in this step, because the prices on product/compare page and  default price of the products are different.
         //Expected: "$100.00"
         //But was: "$122.00"
         _webSite.ProductPage.AssertTheProductAddedToComparePage(iPodNano());
         _webSite.ProductPage.AssertTheProductAddedToComparePage(SamsungSyncMaster());
-        _webSite.ProductPage.AssertTheProductAddedToComparePage(NikonProduct());
+        _webSite.ProductPage.AssertTheProductAddedToComparePage(IPodShuffleProduct());
     }
 
     [Test]
@@ -108,7 +108,7 @@ public class ProductPageTests : BaseTest
         _webSite.ProductPage.SelectProductSize();
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ProductPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ProductPage.AssertSizeProductIsCorrect(AppleProduct());
     }
 }

@@ -104,7 +104,7 @@ public class MyAccountPageTests : BaseTest
 
         _webSite.MyAccountPage.ProceedToOrderHistorySection();
 
-        _webSite.MyAccountPage.AssertCustomerNameCorrect(personalInformation.FirstName + " " + personalInformation.LastName);
+        _webSite.MyAccountPage.AssertCustomerNameCorrect(personalInformation);
         _webSite.MyAccountPage.AssertThePurchaseDateToday();
     }
 

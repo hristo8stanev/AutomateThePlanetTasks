@@ -25,6 +25,7 @@ public class CheckoutInformation
                 ecoTax += 2.00;
                 remainingQuantity--;
             }
+
             return ecoTax;
         }
     }

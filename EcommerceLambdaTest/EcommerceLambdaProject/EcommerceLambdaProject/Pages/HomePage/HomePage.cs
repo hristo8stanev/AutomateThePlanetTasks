@@ -7,5 +7,5 @@ public partial class HomePage : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.HOME_PAGE;
+    public override string Url => HOME_PAGE;
 }

@@ -11,6 +11,6 @@ public partial class LoginPage
     public IComponent EmailAddress => Driver.FindComponent(By.Name("email"));
     public IComponent ContinueButton => Driver.FindComponent(By.XPath("//div[@id='content']//button[contains(normalize-space(@type),'submit')]"));
     public IComponent ConfirmationMessage => Driver.FindComponent(By.XPath("//div[@id='account-login']//div[contains(normalize-space(@class), 'alert alert-success')]"));
-    public IComponent WarningMessage => Driver.FindComponent(By.XPath("//div[@id='account-forgotten']//div[contains(normalize-space(@class), 'alert alert-danger')]"));
+    public IComponent WarningMessage => Driver.FindComponent(By.XPath("//div[@id='account-login']//div[contains(normalize-space(@class), 'alert alert-danger')]"));
     public IComponent AccountLogout => Driver.FindComponent(By.XPath("//h1[@class='page-title my-3']"));
 }

@@ -6,5 +6,6 @@ public partial class SuccessfulOrderPage : WebPage
         : base(driver)
     {
     }
+
     public override string Url => SUCCESSFUL_ORDER_PAGE;
 }

@@ -7,7 +7,7 @@ public partial class LoginPage : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.LOGIN_PAGE;
+    public override string Url => LOGIN_PAGE;
 
     public void LoginUser(LoginInformation login)
     {

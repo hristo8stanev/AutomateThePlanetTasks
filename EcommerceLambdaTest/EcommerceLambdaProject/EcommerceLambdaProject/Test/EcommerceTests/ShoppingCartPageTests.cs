@@ -14,7 +14,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ShoppingCartPage.AssertProductName(IPodShuffleProduct());
         _webSite.ShoppingCartPage.AssertProductName(SamsungSyncMaster());
         _webSite.ShoppingCartPage.AssertProductName(iPodNano());
@@ -34,7 +34,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ShoppingCartPage.AssertProductName(iPodNano());
 
         _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
@@ -53,7 +53,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.ShoppingCartPage.Navigate();
         _webSite.ShoppingCartPage.RemoveProductFromCart();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ShoppingCartPage.AssertProductRemoved();
     }
 
@@ -64,7 +64,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.MainHeader.AddProductToCart(SamsungSyncMaster());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ShoppingCartPage.AssertProductName(SamsungSyncMaster());
         _webSite.ShoppingCartPage.AssertProductInformation(SamsungSyncMaster());
         // The assertion failed because there is a bug in this step. On the product/page page and checkout/cart page, the prices are different.
@@ -79,7 +79,7 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.MainHeader.AddProductToCart(iPodNano());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
 
         _webSite.ShoppingCartPage.UpdateQuantity(updateQuantity);
         _webSite.ShoppingCartPage.AssertSuccessfullyUpdatedQuantity(updateQuantity);
@@ -92,11 +92,11 @@ public class ShoppingCartPageTests : BaseTest
         _webSite.MainHeader.AddProductToCart(HtcTouch());
         _webSite.ShoppingCartPage.Navigate();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
 
         _webSite.ShoppingCartPage.RemoveProductFromCart();
 
-        _webSite.ShoppingCartPage.AssertUrlPage(CART_PAGE);
+        _webSite.ShoppingCartPage.AssertUrlPage();
         _webSite.ShoppingCartPage.AssertProductRemoved();
     }
 }

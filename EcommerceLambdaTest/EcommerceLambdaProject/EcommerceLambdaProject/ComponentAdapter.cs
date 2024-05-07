@@ -79,6 +79,7 @@ public class ComponentAdapter : IComponent
         {
             components.Add(new ComponentAdapter(_webDriver, element, locator));
         }
+
         return components;
     }
 }

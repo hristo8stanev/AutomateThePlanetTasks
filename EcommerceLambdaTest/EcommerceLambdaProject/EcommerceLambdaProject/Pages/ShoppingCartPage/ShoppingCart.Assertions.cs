@@ -32,14 +32,14 @@ public partial class ShoppingCartPage
         var expectedProductInfo = new ProductDetails();
         var errorMessageRemovedProduct = $"The product '{expectedProductInfo.Name}' is still present in the Shopping Cart.";
         var expectedMessage = "Your shopping cart is empty!";
-        var message = $"{errorMessageRemovedProduct} \n Actual Result:{RemovedProduct(expectedMessage).Text} \n Expected Result:{expectedMessage}";
-        Assert.That(RemovedProduct(expectedMessage).Text.Contains(expectedMessage), message);
+        var removedProductMessage = $"{errorMessageRemovedProduct} \n Actual Result:{RemovedProduct(expectedMessage).Text} \n Expected Result:{expectedMessage}";
+        Assert.That(RemovedProduct(expectedMessage).Text.Contains(expectedMessage), removedProductMessage);
     }
 
     public void AssertSuccessfullyUpdatedQuantity(string expectedQuantity)
     {
-        var message = $"{ErrorMessageProduct} \n Actual Result:{UpdateQuantityField.GetAttribute("value")} \n Expected Result:{expectedQuantity}";
-        Assert.That(expectedQuantity, Is.EqualTo(UpdateQuantityField.GetAttribute("value")), message);
+        var successfullyUpdateQuantityMessage = $"{ErrorMessageProduct} \n Actual Result:{UpdateQuantityField.GetAttribute("value")} \n Expected Result:{expectedQuantity}";
+        Assert.That(expectedQuantity, Is.EqualTo(UpdateQuantityField.GetAttribute("value")), successfullyUpdateQuantityMessage);
         RemoveButton.Click();
         Driver.WaitForAjax();
     }

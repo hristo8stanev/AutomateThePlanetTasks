@@ -129,7 +129,7 @@ public partial class MyAccountPage : WebPage
         EditMyAccountButton.Click();
         FirstNameInput.TypeText(user.FirstName);
         LastNameInput.TypeText(user.LastName);
-        EmailAddressNameInput.TypeText(Constants.Constants.EmailAddress);
+        EmailAddressNameInput.TypeText(EmailAddress);
         TelephoneInput.TypeText(user.Telephone);
         ContinueButton.Click();
     }
@@ -137,8 +137,8 @@ public partial class MyAccountPage : WebPage
     public void ChangeMyPassword()
     {
         ChangeMyPasswordButton.Click();
-        PasswordInput.TypeText(Constants.Constants.Password);
-        ConfirmPasswordInput.TypeText(Constants.Constants.Password);
+        PasswordInput.TypeText(Password);
+        ConfirmPasswordInput.TypeText(Password);
         ContinueButton.Click();
     }
 

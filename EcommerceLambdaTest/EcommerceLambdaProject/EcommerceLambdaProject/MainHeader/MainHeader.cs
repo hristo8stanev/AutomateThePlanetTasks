@@ -7,7 +7,7 @@ public partial class MainHeader : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.HOME_PAGE;
+    public override string Url => HOME_PAGE;
 
     public void AddProductToCart(ProductDetails product)
     {

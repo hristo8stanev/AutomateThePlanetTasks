@@ -84,6 +84,7 @@ public class DriverAdapter : IDriver
         }
         catch
         {
+
             return false;
         }
     }
@@ -98,6 +99,7 @@ public class DriverAdapter : IDriver
         _webDriverWait.Until(driver =>
         {
             var script = "return window.jQuery != undefined && jQuery.active == 0";
+
             return (bool)((IJavaScriptExecutor)driver).ExecuteScript(script);
         });
     }

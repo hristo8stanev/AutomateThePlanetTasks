@@ -13,4 +13,3 @@ global using EcommerceLambdaProject.Pages;
 global using static EcommerceLambdaProject.Factories.ProductsFactory;
 global using static EcommerceLambdaProject.Constants.Constants;
 global using static EcommerceLambdaProject.Urls.Urls;
-

@@ -6,6 +6,7 @@ public partial class SuccessfulVoucherPage : WebPage
         : base(driver)
     {
     }
+
     public override string Url => SUCCESSFUL_VOUCHER_PAGE;
 
 }

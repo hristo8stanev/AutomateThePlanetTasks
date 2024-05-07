@@ -15,12 +15,6 @@ public abstract class WebPage
     {
         Driver.GoToUrl(Url);
     }
-   
-   // public void AssertUrlPage(string expectedUrl)
-   // {
-   //     Assert.That(expectedUrl, Is.EqualTo(Driver.Url),ErrorMessageUrl);
-   //     Driver.WaitForAjax();
-   // }
 
     public void AssertUrlPage()
     {

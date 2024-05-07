@@ -7,7 +7,7 @@ public partial class CheckoutPage : WebPage
     {
     }
 
-    public override string Url => Urls.Urls.CHECKOUT_PAGE;
+    public override string Url => CHECKOUT_PAGE;
 
     public void FillUserDetails(BillingInformation billingInformation)
     {
@@ -85,10 +85,12 @@ public partial class CheckoutPage : WebPage
     {
         SelectAccountType(DifferentAccountType.Login);
     }
+
     public void SelectRegisterAccountType()
     {
         SelectAccountType(DifferentAccountType.Register);
     }
+
     public void SelectGuestAccountType()
     {
         SelectAccountType(DifferentAccountType.Guest);

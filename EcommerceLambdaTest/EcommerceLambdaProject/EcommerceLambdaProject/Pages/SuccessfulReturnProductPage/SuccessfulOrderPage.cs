@@ -6,6 +6,7 @@ public partial class SuccessfulReturnProductPage : WebPage
         : base(driver)
     {
     }
+
     public override string Url => SUCCESSFUL_RETURN_PRODUCT_PAGE;
 
 }

@@ -11,7 +11,7 @@ public class LoginPageTests : BaseTest
         _webSite.LoginPage.Navigate();
         _webSite.LoginPage.LoginUser(loginUser);
 
-        _webSite.LoginPage.AssertUrlPage();
+        _webSite.MyAccountPage.AssertUrlPage();
         _webSite.LoginPage.AssertLogoutButtonDisplayed();
     }
 

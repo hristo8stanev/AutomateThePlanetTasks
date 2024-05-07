@@ -1,7 +1,6 @@
 ﻿namespace EcommerceLambdaProject.Pages;
 
 public partial class MainHeader
-
 {
     public IComponent MyAccount => Driver.FindComponent(By.XPath("//ul[@class='navbar-nav horizontal']//a[contains(@href, 'account/account')]"));
     public IComponent RegisterButton => Driver.FindComponent(By.XPath("//div[@id='main-navigation']//a[contains(@href, 'account/register')]//following-sibling::span"));
